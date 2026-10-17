@@ -52,3 +52,4 @@ footer p{margin:0;display:flex;align-items:center;min-height:44px}
 footer a{display:inline-flex;align-items:center;padding:10px 0;min-height:44px}
 nav a{display:inline-flex;align-items:center}.wordmark{min-height:44px;display:inline-flex;align-items:center}
 @media(prefers-reduced-motion:no-preference){.btn{transition:background-color .25s ease-out,color .25s ease-out}}
+.prose p a.btn{padding:10px 16px;margin:0}
