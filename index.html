@@ -5,13 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Evenfaring</title>
 <meta name="description" content="Evenfaring is a small, independent studio making steady, useful apps with care.">
+<link rel="canonical" href="https://evenfaring.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Evenfaring">
 <meta property="og:title" content="Evenfaring">
 <meta property="og:description" content="Evenfaring is a small, independent studio making steady, useful apps with care.">
-<meta name="theme-color" content="#faf7f1">
+<meta property="og:url" content="https://evenfaring.com/">
+<meta property="og:image" content="https://evenfaring.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Evenfaring wordmark beside a line drawing of a path meeting the horizon">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Evenfaring">
+<meta name="twitter:description" content="Evenfaring is a small, independent studio making steady, useful apps with care.">
+<meta name="twitter:image" content="https://evenfaring.com/og-image.png">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#faf7f1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1d33" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preload" href="assets/fonts/cormorant-garamond-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/cormorant-garamond-latin-400-italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -24,11 +37,14 @@
 <section class="hero">
 <div><h1>Small, steady apps, made with care.</h1>
 <p class="lede">Evenfaring is a one-person studio. Each app is built slowly and kept simple.</p></div>
-<svg viewBox="0 0 420 220" role="img" aria-label="A line drawing of a path winding toward the horizon" fill="none" stroke="#24395c" stroke-width="1.5" stroke-linecap="round">
-<line x1="10" y1="90" x2="410" y2="90"/>
-<circle cx="300" cy="62" r="16"/>
-<path d="M150 214 C190 180 250 168 230 140 C214 118 196 108 212 90"/>
-<path d="M270 214 C260 184 300 170 282 142 C270 122 226 108 216 90"/>
+<svg class="hero-art" viewBox="0 0 420 220" role="img" aria-label="A line drawing of a path winding toward the horizon under a low sun" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M10 120 H410"/>
+<path d="M10 120 C60 100 110 98 160 112 C178 117 196 120 210 120"/>
+<path d="M214 120 C250 106 300 92 350 100 C380 105 398 113 410 120"/>
+<circle cx="300" cy="72" r="16"/>
+<path d="M120 220 C150 192 196 178 194 156 C192 140 204 128 210 120"/>
+<path d="M300 220 C268 194 232 182 236 160 C239 144 222 130 214 120"/>
+<path d="M210 196 v8 M220 160 v5 M213 136 v3"/>
 </svg>
 </section>
 <section id="apps" aria-labelledby="apps-h">
@@ -39,8 +55,10 @@
 <p>A calm companion for riding out urges, one walk at a time.</p>
 <p class="status">Coming to the App Store</p>
 <a class="btn" href="https://dariusdtatum-tech.github.io/urgewalk/">Visit Urge Walk</a></li>
-<li class="card quiet"><h3>In the works</h3><p>A new app is in the works.</p></li>
-<li class="card quiet"><h3>In the works</h3><p>A new app is in the works.</p></li>
+<li class="card quiet"><h3>In the works</h3><span class="tag">All ages · Fitness</span>
+<p>A simple fitness app for every age, built around small daily movement.</p></li>
+<li class="card quiet"><h3>In the works</h3><span class="tag">All ages · Christian game</span>
+<p>A gentle Christian game for every age, made to be played and shared.</p></li>
 </ul></section>
 </div></main>
 <footer><div class="wrap">
