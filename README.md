@@ -31,6 +31,16 @@ pushing to `main` redeploys the site.
 | `sw.js` | Service worker (offline support) |
 | `manifest.webmanifest` | PWA manifest |
 | `icons/` | App icons |
+| `privacy.html` | Privacy page — kept live at the root deliberately, so its URL stays stable |
+| `404.html` | Standalone not-found page |
+| `og-image.png` | Link-preview image |
+| `apple-touch-icon.png` | iOS home-screen icon |
+| `favicon.svg` | Favicon |
+| `robots.txt` | Crawler rules (see "Before launch" below) |
+| `sitemap.xml` | Sitemap — homepage and privacy page |
+| `docs/` | Working documents: `docs/app-store/` (App Store submission checklists & guides), `docs/audits/` (site audits) |
+| `archive/legacy-site/` | The pre-voyage multi-page site pages, archived 2026-10-20 |
+| `assets/` + `previews/` | Legacy site assets (self-hosted fonts & licenses, app icons) and screenshots of the old pages, kept for the archive |
 
 ## What's on the voyage
 
@@ -70,10 +80,6 @@ pushing to `main` redeploys the site.
 
 Reduced motion is respected throughout: with `prefers-reduced-motion`, the
 voyage still sails, flat and still; every v18 animation goes inert or instant.
-
-
-Reduced motion is respected throughout: with `prefers-reduced-motion`, the
-voyage still sails, flat and still.
 
 ## Before launch
 
