@@ -2,7 +2,7 @@
    EVENFARING STUDIO — ZERO-DEPENDENCY OFFLINE SERVICE WORKER (v11)
    100% On-Device Cache-First Architecture · Zero Analytics or Tracking Beacons
    ============================================================================ */
-const CACHE_NAME = 'evenfaring-studio-v11';
+const CACHE_NAME = 'evenfaring-studio-v18';
 const CORE_ASSETS = [
   './',
   './index.html',

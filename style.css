@@ -3994,3 +3994,98 @@ html[data-lens="on"] .ct-grade{opacity:0!important}
 .specimen-panel[hidden]{display:none}
 /* Collapsed app specimen: its copy takes the full row — no blank column */
 .featured-app.specimen.is-collapsed .featured-copy{grid-column:1/-1}
+
+/* ==================== v18 REFINEMENT ====================
+   The remaining buildable playbook ideas, through one lens: polish.
+   Every addition serves the signature (2D->3D reveal + living chart). */
+:root{
+  --spring-calm:cubic-bezier(0.22,1,0.36,1);
+  --spring-settle:cubic-bezier(0.34,1.25,0.4,1);
+  --r-hand:14px 18px 15px 19px/18px 15px 19px 14px;
+  --sp-card:22px;
+  --teal-light:#c9e2da;
+}
+/* S1 — ink: hand-inked outlines (static filter, never animated) */
+.v18-ink-defs{position:absolute;width:0;height:0;overflow:hidden}
+.inked{filter:url(#ink-edge)}
+.map-island ellipse{filter:url(#ink-edge)}
+.voyage-card,.focus-workbench-shell,.chart-room,.tide-pool{border-radius:var(--r-hand)}
+/* S2 — route mask: leg transitions sweep along the route's own shape */
+.voyage-fogburst .fogburst-route{position:absolute;inset:0;width:100%;height:100%;opacity:0}
+.voyage-fogburst .fogburst-route path{fill:none;stroke:#a9cbc0;stroke-width:60;filter:blur(18px)}
+.voyage-stage.leg-transition .voyage-fogburst .fogburst-route{animation:v18-routemask .9s ease-out}
+@keyframes v18-routemask{0%{opacity:0}30%{opacity:1}100%{opacity:0}}
+/* S3 — waterlight: one soft shimmer band above the near plane */
+#waterlight{position:absolute;inset:0;pointer-events:none;transform:translateZ(130px);
+  background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.10) 50%,transparent 70%);
+  animation:v18-waterlight 90s ease-in-out infinite alternate}
+html[data-theme="dark"] #waterlight{background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.06) 50%,transparent 70%)}
+@keyframes v18-waterlight{from{transform:translateZ(130px) translateX(-20%)}to{transform:translateZ(130px) translateX(20%)}}
+/* S5 + S14 — calm-range springs, unified hover/active, modal entrances */
+@media(pointer:fine){
+  .voyage-card{transition:border-color .6s var(--spring-calm),transform .28s var(--spring-calm),box-shadow .28s var(--spring-calm)}
+  .voyage-card:hover{transform:translateY(-2px);border-color:var(--teal);box-shadow:0 14px 34px rgba(20,35,60,.12)}
+  .voyage-card:active{transform:scale(.99);transition-duration:.12s}
+}
+.voyage-card.is-harbor{animation:harbor-settle .8s var(--spring-settle)}
+@keyframes harbor-settle{0%{transform:scale(1)}40%{transform:scale(1.015)}100%{transform:scale(1)}}
+.btn{transition:background-color .2s var(--spring-calm),color .2s var(--spring-calm),transform .12s var(--spring-calm)}
+.deck-extra-btn,.grade-pills button,.mobile-dock-btn,.log-fab,.patina-toggle-pill,.clutch-pill,
+.workbench-quick-pill,.tour-mini-btn{transition:transform .12s var(--spring-calm),background-color .25s var(--spring-calm),color .2s var(--spring-calm)}
+.btn:active,.deck-extra-btn:active,.grade-pills button:active,.mobile-dock-btn:active,.log-fab:active,
+.patina-toggle-pill:active,.clutch-pill:active,.workbench-quick-pill:active,.tour-mini-btn:active{transform:scale(.97)}
+.focus-workbench-backdrop:not([hidden]) .focus-workbench-shell{animation:v18-risein .45s var(--spring-calm)}
+.chart-room:not([hidden]){animation:v18-risein .45s var(--spring-calm)}
+#log-dialog:not([hidden]) .log-card{animation:v18-risein .45s var(--spring-calm)}
+.bottle-dialog:not([hidden]) .bottle-card{animation:v18-risein .6s var(--spring-settle)}
+@keyframes v18-risein{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.log-flag{animation:v18-flagpop .5s var(--spring-settle)}
+@keyframes v18-flagpop{0%{transform:translate(-50%,-50%) scale(.6);opacity:0}60%{transform:translate(-50%,-50%) scale(1.12);opacity:1}100%{transform:translate(-50%,-50%) scale(1)}}
+/* S6 — chart-room zoom buttons */
+.chart-room-head button.cr-zoom{margin-left:0}
+.chart-room-head button.cr-zoom:first-of-type{margin-left:auto}
+/* S8 — living previews inside the instruments */
+.card-live{margin:0 0 14px;min-height:34px;display:flex;align-items:center;gap:10px;color:var(--text-2);font:400 var(--text-xs)/1.4 var(--font-sans)}
+.live-urge{display:flex;align-items:center;gap:10px}
+.live-urge .live-dot{width:10px;height:10px;border-radius:50%;background:var(--teal);animation:v18-breathedot 12s ease-in-out infinite}
+@keyframes v18-breathedot{0%,100%{transform:scale(.7);opacity:.55}50%{transform:scale(1.25);opacity:1}}
+.live-urge .live-wave path{animation:v18-wave 12s ease-in-out infinite}
+@keyframes v18-wave{0%,100%{transform:translateX(-4px)}50%{transform:translateX(4px)}}
+.live-dayspan{display:flex;align-items:center;gap:10px}
+.live-dayspan .dayspan-arc{stroke-dasharray:157;stroke-dashoffset:157}
+.live-cap{letter-spacing:.06em}
+.live-pips{display:flex;gap:8px}
+.live-pips i{width:12px;height:12px;border-radius:50%;border:1.5px solid var(--chart-border);background:transparent;animation:v18-pip 12s infinite}
+.live-pips i:nth-child(2){animation-delay:3s}
+.live-pips i:nth-child(3){animation-delay:6s}
+.live-pips i:nth-child(4){animation-delay:9s}
+@keyframes v18-pip{0%,100%{background:transparent}8%,24%{background:var(--teal);border-color:var(--teal)}32%{background:transparent}}
+.live-ready{display:flex;align-items:center;gap:8px}
+.live-ready .live-status{width:9px;height:9px;border-radius:50%;background:var(--teal);animation:v18-pulse 12s ease-in-out infinite}
+@keyframes v18-pulse{0%,100%{opacity:.5;transform:scale(.85)}50%{opacity:1;transform:scale(1.1)}}
+/* S10 — positioning line */
+.hero-positioning{margin:12px 0 0;font:600 var(--text-sm)/1.5 var(--font-sans);color:var(--text-2);letter-spacing:.02em}
+/* S14 — selection, scrollbar, focus, links, labels, unified card padding */
+::selection{background:#a9cbc0;color:#24395c}
+html{scrollbar-width:thin;scrollbar-color:rgba(174,95,55,.55) transparent}
+html::-webkit-scrollbar{width:10px;height:10px}
+html::-webkit-scrollbar-track{background:transparent}
+html::-webkit-scrollbar-thumb{background:rgba(174,95,55,.4);border-radius:8px;border:2px solid transparent;background-clip:content-box}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:3px}
+html[data-theme="dark"] :focus-visible{outline-color:var(--teal-light)}
+@media(prefers-color-scheme:dark){html:not([data-theme="light"]) :focus-visible{outline-color:var(--teal-light)}}
+.text-link{text-decoration-thickness:1.5px;text-underline-offset:3px}
+.text-link:hover{color:var(--teal)}
+.section-heading .eyebrow,.leg-head .eyebrow,.hero .eyebrow{margin:0 0 10px;letter-spacing:.14em}
+.inst-tag,.specimen-tag{letter-spacing:.14em}
+.voyage-card-body{padding:var(--sp-card)}
+/* S14 — reduced motion: v18 motion becomes instant/inert, never broken */
+@media(prefers-reduced-motion:reduce){
+  #waterlight{animation:none;opacity:.5}
+  .voyage-stage.leg-transition .voyage-fogburst .fogburst-route{animation:none}
+  .voyage-card,.btn,.deck-extra-btn,.grade-pills button,.mobile-dock-btn,.log-fab,
+  .patina-toggle-pill,.clutch-pill,.workbench-quick-pill,.tour-mini-btn{transition:none!important;animation:none!important}
+  .focus-workbench-shell,.chart-room,.log-card,.bottle-card,.log-flag{animation:none!important}
+  .card-live *{animation:none!important}
+}
+/* ================== /v18 REFINEMENT ================== */

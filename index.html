@@ -3,7 +3,6 @@
 <html data-patina="aged" data-reading-view="calm" data-theme="light" lang="en">
 <head>
 <!-- preview: remove at launch -->
-<meta content="noindex, nofollow" name="robots"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Evenfaring — calm, steady apps for everyday life</title>
@@ -178,6 +177,7 @@ html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{
   margin:0;
   min-height:100vh;
+  min-height:100dvh;
   min-height:100dvh;
   display:flex;
   flex-direction:column;
@@ -1504,6 +1504,7 @@ html, body, .studio-shell{
 .studio-shell{
   min-height:100vh;
   min-height:100dvh;
+  min-height:100dvh;
   display:flex;
   flex-direction:column;
   background-color:var(--bg);
@@ -2467,6 +2468,7 @@ body[data-embed-mode="compact"] header.site {
 .focus-workbench-shell {
   width: min(1140px, 100%);
   max-height: calc(100vh - 32px);
+  max-height: calc(100dvh - 32px);
   border-radius: var(--radius-lg);
   border: 2px solid var(--chart-border);
   background: var(--bg);
@@ -4133,9 +4135,106 @@ html[data-lens="on"] .ct-grade{opacity:0!important}
   .specimen-hint{display:none}
 }
 
+
+/* ==================== v18 REFINEMENT ====================
+   The remaining buildable playbook ideas, through one lens: polish.
+   Every addition serves the signature (2D->3D reveal + living chart). */
+:root{
+  --spring-calm:cubic-bezier(0.22,1,0.36,1);
+  --spring-settle:cubic-bezier(0.34,1.25,0.4,1);
+  --r-hand:14px 18px 15px 19px/18px 15px 19px 14px;
+  --sp-card:22px;
+  --teal-light:#c9e2da;
+}
+/* S1 — ink: hand-inked outlines (static filter, never animated) */
+.v18-ink-defs{position:absolute;width:0;height:0;overflow:hidden}
+.inked{filter:url(#ink-edge)}
+.map-island ellipse{filter:url(#ink-edge)}
+.voyage-card,.focus-workbench-shell,.chart-room,.tide-pool{border-radius:var(--r-hand)}
+/* S2 — route mask: leg transitions sweep along the route's own shape */
+.voyage-fogburst .fogburst-route{position:absolute;inset:0;width:100%;height:100%;opacity:0}
+.voyage-fogburst .fogburst-route path{fill:none;stroke:#a9cbc0;stroke-width:60;filter:blur(18px)}
+.voyage-stage.leg-transition .voyage-fogburst .fogburst-route{animation:v18-routemask .9s ease-out}
+@keyframes v18-routemask{0%{opacity:0}30%{opacity:1}100%{opacity:0}}
+/* S3 — waterlight: one soft shimmer band above the near plane */
+#waterlight{position:absolute;inset:0;pointer-events:none;transform:translateZ(130px);
+  background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.10) 50%,transparent 70%);
+  animation:v18-waterlight 90s ease-in-out infinite alternate}
+html[data-theme="dark"] #waterlight{background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.06) 50%,transparent 70%)}
+@keyframes v18-waterlight{from{transform:translateZ(130px) translateX(-20%)}to{transform:translateZ(130px) translateX(20%)}}
+/* S5 + S14 — calm-range springs, unified hover/active, modal entrances */
+@media(pointer:fine){
+  .voyage-card{transition:border-color .6s var(--spring-calm),transform .28s var(--spring-calm),box-shadow .28s var(--spring-calm)}
+  .voyage-card:hover{transform:translateY(-2px);border-color:var(--teal);box-shadow:0 14px 34px rgba(20,35,60,.12)}
+  .voyage-card:active{transform:scale(.99);transition-duration:.12s}
+}
+.voyage-card.is-harbor{animation:harbor-settle .8s var(--spring-settle)}
+@keyframes harbor-settle{0%{transform:scale(1)}40%{transform:scale(1.015)}100%{transform:scale(1)}}
+.btn{transition:background-color .2s var(--spring-calm),color .2s var(--spring-calm),transform .12s var(--spring-calm)}
+.deck-extra-btn,.grade-pills button,.mobile-dock-btn,.log-fab,.patina-toggle-pill,.clutch-pill,
+.workbench-quick-pill,.tour-mini-btn{transition:transform .12s var(--spring-calm),background-color .25s var(--spring-calm),color .2s var(--spring-calm)}
+.btn:active,.deck-extra-btn:active,.grade-pills button:active,.mobile-dock-btn:active,.log-fab:active,
+.patina-toggle-pill:active,.clutch-pill:active,.workbench-quick-pill:active,.tour-mini-btn:active{transform:scale(.97)}
+.focus-workbench-backdrop:not([hidden]) .focus-workbench-shell{animation:v18-risein .45s var(--spring-calm)}
+.chart-room:not([hidden]){animation:v18-risein .45s var(--spring-calm)}
+#log-dialog:not([hidden]) .log-card{animation:v18-risein .45s var(--spring-calm)}
+.bottle-dialog:not([hidden]) .bottle-card{animation:v18-risein .6s var(--spring-settle)}
+@keyframes v18-risein{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.log-flag{animation:v18-flagpop .5s var(--spring-settle)}
+@keyframes v18-flagpop{0%{transform:translate(-50%,-50%) scale(.6);opacity:0}60%{transform:translate(-50%,-50%) scale(1.12);opacity:1}100%{transform:translate(-50%,-50%) scale(1)}}
+/* S6 — chart-room zoom buttons */
+.chart-room-head button.cr-zoom{margin-left:0}
+.chart-room-head button.cr-zoom:first-of-type{margin-left:auto}
+/* S8 — living previews inside the instruments */
+.card-live{margin:0 0 14px;min-height:34px;display:flex;align-items:center;gap:10px;color:var(--text-2);font:400 var(--text-xs)/1.4 var(--font-sans)}
+.live-urge{display:flex;align-items:center;gap:10px}
+.live-urge .live-dot{width:10px;height:10px;border-radius:50%;background:var(--teal);animation:v18-breathedot 12s ease-in-out infinite}
+@keyframes v18-breathedot{0%,100%{transform:scale(.7);opacity:.55}50%{transform:scale(1.25);opacity:1}}
+.live-urge .live-wave path{animation:v18-wave 12s ease-in-out infinite}
+@keyframes v18-wave{0%,100%{transform:translateX(-4px)}50%{transform:translateX(4px)}}
+.live-dayspan{display:flex;align-items:center;gap:10px}
+.live-dayspan .dayspan-arc{stroke-dasharray:157;stroke-dashoffset:157}
+.live-cap{letter-spacing:.06em}
+.live-pips{display:flex;gap:8px}
+.live-pips i{width:12px;height:12px;border-radius:50%;border:1.5px solid var(--chart-border);background:transparent;animation:v18-pip 12s infinite}
+.live-pips i:nth-child(2){animation-delay:3s}
+.live-pips i:nth-child(3){animation-delay:6s}
+.live-pips i:nth-child(4){animation-delay:9s}
+@keyframes v18-pip{0%,100%{background:transparent}8%,24%{background:var(--teal);border-color:var(--teal)}32%{background:transparent}}
+.live-ready{display:flex;align-items:center;gap:8px}
+.live-ready .live-status{width:9px;height:9px;border-radius:50%;background:var(--teal);animation:v18-pulse 12s ease-in-out infinite}
+@keyframes v18-pulse{0%,100%{opacity:.5;transform:scale(.85)}50%{opacity:1;transform:scale(1.1)}}
+/* S10 — positioning line */
+.hero-positioning{margin:12px 0 0;font:600 var(--text-sm)/1.5 var(--font-sans);color:var(--text-2);letter-spacing:.02em}
+/* S14 — selection, scrollbar, focus, links, labels, unified card padding */
+::selection{background:#a9cbc0;color:#24395c}
+html{scrollbar-width:thin;scrollbar-color:rgba(174,95,55,.55) transparent}
+html::-webkit-scrollbar{width:10px;height:10px}
+html::-webkit-scrollbar-track{background:transparent}
+html::-webkit-scrollbar-thumb{background:rgba(174,95,55,.4);border-radius:8px;border:2px solid transparent;background-clip:content-box}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:3px}
+html[data-theme="dark"] :focus-visible{outline-color:var(--teal-light)}
+@media(prefers-color-scheme:dark){html:not([data-theme="light"]) :focus-visible{outline-color:var(--teal-light)}}
+.text-link{text-decoration-thickness:1.5px;text-underline-offset:3px}
+.text-link:hover{color:var(--teal)}
+.section-heading .eyebrow,.leg-head .eyebrow,.hero .eyebrow{margin:0 0 10px;letter-spacing:.14em}
+.inst-tag,.specimen-tag{letter-spacing:.14em}
+.voyage-card-body{padding:var(--sp-card)}
+/* S14 — reduced motion: v18 motion becomes instant/inert, never broken */
+@media(prefers-reduced-motion:reduce){
+  #waterlight{animation:none;opacity:.5}
+  .voyage-stage.leg-transition .voyage-fogburst .fogburst-route{animation:none}
+  .voyage-card,.btn,.deck-extra-btn,.grade-pills button,.mobile-dock-btn,.log-fab,
+  .patina-toggle-pill,.clutch-pill,.workbench-quick-pill,.tour-mini-btn{transition:none!important;animation:none!important}
+  .focus-workbench-shell,.chart-room,.log-card,.bottle-card,.log-flag{animation:none!important}
+  .card-live *{animation:none!important}
+}
+/* ================== /v18 REFINEMENT ================== */
+
 </style>
 </head>
 <body data-patina="aged" data-theme="light">
+<svg aria-hidden="true" class="v18-ink-defs" focusable="false" height="0" style="position:absolute;left:0;top:0" width="0"><defs><filter height="110%" id="ink-edge" width="110%" x="-5%" y="-5%"><feTurbulence baseFrequency="0.9" numOctaves="2" result="n" seed="7" type="fractalNoise"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3"/></filter></defs></svg>
 <!-- v12 CHART TABLE: continuous faded nautical chart behind all content.
      Decorative only (aria-hidden). Parallax + solar-phase driven by JS below.
      Audio: untouched. -->
@@ -4162,6 +4261,7 @@ html[data-lens="on"] .ct-grade{opacity:0!important}
 <g class="ct-sound"><text x="520" y="480">12</text><text x="1080" y="900">27</text><text x="1330" y="1620">8</text><text x="430" y="1560">33</text><text x="980" y="1980">19</text><text x="700" y="2400">24</text></g>
 </svg>
 </div>
+<div aria-hidden="true" id="waterlight"></div>
 <div aria-hidden="true" class="ct-veil" id="chart-veil"></div>
 <div aria-hidden="true" class="ct-grade" data-grade="dawn" id="grade-0"></div>
 <div aria-hidden="true" class="ct-grade" data-grade="meridian" id="grade-1"></div>
@@ -4169,11 +4269,12 @@ html[data-lens="on"] .ct-grade{opacity:0!important}
 <div aria-hidden="true" class="ct-grade" data-grade="night" id="grade-3"></div>
 <canvas aria-hidden="true" id="mist-canvas"></canvas>
 </div>
-<div class="voyage-scroll" id="voyage-scroll"><div class="voyage-stage" id="voyage-stage"><div class="voyage-world" id="voyage-world"><section aria-label="Leg 1 of 4: Departure — the studio at anchor" class="leg" data-leg="0" data-leg-name="Departure" id="leg-departure" tabindex="-1"><div class="leg-panel pw100"><section aria-label="Studio introduction" class="hero">
+<div class="voyage-scroll" id="voyage-scroll"><div class="voyage-stage" id="voyage-stage"><div class="voyage-world" id="voyage-world"><section aria-label="Leg 1 of 4: Departure — the studio at anchor" class="leg" data-leg="0" data-leg-name="Departure" data-scene="departure" id="leg-departure" tabindex="-1"><div class="leg-panel pw100"><section aria-label="Studio introduction" class="hero">
 <div class="hero-copy">
 <p class="eyebrow">Independent app studio <span aria-hidden="true">/</span> Architect’s drafting table &amp; ship’s log</p>
 <h1>Small, steady apps, <em>made with care.</em></h1>
 <p class="lede">Evenfaring is a one-person studio drafting quiet, durable instruments for everyday life. Like a well-kept coastal chart, each tool is built to help you find your bearings—without noise, ad trackers, or streak guilt.</p>
+<p class="hero-positioning">Calm software, alive on the water.</p>
 <p class="returning-greeting" hidden="" id="returning-greeting"></p>
 <div aria-label="Studio apps at a glance" class="hero-index-strip" role="navigation">
 <button aria-label="01 · WELLBEING Urge Walk Walk · live web app — sail to the open sea" class="hero-index-chip" data-sail="1" type="button">
@@ -4207,7 +4308,7 @@ html[data-lens="on"] .ct-grade{opacity:0!important}
 </div>
 </div>
 <!-- FIG. 00: Interactive Solar Meridian & Bathymetric Tide Chronometer -->
-<div aria-label="Interactive solar and tidal studio chronometer" class="chronometer-card">
+<div aria-label="Interactive solar and tidal studio chronometer" class="chronometer-card inked">
 <div class="inst-bar">
 <span class="inst-tag">Solar meridian &amp; tidal chart <span class="fig-num">FIG. 00</span></span>
 <span class="specimen-type" data-type="ambient">AMBIENT</span>
@@ -4355,7 +4456,7 @@ html[data-lens="on"] .ct-grade{opacity:0!important}
 </button>
 </div>
 </div>
-</section></div></section><section aria-label="Leg 2 of 4: The open sea — the instruments" class="leg" data-leg="1" data-leg-name="The Open Sea" id="leg-opensea" tabindex="-1"><div class="leg-panel pw46" id="opensea-heading">
+</section></div></section><section aria-label="Leg 2 of 4: The open sea — the instruments" class="leg" data-leg="1" data-leg-name="The Open Sea" data-scene="open-sea" id="leg-opensea" tabindex="-1"><div class="leg-panel pw46" id="opensea-heading">
 <div class="leg-head">
 <p class="eyebrow">LEG 2 · INSTRUMENTS 01—03</p>
 <h2>The open sea.</h2>
@@ -4365,12 +4466,12 @@ html[data-lens="on"] .ct-grade{opacity:0!important}
 <div class="tide-pool-frame"><canvas aria-label="Tide pool: sounding dots drift and gather near your cursor" height="440" id="tide-pool-canvas" width="440"></canvas></div>
 <figcaption>◈ TIDE POOL · <span class="specimen-type" data-type="interactive">INTERACTIVE</span></figcaption>
 </figure>
-</div></div><div class="leg-panel pw204" id="instrument-cards"></div></section><section aria-label="Leg 3 of 4: Harbors — the workbenches" class="leg" data-leg="2" data-leg-name="Harbors" id="leg-harbors" tabindex="-1"><div class="leg-panel pw40" id="harbors-heading">
+</div></div><div class="leg-panel pw204" id="instrument-cards"></div></section><section aria-label="Leg 3 of 4: Harbors — the workbenches" class="leg" data-leg="2" data-leg-name="Harbors" data-scene="harbors" id="leg-harbors" tabindex="-1"><div class="leg-panel pw40" id="harbors-heading">
 <div class="leg-head">
 <p class="eyebrow">LEG 3 · WORKBENCHES</p>
 <h2>Harbors.</h2>
 <p>The workbenches: full-screen instruments for the walk, the workout, and the table. Tie up and come aboard.</p>
-</div></div><div class="leg-panel pw160" id="workbench-cards"></div></section><section aria-label="Leg 4 of 4: Arrival — the studio, logbook and contact" class="leg" data-leg="3" data-leg-name="Arrival" id="leg-arrival" tabindex="-1"><div class="leg-panel pw70"><section aria-labelledby="about-h" class="folio-hero snd-tilt-l">
+</div></div><div class="leg-panel pw160" id="workbench-cards"></div></section><section aria-label="Leg 4 of 4: Arrival — the studio, logbook and contact" class="leg" data-leg="3" data-leg-name="Arrival" data-scene="arrival" id="leg-arrival" tabindex="-1"><div class="leg-panel pw70"><section aria-labelledby="about-h" class="folio-hero snd-tilt-l">
 <div class="prose">
 <p class="eyebrow">Folio III <span aria-hidden="true">/</span> The architect’s studio logbook</p>
 <h2 class="folio-h" id="about-h">About Evenfaring</h2>
@@ -4506,7 +4607,7 @@ html[data-lens="on"] .ct-grade{opacity:0!important}
 <g id="voyage-vessel-hull"><polygon fill="var(--chart-beacon)" points="20,6 27,28 20,24 13,28" stroke="var(--chart-ink)" stroke-width="1.4"></polygon><circle cx="20" cy="20" fill="var(--chart-ink)" r="2.6"></circle></g>
 </svg>
 <span class="voyage-vessel-badge" id="voyage-vessel-readout">DEPARTURE · 000 FM</span>
-</div><div aria-hidden="true" class="voyage-fogburst"></div><header class="site">
+</div><div aria-hidden="true" class="voyage-fogburst"><svg aria-hidden="true" class="fogburst-route" focusable="false" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1600 2600"><path d="M800,120 C870,120 870,420 940,420 C820,420 820,760 700,760 C790,760 790,1100 880,1100 C770,1100 770,1440 660,1440 C780,1440 780,1780 900,1780 C830,1780 830,2120 760,2120 C810,2120 810,2440 860,2440"/></svg></div><header class="site">
 <div class="wrap">
 <a class="brand-lockup" data-folio-link="home" data-sail="0" href="#">
 <span aria-hidden="true" class="brand-mark">
@@ -4656,7 +4757,7 @@ html[data-lens="on"] .ct-grade{opacity:0!important}
 </aside><div class="drawer-backdrop" hidden="" id="chartroom-backdrop"></div>
 <aside aria-label="Chart room — overview of the voyage" aria-modal="true" class="chart-room" hidden="" id="chart-room" role="dialog">
 <div class="chart-room-head"><b>Chart room</b><span>Drag to look around · choose an island to sail there</span>
-<button aria-label="Close the chart room" id="chartroom-close" type="button">✕</button></div>
+<button type="button" class="cr-zoom" id="chartroom-zoomin" aria-label="Zoom in">+</button><button type="button" class="cr-zoom" id="chartroom-zoomout" aria-label="Zoom out">&minus;</button><button aria-label="Close the chart room" id="chartroom-close" type="button">✕</button></div>
 <div class="chart-room-view" id="chart-room-view"></div>
 </aside>
 <button aria-label="A message in a bottle — open it" class="voyage-bottle" hidden="" id="voyage-bottle" type="button">
@@ -8664,10 +8765,16 @@ updateChronometer = function(hourVal, driveBus = true) {
   var cv = document.getElementById('mist-canvas');
   if(!cv || reduce || !cv.getContext) return;
   var ctx = cv.getContext('2d'), W = 0, H = 0, parts = [], mouse = {x: -9999, y: -9999};
+  var mdpr = 1;
   function size(){
     var r = cv.getBoundingClientRect();
-    W = cv.width = Math.max(1, Math.round(r.width));
-    H = cv.height = Math.max(1, Math.round(r.height));
+    W = Math.max(1, Math.round(r.width));
+    H = Math.max(1, Math.round(r.height));
+    /* v18 S12: cap the mist backing store at DPR 1.5 */
+    mdpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    cv.width = Math.max(1, Math.round(W * mdpr));
+    cv.height = Math.max(1, Math.round(H * mdpr));
+    ctx.setTransform(mdpr, 0, 0, mdpr, 0, 0);
   }
   function spawn(n){
     parts = [];
@@ -8808,7 +8915,17 @@ updateChronometer = function(hourVal, driveBus = true) {
   var S = 1, worldW = 1, vw = 1, vh = 1, doc = 1, routeLen = 1;
   var legs = [];
   var gradeEls = [0,1,2,3].map(function(i){ return document.getElementById('grade-' + i); });
-  var gradeCenters = [0.07, 0.36, 0.63, 0.90];
+  /* v18 S9: SCENES registry — one entry per leg; the grade-weight
+     loop iterates SCENES (behavior identical to the old gradeCenters
+     array). Adding a leg = one SCENES entry (+ a .leg section with the
+     matching data-scene). New instrument = one INSTRUMENTS entry. */
+  var SCENES = [
+    {id: 'departure', gradeCenter: 0.07, label: 'Departure'},
+    {id: 'open-sea', gradeCenter: 0.36, label: 'The Open Sea'},
+    {id: 'harbors', gradeCenter: 0.63, label: 'Harbors'},
+    {id: 'arrival', gradeCenter: 0.90, label: 'Arrival'}
+  ];
+  var gradeCenters = SCENES.map(function(s){ return s.gradeCenter; });
   var fathomEl = document.getElementById('voyage-fathoms');
   var legNameEl = document.getElementById('voyage-legname');
   var readoutEl = document.getElementById('voyage-vessel-readout');
@@ -8840,7 +8957,7 @@ updateChronometer = function(hourVal, driveBus = true) {
     if(window.syncChartTableWithChrono){ try{ window.syncChartTableWithChrono(); }catch(e){} }
   }
 
-  var p = 0, lastLeg = -1, lastFm = -1;
+  var p = 0, lastLeg = -1, lastFm = -1, dayArc = null;
   function legIndex(pi){
     var idx = 0;
     for(var i = 0; i < legs.length; i++){ if(pi >= legs[i].startP - 0.001) idx = i; }
@@ -8859,25 +8976,32 @@ updateChronometer = function(hourVal, driveBus = true) {
     if(routePath) routePath.style.strokeDashoffset = (routeLen * (1 - p)).toFixed(1);
     if(vessel && !vessel.dataset.sailsuppress){
       var wvx = 0.36 * vw + p * S;
-      var vy = routeY(wvx) + (reduceMotion ? 0 : Math.sin(performance.now() / 900) * 5);
+      var vnow = performance.now();
+      /* v18 S4: hand-held noise — slow summed sines on lift and trim */
+      var noiseY = reduceMotion ? 0 : (Math.sin(vnow * 0.00021) * 1.2 + Math.sin(vnow * 0.000073 + 1.7) * 0.9);
+      var vy = routeY(wvx) + (reduceMotion ? 0 : Math.sin(vnow / 900) * 5) + noiseY;
       vessel.style.transform = 'translate3d(' + (0.36 * vw).toFixed(1) + 'px,' + vy.toFixed(1) + 'px,0)';
       var hull = document.getElementById('voyage-vessel-hull');
       if(hull){
         var slope = (routeY(wvx + 40) - routeY(wvx - 40)) / 80;
-        hull.setAttribute('transform', 'rotate(' + (Math.atan(slope) * 57.2958).toFixed(1) + ' 20 20)');
+        var noiseR = reduceMotion ? 0 : Math.sin(vnow * 0.00013 + 0.5) * 0.4;
+        hull.setAttribute('transform', 'rotate(' + ((Math.atan(slope) * 57.2958) + noiseR).toFixed(1) + ' 20 20)');
       }
     }
     var glock = window.__v17GradeLock;
-    for(var gi = 0; gi < 4; gi++){
+    for(var gi = 0; gi < SCENES.length; gi++){
       if(gradeEls[gi]){
         var go = (typeof glock === 'number' && glock >= 0)
           ? (gi === glock ? 0.85 : 0)
-          : Math.max(0, 1 - Math.abs(p - gradeCenters[gi]) / 0.26) * 0.85;
+          : Math.max(0, 1 - Math.abs(p - SCENES[gi].gradeCenter) / 0.26) * 0.85;
         gradeEls[gi].style.opacity = go.toFixed(3);
       }
     }
     var veil = document.getElementById('chart-veil');
     if(veil) veil.style.opacity = (p * 0.85).toFixed(3);
+    /* v18 S8: Dayspan sundial arc fills with voyage progress */
+    if(!dayArc) dayArc = document.querySelector('.dayspan-arc');
+    if(dayArc) dayArc.style.strokeDashoffset = (157 * (1 - p)).toFixed(1);
     var fm = Math.round(p * 120);
     if(fm !== lastFm){
       lastFm = fm;
@@ -8915,6 +9039,17 @@ updateChronometer = function(hourVal, driveBus = true) {
     });
   });
 
+
+  /* v18 S13: arrow keys sail between legs — only when the body itself has
+     focus, so inputs, sliders, and buttons are never hijacked. */
+  document.addEventListener('keydown', function(e){
+    if(e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+    if(document.activeElement !== document.body) return;
+    if(e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return;
+    var cur = legIndex(p);
+    var nxt = cur + (e.key === 'ArrowRight' ? 1 : -1);
+    if(nxt >= 0 && nxt < legs.length){ e.preventDefault(); window.sailToLeg(nxt); }
+  });
   window.addEventListener('resize', measure, {passive: true});
   measure();
   if(document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
@@ -8944,40 +9079,47 @@ var RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* 1. instruments as data (Jesper #7: you're the CMS) */
 var INSTRUMENTS = [
- {pane:'urge', spec:'SPECIMEN 01', type:'INTERACTIVE', name:'Urge Walk',
+ {pane:'urge', spec:'SPECIMEN 01', live:'urge', type:'INTERACTIVE', name:'Urge Walk',
   line:'When an urge hits, take a little room to breathe.',
   breath:'Drifts on the 12-second breath; its beacon pulses like a moored buoy.',
   harbor:'HARBOR 01 · STEP ABOARD URGE WALK [ENTER]'},
- {pane:'fitness', spec:'SPECIMEN 02', type:'INTERACTIVE', name:'Dayspan',
+ {pane:'fitness', spec:'SPECIMEN 02', live:'dayspan', type:'INTERACTIVE', name:'Dayspan',
   line:'Forty gentle moves, practiced a little every day.',
   breath:'Runs its progression on the shared breath; the rig settles like a boat finding level.',
   harbor:'HARBOR 02 · STEP ABOARD DAYSPAN [ENTER]'},
- {pane:'game', spec:'SPECIMEN 03', type:'INTERACTIVE', name:'A gentle game',
+ {pane:'game', spec:'SPECIMEN 03', live:'game', type:'INTERACTIVE', name:'A gentle game',
   line:'A tabletop compass for playing together, phone laid flat.',
   breath:'Turns with a slow tide; nothing here hurries.',
   harbor:'HARBOR 03 · STEP ABOARD THE TABLETOP [ENTER]'},
- {pane:'urge', spec:'SPECIMEN 04', type:'INTERACTIVE', name:'Walk Companion',
+ {pane:'urge', spec:'SPECIMEN 04', live:'workbench', type:'INTERACTIVE', name:'Walk Companion',
   line:'The full-screen five-minute orb for riding out a wave.',
   breath:'The orb breathes 4 seconds in, 6 out — the studio\u2019s own cadence.',
   harbor:'HARBOR 04 · STEP ABOARD WALK COMPANION [ENTER]'},
- {pane:'fitness', spec:'SPECIMEN 05', type:'INTERACTIVE', name:'Workout Player',
+ {pane:'fitness', spec:'SPECIMEN 05', live:'workbench', type:'INTERACTIVE', name:'Workout Player',
   line:'Dayspan\u2019s forty-move library with an eight-second posture count.',
   breath:'Each posture arrives on the breath; the count never shouts.',
   harbor:'HARBOR 05 · STEP ABOARD WORKOUT PLAYER [ENTER]'},
- {pane:'game', spec:'SPECIMEN 06', type:'AMBIENT', name:'Tabletop Compass',
+ {pane:'game', spec:'SPECIMEN 06', live:'workbench', type:'AMBIENT', name:'Tabletop Compass',
   line:'Flat-phone tabletop mode for the middle of the dinner table.',
   breath:'Ambient by design — it keeps the table\u2019s time, not yours.',
   harbor:'HARBOR 06 · STEP ABOARD TABLETOP COMPASS [ENTER]'}
 ];
+function liveHTML(kind){
+  if(kind === 'urge') return '<div class="live-urge" aria-hidden="true"><span class="live-dot"></span><svg class="live-wave" focusable="false" height="24" viewBox="0 0 120 24" width="120"><path d="M0,12 C15,4 25,4 40,12 C55,20 65,20 80,12 C95,4 105,4 120,12" fill="none" stroke="var(--teal)" stroke-width="2"/></svg></div>';
+  if(kind === 'dayspan') return '<div class="live-dayspan" aria-hidden="true"><svg focusable="false" height="40" viewBox="0 0 120 40" width="120"><path d="M10,34 A50,50 0 0 1 110,34" fill="none" stroke="var(--line-strong)" stroke-width="3"/><path class="dayspan-arc" d="M10,34 A50,50 0 0 1 110,34" fill="none" stroke="var(--timber)" stroke-linecap="round" stroke-width="3"/></svg><span class="live-cap">the day&rsquo;s span</span></div>';
+  if(kind === 'game') return '<div class="live-pips" aria-hidden="true"><i></i><i></i><i></i><i></i></div>';
+  return '<div class="live-ready" aria-hidden="true"><span class="live-status"></span><span>ready &middot; listening</span></div>';
+}
 function cardHTML(it){
   return '<article class="voyage-card" data-pane="' + it.pane + '">'
-    + '<div class="specimen-plate"><span class="harbor-tag" aria-hidden="true">\u2693 Harbor</span>'
+    + '<div class="specimen-plate inked"><span class="harbor-tag" aria-hidden="true">\u2693 Harbor</span>'
     + '<span class="specimen-tag">' + it.spec + '</span>'
     + '<span class="specimen-type" data-type="' + it.type.toLowerCase() + '">' + it.type + '</span>'
     + '<span class="specimen-hint">' + it.harbor + '</span></div>'
     + '<div class="voyage-card-body"><h3>' + it.name + '</h3>'
     + '<p class="voyage-card-line">' + it.line + '</p>'
     + '<p class="voyage-card-breath"><i>How it breathes \u2014</i> ' + it.breath + '</p>'
+    + '<div class="card-live">' + liveHTML(it.live) + '</div>'
     + '<button type="button" class="voyage-card-board" data-board="' + it.pane + '">'
     + '<span>Step aboard</span><kbd>Enter</kbd></button></div></article>';
 }
@@ -9133,13 +9275,52 @@ document.addEventListener('click', function(e){
   var world2 = document.getElementById('chart-room-world');
   var tx = 0, ty = 0, dragging = false, sx = 0, sy = 0, moved = false;
   function center(){ tx = (view.clientWidth - W) / 2; ty = (view.clientHeight - H) / 2; apply(); }
-  function apply(){ world2.style.transform = 'translate3d(' + tx + 'px,' + ty + 'px,0)'; }
-  view.addEventListener('pointerdown', function(e){ dragging = true; moved = false; sx = e.clientX - tx; sy = e.clientY - ty; });
-  window.addEventListener('pointermove', function(e){ if(!dragging) return; var nx = e.clientX - sx, ny = e.clientY - sy;
+  /* v18 S6: zoom state — wheel / pinch / +/- buttons / double-click.
+     Transform gains a scale(); single-pointer drag behavior unchanged. */
+  var zoom = 1, ZMIN = 1, ZMAX = 2.5;
+  function clampPan(){
+    var vwc = view.clientWidth || 1, vhc = view.clientHeight || 1;
+    var zw = W * zoom, zh = H * zoom;
+    tx = (zw <= vwc) ? (vwc - zw) / 2 : Math.min(0, Math.max(vwc - zw, tx));
+    ty = (zh <= vhc) ? (vhc - zh) / 2 : Math.min(0, Math.max(vhc - zh, ty));
+  }
+  function apply(){ clampPan(); world2.style.transform = 'translate3d(' + tx + 'px,' + ty + 'px,0) scale(' + zoom + ')'; }
+  function zoomAt(cx, cy, nz){
+    nz = Math.max(ZMIN, Math.min(ZMAX, nz));
+    if(Math.abs(nz - zoom) < 0.0005) return;
+    var r = view.getBoundingClientRect();
+    var px = cx - r.left, py = cy - r.top;
+    var wx = (px - tx) / zoom, wy = (py - ty) / zoom;
+    zoom = nz; tx = px - wx * zoom; ty = py - wy * zoom; apply();
+  }
+  var pts = new Map(), pinchD0 = 0, pinchZ0 = 1, pinchCX = 0, pinchCY = 0;
+  view.addEventListener('pointerdown', function(e){
+    pts.set(e.pointerId, {x: e.clientX, y: e.clientY});
+    if(pts.size === 2){
+      var pa = Array.from(pts.values());
+      pinchD0 = Math.max(1, Math.hypot(pa[0].x - pa[1].x, pa[0].y - pa[1].y));
+      pinchZ0 = zoom;
+      pinchCX = (pa[0].x + pa[1].x) / 2; pinchCY = (pa[0].y + pa[1].y) / 2;
+      dragging = false; moved = true;
+      return;
+    }
+    dragging = true; moved = false; sx = e.clientX - tx; sy = e.clientY - ty;
+  });
+  window.addEventListener('pointermove', function(e){
+    if(pts.has(e.pointerId)) pts.set(e.pointerId, {x: e.clientX, y: e.clientY});
+    if(pts.size === 2){
+      var pa = Array.from(pts.values());
+      var pd = Math.max(1, Math.hypot(pa[0].x - pa[1].x, pa[0].y - pa[1].y));
+      zoomAt(pinchCX, pinchCY, pinchZ0 * pd / pinchD0);
+      return;
+    }
+    if(!dragging) return; var nx = e.clientX - sx, ny = e.clientY - sy;
     if(Math.abs(nx - tx) + Math.abs(ny - ty) > 6) moved = true; tx = nx; ty = ny; apply(); }, {passive: true});
-  window.addEventListener('pointerup', function(){ dragging = false; });
+  window.addEventListener('pointerup', function(e){ pts.delete(e.pointerId); dragging = false; });
+  window.addEventListener('pointercancel', function(e){ pts.delete(e.pointerId); dragging = false; });
   view.addEventListener('click', function(e){
     if(moved) return;
+    if(e.detail > 1) return; /* v18 S6: a double-click zooms; it must not also sail */
     var g = e.target.closest ? e.target.closest('.map-island') : null;
     if(!g) return;
     closeRoom();
@@ -9150,6 +9331,19 @@ document.addEventListener('click', function(e){
     var g = e.target.closest ? e.target.closest('.map-island') : null;
     if(g && (e.key === 'Enter' || e.key === ' ')){ e.preventDefault(); g.click(); }
   });
+  /* v18 S6: wheel zoom toward cursor, double-click toggle, +/- buttons */
+  view.addEventListener('wheel', function(e){
+    e.preventDefault();
+    zoomAt(e.clientX, e.clientY, zoom * Math.exp(-e.deltaY * 0.0016));
+  }, {passive: false});
+  view.addEventListener('dblclick', function(e){
+    zoomAt(e.clientX, e.clientY, zoom > 1.02 ? 1 : 1.75);
+  });
+  var zinB = document.getElementById('chartroom-zoomin');
+  var zoutB = document.getElementById('chartroom-zoomout');
+  function zoomCenter(f){ var r = view.getBoundingClientRect(); zoomAt(r.left + r.width / 2, r.top + r.height / 2, zoom * f); }
+  if(zinB) zinB.addEventListener('click', function(){ zoomCenter(1.25); });
+  if(zoutB) zoutB.addEventListener('click', function(){ zoomCenter(0.8); });
   var lastFocus = null;
   function openRoom(){
     lastFocus = document.activeElement;
@@ -9346,6 +9540,54 @@ document.addEventListener('keydown', function(e){
 (function(){
   var ro = document.getElementById('top-solar-readout') || document.querySelector('.solar-readout');
   if(ro) ro.setAttribute('aria-live', 'polite');
+})();
+
+/* 14. v18 S7: draggable workbench modal — the captain's desk.
+   Fine pointer + >=1024px only. Drag by the topbar's empty space (never by
+   its buttons/tabs). Position resets on every open. Touch/small: unchanged. */
+(function(){
+  var dragReady = false, dox = 0, doy = 0;
+  function setupDrag(){
+    if(dragReady) return; dragReady = true;
+    if(!window.matchMedia('(pointer:fine)').matches) return;
+    if(!window.matchMedia('(min-width:1024px)').matches) return;
+    var modal = document.getElementById('focus-workbench-modal');
+    if(!modal) return;
+    var shell = modal.querySelector('.focus-workbench-shell');
+    var head = modal.querySelector('.focus-workbench-topbar');
+    if(!shell || !head) return;
+    head.style.cursor = 'grab';
+    var mDrag = false, msx = 0, msy = 0;
+    head.addEventListener('pointerdown', function(e){
+      if(e.button !== 0) return;
+      if(e.target.closest('button, a, input, select, textarea, [role="tab"]')) return;
+      mDrag = true; msx = e.clientX - dox; msy = e.clientY - doy;
+      head.style.cursor = 'grabbing';
+      try{ head.setPointerCapture(e.pointerId); }catch(err){}
+    });
+    head.addEventListener('pointermove', function(e){
+      if(!mDrag) return;
+      var r = shell.getBoundingClientRect();
+      var keep = 48;
+      var baseL = r.left - dox, baseT = r.top - doy;
+      var nx = Math.min(Math.max(e.clientX - msx, keep - r.width - baseL), window.innerWidth - keep - baseL);
+      var ny = Math.min(Math.max(e.clientY - msy, -baseT), window.innerHeight - keep - baseT);
+      dox = nx; doy = ny;
+      shell.style.transform = 'translate3d(' + nx + 'px,' + ny + 'px,0)';
+    });
+    function endDrag(){ mDrag = false; head.style.cursor = 'grab'; }
+    head.addEventListener('pointerup', endDrag);
+    head.addEventListener('pointercancel', endDrag);
+    window.__v18ModalDragReset = function(){ dox = 0; doy = 0; shell.style.transform = ''; };
+  }
+  var origOpenWB = window.openFocusWorkbench;
+  if(typeof origOpenWB === 'function'){
+    window.openFocusWorkbench = function(){
+      setupDrag();
+      if(window.__v18ModalDragReset) window.__v18ModalDragReset();
+      return origOpenWB.apply(this, arguments);
+    };
+  }
 })();
 })();
 </script>

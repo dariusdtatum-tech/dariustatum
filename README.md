@@ -46,12 +46,38 @@ pushing to `main` redeploys the site.
 - **Tide pool, message in a bottle, rain showers** — small ambient life.
 - **Cartographer's lens** — add `?chart` to the URL to see the site's
   construction outlines.
+### New in v18 — Refinement
+
+- **Hand-inked edges** — card art frames, the hero chronometer, and chart-room
+  islands carry a subtle ink-displacement line; corners are hand-drawn.
+- **Route-mask transitions** — leg changes sweep along the route's own shape
+  instead of a generic mist.
+- **Waterlight** — a slow shimmer band drifting across the chart.
+- **Hand-held vessel** — the ship rides summed-sine noise on lift and trim,
+  not a metronome bob.
+- **Calm springs** — one motion language: a calm ease and a gentle settle,
+  on hovers, buttons, modals, and arrivals.
+- **Chart-room zoom** — wheel, pinch, `+`/`-` buttons, double-click; pan is
+  clamped so the map can't escape the view.
+- **Draggable workbench modal** — on desktop, drag it by the topbar like a
+  captain's desk; the position resets on open.
+- **Living previews** — each instrument card shows a tiny live instrument
+  (breathing dot, a sundial that fills with the voyage, cycling suit pips,
+  ready/listening status).
+- **Refinement checklist** — unified hover/active/focus tokens, sea-glass
+  text selection, slim timber scrollbar, hand-checked contrast, `100dvh`
+  fallbacks, a composable SCENES registry.
+
+Reduced motion is respected throughout: with `prefers-reduced-motion`, the
+voyage still sails, flat and still; every v18 animation goes inert or instant.
+
 
 Reduced motion is respected throughout: with `prefers-reduced-motion`, the
 voyage still sails, flat and still.
 
 ## Before launch
 
-- Remove the `robots` `noindex` flag from `index.html`.
+- The `robots.txt` in the repo still says `Disallow: /` from the preview
+  setup — update it when you're ready for search engines to crawl.
 - Supply a real `og-image.png` for link previews.
 - Point the "See the three apps" buttons at their real deployment URLs.
