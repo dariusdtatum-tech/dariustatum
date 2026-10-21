@@ -4205,3 +4205,40 @@ body.layers-off-soundings .curio{display:none}
 .roll-sub{font:600 .68rem/1 'Plus Jakarta Sans',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
 .drawer-body{padding:2px 2px 12px}
 .drawer-body p{margin:0;font-size:.92rem;line-height:1.55}
+
+/* v22 THE THREE-ZONE HEADER (mirror of index.html #v22-three-zone-header) */
+@media(min-width:861px){
+  header.site .wrap{
+    display:grid;
+    align-items:center;
+    column-gap:22px;
+    max-width:none;
+    margin:0;
+    padding-left:clamp(18px,3vw,48px);
+    padding-right:clamp(18px,3vw,48px);
+  }
+  header.site .brand-lockup{grid-column:1;grid-row:1;justify-self:start}
+  header.site nav[aria-label="Main"]{grid-row:1;justify-self:center}
+  header.site nav[aria-label="Main"] ul{flex-wrap:nowrap}
+  header.site nav[aria-label="Main"] button{white-space:nowrap}
+  header.site .header-controls{justify-content:flex-end}
+}
+@media(min-width:2100px){
+  header.site .wrap{grid-template-columns:auto 1fr auto auto}
+  header.site nav[aria-label="Main"]{grid-column:2}
+  header.site .header-controls{grid-column:3;grid-row:1;justify-self:end;flex-wrap:nowrap}
+  header.site .mobile-drawer-toggle{grid-column:4;grid-row:1;justify-self:end}
+  header.site.is-mobile-drawer-open .header-controls{
+    grid-column:1/-1;grid-row:2;width:auto;flex-wrap:wrap;
+  }
+}
+@media(min-width:861px) and (max-width:2099px){
+  header.site .wrap{grid-template-columns:auto 1fr auto}
+  header.site nav[aria-label="Main"]{grid-column:2}
+  header.site .mobile-drawer-toggle{grid-column:3;grid-row:1;justify-self:end}
+  header.site .header-controls{grid-column:1/-1;grid-row:2;justify-self:end;width:100%}
+}
+@media(max-width:860px){
+  header.site .header-controls{order:3}
+  header.site nav[aria-label="Main"]{order:4}
+}
