@@ -4246,6 +4246,14 @@ html[data-theme="dark"] :focus-visible{outline-color:var(--teal-light)}
 .log-fab{box-shadow:0 6px 24px rgba(27,42,74,.18)}
 #voyage-vessel-readout{transition:opacity .35s ease}
 
+/* --- v19.1 card presence (Darius's desktop shots, 2026-10-21) ---
+   Card text contrast measured healthy (6.7-12.5:1 both finishes); what
+   vanishes on scaled displays is the 1px --line hairline + whisper
+   shadow, so cards read as unfinished. Stronger edge + shadow only;
+   no token or layout changes. */
+.voyage-card,.leg-panel>section{border-color:var(--line-strong);box-shadow:0 16px 42px rgba(20,35,60,.16)}
+.inst-bar,.specimen-plate{border-bottom-color:var(--line-strong)}
+
 /* --- stacked mobile layout --- */
 @media (max-width: 860px){
   .voyage-scroll{height:auto!important}
@@ -9135,6 +9143,33 @@ updateChronometer = function(hourVal, driveBus = true) {
     var nxt = cur + (e.key === 'ArrowRight' ? 1 : -1);
     if(nxt >= 0 && nxt < legs.length){ e.preventDefault(); window.sailToLeg(nxt); }
   });
+  /* v19.1: gentle snap — when scrolling settles near a leg boundary,
+     complete the leg so cards rest fully framed instead of straddling
+     (Darius: cards read as "cut off" between legs, 2026-10-21). Only
+     fires within 4.5% of the runway of a boundary; programmatic sails
+     keep emitting scroll events, so the idle timer never interrupts
+     them, and a lockout prevents re-entry during the snap itself. */
+  var snapLockUntil = 0, snapTimer = 0;
+  window.addEventListener('scroll', function(){
+    if (reduceMotion) return;
+    if (performance.now() < snapLockUntil) return;
+    clearTimeout(snapTimer);
+    snapTimer = setTimeout(function(){
+      if (performance.now() < snapLockUntil) return;
+      var dlg = document.getElementById('log-dialog');
+      if (dlg && !dlg.hidden) return;
+      var y = window.scrollY || 0, best = null, bestD = Infinity;
+      legs.forEach(function(L){
+        var t = L.startP * doc, d = Math.abs(t - y);
+        if (d < bestD) { bestD = d; best = t; }
+      });
+      if (best !== null && bestD > 2 && bestD < doc * 0.045) {
+        snapLockUntil = performance.now() + 900;
+        window.scrollTo({top: best, behavior: 'smooth'});
+      }
+    }, 160);
+  }, {passive: true});
+
   /* v19: debounce resize — rebuilding the runway mid-gesture remaps
      progress under the user's thumb (iOS URL-bar resizes). */
   var resizeTimer = 0;

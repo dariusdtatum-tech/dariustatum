@@ -4113,3 +4113,7 @@ html[data-theme="dark"] :focus-visible{outline-color:var(--teal-light)}
   #log-fab{position:static!important;display:block;width:max-content;max-width:calc(100vw - 32px);margin:20px auto 28px}
   .chart-table{transform:none!important}
 }
+
+/* v19.1 card presence (mirror of index.html #v19-fixes) */
+.voyage-card,.leg-panel>section{border-color:var(--line-strong);box-shadow:0 16px 42px rgba(20,35,60,.16)}
+.inst-bar,.specimen-plate{border-bottom-color:var(--line-strong)}
