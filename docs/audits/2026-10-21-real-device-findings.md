@@ -161,3 +161,31 @@ Fresh finish.
     footer framed at +14px) and rests still; regression 11/11. The
     inspector also rests framed at its own stop. Cache:
     evenfaring-studio-v19.5.
+
+31. **v20 "THE LIVING CHART" (Darius's call, 2026-10-21: "Take 10 ideas
+    that would work and blend well and use them" — from the Charted Waters
+    25-site study).** The ten, chosen to read as one release: (1)
+    curiosities at honest soundings — serpent (40 FM), whale (55 FM),
+    wreck of the good ship Distraction (80 FM), a fellow ship homeward
+    bound — line glyphs with one-line captions in the chart's empty water;
+    (2) marginalia in the Open Sea ("Most of the sea is just sea." /
+    "Still water. The captain is patient."); (3) named waters printed at
+    each leg (The Sheltered Sound / The Long Swell / The Harbor Reaches /
+    Home Water); (4) sheet tags at the leg joins (Sheet I–IV); (5) a
+    sea-state instrument — the vessel readout now carries SHELTERED /
+    LONG SWELL / HARBOR CHOP / GLASSY by leg; (6) chart of the day — one
+    curiosity inked darkest by date seed, captioned "sounded today";
+    (7) chart-layer toggles in the Deck (Route / Soundings / Notes),
+    persisted on-device; (8) catalog line + charting stage on every
+    specimen (Charted & Corrected / Charted / Sounded / Sketch ·
+    "Charted by the studio · Scale 1:1 · First sounded 2026"); (9)
+    Notices to Mariners in the ledger panel (№№ 1–4, the real v19.3–19.5
+    corrections in bulletin language); (10) Fair wind — a hands-free
+    ~75-second sailing of the whole chart, cancelled by any input, becalmed
+    under reduced-motion. Build notes: three fair-wind fights were found
+    and fixed in the harness — the snap now stands down while it blows
+    (window.__fairWind), CSS smooth scrolling is suspended while sailing
+    (it animated every scrollBy into a stall), and the step clock tolerates
+    throttled frames. Decorations sit below the fixed header's band and are
+    hidden in the stacked mobile layout. Regression 11/11; toggles persist
+    across reload; zero page errors. Cache: evenfaring-studio-v20.
