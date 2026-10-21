@@ -4312,6 +4312,37 @@ html[data-patina="fresh"] .chronometer-stage{--chart-grid:rgba(36,57,92,.22)}
   .chart-table{transform:none!important}
 }
 </style>
+<style id="v20-living-chart">
+/* ================= v20 THE LIVING CHART =================
+   Ten ideas from the Charted Waters study (2026-10-21): curiosities at
+   honest soundings, marginalia, named waters, sheet seams, a sea-state
+   instrument, the chart of the day, layer toggles, specimen catalog
+   lines + charting stages, Notices to Mariners, and Fair wind. */
+.curio{position:absolute;z-index:1;color:var(--chart-ink);opacity:.48;pointer-events:none;text-align:left}
+.curio svg{display:block}
+.curio-cap{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;margin-top:1px;white-space:nowrap;opacity:.9}
+.curio-today{opacity:.96}
+.curio-today .curio-cap{font-weight:600}
+.curio-ship{animation:curio-drift 150s ease-in-out infinite alternate}
+@keyframes curio-drift{from{transform:translateX(0)}to{transform:translateX(52px)}}
+@media (prefers-reduced-motion: reduce){.curio-ship{animation:none}}
+.chart-note{position:absolute;z-index:1;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:var(--chart-ink);opacity:.55;pointer-events:none}
+.chart-stamp{position:absolute;z-index:1;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--chart-ink);opacity:.5;pointer-events:none}
+.waters-name{position:absolute;left:2.2%;bottom:5%;z-index:1;font-family:'Cormorant Garamond',serif;font-size:17px;letter-spacing:.38em;text-transform:uppercase;color:var(--chart-ink);opacity:.45;pointer-events:none}
+.sheet-tag{position:absolute;left:2.2%;top:21.5%;z-index:1;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--chart-ink);opacity:.5;pointer-events:none}
+body.layers-off-route #voyage-route{opacity:0}
+#voyage-route{transition:opacity .45s ease}
+body.layers-off-notes .chart-note,body.layers-off-notes .chart-stamp,body.layers-off-notes .waters-name{display:none}
+body.layers-off-soundings .curio{display:none}
+.layer-pills button[aria-pressed="false"]{opacity:.45}
+#fairwind-toggle[aria-pressed="true"]{background:var(--teal-soft,#a9cbc0);color:var(--ink)}
+.specimen-meta{margin-top:9px;padding-top:7px;border-top:1px dashed var(--line);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;opacity:.72}
+.notices{margin-top:16px;padding-top:12px;border-top:1px solid var(--line)}
+.notices-h{font-size:11px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:7px}
+.notices ul{list-style:none;display:grid;gap:5px}
+.notices li{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16.5px;line-height:1.35;opacity:.85}
+@media (max-width:860px){.curio,.chart-note,.chart-stamp,.waters-name,.sheet-tag{display:none}}
+</style>
 </head>
 <body data-patina="aged" data-theme="light">
 <svg aria-hidden="true" class="v18-ink-defs" focusable="false" height="0" style="position:absolute;left:0;top:0" width="0"><defs><filter height="110%" id="ink-edge" width="110%" x="-5%" y="-5%"><feTurbulence baseFrequency="0.9" numOctaves="2" result="n" seed="7" type="fractalNoise"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3"/></filter></defs></svg>
@@ -4349,7 +4380,7 @@ html[data-patina="fresh"] .chronometer-stage{--chart-grid:rgba(36,57,92,.22)}
 <div aria-hidden="true" class="ct-grade" data-grade="night" id="grade-3"></div>
 <canvas aria-hidden="true" id="mist-canvas"></canvas>
 </div>
-<div class="voyage-scroll" id="voyage-scroll"><div class="voyage-stage" id="voyage-stage"><div class="voyage-world" id="voyage-world"><section aria-label="Leg 1 of 4: Departure — the studio at anchor" class="leg" data-leg="0" data-leg-name="Departure" data-scene="departure" id="leg-departure" tabindex="-1"><div class="leg-panel pw100"><section aria-label="Studio introduction" class="hero">
+<div class="voyage-scroll" id="voyage-scroll"><div class="voyage-stage" id="voyage-stage"><div class="voyage-world" id="voyage-world"><section aria-label="Leg 1 of 4: Departure — the studio at anchor" class="leg" data-leg="0" data-leg-name="Departure" data-scene="departure" id="leg-departure" tabindex="-1"><p class="sheet-tag" aria-hidden="true">Sheet I · Departure</p><p class="waters-name" aria-hidden="true">The Sheltered Sound</p><div class="leg-panel pw100"><section aria-label="Studio introduction" class="hero">
 <div class="hero-copy">
 <p class="eyebrow">Independent app studio <span aria-hidden="true">/</span> Architect’s drafting table &amp; ship’s log</p>
 <h1>Small, steady apps, <em>made with care.</em></h1>
@@ -4536,7 +4567,7 @@ html[data-patina="fresh"] .chronometer-stage{--chart-grid:rgba(36,57,92,.22)}
 </button>
 </div>
 </div>
-</section></div></section><section aria-label="Leg 2 of 4: The open sea — the instruments" class="leg" data-leg="1" data-leg-name="The Open Sea" data-scene="open-sea" id="leg-opensea" tabindex="-1"><div class="leg-panel pw46" id="opensea-heading">
+</section></div></section><section aria-label="Leg 2 of 4: The open sea — the instruments" class="leg" data-leg="1" data-leg-name="The Open Sea" data-scene="open-sea" id="leg-opensea" tabindex="-1"><p class="sheet-tag" aria-hidden="true">Sheet II · The Open Sea</p><p class="waters-name" aria-hidden="true">The Long Swell</p><p class="chart-note" style="left:30%;top:22%" aria-hidden="true">Most of the sea is just sea.</p><p class="chart-note" style="left:38%;top:85%" aria-hidden="true">Still water. The captain is patient.</p><div class="curio curio-serpent" style="left:58%;top:79%" data-curio="serpent" aria-hidden="true"><svg width="150" height="44" viewBox="0 0 150 44" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6,34 q10,-20 20,0 q10,-20 20,0 q10,-18 19,-4"/><path d="M65,30 q10,-2 12,-12"/><circle cx="79" cy="15" r="4.5"/><circle cx="80.5" cy="14" r="1" fill="currentColor"/><path d="M6,34 q-4,4 -2,8" opacity=".6"/></svg><p class="curio-cap">Here be calm — a serpent, unbothered · 40 FM</p></div><div class="curio curio-whale" style="left:64%;top:20%" data-curio="whale" aria-hidden="true"><svg width="170" height="52" viewBox="0 0 170 52" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8,32 q40,-20 84,-12 q22,4 34,-8 l6,12 q-1,9 -13,13 q-58,14 -111,-5"/><path d="M52,14 q-3,-7 -8,-9 M59,13 q0,-8 -4,-12 M66,14 q3,-7 8,-9" opacity=".7"/></svg><p class="curio-cap">A whale, sounding · 55 FM</p></div><p class="chart-stamp" style="left:89%;top:47%" aria-hidden="true">A quarter of the crossing — all well.</p><div class="leg-panel pw46" id="opensea-heading">
 <div class="leg-head">
 <p class="eyebrow">LEG 2 · INSTRUMENTS 01—03</p>
 <h2>The open sea.</h2>
@@ -4546,12 +4577,12 @@ html[data-patina="fresh"] .chronometer-stage{--chart-grid:rgba(36,57,92,.22)}
 <div class="tide-pool-frame"><canvas aria-label="Tide pool: sounding dots drift and gather near your cursor" height="440" id="tide-pool-canvas" width="440"></canvas></div>
 <figcaption>◈ TIDE POOL · <span class="specimen-type" data-type="interactive">INTERACTIVE</span></figcaption>
 </figure>
-</div></div><div class="leg-panel pw204" id="instrument-cards"></div></section><section aria-label="Leg 3 of 4: Harbors — the workbenches" class="leg" data-leg="2" data-leg-name="Harbors" data-scene="harbors" id="leg-harbors" tabindex="-1"><div class="leg-panel pw40" id="harbors-heading">
+</div></div><div class="leg-panel pw204" id="instrument-cards"></div></section><section aria-label="Leg 3 of 4: Harbors — the workbenches" class="leg" data-leg="2" data-leg-name="Harbors" data-scene="harbors" id="leg-harbors" tabindex="-1"><p class="sheet-tag" aria-hidden="true">Sheet III · Harbors</p><p class="waters-name" aria-hidden="true">The Harbor Reaches</p><div class="curio curio-wreck" style="left:62%;top:76%" data-curio="wreck" aria-hidden="true"><svg width="120" height="52" viewBox="0 0 120 52" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><g transform="rotate(7 60 34)"><path d="M10,32 L110,32 L96,46 L26,46 Z"/><path d="M60,32 L60,8 M60,14 L84,20 M60,20 L44,27" opacity=".8"/><path d="M84,20 l7,-3" opacity=".8"/></g></svg><p class="curio-cap">The good ship Distraction, sunk 2026 · 80 FM</p></div><p class="chart-stamp" style="left:50%;top:21%" aria-hidden="true">Halfway across — the harbor lights are not yet visible.</p><div class="leg-panel pw40" id="harbors-heading">
 <div class="leg-head">
 <p class="eyebrow">LEG 3 · WORKBENCHES</p>
 <h2>Harbors.</h2>
 <p>The workbenches: full-screen instruments for the walk, the workout, and the table. Tie up and come aboard.</p>
-</div></div><div class="leg-panel pw160" id="workbench-cards"></div></section><section aria-label="Leg 4 of 4: Arrival — the studio, logbook and contact" class="leg" data-leg="3" data-leg-name="Arrival" data-scene="arrival" id="leg-arrival" tabindex="-1"><div class="leg-panel pw70"><section aria-labelledby="about-h" class="folio-hero snd-tilt-l">
+</div></div><div class="leg-panel pw160" id="workbench-cards"></div></section><section aria-label="Leg 4 of 4: Arrival — the studio, logbook and contact" class="leg" data-leg="3" data-leg-name="Arrival" data-scene="arrival" id="leg-arrival" tabindex="-1"><p class="sheet-tag" aria-hidden="true">Sheet IV · Arrival</p><p class="waters-name" aria-hidden="true">Home Water</p><div class="curio curio-ship" style="left:84%;top:23%" data-curio="ship" aria-hidden="true"><svg width="92" height="56" viewBox="0 0 92 56" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14,44 L78,44 L68,52 L24,52 Z"/><path d="M38,44 L38,10 M38,12 L54,26 L38,26 M38,30 L52,40 M56,44 L56,20 M56,22 L68,32 L56,32" opacity=".85"/></svg><p class="curio-cap">Another captain, homeward bound</p></div><p class="chart-stamp" style="left:52%;top:85%" aria-hidden="true">Three quarters — home water soon.</p><div class="leg-panel pw70"><section aria-labelledby="about-h" class="folio-hero snd-tilt-l">
 <div class="prose">
 <p class="eyebrow">Folio III <span aria-hidden="true">/</span> The architect’s studio logbook</p>
 <h2 class="folio-h" id="about-h">About Evenfaring</h2>
@@ -4612,7 +4643,7 @@ html[data-patina="fresh"] .chronometer-stage{--chart-grid:rgba(36,57,92,.22)}
 <span>#faf7f1 cream</span><span>#24395c navy</span><span>#3f7a6b deep sea</span><span>#a9cbc0 sea glass</span>
 </div>
 <button class="btn" id="ledger-open" type="button">Open the ledger</button>
-<div hidden="" id="calm-entry">
+<div class="notices"><p class="notices-h">Notices to Mariners</p><ul><li>№ 1 — FIG. 00 plate: the hand-ink warp is struck; she reads true.</li><li>№ 2 — Tide pool: now sounded in Night Watch, sea-glass on dark.</li><li>№ 3 — End of the chart: a run-out is laid down; the footer may be landed on.</li><li>№ 4 — This chart is re-sounded daily; one curiosity is inked darkest each morning.</li></ul></div> <div hidden="" id="calm-entry">
 <p><i>“Calm is a discipline, not a decoration.”</i> — found in the margin of the chart. You typed the word; the site noticed.</p>
 </div>
 </div></div><div class="leg-panel pw40"><section aria-label="Live browser storage and zero-telemetry inspector" class="privacy-inspector snd-drift-l" id="fig-privacy">
@@ -4703,7 +4734,7 @@ html[data-patina="fresh"] .chronometer-stage{--chart-grid:rgba(36,57,92,.22)}
 <button aria-expanded="false" class="mobile-drawer-toggle" id="mobile-drawer-toggle-btn" onclick="toggleMobileHeaderDrawer()" type="button"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><circle cx="12" cy="12" r="3.2"></circle><path d="M12 2.8v3M12 18.2v3M2.8 12h3M18.2 12h3M5.5 5.5l2.1 2.1M16.4 16.4l2.1 2.1M18.5 5.5l-2.1 2.1M7.6 16.4l-2.1 2.1"></path></svg><span>Deck</span></button>
 <div class="header-controls">
 <button class="deck-extra-btn" id="chartroom-open" title="Open the chart room — an overview of the whole voyage" type="button">◈ Chart room</button>
-<button class="deck-extra-btn" id="setsail-replay" title="Replay the setting-sail departure" type="button">↻ Set sail</button>
+<button class="deck-extra-btn" id="setsail-replay" title="Replay the setting-sail departure" type="button">↻ Set sail</button> <button class="deck-extra-btn" id="fairwind-toggle" aria-pressed="false" title="Fair wind — sail the whole chart hands-free; any scroll takes the helm back" type="button">Fair wind</button> <span aria-label="Chart layers" class="grade-pills layer-pills" role="group"><button aria-pressed="true" data-layer="route" type="button">Route</button><button aria-pressed="true" data-layer="soundings" type="button">Soundings</button><button aria-pressed="true" data-layer="notes" type="button">Notes</button></span>
 <span aria-label="Light grade override — scroll to release back to the voyage" class="grade-pills" role="group">
 <button aria-pressed="false" data-grade-lock="0" type="button">Dawn</button><button aria-pressed="false" data-grade-lock="1" type="button">Noon</button><button aria-pressed="false" data-grade-lock="2" type="button">Dusk</button><button aria-pressed="false" data-grade-lock="3" type="button">Night</button>
 </span>
@@ -8417,6 +8448,8 @@ function buildStandalonePrintableHTML(kind) {
     <button class="print-btn" onclick="window.print()">🖨 Print Sheet Now</button>
   </div>
   ${innerMarkup}
+
+
 </body>
 </html>`;
 }
@@ -9038,6 +9071,7 @@ updateChronometer = function(hourVal, driveBus = true) {
   }
 
   var p = 0, lastLeg = -1, lastFm = -1, dayArc = null;
+  var SEA_STATES = ['SHELTERED', 'LONG SWELL', 'HARBOR CHOP', 'GLASSY'];
   function legIndex(pi){
     var idx = 0;
     for(var i = 0; i < legs.length; i++){ if(pi >= legs[i].startP - 0.001) idx = i; }
@@ -9090,14 +9124,14 @@ updateChronometer = function(hourVal, driveBus = true) {
       lastFm = fm;
       var fms = String(fm).padStart(3, '0');
       if(fathomEl) fathomEl.textContent = fms;
-      if(readoutEl && lastLeg >= 0) readoutEl.textContent = legs[lastLeg].name.toUpperCase() + ' · ' + fms + ' FM';
+      if(readoutEl && lastLeg >= 0) readoutEl.textContent = legs[lastLeg].name.toUpperCase() + ' · ' + fms + ' FM · ' + SEA_STATES[lastLeg];
     }
     var li = legIndex(p);
     if(li !== lastLeg){
       lastLeg = li;
       var nm = legs[li] ? legs[li].name.toUpperCase() : '';
       if(legNameEl) legNameEl.textContent = nm;
-      if(readoutEl) readoutEl.textContent = nm + ' · ' + String(lastFm).padStart(3, '0') + ' FM';
+      if(readoutEl) readoutEl.textContent = nm + ' · ' + String(lastFm).padStart(3, '0') + ' FM · ' + SEA_STATES[li];
       dots.forEach(function(d){ d.setAttribute('aria-current', d.getAttribute('data-sail') === String(li) ? 'true' : 'false'); });
       if(!reduceMotion && li > 0){
         stage.classList.remove('leg-transition'); void stage.offsetWidth;
@@ -9213,6 +9247,7 @@ updateChronometer = function(hourVal, driveBus = true) {
   }, {passive: true});
 
   function settleSnap(){
+    if (window.__fairWind) return;
     if (performance.now() < snapLockUntil) {
       snapTimer = setTimeout(settleSnap, snapLockUntil - performance.now() + 40);
       return;
@@ -9319,7 +9354,8 @@ function liveHTML(kind){
   if(kind === 'game') return '<div class="live-pips" aria-hidden="true"><i></i><i></i><i></i><i></i></div>';
   return '<div class="live-ready" aria-hidden="true"><span class="live-status"></span><span>ready &middot; listening</span></div>';
 }
-function cardHTML(it){
+var STAGES = ['Charted & Corrected','Sounded','Sketch','Charted','Sounded','Sketch'];
+function cardHTML(it, ix){
   return '<article class="voyage-card" data-pane="' + it.pane + '">'
     + '<div class="specimen-plate inked"><span class="harbor-tag" aria-hidden="true">\u2693 Harbor</span>'
     + '<span class="specimen-tag">' + it.spec + '</span>'
@@ -9328,6 +9364,7 @@ function cardHTML(it){
     + '<div class="voyage-card-body"><h3>' + it.name + '</h3>'
     + '<p class="voyage-card-line">' + it.line + '</p>'
     + '<p class="voyage-card-breath"><i>How it breathes \u2014</i> ' + it.breath + '</p>'
+    + '<p class="specimen-meta">' + STAGES[ix || 0] + ' · Charted by the studio · Scale 1:1 · First sounded 2026</p>'
     + '<div class="card-live">' + liveHTML(it.live) + '</div>'
     + '<button type="button" class="voyage-card-board" data-board="' + it.pane + '">'
     + '<span>Step aboard</span><kbd>Enter</kbd></button></div></article>';
@@ -9335,7 +9372,7 @@ function cardHTML(it){
 var ic = document.getElementById('instrument-cards');
 var wc = document.getElementById('workbench-cards');
 if(ic) ic.innerHTML = INSTRUMENTS.slice(0, 3).map(cardHTML).join('');
-if(wc) wc.innerHTML = INSTRUMENTS.slice(3).map(cardHTML).join('');
+if(wc) wc.innerHTML = INSTRUMENTS.slice(3).map(function(it, k){ return cardHTML(it, k + 3); }).join('');
 document.addEventListener('click', function(e){
   var b = e.target.closest ? e.target.closest('[data-board]') : null;
   if(b && window.openFocusWorkbench) window.openFocusWorkbench(b.getAttribute('data-board'));
@@ -10052,5 +10089,70 @@ document.addEventListener('keydown', function(e){
 </div>
 </div>
 </div>
+<script>
+/* v20 THE LIVING CHART — layers, chart of the day, fair wind */
+(function(){
+  var LKEY = 'evenfaring-layers';
+  var layers = {route: true, soundings: true, notes: true};
+  try { var saved = JSON.parse(localStorage.getItem(LKEY) || 'null'); if (saved) layers = Object.assign(layers, saved); } catch(e){}
+  function applyLayers(){
+    document.body.classList.toggle('layers-off-route', !layers.route);
+    document.body.classList.toggle('layers-off-soundings', !layers.soundings);
+    document.body.classList.toggle('layers-off-notes', !layers.notes);
+    Array.prototype.forEach.call(document.querySelectorAll('[data-layer]'), function(b){
+      b.setAttribute('aria-pressed', layers[b.getAttribute('data-layer')] ? 'true' : 'false');
+    });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-layer]'), function(b){
+    b.addEventListener('click', function(){
+      var k = b.getAttribute('data-layer');
+      layers[k] = !layers[k];
+      try { localStorage.setItem(LKEY, JSON.stringify(layers)); } catch(e){}
+      applyLayers();
+    });
+  });
+  applyLayers();
+
+  /* Chart of the day: one curiosity inked darkest, rotating by date. */
+  var curios = document.querySelectorAll('.curio');
+  if (curios.length) {
+    var now = new Date();
+    var seed = now.getFullYear() * 372 + (now.getMonth() + 1) * 31 + now.getDate();
+    var today = curios[seed % curios.length];
+    today.classList.add('curio-today');
+    var cap = today.querySelector('.curio-cap');
+    if (cap) cap.textContent = cap.textContent + ' · sounded today';
+  }
+
+  /* Fair wind: hands-free sailing. Any real input takes the helm back. */
+  var btn = document.getElementById('fairwind-toggle');
+  if (!btn) return;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) { btn.disabled = true; btn.title = 'Fair wind is becalmed under reduced motion'; return; }
+  var sailing = false, raf = 0, lastT = 0, prevBehavior = '';
+  function docH(){ return document.documentElement.scrollHeight - window.innerHeight; }
+  function step(t){
+    if (!sailing) return;
+    if (!lastT) lastT = t;
+    var dt = Math.min(250, t - lastT); lastT = t;
+    window.scrollBy(0, docH() / 80000 * dt);
+    if (window.scrollY >= docH() - 2) { stop(); return; }
+    raf = requestAnimationFrame(step);
+  }
+  function start(){ sailing = true; window.__fairWind = true; lastT = 0;
+    /* CSS smooth scrolling would animate every scrollBy and stall the
+       sail; force instant steps while the fair wind blows. */
+    prevBehavior = document.documentElement.style.scrollBehavior;
+    document.documentElement.style.scrollBehavior = 'auto'; btn.setAttribute('aria-pressed', 'true'); raf = requestAnimationFrame(step); }
+  function stop(){ sailing = false; window.__fairWind = false; cancelAnimationFrame(raf);
+    document.documentElement.style.scrollBehavior = prevBehavior || ''; btn.setAttribute('aria-pressed', 'false'); }
+  btn.addEventListener('click', function(){ sailing ? stop() : start(); });
+  ['wheel', 'touchstart'].forEach(function(ev){
+    window.addEventListener(ev, function(){ if (sailing) stop(); }, {passive: true});
+  });
+  window.addEventListener('keydown', function(){ if (sailing) stop(); });
+  window.addEventListener('pointerdown', function(e){ if (sailing && e.target !== btn) stop(); });
+})();
+</script>
 </body>
 </html>

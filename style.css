@@ -4137,3 +4137,34 @@ html[data-patina="fresh"] .chronometer-stage{--chart-grid:rgba(36,57,92,.22)}
 /* v19.5 end-of-voyage run-out (mirror of index.html #v19-fixes) */
 .voyage-runout{flex:0 0 42vw}
 @media (max-width:860px){.voyage-runout{display:none}}
+
+/* v20 THE LIVING CHART (mirror of index.html #v20-living-chart) */
+/* ================= v20 THE LIVING CHART =================
+   Ten ideas from the Charted Waters study (2026-10-21): curiosities at
+   honest soundings, marginalia, named waters, sheet seams, a sea-state
+   instrument, the chart of the day, layer toggles, specimen catalog
+   lines + charting stages, Notices to Mariners, and Fair wind. */
+.curio{position:absolute;z-index:1;color:var(--chart-ink);opacity:.48;pointer-events:none;text-align:left}
+.curio svg{display:block}
+.curio-cap{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;margin-top:1px;white-space:nowrap;opacity:.9}
+.curio-today{opacity:.96}
+.curio-today .curio-cap{font-weight:600}
+.curio-ship{animation:curio-drift 150s ease-in-out infinite alternate}
+@keyframes curio-drift{from{transform:translateX(0)}to{transform:translateX(52px)}}
+@media (prefers-reduced-motion: reduce){.curio-ship{animation:none}}
+.chart-note{position:absolute;z-index:1;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:var(--chart-ink);opacity:.55;pointer-events:none}
+.chart-stamp{position:absolute;z-index:1;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--chart-ink);opacity:.5;pointer-events:none}
+.waters-name{position:absolute;left:2.2%;bottom:5%;z-index:1;font-family:'Cormorant Garamond',serif;font-size:17px;letter-spacing:.38em;text-transform:uppercase;color:var(--chart-ink);opacity:.45;pointer-events:none}
+.sheet-tag{position:absolute;left:2.2%;top:21.5%;z-index:1;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--chart-ink);opacity:.5;pointer-events:none}
+body.layers-off-route #voyage-route{opacity:0}
+#voyage-route{transition:opacity .45s ease}
+body.layers-off-notes .chart-note,body.layers-off-notes .chart-stamp,body.layers-off-notes .waters-name{display:none}
+body.layers-off-soundings .curio{display:none}
+.layer-pills button[aria-pressed="false"]{opacity:.45}
+#fairwind-toggle[aria-pressed="true"]{background:var(--teal-soft,#a9cbc0);color:var(--ink)}
+.specimen-meta{margin-top:9px;padding-top:7px;border-top:1px dashed var(--line);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;opacity:.72}
+.notices{margin-top:16px;padding-top:12px;border-top:1px solid var(--line)}
+.notices-h{font-size:11px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:7px}
+.notices ul{list-style:none;display:grid;gap:5px}
+.notices li{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16.5px;line-height:1.35;opacity:.85}
+@media (max-width:860px){.curio,.chart-note,.chart-stamp,.waters-name,.sheet-tag{display:none}}
