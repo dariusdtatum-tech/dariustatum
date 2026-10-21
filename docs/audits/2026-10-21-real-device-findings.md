@@ -251,3 +251,24 @@ Fresh finish.
     (peek cross-fade, wind state, course math 143 vs 112 FM on A-C-D-B,
     boat sails, drawer accordion); workbench modal verified opening from
     card 01. Cache: evenfaring-studio-v21.
+
+35. **v22 THE THREE-ZONE HEADER (Darius, 2026-10-21).** His brief, with
+    April Zhu's bar as the study: the header huddled inside the 1080px
+    centered .wrap — on his wide screen everything sat in the middle,
+    stacked in rows. "Evenfaring should be to the left, some other
+    stuff to the right, some in the middle." The bar now spans the
+    viewport in three zones (new layer #v22-three-zone-header; the leg
+    nav moved out of .header-controls to be a direct child of .wrap so
+    the grid can place it): brand left, leg nav centered (nowrap — it
+    can never stack vertically again), instruments + Deck right. At
+    >=2100px it is one line; in the 861–2099px laptop band the
+    instruments take a full-width second row, right-aligned — the bar
+    is SHORTER than v21's three rows at 1440px, and the hero headline
+    ("Small, steady") is no longer clipped under the header there (a
+    pre-existing v21 overlap this happens to cure). The <=860px phone
+    stack is untouched except flex order, which preserves its old
+    sequence (brand, Deck, instruments, nav). Audio untouched; patina
+    default untouched. Regression 11/11 (first run's readout failure
+    was a cold-Chromium flake — baseline v21 fetched from GitHub and
+    re-run for comparison; warm runs pass 11/11 on both). Cache:
+    evenfaring-studio-v22.
