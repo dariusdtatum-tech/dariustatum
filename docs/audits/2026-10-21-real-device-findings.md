@@ -138,3 +138,26 @@ Fresh finish.
     trails: approach completes forward to the stop; overshoot stays exactly
     where it was left; regression 11/11. Panel-stop cache now also resets
     on resize. Cache: evenfaring-studio-v19.4.
+
+30. **End-of-voyage framing — the FIG. 07 inspector card cut off (Darius,
+    2026-10-21, after v19.4: "much smoother, still needs a bit more of a
+    tweak towards the end of the page… why is this card cut off").** Three
+    stacked causes at the end of the world: (a) the final panel (the
+    footer, pw60) begins 37vw from the world's end, so its snap stop sat
+    ~730px beyond the maximum scroll — the voyage could never land framed
+    on its own ending; (b) the snap's direction came from the last scroll
+    event's sign, and trackpad inertia ends in a tiny reverse flick that
+    flipped it, so framing near the end often never completed; (c) the
+    settle timer was never armed when a gesture's last events landed
+    inside the snap lockout, so the page rested unsnapped. Fixes (v19.5):
+    a 42vw chart run-out inside the world makes every stop reachable;
+    direction is now the dominant direction of the gesture (summed deltas,
+    500ms window); the settle timer is always armed and re-checks the
+    lockout itself; panel stops are computed from offsetLeft geometry
+    (getBoundingClientRect read the mid-lerp transform and poisoned the
+    cache); leg/panel stops within 64px merge into one (they had begun
+    ping-ponging the settle). Verified Wheel-sailed end-to-end: the
+    voyage now lands exactly on the footer stop (scroll 16691/16790,
+    footer framed at +14px) and rests still; regression 11/11. The
+    inspector also rests framed at its own stop. Cache:
+    evenfaring-studio-v19.5.
