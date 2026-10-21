@@ -4133,3 +4133,7 @@ html[data-patina="fresh"] .chronometer-stage{--chart-grid:rgba(36,57,92,.22)}
   .voyage-card{flex-basis:min(50vw,820px);max-width:820px}
   #ledger-panel{padding-left:3vw}
 }
+
+/* v19.5 end-of-voyage run-out (mirror of index.html #v19-fixes) */
+.voyage-runout{flex:0 0 42vw}
+@media (max-width:860px){.voyage-runout{display:none}}

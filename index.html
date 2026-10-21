@@ -4284,6 +4284,15 @@ html[data-patina="fresh"] .chronometer-stage{--chart-grid:rgba(36,57,92,.22)}
   #ledger-panel{padding-left:3vw}
 }
 
+/* --- v19.5 end-of-voyage run-out (Darius, 2026-10-21) ---
+   The final panel (footer, pw60) began 37vw from the world's end, so its
+   snap stop sat beyond the maximum scroll — the voyage could never land
+   framed on its own ending, and the FIG. 07 inspector rested squeezed.
+   A 42vw chart run-out inside the world makes every stop reachable;
+   hidden in the stacked mobile layout, where the world is a column. */
+.voyage-runout{flex:0 0 42vw}
+@media (max-width:860px){.voyage-runout{display:none}}
+
 /* --- stacked mobile layout --- */
 @media (max-width: 860px){
   .voyage-scroll{height:auto!important}
@@ -4672,7 +4681,7 @@ html[data-patina="fresh"] .chronometer-stage{--chart-grid:rgba(36,57,92,.22)}
 </ul>
 <p class="footer-shiplog">Ship’s log EF-2026 · v11 · All instruments run on your device — no accounts, no trackers.</p>
 </div>
-</footer></div></section><svg aria-hidden="true" class="voyage-route" id="voyage-route"><path id="voyage-route-path"></path></svg></div><div aria-hidden="true" id="star-field"></div><canvas aria-hidden="true" id="weather-canvas"></canvas><div aria-hidden="true" class="voyage-vessel" id="voyage-vessel">
+</footer></div></section><div aria-hidden="true" class="voyage-runout"></div><svg aria-hidden="true" class="voyage-route" id="voyage-route"><path id="voyage-route-path"></path></svg></div><div aria-hidden="true" id="star-field"></div><canvas aria-hidden="true" id="weather-canvas"></canvas><div aria-hidden="true" class="voyage-vessel" id="voyage-vessel">
 <svg aria-hidden="true" fill="none" height="46" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 40 40" width="46">
 <circle cx="20" cy="20" fill="var(--chart-panel)" r="17" stroke="var(--chart-water)" stroke-dasharray="3 2" stroke-width="1.5"></circle>
 <g id="voyage-vessel-hull"><polygon fill="var(--chart-beacon)" points="20,6 27,28 20,24 13,28" stroke="var(--chart-ink)" stroke-width="1.4"></polygon><circle cx="20" cy="20" fill="var(--chart-ink)" r="2.6"></circle></g>
@@ -9185,40 +9194,64 @@ updateChronometer = function(hourVal, driveBus = true) {
      up to ~500px. Now a stop ahead in the direction of travel completes
      generously (legs 2.6%, panels 1.8% of the runway), while a stop behind
      only settles within 0.7% (~80px — a landing, not a rewind). */
-  var lastSnapY = window.scrollY || 0, lastSnapDir = 0;
+  var lastSnapY = window.scrollY || 0, lastSnapDir = 0, dirSum = 0, lastEvtT = 0;
   window.addEventListener('scroll', function(){
     if (reduceMotion) return;
-    var yy = window.scrollY || 0;
-    if (yy !== lastSnapY) { lastSnapDir = yy > lastSnapY ? 1 : -1; lastSnapY = yy; }
-    if (performance.now() < snapLockUntil) return;
+    var yy = window.scrollY || 0, nowT = performance.now();
+    if (yy !== lastSnapY) {
+      if (nowT - lastEvtT > 500) dirSum = 0;
+      dirSum += yy - lastSnapY;
+      lastSnapDir = dirSum > 0 ? 1 : (dirSum < 0 ? -1 : 0);
+      lastSnapY = yy; lastEvtT = nowT;
+    }
+    /* v19.5: always arm the settle timer, even inside the snap lockout —
+       if the last scroll events of a gesture landed in a lockout window,
+       no timer was pending when the user stopped and the page rested
+       unsnapped (the footer stranded 88px off-frame at the very end). */
     clearTimeout(snapTimer);
-    snapTimer = setTimeout(function(){
-      if (performance.now() < snapLockUntil) return;
-      var dlg = document.getElementById('log-dialog');
-      if (dlg && !dlg.hidden) return;
-      var y = window.scrollY || 0, best = null;
-      function consider(t, aheadLim){
-        var d = t - y, ad = Math.abs(d);
-        if (ad < 3) return;
-        var ahead = (lastSnapDir === 0) || (d > 0) === (lastSnapDir > 0);
-        var lim = ahead ? aheadLim : doc * 0.007;
-        if (ad < lim && (best === null || ad < Math.abs(best - y))) best = t;
-      }
-      legs.forEach(function(L){ consider(L.startP * doc, doc * 0.026); });
-      if (!panelStops) {
-        panelStops = [];
-        var wLeft = world.getBoundingClientRect().left;
-        Array.prototype.forEach.call(document.querySelectorAll('.leg-panel'), function(el){
-          panelStops.push((el.getBoundingClientRect().left - wLeft) / S * doc);
-        });
-      }
-      panelStops.forEach(function(t){ consider(t, doc * 0.018); });
-      if (best !== null) {
-        snapLockUntil = performance.now() + 900;
-        window.scrollTo({top: best, behavior: 'smooth'});
-      }
-    }, 160);
+    snapTimer = setTimeout(settleSnap, 160);
   }, {passive: true});
+
+  function settleSnap(){
+    if (performance.now() < snapLockUntil) {
+      snapTimer = setTimeout(settleSnap, snapLockUntil - performance.now() + 40);
+      return;
+    }
+    var dlg = document.getElementById('log-dialog');
+    if (dlg && !dlg.hidden) return;
+    var y = window.scrollY || 0, best = null;
+    function consider(t, aheadLim){
+      var d = t - y, ad = Math.abs(d);
+      if (ad < 3) return;
+      var ahead = (lastSnapDir === 0) || (d > 0) === (lastSnapDir > 0);
+      var lim = ahead ? aheadLim : doc * 0.007;
+      if (ad < lim && (best === null || ad < Math.abs(best - y))) best = t;
+    }
+    var legStops = [];
+    legs.forEach(function(L){ legStops.push(L.startP * doc); consider(L.startP * doc, doc * 0.026); });
+    if (!panelStops) {
+      /* offsetLeft geometry, not getBoundingClientRect: rects read the
+         world's mid-lerp transform and poisoned the cached stops —
+         the end-of-voyage settle aimed past the maximum scroll. */
+      panelStops = [];
+      Array.prototype.forEach.call(document.querySelectorAll('.leg-panel'), function(el){
+        var leg = el.closest('.leg');
+        panelStops.push(((leg ? leg.offsetLeft : 0) + el.offsetLeft) / S * doc);
+      });
+    }
+    panelStops.forEach(function(t){
+      /* A panel that starts inside its leg's padding sits ~45px from the
+         leg stop — as separate stops they ping-ponged the settle forever
+         (each within the other's limit). Within 64px they are one stop,
+         and the leg's wins. */
+      for (var i = 0; i < legStops.length; i++) { if (Math.abs(t - legStops[i]) < 64) return; }
+      consider(t, doc * 0.018);
+    });
+    if (best !== null) {
+      snapLockUntil = performance.now() + 900;
+      window.scrollTo({top: best, behavior: 'smooth'});
+    }
+  }
 
   /* v19: debounce resize — rebuilding the runway mid-gesture remaps
      progress under the user's thumb (iOS URL-bar resizes). */
