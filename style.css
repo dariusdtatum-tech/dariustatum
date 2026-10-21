@@ -4271,3 +4271,30 @@ body.layers-off-soundings .curio{display:none}
 .cx-spring-pct{font:600 .72rem/1 'Plus Jakarta Sans',sans-serif;color:var(--ink-soft);min-width:4ch}
 .exhibit-hint{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.94rem;color:var(--ink-soft);margin:5px 0 0}
 @media(max-width:560px){.cx-detents{margin-left:0;max-width:300px}}
+
+/* v24 chart room plotted (mirror of index.html #v24-chart-room-plotted) */
+/* ================= v24 THE CHART ROOM, PLOTTED =================
+   Rec 2 (Darius 2026-10-21): the chart room becomes the explorative
+   heart. Island names return to the site's own vocabulary and the
+   alias islets (Walk Companion / Workout Player / Tabletop Compass)
+   are gone; the bench islets get roomier ellipses so their labels
+   fit. Rig the Route is absorbed: Plot a course lays marks A-D on
+   the chart, scores the course in FM against the charted 112, and
+   Sail it closes the room and sails your order through the voyage.
+   Specimens 05/06 are removed; Leg 3 is the chronometer alone. */
+.chart-room-head .cr-plot{margin-left:auto;white-space:nowrap;flex:none;width:auto;padding-left:14px;padding-right:14px}
+.cr-plot[aria-pressed="true"]{border-color:var(--teal);color:var(--teal)}
+.cr-plotbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:10px 18px;border-bottom:1px solid var(--line);background:var(--chart-panel)}
+.cr-plotbar[hidden]{display:none}
+.cr-plot-state{flex:1;min-width:220px;margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.02rem;color:var(--chart-ink)}
+.cr-plot-actions{display:flex;gap:8px}
+.cr-plot-actions .exhibit-btn[disabled]{opacity:.45;cursor:default}
+.cr-charted-line{fill:none;stroke:var(--chart-beacon);stroke-width:2.4;stroke-dasharray:8 7;opacity:.55}
+.cr-course-line{fill:none;stroke:var(--teal);stroke-width:3.4;stroke-linejoin:round;stroke-linecap:round}
+.cr-mark{cursor:pointer;outline:none}
+.cr-mark circle{fill:var(--chart-panel);stroke:var(--teal);stroke-width:2;stroke-dasharray:4 3}
+.cr-mark .cr-mark-letter{font:700 19px var(--font-sans);fill:var(--chart-ink)}
+.cr-mark:hover circle,.cr-mark:focus circle{stroke-width:3.4}
+.cr-mark.is-laid circle{fill:var(--teal);stroke-dasharray:none}
+.cr-mark.is-laid .cr-mark-letter{fill:var(--bg)}
+.chart-room.plotting .map-island{opacity:.38}

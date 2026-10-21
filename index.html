@@ -4369,24 +4369,13 @@ body.layers-off-soundings .curio{display:none}
 .exhibit{margin-top:2px}
 .exhibit svg{width:100%;height:auto;display:block}
 .exhibit-chrono svg{max-width:400px;margin:0 auto}
-.exhibit-route svg{max-width:580px;margin:0 auto}
 .exhibit-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px}
 .exhibit-btn{border:1px solid var(--line-strong);background:transparent;color:inherit;border-radius:999px;padding:6px 14px;font:600 .78rem/1 'Plus Jakarta Sans',sans-serif;letter-spacing:.04em;cursor:pointer}
 .exhibit-btn:hover{border-color:var(--teal);color:var(--teal)}
-.exhibit-btn:focus-visible,.drawer-roll:focus-visible,.chrono-peek:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.exhibit-btn:focus-visible,.chrono-peek:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 .exhibit-readout{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.02rem;color:var(--ink-soft);margin:10px 0 0;min-height:1.4em}
 .peek-label{display:flex;align-items:center;gap:8px;font:600 .74rem/1 'Plus Jakarta Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
 .chrono-peek{accent-color:var(--teal);width:120px}
-.route-mark{cursor:pointer}
-.route-mark:hover,.route-mark:focus-visible{color:var(--teal);outline:none}
-.route-mark.is-laid{color:var(--teal)}
-.drawer-item{border-top:1px solid var(--line)}
-.drawer-item:last-child{border-bottom:1px solid var(--line)}
-.drawer-roll{display:flex;justify-content:space-between;align-items:baseline;gap:12px;width:100%;background:transparent;border:0;color:inherit;padding:11px 2px;cursor:pointer;text-align:left}
-.roll-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.12rem}
-.roll-sub{font:600 .68rem/1 'Plus Jakarta Sans',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
-.drawer-body{padding:2px 2px 12px}
-.drawer-body p{margin:0;font-size:.92rem;line-height:1.55}
 </style>
 <style id="v22-three-zone-header">
 /* ================= v22 THE THREE-ZONE HEADER =================
@@ -4467,6 +4456,33 @@ body.layers-off-soundings .curio{display:none}
 .cx-spring-pct{font:600 .72rem/1 'Plus Jakarta Sans',sans-serif;color:var(--ink-soft);min-width:4ch}
 .exhibit-hint{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.94rem;color:var(--ink-soft);margin:5px 0 0}
 @media(max-width:560px){.cx-detents{margin-left:0;max-width:300px}}
+</style>
+<style id="v24-chart-room-plotted">
+/* ================= v24 THE CHART ROOM, PLOTTED =================
+   Rec 2 (Darius 2026-10-21): the chart room becomes the explorative
+   heart. Island names return to the site's own vocabulary and the
+   alias islets (Walk Companion / Workout Player / Tabletop Compass)
+   are gone; the bench islets get roomier ellipses so their labels
+   fit. Rig the Route is absorbed: Plot a course lays marks A-D on
+   the chart, scores the course in FM against the charted 112, and
+   Sail it closes the room and sails your order through the voyage.
+   Specimens 05/06 are removed; Leg 3 is the chronometer alone. */
+.chart-room-head .cr-plot{margin-left:auto;white-space:nowrap;flex:none;width:auto;padding-left:14px;padding-right:14px}
+.cr-plot[aria-pressed="true"]{border-color:var(--teal);color:var(--teal)}
+.cr-plotbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:10px 18px;border-bottom:1px solid var(--line);background:var(--chart-panel)}
+.cr-plotbar[hidden]{display:none}
+.cr-plot-state{flex:1;min-width:220px;margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.02rem;color:var(--chart-ink)}
+.cr-plot-actions{display:flex;gap:8px}
+.cr-plot-actions .exhibit-btn[disabled]{opacity:.45;cursor:default}
+.cr-charted-line{fill:none;stroke:var(--chart-beacon);stroke-width:2.4;stroke-dasharray:8 7;opacity:.55}
+.cr-course-line{fill:none;stroke:var(--teal);stroke-width:3.4;stroke-linejoin:round;stroke-linecap:round}
+.cr-mark{cursor:pointer;outline:none}
+.cr-mark circle{fill:var(--chart-panel);stroke:var(--teal);stroke-width:2;stroke-dasharray:4 3}
+.cr-mark .cr-mark-letter{font:700 19px var(--font-sans);fill:var(--chart-ink)}
+.cr-mark:hover circle,.cr-mark:focus circle{stroke-width:3.4}
+.cr-mark.is-laid circle{fill:var(--teal);stroke-dasharray:none}
+.cr-mark.is-laid .cr-mark-letter{fill:var(--bg)}
+.chart-room.plotting .map-island{opacity:.38}
 </style>
 </head>
 <body data-patina="aged" data-theme="light">
@@ -4706,7 +4722,7 @@ body.layers-off-soundings .curio{display:none}
 <div class="leg-head">
 <p class="eyebrow">LEG 3 · THE HARBOR WORKS</p>
 <h2>Harbors.</h2>
-<p>The harbor works: an instrument opened for inspection, a course to rig, and the drawer where the retired charts sleep. Tie up and come aboard.</p>
+<p>The harbor works: one instrument, opened for inspection. The whole voyage is drawn in the chart room, whenever you want the map. Tie up and come aboard.</p>
 </div></div><div class="leg-panel pw160" id="workbench-cards"></div></section><section aria-label="Leg 4 of 4: Arrival — the studio, logbook and contact" class="leg" data-leg="3" data-leg-name="Arrival" data-scene="arrival" id="leg-arrival" tabindex="-1"><p class="sheet-tag" aria-hidden="true">Sheet IV · Arrival</p><p class="waters-name" aria-hidden="true">Home Water</p><div class="curio curio-ship" style="left:84%;top:23%" data-curio="ship" aria-hidden="true"><svg width="92" height="56" viewBox="0 0 92 56" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14,44 L78,44 L68,52 L24,52 Z"/><path d="M38,44 L38,10 M38,12 L54,26 L38,26 M38,30 L52,40 M56,44 L56,20 M56,22 L68,32 L56,32" opacity=".85"/></svg><p class="curio-cap">Another captain, homeward bound</p></div><p class="chart-stamp" style="left:52%;top:85%" aria-hidden="true">Three quarters — home water soon.</p><div class="leg-panel pw70"><section aria-labelledby="about-h" class="folio-hero snd-tilt-l">
 <div class="prose">
 <p class="eyebrow">Folio III <span aria-hidden="true">/</span> The architect’s studio logbook</p>
@@ -4993,7 +5009,8 @@ body.layers-off-soundings .curio{display:none}
 </aside><div class="drawer-backdrop" hidden="" id="chartroom-backdrop"></div>
 <aside aria-label="Chart room — overview of the voyage" aria-modal="true" class="chart-room" hidden="" id="chart-room" role="dialog">
 <div class="chart-room-head"><b>Chart room</b><span>Drag to look around · choose an island to sail there</span>
-<button type="button" class="cr-zoom" id="chartroom-zoomin" aria-label="Zoom in">+</button><button type="button" class="cr-zoom" id="chartroom-zoomout" aria-label="Zoom out">&minus;</button><button aria-label="Close the chart room" id="chartroom-close" type="button">✕</button></div>
+<button type="button" class="cr-plot" id="chartroom-plot" aria-pressed="false">Plot a course</button><button type="button" class="cr-zoom" id="chartroom-zoomin" aria-label="Zoom in">+</button><button type="button" class="cr-zoom" id="chartroom-zoomout" aria-label="Zoom out">&minus;</button><button aria-label="Close the chart room" id="chartroom-close" type="button">✕</button></div>
+<div class="cr-plotbar" id="cr-plotbar" hidden><p class="cr-plot-state" id="cr-plot-state" role="status">Tap the marks in any order to lay your course. The dashed line is the charted course, 112 FM.</p><span class="cr-plot-actions"><button type="button" class="exhibit-btn" id="cr-sail" disabled>Sail it</button><button type="button" class="exhibit-btn" id="cr-clear">Clear</button></span></div>
 <div class="chart-room-view" id="chart-room-view"></div>
 </aside>
 <button aria-label="A message in a bottle — open it" class="voyage-bottle" hidden="" id="voyage-bottle" type="button">
@@ -9468,22 +9485,12 @@ var INSTRUMENTS = [
   line:'The FIG. 00 instrument, taken apart on the bench.',
   breath:'She runs only while wound; the balance slows as the spring gives out.',
   harbor:'HARBOR 04 \u00b7 OPEN THE CHRONOMETER'},
- {pane:'route', spec:'SPECIMEN 05', live:'route', type:'INTERACTIVE', exhibit:true, name:'Rig the route',
-  line:'Four marks and a blank patch of chart. Lay the course yourself.',
-  breath:'Every course is honest work; the charted one is only a suggestion.',
-  harbor:'HARBOR 05 \u00b7 RIG THE ROUTE'},
- {pane:'drawer', spec:'SPECIMEN 06', live:'drawer', type:'INTERACTIVE', exhibit:true, name:'The chart drawer',
-  line:'Retired charts, kept rolled. Unroll one to see why she was struck.',
-  breath:'Nothing here is hidden; some of it is simply resting.',
-  harbor:'HARBOR 06 \u00b7 THE CHART DRAWER'}
 ];
 function liveHTML(kind){
   if(kind === 'urge') return '<div class="live-urge" aria-hidden="true"><span class="live-dot"></span><svg class="live-wave" focusable="false" height="24" viewBox="0 0 120 24" width="120"><path d="M0,12 C15,4 25,4 40,12 C55,20 65,20 80,12 C95,4 105,4 120,12" fill="none" stroke="var(--teal)" stroke-width="2"/></svg></div>';
   if(kind === 'dayspan') return '<div class="live-dayspan" aria-hidden="true"><svg focusable="false" height="40" viewBox="0 0 120 40" width="120"><path d="M10,34 A50,50 0 0 1 110,34" fill="none" stroke="var(--line-strong)" stroke-width="3"/><path class="dayspan-arc" d="M10,34 A50,50 0 0 1 110,34" fill="none" stroke="var(--timber)" stroke-linecap="round" stroke-width="3"/></svg><span class="live-cap">the day&rsquo;s span</span></div>';
   if(kind === 'game') return '<div class="live-pips" aria-hidden="true"><i></i><i></i><i></i><i></i></div>';
   if(kind === 'chronometer') return CHRONO_HTML;
-  if(kind === 'route') return ROUTE_HTML;
-  if(kind === 'drawer') return DRAWER_HTML;
   return '<div class="live-ready" aria-hidden="true"><span class="live-status"></span><span>ready &middot; listening</span></div>';
 }
 var CHRONO_HTML = '<div class="exhibit exhibit-chrono">'
@@ -9530,27 +9537,6 @@ var CHRONO_HTML = '<div class="exhibit exhibit-chrono">'
   + '<div class="cx-spring-row"><span class="cx-spring-label">Spring</span><div class="cx-spring-track" role="meter" aria-label="Mainspring charge" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="cx-spring-fill"></div></div><span class="cx-spring-pct">0%</span></div>'
   + '<p class="exhibit-readout chrono-state" role="status">Run down · wind her</p>'
   + '<p class="exhibit-hint">Drag her sideways to turn her in the light.</p></div>';
-var ROUTE_HTML = '<div class="exhibit exhibit-route">'
-  + '<svg class="route-svg" viewBox="0 0 300 190" role="group" aria-label="A blank patch of chart with four harbor marks">'
-  + '<path d="M0,48 H300 M0,95 H300 M0,142 H300 M60,0 V190 M130,0 V190 M200,0 V190 M260,0 V190" stroke="currentColor" stroke-width="0.6" opacity="0.25"/>'
-  + '<polyline class="route-charted" points="36,148 104,58 196,128 264,44" fill="none" stroke="var(--timber)" stroke-width="1.6" stroke-dasharray="5 5" opacity="0.75"/>'
-  + '<polyline class="route-yours" points="" fill="none" stroke="var(--teal)" stroke-width="2.4" stroke-linejoin="round"/>'
-  + '<circle class="route-boat" r="4.5" fill="var(--teal)" cx="-20" cy="-20"/>'
-  + '<g class="route-mark" data-mark="A" data-name="Low Water" transform="translate(36,148)" tabindex="0" role="button" aria-label="Mark A, Low Water"><circle r="15" fill="transparent"/><path d="M-6,-6 L6,6 M6,-6 L-6,6" stroke="currentColor" stroke-width="2.2"/><text y="-13" text-anchor="middle" font-size="9" fill="currentColor">A \u00b7 Low Water</text></g>'
-  + '<g class="route-mark" data-mark="B" data-name="The Buoy" transform="translate(104,58)" tabindex="0" role="button" aria-label="Mark B, The Buoy"><circle r="15" fill="transparent"/><path d="M-6,-6 L6,6 M6,-6 L-6,6" stroke="currentColor" stroke-width="2.2"/><text y="-13" text-anchor="middle" font-size="9" fill="currentColor">B \u00b7 The Buoy</text></g>'
-  + '<g class="route-mark" data-mark="C" data-name="Halfway Rock" transform="translate(196,128)" tabindex="0" role="button" aria-label="Mark C, Halfway Rock"><circle r="15" fill="transparent"/><path d="M-6,-6 L6,6 M6,-6 L-6,6" stroke="currentColor" stroke-width="2.2"/><text y="24" text-anchor="middle" font-size="9" fill="currentColor">C \u00b7 Halfway Rock</text></g>'
-  + '<g class="route-mark" data-mark="D" data-name="Home Light" transform="translate(264,44)" tabindex="0" role="button" aria-label="Mark D, Home Light"><circle r="15" fill="transparent"/><path d="M-6,-6 L6,6 M6,-6 L-6,6" stroke="currentColor" stroke-width="2.2"/><text y="-13" text-anchor="middle" font-size="9" fill="currentColor">D \u00b7 Home Light</text></g>'
-  + '</svg>'
-  + '<p class="exhibit-readout route-state" role="status">Tap the marks in order to lay your course. The dashed line is the charted course.</p>'
-  + '<div class="exhibit-controls"><button type="button" class="exhibit-btn route-sail">Sail it</button><button type="button" class="exhibit-btn route-reset">Clear</button></div></div>';
-var DRAWER_HTML = '<div class="exhibit exhibit-drawer">'
-  + '<div class="drawer-item"><button type="button" class="drawer-roll" aria-expanded="false"><span class="roll-title">The Parallax Chart</span><span class="roll-sub">v14 \u00b7 retired</span></button>'
-  + '<div class="drawer-body" hidden><p>Two flat layers sliding at different speeds, dressed up as perspective. The verdict from the captain\u2019s chair: \u201cNothing changed.\u201d Rebuilt as a true camera the same day. Kept rolled as a reminder that motion is not depth.</p></div></div>'
-  + '<div class="drawer-item"><button type="button" class="drawer-roll" aria-expanded="false"><span class="roll-title">The Gemini Fork</span><span class="roll-sub">2026 \u00b7 shelved</span></button>'
-  + '<div class="drawer-body" hidden><p>A parallel build with a strong hero and an empty middle: a foreign sound system and a noindex tag in her pocket. Reviewed once, admired in part, and struck from the chart.</p></div></div>'
-  + '<div class="drawer-item"><button type="button" class="drawer-roll" aria-expanded="false"><span class="roll-title">Fresh Studio</span><span class="roll-sub">the bright finish \u00b7 kept, not default</span></button>'
-  + '<div class="drawer-body" hidden><p>The chart before the vellum aged. Still aboard for any visitor who prefers her bright; the studio herself sails under the Aged Patina.</p></div></div>'
-  + '</div>';
 var STAGES = ['Charted & Corrected','Sounded','Sketch','Charted & Corrected','Sounded','Sketch'];
 function cardHTML(it, ix){
   return '<article class="voyage-card" data-pane="' + it.pane + '">'
@@ -9690,16 +9676,19 @@ document.addEventListener('click', function(e){
   var islands = [
     {x: 300, y: 500, r: 120, label: 'DEPARTURE', sub: 'the studio at anchor', sail: 0},
     {x: 800, y: 420, r: 150, label: 'THE OPEN SEA', sub: 'instruments 01—03', sail: 1},
-    {x: 1250, y: 580, r: 130, label: 'HARBORS', sub: 'workbenches', sail: 2},
+    {x: 1250, y: 580, r: 130, label: 'HARBORS', sub: 'the chronometer, opened', sail: 2},
     {x: 1700, y: 450, r: 140, label: 'ARRIVAL', sub: 'ledger · log · contact', sail: 3}
   ];
   var islets = [
     {x: 640, y: 640, pane: 'urge', label: 'Urge Walk'},
     {x: 900, y: 640, pane: 'fitness', label: 'Dayspan'},
-    {x: 800, y: 220, pane: 'game', label: 'A gentle game'},
-    {x: 1130, y: 380, pane: 'urge', label: 'Walk Companion'},
-    {x: 1360, y: 740, pane: 'fitness', label: 'Workout Player'},
-    {x: 1250, y: 220, pane: 'game', label: 'Tabletop Compass'}
+    {x: 800, y: 220, pane: 'game', label: 'A gentle game'}
+  ];
+  var MARKS = [
+    {x: 430, y: 560, leg: 0, letter: 'A', name: 'Low Water'},
+    {x: 1010, y: 470, leg: 1, letter: 'B', name: 'The Buoy'},
+    {x: 1420, y: 620, leg: 2, letter: 'C', name: 'Halfway Rock'},
+    {x: 1700, y: 640, leg: 3, letter: 'D', name: 'Home Light'}
   ];
   var s = '<div class="chart-room-world" id="chart-room-world">'
     + '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Archipelago map of the voyage">'
@@ -9712,9 +9701,20 @@ document.addEventListener('click', function(e){
   });
   islets.forEach(function(k){
     s += '<g class="map-island" data-pane="' + k.pane + '" tabindex="0" role="button" aria-label="Step aboard ' + k.label + '">'
-      + '<ellipse cx="' + k.x + '" cy="' + k.y + '" rx="52" ry="38"/>'
+      + '<ellipse cx="' + k.x + '" cy="' + k.y + '" rx="66" ry="46"/>'
       + '<text class="map-sub" x="' + k.x + '" y="' + (k.y + 5) + '" text-anchor="middle">' + k.label + '</text></g>';
   });
+  var chartedPts = MARKS.map(function(m){ return m.x + ',' + m.y; }).join(' ');
+  s += '<g class="cr-course" id="cr-course" style="display:none">'
+    + '<polyline class="cr-charted-line" points="' + chartedPts + '"/>'
+    + '<polyline class="cr-course-line" id="cr-course-line" points=""/>';
+  MARKS.forEach(function(m, ix){
+    s += '<g class="cr-mark" data-mark="' + ix + '" tabindex="0" role="button" aria-label="Lay mark ' + m.letter + ' · ' + m.name + '">'
+      + '<circle cx="' + m.x + '" cy="' + m.y + '" r="17"/>'
+      + '<text class="cr-mark-letter" x="' + m.x + '" y="' + (m.y + 7) + '" text-anchor="middle">' + m.letter + '</text>'
+      + '<text class="map-sub" x="' + m.x + '" y="' + (m.y + 40) + '" text-anchor="middle">' + m.name + '</text></g>';
+  });
+  s += '</g>';
   s += '<circle class="map-you" id="map-you" r="10" cx="300" cy="380"><title>You are here</title></circle>';
   s += '</svg></div>';
   view.innerHTML = s;
@@ -9767,6 +9767,11 @@ document.addEventListener('click', function(e){
   view.addEventListener('click', function(e){
     if(moved) return;
     if(e.detail > 1) return; /* v18 S6: a double-click zooms; it must not also sail */
+    if(plotting){
+      var mk = e.target.closest ? e.target.closest('.cr-mark') : null;
+      if(mk) layMark(parseInt(mk.getAttribute('data-mark'), 10));
+      return;
+    }
     var g = e.target.closest ? e.target.closest('.map-island') : null;
     if(!g) return;
     closeRoom();
@@ -9774,8 +9779,14 @@ document.addEventListener('click', function(e){
     else if(g.hasAttribute('data-pane') && window.openFocusWorkbench) window.openFocusWorkbench(g.getAttribute('data-pane'));
   });
   view.addEventListener('keydown', function(e){
+    if(e.key !== 'Enter' && e.key !== ' ') return;
+    if(plotting){
+      var mk = e.target.closest ? e.target.closest('.cr-mark') : null;
+      if(mk){ e.preventDefault(); layMark(parseInt(mk.getAttribute('data-mark'), 10)); }
+      return;
+    }
     var g = e.target.closest ? e.target.closest('.map-island') : null;
-    if(g && (e.key === 'Enter' || e.key === ' ')){ e.preventDefault(); g.click(); }
+    if(g){ e.preventDefault(); g.click(); }
   });
   /* v18 S6: wheel zoom toward cursor, double-click toggle, +/- buttons */
   view.addEventListener('wheel', function(e){
@@ -9808,6 +9819,69 @@ document.addEventListener('click', function(e){
   document.getElementById('chartroom-close').addEventListener('click', closeRoom);
   document.getElementById('chartroom-backdrop').addEventListener('click', closeRoom);
   window.addEventListener('resize', function(){ if(!room.hidden) center(); });
+  /* v24: rig the route, absorbed — plot a course on the chart, then sail it. */
+  var plotBtn = document.getElementById('chartroom-plot'),
+      plotBar = document.getElementById('cr-plotbar'),
+      plotState = document.getElementById('cr-plot-state'),
+      sailBtn = document.getElementById('cr-sail'),
+      clearBtn = document.getElementById('cr-clear'),
+      courseG = document.getElementById('cr-course'),
+      courseLine = document.getElementById('cr-course-line');
+  var plotting = false, laid = [];
+  function mdist(p, q){ var dx = p.x - q.x, dy = p.y - q.y; return Math.sqrt(dx * dx + dy * dy); }
+  var chartedPx = 0; for(var mi = 0; mi < 3; mi++) chartedPx += mdist(MARKS[mi], MARKS[mi + 1]);
+  var FM = 112 / chartedPx;
+  function courseFM(){ var t = 0; for(var i2 = 0; i2 + 1 < laid.length; i2++) t += mdist(MARKS[laid[i2]], MARKS[laid[i2 + 1]]); return Math.round(t * FM); }
+  function plotReadout(){
+    if(!laid.length){ plotState.textContent = 'Tap the marks in any order to lay your course. The dashed line is the charted course, 112 FM.'; return; }
+    if(laid.length < 4){ plotState.textContent = 'Your course so far: ' + courseFM() + ' FM \u00b7 ' + laid.length + ' of 4 marks.'; return; }
+    var fm = courseFM();
+    plotState.textContent = 'Your course: ' + fm + ' FM \u00b7 Charted course: 112 FM \u2014 ' + (fm === 112 ? 'the charted course, matched. Well sailed.' : fm < 112 ? 'shorter than the charted course \u2014 you found water the chart does not know.' : 'longer by ' + (fm - 112) + ' FM \u2014 a scenic course.');
+  }
+  function clearCourse(){
+    laid = [];
+    if(courseLine) courseLine.setAttribute('points', '');
+    Array.prototype.forEach.call(view.querySelectorAll('.cr-mark.is-laid'), function(m){ m.classList.remove('is-laid'); });
+    if(sailBtn) sailBtn.disabled = true;
+    plotReadout();
+  }
+  function setPlotting(on){
+    plotting = on;
+    room.classList.toggle('plotting', on);
+    if(plotBtn) plotBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    if(plotBar) plotBar.hidden = !on;
+    if(courseG) courseG.style.display = on ? '' : 'none';
+    if(on) plotReadout(); else clearCourse();
+  }
+  function layMark(ix){
+    if(laid.indexOf(ix) !== -1) return;
+    laid.push(ix);
+    var g = view.querySelector('.cr-mark[data-mark="' + ix + '"]');
+    if(g) g.classList.add('is-laid');
+    if(courseLine) courseLine.setAttribute('points', laid.map(function(k){ return MARKS[k].x + ',' + MARKS[k].y; }).join(' '));
+    if(sailBtn) sailBtn.disabled = laid.length < 4;
+    plotReadout();
+  }
+  if(plotBtn) plotBtn.addEventListener('click', function(){ setPlotting(!plotting); });
+  if(clearBtn) clearBtn.addEventListener('click', clearCourse);
+  if(sailBtn) sailBtn.addEventListener('click', function(){
+    if(laid.length < 4) return;
+    var legs = laid.map(function(k){ return MARKS[k].leg; });
+    setPlotting(false); closeRoom();
+    var step = 0, timer = 0;
+    function helm(){
+      window.clearTimeout(timer);
+      ['wheel', 'pointerdown', 'keydown'].forEach(function(ev){ window.removeEventListener(ev, helm, true); });
+    }
+    function next(){
+      if(step >= legs.length){ helm(); return; }
+      if(window.sailToLeg) window.sailToLeg(legs[step]);
+      step++; timer = window.setTimeout(next, 2900);
+    }
+    ['wheel', 'pointerdown', 'keydown'].forEach(function(ev){ window.addEventListener(ev, helm, true); });
+    next();
+  });
+
   /* you-are-here dot follows the voyage */
   window.setInterval(function(){
     if(room.hidden) return;
@@ -10480,72 +10554,6 @@ document.addEventListener('keydown', function(e){
       if(!raf){ lastT = performance.now(); raf = requestAnimationFrame(tick); }
     });
     applyView(); setMeter(); setState();
-  }
-  /* rig the route */
-  var route = document.querySelector('.exhibit-route');
-  if(route){
-    var PTS = {A: [36, 148], B: [104, 58], C: [196, 128], D: [264, 44]};
-    var ORDER = ['A', 'B', 'C', 'D'];
-    function dist(p, q){ var dx = p[0] - q[0], dy = p[1] - q[1]; return Math.sqrt(dx * dx + dy * dy); }
-    var charted = 0; for(var ci = 0; ci < 3; ci++) charted += dist(PTS[ORDER[ci]], PTS[ORDER[ci + 1]]);
-    var chartedFM = Math.round(charted / 3);
-    var yours = [], yoursEl = route.querySelector('.route-yours'), rState = route.querySelector('.route-state'),
-        boat = route.querySelector('.route-boat');
-    function fm(px){ return Math.round(px / 3); }
-    function render(){
-      yoursEl.setAttribute('points', yours.map(function(k){ return PTS[k][0] + ',' + PTS[k][1]; }).join(' '));
-      route.querySelectorAll('.route-mark').forEach(function(g){
-        g.classList.toggle('is-laid', yours.indexOf(g.getAttribute('data-mark')) >= 0);
-      });
-      if(!yours.length){ rState.textContent = 'Tap the marks in order to lay your course. The dashed line is the charted course.'; return; }
-      var total = 0; for(var i = 0; i < yours.length - 1; i++) total += dist(PTS[yours[i]], PTS[yours[i + 1]]);
-      if(yours.length < 4){ rState.textContent = 'Your course so far: ' + fm(total) + ' FM \u00b7 ' + yours.length + ' of 4 marks.'; return; }
-      var d = fm(total) - chartedFM;
-      rState.textContent = 'Your course: ' + fm(total) + ' FM \u00b7 Charted course: ' + chartedFM + ' FM \u2014 ' +
-        (d > 4 ? d + ' FM longer, and entirely yours.' : d < -4 ? Math.abs(d) + ' FM shorter. The chart is corrected in your favor.' : 'the charted course, matched. Well sailed.');
-    }
-    route.querySelectorAll('.route-mark').forEach(function(g){
-      function lay(){
-        var k = g.getAttribute('data-mark');
-        if(yours.indexOf(k) >= 0){ rState.textContent = k + ' \u00b7 ' + g.getAttribute('data-name') + ' is already on your course.'; return; }
-        yours.push(k); render();
-      }
-      g.addEventListener('click', lay);
-      g.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); lay(); } });
-    });
-    var resetB = route.querySelector('.route-reset');
-    if(resetB) resetB.addEventListener('click', function(){ yours = []; boat.setAttribute('cx', -20); boat.setAttribute('cy', -20); render(); });
-    var sailB = route.querySelector('.route-sail');
-    if(sailB) sailB.addEventListener('click', function(){
-      if(yours.length < 2){ rState.textContent = 'Lay a course first \u2014 tap two marks or more.'; return; }
-      var pts = yours.map(function(k){ return PTS[k]; });
-      var segs = [], total = 0, i;
-      for(i = 0; i < pts.length - 1; i++){ var L = dist(pts[i], pts[i + 1]); segs.push(L); total += L; }
-      if(RM){ var last = pts[pts.length - 1]; boat.setAttribute('cx', last[0]); boat.setAttribute('cy', last[1]); rState.textContent = 'Sailed \u00b7 resting at ' + yours[yours.length - 1] + '.'; return; }
-      var t0 = performance.now(), DUR = 2200;
-      (function step(now){
-        var p = Math.min(1, (now - t0) / DUR), target = p * total, acc = 0, j = 0;
-        while(j < segs.length - 1 && acc + segs[j] < target){ acc += segs[j]; j++; }
-        var f = segs[j] ? (target - acc) / segs[j] : 0;
-        boat.setAttribute('cx', pts[j][0] + (pts[j + 1][0] - pts[j][0]) * f);
-        boat.setAttribute('cy', pts[j][1] + (pts[j + 1][1] - pts[j][1]) * f);
-        if(p < 1) requestAnimationFrame(step);
-      })(t0);
-    });
-    render();
-  }
-  /* the chart drawer */
-  var drawer = document.querySelector('.exhibit-drawer');
-  if(drawer){
-    var rolls = drawer.querySelectorAll('.drawer-roll');
-    rolls.forEach(function(btn){
-      btn.addEventListener('click', function(){
-        var body = btn.parentElement.querySelector('.drawer-body');
-        var open = btn.getAttribute('aria-expanded') === 'true';
-        rolls.forEach(function(b){ b.setAttribute('aria-expanded', 'false'); b.parentElement.querySelector('.drawer-body').hidden = true; });
-        if(!open){ btn.setAttribute('aria-expanded', 'true'); body.hidden = false; }
-      });
-    });
   }
 })();
 </script>
