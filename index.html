@@ -4360,6 +4360,34 @@ body.layers-off-soundings .curio{display:none}
   #voyage-world .voyage-runout{flex:0 0 8vw}
 }
 </style>
+
+<style id="v21-harbor-works">
+/* v21 THE HARBOR WORKS: specimens 04-06 become exhibits (Charted Waters
+   #16 chronometer opened, #18 rig the route, #14 chart drawer). */
+.card-live.card-exhibit{display:block}
+.card-exhibit{color:var(--chart-ink)}
+.exhibit{margin-top:2px}
+.exhibit svg{width:100%;height:auto;display:block}
+.exhibit-chrono svg{max-width:400px;margin:0 auto}
+.exhibit-route svg{max-width:580px;margin:0 auto}
+.exhibit-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px}
+.exhibit-btn{border:1px solid var(--line-strong);background:transparent;color:inherit;border-radius:999px;padding:6px 14px;font:600 .78rem/1 'Plus Jakarta Sans',sans-serif;letter-spacing:.04em;cursor:pointer}
+.exhibit-btn:hover{border-color:var(--teal);color:var(--teal)}
+.exhibit-btn:focus-visible,.drawer-roll:focus-visible,.chrono-peek:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.exhibit-readout{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.02rem;color:var(--ink-soft);margin:10px 0 0;min-height:1.4em}
+.peek-label{display:flex;align-items:center;gap:8px;font:600 .74rem/1 'Plus Jakarta Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+.chrono-peek{accent-color:var(--teal);width:120px}
+.route-mark{cursor:pointer}
+.route-mark:hover,.route-mark:focus-visible{color:var(--teal);outline:none}
+.route-mark.is-laid{color:var(--teal)}
+.drawer-item{border-top:1px solid var(--line)}
+.drawer-item:last-child{border-bottom:1px solid var(--line)}
+.drawer-roll{display:flex;justify-content:space-between;align-items:baseline;gap:12px;width:100%;background:transparent;border:0;color:inherit;padding:11px 2px;cursor:pointer;text-align:left}
+.roll-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.12rem}
+.roll-sub{font:600 .68rem/1 'Plus Jakarta Sans',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.drawer-body{padding:2px 2px 12px}
+.drawer-body p{margin:0;font-size:.92rem;line-height:1.55}
+</style>
 </head>
 <body data-patina="aged" data-theme="light">
 <svg aria-hidden="true" class="v18-ink-defs" focusable="false" height="0" style="position:absolute;left:0;top:0" width="0"><defs><filter height="110%" id="ink-edge" width="110%" x="-5%" y="-5%"><feTurbulence baseFrequency="0.9" numOctaves="2" result="n" seed="7" type="fractalNoise"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3"/></filter></defs></svg>
@@ -4596,9 +4624,9 @@ body.layers-off-soundings .curio{display:none}
 </figure>
 </div></div><div class="leg-panel pw204" id="instrument-cards"></div></section><section aria-label="Leg 3 of 4: Harbors — the workbenches" class="leg" data-leg="2" data-leg-name="Harbors" data-scene="harbors" id="leg-harbors" tabindex="-1"><p class="sheet-tag" aria-hidden="true">Sheet III · Harbors</p><p class="waters-name" aria-hidden="true">The Harbor Reaches</p><div class="curio curio-wreck" style="left:62%;top:76%" data-curio="wreck" aria-hidden="true"><svg width="120" height="52" viewBox="0 0 120 52" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><g transform="rotate(7 60 34)"><path d="M10,32 L110,32 L96,46 L26,46 Z"/><path d="M60,32 L60,8 M60,14 L84,20 M60,20 L44,27" opacity=".8"/><path d="M84,20 l7,-3" opacity=".8"/></g></svg><p class="curio-cap">The good ship Distraction, sunk 2026 · 80 FM</p></div><p class="chart-stamp" style="left:50%;top:21%" aria-hidden="true">Halfway across — the harbor lights are not yet visible.</p><div class="leg-panel pw40" id="harbors-heading">
 <div class="leg-head">
-<p class="eyebrow">LEG 3 · WORKBENCHES</p>
+<p class="eyebrow">LEG 3 · THE HARBOR WORKS</p>
 <h2>Harbors.</h2>
-<p>The workbenches: full-screen instruments for the walk, the workout, and the table. Tie up and come aboard.</p>
+<p>The harbor works: an instrument opened for inspection, a course to rig, and the drawer where the retired charts sleep. Tie up and come aboard.</p>
 </div></div><div class="leg-panel pw160" id="workbench-cards"></div></section><section aria-label="Leg 4 of 4: Arrival — the studio, logbook and contact" class="leg" data-leg="3" data-leg-name="Arrival" data-scene="arrival" id="leg-arrival" tabindex="-1"><p class="sheet-tag" aria-hidden="true">Sheet IV · Arrival</p><p class="waters-name" aria-hidden="true">Home Water</p><div class="curio curio-ship" style="left:84%;top:23%" data-curio="ship" aria-hidden="true"><svg width="92" height="56" viewBox="0 0 92 56" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14,44 L78,44 L68,52 L24,52 Z"/><path d="M38,44 L38,10 M38,12 L54,26 L38,26 M38,30 L52,40 M56,44 L56,20 M56,22 L68,32 L56,32" opacity=".85"/></svg><p class="curio-cap">Another captain, homeward bound</p></div><p class="chart-stamp" style="left:52%;top:85%" aria-hidden="true">Three quarters — home water soon.</p><div class="leg-panel pw70"><section aria-labelledby="about-h" class="folio-hero snd-tilt-l">
 <div class="prose">
 <p class="eyebrow">Folio III <span aria-hidden="true">/</span> The architect’s studio logbook</p>
@@ -9356,26 +9384,67 @@ var INSTRUMENTS = [
   line:'A tabletop compass for playing together, phone laid flat.',
   breath:'Turns with a slow tide; nothing here hurries.',
   harbor:'HARBOR 03 · STEP ABOARD THE TABLETOP [ENTER]'},
- {pane:'urge', spec:'SPECIMEN 04', live:'workbench', type:'INTERACTIVE', name:'Walk Companion',
-  line:'The full-screen five-minute orb for riding out a wave.',
-  breath:'The orb breathes 4 seconds in, 6 out — the studio\u2019s own cadence.',
-  harbor:'HARBOR 04 · STEP ABOARD WALK COMPANION [ENTER]'},
- {pane:'fitness', spec:'SPECIMEN 05', live:'workbench', type:'INTERACTIVE', name:'Workout Player',
-  line:'Dayspan\u2019s forty-move library with an eight-second posture count.',
-  breath:'Each posture arrives on the breath; the count never shouts.',
-  harbor:'HARBOR 05 · STEP ABOARD WORKOUT PLAYER [ENTER]'},
- {pane:'game', spec:'SPECIMEN 06', live:'workbench', type:'AMBIENT', name:'Tabletop Compass',
-  line:'Flat-phone tabletop mode for the middle of the dinner table.',
-  breath:'Ambient by design — it keeps the table\u2019s time, not yours.',
-  harbor:'HARBOR 06 · STEP ABOARD TABLETOP COMPASS [ENTER]'}
+ {pane:'chronometer', spec:'SPECIMEN 04', live:'chronometer', type:'INTERACTIVE', exhibit:true, name:'The chronometer, opened',
+  line:'The FIG. 00 instrument, taken apart on the bench.',
+  breath:'She runs only while wound; the balance slows as the spring gives out.',
+  harbor:'HARBOR 04 \u00b7 OPEN THE CHRONOMETER'},
+ {pane:'route', spec:'SPECIMEN 05', live:'route', type:'INTERACTIVE', exhibit:true, name:'Rig the route',
+  line:'Four marks and a blank patch of chart. Lay the course yourself.',
+  breath:'Every course is honest work; the charted one is only a suggestion.',
+  harbor:'HARBOR 05 \u00b7 RIG THE ROUTE'},
+ {pane:'drawer', spec:'SPECIMEN 06', live:'drawer', type:'INTERACTIVE', exhibit:true, name:'The chart drawer',
+  line:'Retired charts, kept rolled. Unroll one to see why she was struck.',
+  breath:'Nothing here is hidden; some of it is simply resting.',
+  harbor:'HARBOR 06 \u00b7 THE CHART DRAWER'}
 ];
 function liveHTML(kind){
   if(kind === 'urge') return '<div class="live-urge" aria-hidden="true"><span class="live-dot"></span><svg class="live-wave" focusable="false" height="24" viewBox="0 0 120 24" width="120"><path d="M0,12 C15,4 25,4 40,12 C55,20 65,20 80,12 C95,4 105,4 120,12" fill="none" stroke="var(--teal)" stroke-width="2"/></svg></div>';
   if(kind === 'dayspan') return '<div class="live-dayspan" aria-hidden="true"><svg focusable="false" height="40" viewBox="0 0 120 40" width="120"><path d="M10,34 A50,50 0 0 1 110,34" fill="none" stroke="var(--line-strong)" stroke-width="3"/><path class="dayspan-arc" d="M10,34 A50,50 0 0 1 110,34" fill="none" stroke="var(--timber)" stroke-linecap="round" stroke-width="3"/></svg><span class="live-cap">the day&rsquo;s span</span></div>';
   if(kind === 'game') return '<div class="live-pips" aria-hidden="true"><i></i><i></i><i></i><i></i></div>';
+  if(kind === 'chronometer') return CHRONO_HTML;
+  if(kind === 'route') return ROUTE_HTML;
+  if(kind === 'drawer') return DRAWER_HTML;
   return '<div class="live-ready" aria-hidden="true"><span class="live-status"></span><span>ready &middot; listening</span></div>';
 }
-var STAGES = ['Charted & Corrected','Sounded','Sketch','Charted','Sounded','Sketch'];
+var CHRONO_HTML = '<div class="exhibit exhibit-chrono">'
+  + '<svg class="chrono-svg" viewBox="70 16 165 168" role="img" aria-label="A chronometer shown in layers: case, dial, and gear train">'
+  + '<g class="chrono-gears" opacity="0.14">'
+  + '<g class="chrono-gear" transform="translate(124,84)"><circle r="22" fill="none" stroke="currentColor" stroke-width="9" stroke-dasharray="5 5"/><circle r="13" fill="none" stroke="currentColor" stroke-width="2"/><path d="M-13,0 H13 M0,-13 V13" stroke="currentColor" stroke-width="2"/></g>'
+  + '<g class="chrono-gear2" transform="translate(163,121)"><circle r="15" fill="none" stroke="currentColor" stroke-width="8" stroke-dasharray="4 4"/><circle r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M-9,0 H9 M0,-9 V9" stroke="currentColor" stroke-width="2"/></g>'
+  + '<g class="chrono-balance" transform="translate(174,76)"><circle r="17" fill="none" stroke="var(--timber)" stroke-width="3"/><path d="M-17,0 H17" stroke="var(--timber)" stroke-width="3"/><circle cx="-11" cy="0" r="2.6" fill="var(--timber)"/><circle cx="11" cy="0" r="2.6" fill="var(--timber)"/><circle r="4" fill="var(--timber)"/></g>'
+  + '<circle cx="150" cy="100" r="5" fill="currentColor"/></g>'
+  + '<g class="chrono-dial"><circle cx="150" cy="100" r="57" fill="none" stroke="currentColor" stroke-width="2"/><g class="chrono-ticks"></g>'
+  + '<path d="M150,100 L150,66" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M150,100 L178,112" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="150" cy="100" r="5" fill="currentColor"/>'
+  + '<text x="150" y="132" text-anchor="middle" font-size="8" letter-spacing="2" fill="currentColor">EVENFARING</text></g>'
+  + '<g class="chrono-case"><circle cx="150" cy="100" r="66" fill="none" stroke="var(--timber)" stroke-width="7"/>'
+  + '<path class="chrono-glass" d="M104,58 A58,58 0 0 1 178,50" fill="none" stroke="var(--paper)" stroke-width="5" opacity="0.5" stroke-linecap="round"/>'
+  + '<g class="chrono-crown" transform="translate(150,35)"><rect x="-7" y="-14" width="14" height="13" rx="3" fill="var(--timber)"/><path d="M-7,-10 H7 M-7,-6 H7" stroke="var(--paper)" stroke-width="1.4" opacity="0.6"/></g></g>'
+  + '</svg>'
+  + '<div class="exhibit-controls"><label class="peek-label">Peek inside <input type="range" class="chrono-peek" min="0" max="100" value="0" aria-label="Peek inside the chronometer"></label>'
+  + '<button type="button" class="exhibit-btn chrono-wind">Wind her</button></div>'
+  + '<p class="exhibit-readout chrono-state" role="status">Run down \u00b7 wind her</p></div>';
+var ROUTE_HTML = '<div class="exhibit exhibit-route">'
+  + '<svg class="route-svg" viewBox="0 0 300 190" role="group" aria-label="A blank patch of chart with four harbor marks">'
+  + '<path d="M0,48 H300 M0,95 H300 M0,142 H300 M60,0 V190 M130,0 V190 M200,0 V190 M260,0 V190" stroke="currentColor" stroke-width="0.6" opacity="0.25"/>'
+  + '<polyline class="route-charted" points="36,148 104,58 196,128 264,44" fill="none" stroke="var(--timber)" stroke-width="1.6" stroke-dasharray="5 5" opacity="0.75"/>'
+  + '<polyline class="route-yours" points="" fill="none" stroke="var(--teal)" stroke-width="2.4" stroke-linejoin="round"/>'
+  + '<circle class="route-boat" r="4.5" fill="var(--teal)" cx="-20" cy="-20"/>'
+  + '<g class="route-mark" data-mark="A" data-name="Low Water" transform="translate(36,148)" tabindex="0" role="button" aria-label="Mark A, Low Water"><circle r="15" fill="transparent"/><path d="M-6,-6 L6,6 M6,-6 L-6,6" stroke="currentColor" stroke-width="2.2"/><text y="-13" text-anchor="middle" font-size="9" fill="currentColor">A \u00b7 Low Water</text></g>'
+  + '<g class="route-mark" data-mark="B" data-name="The Buoy" transform="translate(104,58)" tabindex="0" role="button" aria-label="Mark B, The Buoy"><circle r="15" fill="transparent"/><path d="M-6,-6 L6,6 M6,-6 L-6,6" stroke="currentColor" stroke-width="2.2"/><text y="-13" text-anchor="middle" font-size="9" fill="currentColor">B \u00b7 The Buoy</text></g>'
+  + '<g class="route-mark" data-mark="C" data-name="Halfway Rock" transform="translate(196,128)" tabindex="0" role="button" aria-label="Mark C, Halfway Rock"><circle r="15" fill="transparent"/><path d="M-6,-6 L6,6 M6,-6 L-6,6" stroke="currentColor" stroke-width="2.2"/><text y="24" text-anchor="middle" font-size="9" fill="currentColor">C \u00b7 Halfway Rock</text></g>'
+  + '<g class="route-mark" data-mark="D" data-name="Home Light" transform="translate(264,44)" tabindex="0" role="button" aria-label="Mark D, Home Light"><circle r="15" fill="transparent"/><path d="M-6,-6 L6,6 M6,-6 L-6,6" stroke="currentColor" stroke-width="2.2"/><text y="-13" text-anchor="middle" font-size="9" fill="currentColor">D \u00b7 Home Light</text></g>'
+  + '</svg>'
+  + '<p class="exhibit-readout route-state" role="status">Tap the marks in order to lay your course. The dashed line is the charted course.</p>'
+  + '<div class="exhibit-controls"><button type="button" class="exhibit-btn route-sail">Sail it</button><button type="button" class="exhibit-btn route-reset">Clear</button></div></div>';
+var DRAWER_HTML = '<div class="exhibit exhibit-drawer">'
+  + '<div class="drawer-item"><button type="button" class="drawer-roll" aria-expanded="false"><span class="roll-title">The Parallax Chart</span><span class="roll-sub">v14 \u00b7 retired</span></button>'
+  + '<div class="drawer-body" hidden><p>Two flat layers sliding at different speeds, dressed up as perspective. The verdict from the captain\u2019s chair: \u201cNothing changed.\u201d Rebuilt as a true camera the same day. Kept rolled as a reminder that motion is not depth.</p></div></div>'
+  + '<div class="drawer-item"><button type="button" class="drawer-roll" aria-expanded="false"><span class="roll-title">The Gemini Fork</span><span class="roll-sub">2026 \u00b7 shelved</span></button>'
+  + '<div class="drawer-body" hidden><p>A parallel build with a strong hero and an empty middle: a foreign sound system and a noindex tag in her pocket. Reviewed once, admired in part, and struck from the chart.</p></div></div>'
+  + '<div class="drawer-item"><button type="button" class="drawer-roll" aria-expanded="false"><span class="roll-title">Fresh Studio</span><span class="roll-sub">the bright finish \u00b7 kept, not default</span></button>'
+  + '<div class="drawer-body" hidden><p>The chart before the vellum aged. Still aboard for any visitor who prefers her bright; the studio herself sails under the Aged Patina.</p></div></div>'
+  + '</div>';
+var STAGES = ['Charted & Corrected','Sounded','Sketch','Charted & Corrected','Sounded','Sketch'];
 function cardHTML(it, ix){
   return '<article class="voyage-card" data-pane="' + it.pane + '">'
     + '<div class="specimen-plate inked"><span class="harbor-tag" aria-hidden="true">\u2693 Harbor</span>'
@@ -9386,9 +9455,11 @@ function cardHTML(it, ix){
     + '<p class="voyage-card-line">' + it.line + '</p>'
     + '<p class="voyage-card-breath"><i>How it breathes \u2014</i> ' + it.breath + '</p>'
     + '<p class="specimen-meta">' + STAGES[ix || 0] + ' · Charted by the studio · Scale 1:1 · First sounded 2026</p>'
-    + '<div class="card-live">' + liveHTML(it.live) + '</div>'
-    + '<button type="button" class="voyage-card-board" data-board="' + it.pane + '">'
-    + '<span>Step aboard</span><kbd>Enter</kbd></button></div></article>';
+    + (it.exhibit
+      ? '<div class="card-live card-exhibit">' + liveHTML(it.live) + '</div></div></article>'
+      : '<div class="card-live">' + liveHTML(it.live) + '</div>'
+        + '<button type="button" class="voyage-card-board" data-board="' + it.pane + '">'
+        + '<span>Step aboard</span><kbd>Enter</kbd></button></div></article>');
 }
 var ic = document.getElementById('instrument-cards');
 var wc = document.getElementById('workbench-cards');
@@ -10173,6 +10244,131 @@ document.addEventListener('keydown', function(e){
   });
   window.addEventListener('keydown', function(){ if (sailing) stop(); });
   window.addEventListener('pointerdown', function(e){ if (sailing && e.target !== btn) stop(); });
+})();
+</script>
+
+<script>
+/* v21 THE HARBOR WORKS - exhibit instruments (null-safe, RM-aware). */
+(function(){
+  var RM = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* the chronometer, opened */
+  var chrono = document.querySelector('.exhibit-chrono');
+  if(chrono){
+    var svgNS = 'http://www.w3.org/2000/svg';
+    var ticks = chrono.querySelector('.chrono-ticks');
+    if(ticks){
+      for(var t = 0; t < 12; t++){
+        var ln = document.createElementNS(svgNS, 'line');
+        var a = t * Math.PI / 6, big = t % 3 === 0;
+        var r1 = big ? 46 : 50, r2 = 55;
+        ln.setAttribute('x1', 150 + r1 * Math.sin(a)); ln.setAttribute('y1', 100 - r1 * Math.cos(a));
+        ln.setAttribute('x2', 150 + r2 * Math.sin(a)); ln.setAttribute('y2', 100 - r2 * Math.cos(a));
+        ln.setAttribute('stroke', 'currentColor'); ln.setAttribute('stroke-width', big ? 2.4 : 1.2);
+        ticks.appendChild(ln);
+      }
+    }
+    var dial = chrono.querySelector('.chrono-dial'), gears = chrono.querySelector('.chrono-gears'),
+        glass = chrono.querySelector('.chrono-glass'), peek = chrono.querySelector('.chrono-peek'),
+        state = chrono.querySelector('.chrono-state'), balance = chrono.querySelector('.chrono-balance'),
+        gear1 = chrono.querySelector('.chrono-gear'), gear2 = chrono.querySelector('.chrono-gear2');
+    function applyPeek(){
+      var v = (parseInt(peek.value, 10) || 0) / 100;
+      dial.style.opacity = String(1 - 0.88 * v);
+      gears.style.opacity = String(0.14 + 0.86 * v);
+      if(glass) glass.style.opacity = String(0.5 * (1 - v));
+    }
+    if(peek){ peek.addEventListener('input', applyPeek); applyPeek(); }
+    var wind = 0, raf = 0, lastT = 0, rot = 0;
+    function setState(){
+      if(RM){ state.textContent = wind > 0 ? 'Wound \u00b7 resting still' : 'Run down \u00b7 wind her'; return; }
+      state.textContent = wind > 0.55 ? 'Wound \u00b7 running true' : wind > 0.18 ? 'Running \u00b7 the spring eases' : wind > 0.004 ? 'Running low \u00b7 wind her soon' : 'Run down \u00b7 wind her';
+    }
+    function tick(now){
+      var dt = Math.min(250, now - lastT); lastT = now;
+      wind *= Math.exp(-dt / 13000);
+      rot += dt * 0.05 * (0.25 + wind);
+      var swing = Math.sin(now / (620 - 320 * wind)) * 42 * Math.min(1, wind * 3);
+      if(balance) balance.setAttribute('transform', 'translate(174,76) rotate(' + swing.toFixed(1) + ')');
+      if(gear1) gear1.setAttribute('transform', 'translate(124,84) rotate(' + (rot % 360).toFixed(1) + ')');
+      if(gear2) gear2.setAttribute('transform', 'translate(163,121) rotate(' + (-(rot * 1.6) % 360).toFixed(1) + ')');
+      setState();
+      if(wind > 0.004){ raf = requestAnimationFrame(tick); } else { raf = 0; wind = 0; setState(); }
+    }
+    var windBtn = chrono.querySelector('.chrono-wind');
+    if(windBtn) windBtn.addEventListener('click', function(){
+      wind = Math.min(1, wind + 0.55);
+      if(RM){ setState(); return; }
+      if(!raf){ lastT = performance.now(); raf = requestAnimationFrame(tick); }
+      setState();
+    });
+    setState();
+  }
+  /* rig the route */
+  var route = document.querySelector('.exhibit-route');
+  if(route){
+    var PTS = {A: [36, 148], B: [104, 58], C: [196, 128], D: [264, 44]};
+    var ORDER = ['A', 'B', 'C', 'D'];
+    function dist(p, q){ var dx = p[0] - q[0], dy = p[1] - q[1]; return Math.sqrt(dx * dx + dy * dy); }
+    var charted = 0; for(var ci = 0; ci < 3; ci++) charted += dist(PTS[ORDER[ci]], PTS[ORDER[ci + 1]]);
+    var chartedFM = Math.round(charted / 3);
+    var yours = [], yoursEl = route.querySelector('.route-yours'), rState = route.querySelector('.route-state'),
+        boat = route.querySelector('.route-boat');
+    function fm(px){ return Math.round(px / 3); }
+    function render(){
+      yoursEl.setAttribute('points', yours.map(function(k){ return PTS[k][0] + ',' + PTS[k][1]; }).join(' '));
+      route.querySelectorAll('.route-mark').forEach(function(g){
+        g.classList.toggle('is-laid', yours.indexOf(g.getAttribute('data-mark')) >= 0);
+      });
+      if(!yours.length){ rState.textContent = 'Tap the marks in order to lay your course. The dashed line is the charted course.'; return; }
+      var total = 0; for(var i = 0; i < yours.length - 1; i++) total += dist(PTS[yours[i]], PTS[yours[i + 1]]);
+      if(yours.length < 4){ rState.textContent = 'Your course so far: ' + fm(total) + ' FM \u00b7 ' + yours.length + ' of 4 marks.'; return; }
+      var d = fm(total) - chartedFM;
+      rState.textContent = 'Your course: ' + fm(total) + ' FM \u00b7 Charted course: ' + chartedFM + ' FM \u2014 ' +
+        (d > 4 ? d + ' FM longer, and entirely yours.' : d < -4 ? Math.abs(d) + ' FM shorter. The chart is corrected in your favor.' : 'the charted course, matched. Well sailed.');
+    }
+    route.querySelectorAll('.route-mark').forEach(function(g){
+      function lay(){
+        var k = g.getAttribute('data-mark');
+        if(yours.indexOf(k) >= 0){ rState.textContent = k + ' \u00b7 ' + g.getAttribute('data-name') + ' is already on your course.'; return; }
+        yours.push(k); render();
+      }
+      g.addEventListener('click', lay);
+      g.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); lay(); } });
+    });
+    var resetB = route.querySelector('.route-reset');
+    if(resetB) resetB.addEventListener('click', function(){ yours = []; boat.setAttribute('cx', -20); boat.setAttribute('cy', -20); render(); });
+    var sailB = route.querySelector('.route-sail');
+    if(sailB) sailB.addEventListener('click', function(){
+      if(yours.length < 2){ rState.textContent = 'Lay a course first \u2014 tap two marks or more.'; return; }
+      var pts = yours.map(function(k){ return PTS[k]; });
+      var segs = [], total = 0, i;
+      for(i = 0; i < pts.length - 1; i++){ var L = dist(pts[i], pts[i + 1]); segs.push(L); total += L; }
+      if(RM){ var last = pts[pts.length - 1]; boat.setAttribute('cx', last[0]); boat.setAttribute('cy', last[1]); rState.textContent = 'Sailed \u00b7 resting at ' + yours[yours.length - 1] + '.'; return; }
+      var t0 = performance.now(), DUR = 2200;
+      (function step(now){
+        var p = Math.min(1, (now - t0) / DUR), target = p * total, acc = 0, j = 0;
+        while(j < segs.length - 1 && acc + segs[j] < target){ acc += segs[j]; j++; }
+        var f = segs[j] ? (target - acc) / segs[j] : 0;
+        boat.setAttribute('cx', pts[j][0] + (pts[j + 1][0] - pts[j][0]) * f);
+        boat.setAttribute('cy', pts[j][1] + (pts[j + 1][1] - pts[j][1]) * f);
+        if(p < 1) requestAnimationFrame(step);
+      })(t0);
+    });
+    render();
+  }
+  /* the chart drawer */
+  var drawer = document.querySelector('.exhibit-drawer');
+  if(drawer){
+    var rolls = drawer.querySelectorAll('.drawer-roll');
+    rolls.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var body = btn.parentElement.querySelector('.drawer-body');
+        var open = btn.getAttribute('aria-expanded') === 'true';
+        rolls.forEach(function(b){ b.setAttribute('aria-expanded', 'false'); b.parentElement.querySelector('.drawer-body').hidden = true; });
+        if(!open){ btn.setAttribute('aria-expanded', 'true'); body.hidden = false; }
+      });
+    });
+  }
 })();
 </script>
 </body>
