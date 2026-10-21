@@ -125,3 +125,16 @@ panel framed, and a deeper shadow on the plate. Service-worker cache:
 evenfaring-studio-v19.3. Darius's finish is Aged Patina (per his Deck
 screenshot) — the earlier pale Daylight shots were the light theme, not the
 Fresh finish.
+
+29. **Scroll pull-back / lag when sailing east (Darius, 2026-10-21, after
+    v19.3).** The v19.1/v19.2 snap dragged the page BACK to the nearest stop
+    whenever he stopped just past one — measured rewind of ~215px after
+    stopping 260px past a boundary — and the voyage's 0.14/frame smoothing
+    left a long floaty tail after each scroll. Fix (v19.4): the snap is
+    directional. A stop ahead in the direction of travel completes
+    generously (legs 2.6%, panels 1.8% of the runway); a stop behind only
+    settles within 0.7% (~80px, a landing rather than a rewind). Smoothing
+    tightened 0.14 → 0.20 with a sooner park cutoff. Verified by scroll
+    trails: approach completes forward to the stop; overshoot stays exactly
+    where it was left; regression 11/11. Panel-stop cache now also resets
+    on resize. Cache: evenfaring-studio-v19.4.
