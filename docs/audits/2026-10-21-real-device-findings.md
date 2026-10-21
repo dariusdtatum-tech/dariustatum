@@ -189,3 +189,26 @@ Fresh finish.
     throttled frames. Decorations sit below the fixed header's band and are
     hidden in the stacked mobile layout. Regression 11/11; toggles persist
     across reload; zero page errors. Cache: evenfaring-studio-v20.
+
+32. **FIG. 07 still cut + footer placement (Darius, 2026-10-21, on v20).**
+    Two reports: the footer block should sit in the bottom right ("not
+    the another captain but the other stuff"), and the storage inspector
+    "is still cut off." The cut had TWO remaining causes, one of them a
+    correction to items 24–30: (a) approached from the east on a
+    backtrack, the inspector's stop fell outside the snap's 0.7%
+    behind-limit, so it rested ~215px short — landing zones widened
+    (panels settle from 1.6% behind, legs 1.2%; the ~500px rewinds of
+    item 29 stay dead); (b) THE persistent one — the inspector section
+    carries Gemini's snd-drift-l offset, translateX(−56px), which slides
+    its left ~55px under its panel's clip edge (the panel's overflow-y
+    forces overflow-x clipping). "On-device…" → "…vice", "TRACKING" →
+    "…CKING" at every scroll position, in every screenshot since v19.3:
+    an internal clip, not a framing one. The scroll fixes were necessary
+    but never sufficient. The inspector is now exempt from the drift
+    (#fig-privacy{transform:none !important}); verified in-frame: the
+    full header and all three cells read complete, approached from
+    either direction. The footer panel now rests at the bottom of the
+    Arrival leg (align-self:flex-end, 9vh margin); the fellow ship is
+    untouched. The vessel readout also fades over the final approach
+    (p>0.986), symmetric with the FIG. 00 fade at departure. Cache:
+    evenfaring-studio-v20.2.
