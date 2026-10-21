@@ -4174,3 +4174,11 @@ body.layers-off-soundings .curio{display:none}
 
 /* v20.2 inspector drift exemption (mirror) */
 #fig-privacy{transform:none !important}
+
+/* v20.3 Arrival spacing (mirror) */
+@media (min-width:861px){
+  #contact-panel{margin-left:6vw}
+  #leg-arrival .leg-panel.pw60{flex:0 0 100vw;max-width:100vw}
+  #leg-arrival .leg-panel.pw60 footer .wrap{margin-left:auto;margin-right:0}
+  #voyage-world .voyage-runout{flex:0 0 8vw}
+}
