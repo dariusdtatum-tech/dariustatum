@@ -4254,6 +4254,36 @@ html[data-theme="dark"] :focus-visible{outline-color:var(--teal-light)}
 .voyage-card,.leg-panel>section{border-color:var(--line-strong);box-shadow:0 16px 42px rgba(20,35,60,.16)}
 .inst-bar,.specimen-plate{border-bottom-color:var(--line-strong)}
 
+/* --- v19.2 FIG. 00 plate legibility (Darius's shots, 2026-10-21) ---
+   In Daylight the plate's ghost geometry (compass rose, dashed solstice
+   arc) sits at 0.28-0.48 opacity and its grid at 0.11 alpha; on a bright
+   display chain the whole instrument washes to invisible. Floors below;
+   Night Watch and the aged finish keep their character. */
+.chronometer-card{box-shadow:0 16px 42px rgba(20,35,60,.16)}
+html[data-patina="fresh"] .chronometer-stage{--chart-grid:rgba(36,57,92,.22)}
+.chronometer-svg [opacity=".28"],.chronometer-svg [opacity="0.28"]{opacity:.52}
+.chronometer-svg [opacity=".32"],.chronometer-svg [opacity="0.32"]{opacity:.58}
+.chronometer-svg [opacity=".45"],.chronometer-svg [opacity="0.45"]{opacity:.66}
+.chronometer-svg [opacity=".48"],.chronometer-svg [opacity="0.48"]{opacity:.68}
+
+/* --- v19.3 clarity pass 2 (Darius's desktop shots, 2026-10-21) ---
+   1) The v18 hand-ink displacement filter (#ink-edge) sat on the WHOLE
+      FIG. 00 plate (.chronometer-card.inked) and on every specimen card's
+      header strip (.specimen-plate.inked): it warps text and thin lines,
+      reading as chromatic fringe on the plate and soft card tops. Filter
+      off for content; hand character stays via the --r-hand radii.
+      (Decorative .map-island ellipses keep their own filter rule.)
+   2) Departure's hero panel was flex-basis 100vw inside a leg padded
+      0 3vw, parking the plate's right edge 3vw past the viewport at rest.
+   3) Specimen cards at 50vw grow without bound on wide monitors.
+   4) Arrival: the ledger panel touched the FIG. 06 plate edge. */
+.inked{filter:none}
+@media (min-width:861px){
+  #leg-departure .pw100{flex-basis:94vw;max-width:94vw}
+  .voyage-card{flex-basis:min(50vw,820px);max-width:820px}
+  #ledger-panel{padding-left:3vw}
+}
+
 /* --- stacked mobile layout --- */
 @media (max-width: 860px){
   .voyage-scroll{height:auto!important}
@@ -9149,7 +9179,7 @@ updateChronometer = function(hourVal, driveBus = true) {
      fires within 4.5% of the runway of a boundary; programmatic sails
      keep emitting scroll events, so the idle timer never interrupts
      them, and a lockout prevents re-entry during the snap itself. */
-  var snapLockUntil = 0, snapTimer = 0;
+  var snapLockUntil = 0, snapTimer = 0, panelStops = null;
   window.addEventListener('scroll', function(){
     if (reduceMotion) return;
     if (performance.now() < snapLockUntil) return;
@@ -9158,12 +9188,26 @@ updateChronometer = function(hourVal, driveBus = true) {
       if (performance.now() < snapLockUntil) return;
       var dlg = document.getElementById('log-dialog');
       if (dlg && !dlg.hidden) return;
-      var y = window.scrollY || 0, best = null, bestD = Infinity;
+      var y = window.scrollY || 0, best = null, bestLim = 0;
       legs.forEach(function(L){
         var t = L.startP * doc, d = Math.abs(t - y);
-        if (d < bestD) { bestD = d; best = t; }
+        if (d < doc * 0.045 && (best === null || d < Math.abs(best - y))) { best = t; bestLim = doc * 0.045; }
       });
-      if (best !== null && bestD > 2 && bestD < doc * 0.045) {
+      /* v19.2: panels are stops too — the FIG. 00 plate panel (pw80) begins
+         a full screen into Departure, so leg-only snapping never frames it.
+         Panel stops use a tighter threshold so sailing stays free. */
+      if (!panelStops) {
+        panelStops = [];
+        var wLeft = world.getBoundingClientRect().left;
+        Array.prototype.forEach.call(document.querySelectorAll('.leg-panel'), function(el){
+          panelStops.push((el.getBoundingClientRect().left - wLeft) / S * doc);
+        });
+      }
+      panelStops.forEach(function(t){
+        var d = Math.abs(t - y);
+        if (d < doc * 0.025 && (best === null || d < Math.abs(best - y))) { best = t; bestLim = doc * 0.025; }
+      });
+      if (best !== null && Math.abs(best - y) > 2) {
         snapLockUntil = performance.now() + 900;
         window.scrollTo({top: best, behavior: 'smooth'});
       }
@@ -9289,7 +9333,8 @@ document.addEventListener('click', function(e){
   cv.parentElement.addEventListener('pointerleave', function(){ mx = -999; my = -999; });
   function draw(){
     ctx.clearRect(0, 0, 440, 440);
-    ctx.fillStyle = 'rgba(30,99,93,0.10)';
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    ctx.fillStyle = dark ? 'rgba(169,203,192,0.07)' : 'rgba(30,99,93,0.10)';
     ctx.beginPath(); ctx.arc(220, 220, 200, 0, 6.2832); ctx.fill();
     for(var i = 0; i < dots.length; i++){
       var d = dots[i];
@@ -9301,9 +9346,9 @@ document.addEventListener('click', function(e){
         var cx = d.x - 220, cy = d.y - 220, cd = Math.sqrt(cx * cx + cy * cy);
         if(cd > 195){ d.x = 220 + cx / cd * 195; d.y = 220 + cy / cd * 195; }
       }
-      ctx.strokeStyle = 'rgba(27,46,75,.55)'; ctx.lineWidth = 1.4;
+      ctx.strokeStyle = dark ? 'rgba(169,203,192,.6)' : 'rgba(27,46,75,.55)'; ctx.lineWidth = 1.4;
       ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, 6.2832); ctx.stroke();
-      ctx.fillStyle = 'rgba(27,46,75,.7)';
+      ctx.fillStyle = dark ? 'rgba(226,240,234,.85)' : 'rgba(27,46,75,.7)';
       ctx.font = '600 13px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       ctx.fillText(d.n, d.x, d.y + 1);
     }

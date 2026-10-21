@@ -4117,3 +4117,19 @@ html[data-theme="dark"] :focus-visible{outline-color:var(--teal-light)}
 /* v19.1 card presence (mirror of index.html #v19-fixes) */
 .voyage-card,.leg-panel>section{border-color:var(--line-strong);box-shadow:0 16px 42px rgba(20,35,60,.16)}
 .inst-bar,.specimen-plate{border-bottom-color:var(--line-strong)}
+
+/* v19.2 FIG. 00 plate legibility (mirror of index.html #v19-fixes) */
+.chronometer-card{box-shadow:0 16px 42px rgba(20,35,60,.16)}
+html[data-patina="fresh"] .chronometer-stage{--chart-grid:rgba(36,57,92,.22)}
+.chronometer-svg [opacity=".28"],.chronometer-svg [opacity="0.28"]{opacity:.52}
+.chronometer-svg [opacity=".32"],.chronometer-svg [opacity="0.32"]{opacity:.58}
+.chronometer-svg [opacity=".45"],.chronometer-svg [opacity="0.45"]{opacity:.66}
+.chronometer-svg [opacity=".48"],.chronometer-svg [opacity="0.48"]{opacity:.68}
+
+/* v19.3 clarity pass 2 (mirror of index.html #v19-fixes) */
+.inked{filter:none}
+@media (min-width:861px){
+  #leg-departure .pw100{flex-basis:94vw;max-width:94vw}
+  .voyage-card{flex-basis:min(50vw,820px);max-width:820px}
+  #ledger-panel{padding-left:3vw}
+}
