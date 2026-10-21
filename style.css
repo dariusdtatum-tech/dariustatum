@@ -4242,3 +4242,32 @@ body.layers-off-soundings .curio{display:none}
   header.site .header-controls{order:3}
   header.site nav[aria-label="Main"]{order:4}
 }
+
+/* v23 chronometer opened (mirror of index.html #v23-chronometer-opened) */
+/* ================= v23 THE CHRONOMETER, OPENED =================
+   Specimen 04 rebuilt to the take-apart standard (rec 1, Darius
+   2026-10-21): a four-stop exploded peel (case, dial, movement,
+   escapement) with vertical separation and parallax, labelled
+   parts with leader lines, drag-to-turn, and a mainspring meter
+   you can watch give out as the balance slows. */
+.exhibit-chrono svg{max-width:470px}
+.cx-stage{cursor:grab;touch-action:pan-y;border-radius:12px}
+.cx-stage:active{cursor:grabbing}
+.cx-stage:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.cx-instrument{overflow:visible;transform-origin:50% 50%}
+.cx-settle .cx-layer,.cx-settle .cx-instrument{transition:transform .45s cubic-bezier(.2,.8,.25,1)}
+.cx-layer{transition:opacity .3s ease}
+.cx-labels{transition:opacity .35s ease;pointer-events:none}
+.cx-leader{stroke:var(--line-strong);stroke-width:.6;fill:none}
+.cx-dot{fill:var(--teal)}
+.cx-lab{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:6.4px;letter-spacing:.13em;fill:var(--ink-soft)}
+.exhibit-chrono .chrono-peek{width:172px}
+.cx-labels-btn[aria-pressed="true"]{border-color:var(--teal);color:var(--teal)}
+.cx-detents{display:flex;justify-content:space-between;max-width:262px;margin:5px 0 0 62px;font:600 .6rem/1 'Plus Jakarta Sans',sans-serif;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft)}
+.cx-spring-row{display:flex;align-items:center;gap:10px;margin-top:13px;max-width:430px}
+.cx-spring-label{font:600 .66rem/1 'Plus Jakarta Sans',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.cx-spring-track{flex:1;height:6px;border:1px solid var(--line-strong);border-radius:99px;overflow:hidden}
+.cx-spring-fill{height:100%;width:0;background:var(--teal);transition:width .35s linear}
+.cx-spring-pct{font:600 .72rem/1 'Plus Jakarta Sans',sans-serif;color:var(--ink-soft);min-width:4ch}
+.exhibit-hint{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.94rem;color:var(--ink-soft);margin:5px 0 0}
+@media(max-width:560px){.cx-detents{margin-left:0;max-width:300px}}

@@ -4439,6 +4439,35 @@ body.layers-off-soundings .curio{display:none}
   header.site nav[aria-label="Main"]{order:4}
 }
 </style>
+<style id="v23-chronometer-opened">
+/* ================= v23 THE CHRONOMETER, OPENED =================
+   Specimen 04 rebuilt to the take-apart standard (rec 1, Darius
+   2026-10-21): a four-stop exploded peel (case, dial, movement,
+   escapement) with vertical separation and parallax, labelled
+   parts with leader lines, drag-to-turn, and a mainspring meter
+   you can watch give out as the balance slows. */
+.exhibit-chrono svg{max-width:470px}
+.cx-stage{cursor:grab;touch-action:pan-y;border-radius:12px}
+.cx-stage:active{cursor:grabbing}
+.cx-stage:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.cx-instrument{overflow:visible;transform-origin:50% 50%}
+.cx-settle .cx-layer,.cx-settle .cx-instrument{transition:transform .45s cubic-bezier(.2,.8,.25,1)}
+.cx-layer{transition:opacity .3s ease}
+.cx-labels{transition:opacity .35s ease;pointer-events:none}
+.cx-leader{stroke:var(--line-strong);stroke-width:.6;fill:none}
+.cx-dot{fill:var(--teal)}
+.cx-lab{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:6.4px;letter-spacing:.13em;fill:var(--ink-soft)}
+.exhibit-chrono .chrono-peek{width:172px}
+.cx-labels-btn[aria-pressed="true"]{border-color:var(--teal);color:var(--teal)}
+.cx-detents{display:flex;justify-content:space-between;max-width:262px;margin:5px 0 0 62px;font:600 .6rem/1 'Plus Jakarta Sans',sans-serif;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft)}
+.cx-spring-row{display:flex;align-items:center;gap:10px;margin-top:13px;max-width:430px}
+.cx-spring-label{font:600 .66rem/1 'Plus Jakarta Sans',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.cx-spring-track{flex:1;height:6px;border:1px solid var(--line-strong);border-radius:99px;overflow:hidden}
+.cx-spring-fill{height:100%;width:0;background:var(--teal);transition:width .35s linear}
+.cx-spring-pct{font:600 .72rem/1 'Plus Jakarta Sans',sans-serif;color:var(--ink-soft);min-width:4ch}
+.exhibit-hint{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.94rem;color:var(--ink-soft);margin:5px 0 0}
+@media(max-width:560px){.cx-detents{margin-left:0;max-width:300px}}
+</style>
 </head>
 <body data-patina="aged" data-theme="light">
 <svg aria-hidden="true" class="v18-ink-defs" focusable="false" height="0" style="position:absolute;left:0;top:0" width="0"><defs><filter height="110%" id="ink-edge" width="110%" x="-5%" y="-5%"><feTurbulence baseFrequency="0.9" numOctaves="2" result="n" seed="7" type="fractalNoise"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3"/></filter></defs></svg>
@@ -9458,22 +9487,49 @@ function liveHTML(kind){
   return '<div class="live-ready" aria-hidden="true"><span class="live-status"></span><span>ready &middot; listening</span></div>';
 }
 var CHRONO_HTML = '<div class="exhibit exhibit-chrono">'
-  + '<svg class="chrono-svg" viewBox="70 16 165 168" role="img" aria-label="A chronometer shown in layers: case, dial, and gear train">'
-  + '<g class="chrono-gears" opacity="0.14">'
-  + '<g class="chrono-gear" transform="translate(124,84)"><circle r="22" fill="none" stroke="currentColor" stroke-width="9" stroke-dasharray="5 5"/><circle r="13" fill="none" stroke="currentColor" stroke-width="2"/><path d="M-13,0 H13 M0,-13 V13" stroke="currentColor" stroke-width="2"/></g>'
+  + '<div class="cx-stage" tabindex="0" role="img" aria-label="A chronometer taken apart in layers: case, dial, gear train and escapement, with the parts labelled. Drag sideways to turn her; use the slider below to open her.">'
+  + '<svg class="chrono-svg cx-instrument" viewBox="20 4 260 182" aria-hidden="true">'
+  /* case back */
+  + '<g class="cx-layer" data-depth="0"><circle cx="150" cy="100" r="64" fill="var(--bg)" opacity="0.85"/><circle cx="150" cy="100" r="64" fill="none" stroke="var(--line-strong)" stroke-width="1"/>'
+  + '<circle cx="150" cy="44" r="2.2" fill="var(--line-strong)"/><circle cx="150" cy="156" r="2.2" fill="var(--line-strong)"/><circle cx="94" cy="100" r="2.2" fill="var(--line-strong)"/><circle cx="206" cy="100" r="2.2" fill="var(--line-strong)"/></g>'
+  /* escapement */
+  + '<g class="cx-layer" data-depth="1"><g class="chrono-escape" transform="translate(187,120)"><circle r="11" fill="none" stroke="var(--teal)" stroke-width="5" stroke-dasharray="3.2 3.9"/><circle r="5.5" fill="none" stroke="var(--teal)" stroke-width="1.2"/><circle r="1.8" fill="var(--teal)"/></g>'
+  + '<path d="M178,112 L168,96" stroke="var(--teal)" stroke-width="2" stroke-linecap="round"/><path d="M168,96 l-5,-3 M168,96 l1,-6" stroke="var(--teal)" stroke-width="2" stroke-linecap="round"/>'
+  + '<g class="chrono-balance" transform="translate(174,76)"><circle r="17" fill="none" stroke="currentColor" stroke-width="3"/><path d="M-17,0 H17" stroke="currentColor" stroke-width="3"/><circle cx="-11" cy="0" r="2.6" fill="var(--timber)"/><circle cx="11" cy="0" r="2.6" fill="var(--timber)"/><circle r="4" fill="var(--timber)"/></g>'
+  + '<path d="M174,76 m-6,0 a6,6 0 1,1 6,6 a4,4 0 1,0 -4,-4" fill="none" stroke="var(--teal)" stroke-width="0.9" opacity="0.8"/></g>'
+  /* movement */
+  + '<g class="cx-layer" data-depth="2"><g class="chrono-gear" transform="translate(124,84)"><circle r="22" fill="none" stroke="currentColor" stroke-width="9" stroke-dasharray="5 5"/><circle r="13" fill="none" stroke="currentColor" stroke-width="2"/><path d="M-13,0 H13 M0,-13 V13" stroke="currentColor" stroke-width="2"/></g>'
   + '<g class="chrono-gear2" transform="translate(163,121)"><circle r="15" fill="none" stroke="currentColor" stroke-width="8" stroke-dasharray="4 4"/><circle r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M-9,0 H9 M0,-9 V9" stroke="currentColor" stroke-width="2"/></g>'
-  + '<g class="chrono-balance" transform="translate(174,76)"><circle r="17" fill="none" stroke="var(--timber)" stroke-width="3"/><path d="M-17,0 H17" stroke="var(--timber)" stroke-width="3"/><circle cx="-11" cy="0" r="2.6" fill="var(--timber)"/><circle cx="11" cy="0" r="2.6" fill="var(--timber)"/><circle r="4" fill="var(--timber)"/></g>'
+  + '<g class="chrono-barrel" transform="translate(114,128)"><circle r="19" fill="none" stroke="currentColor" stroke-width="3"/><circle class="cx-spring" r="13.5" fill="none" stroke="var(--teal)" stroke-width="3.4" stroke-dasharray="84.8" stroke-dashoffset="84.8" transform="rotate(-90)"/><circle r="3.4" fill="currentColor"/></g>'
   + '<circle cx="150" cy="100" r="5" fill="currentColor"/></g>'
-  + '<g class="chrono-dial"><circle cx="150" cy="100" r="57" fill="none" stroke="currentColor" stroke-width="2"/><g class="chrono-ticks"></g>'
-  + '<path d="M150,100 L150,66" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M150,100 L178,112" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="150" cy="100" r="5" fill="currentColor"/>'
-  + '<text x="150" y="132" text-anchor="middle" font-size="8" letter-spacing="2" fill="currentColor">EVENFARING</text></g>'
-  + '<g class="chrono-case"><circle cx="150" cy="100" r="66" fill="none" stroke="var(--timber)" stroke-width="7"/>'
-  + '<path class="chrono-glass" d="M104,58 A58,58 0 0 1 178,50" fill="none" stroke="var(--paper)" stroke-width="5" opacity="0.5" stroke-linecap="round"/>'
-  + '<g class="chrono-crown" transform="translate(150,35)"><rect x="-7" y="-14" width="14" height="13" rx="3" fill="var(--timber)"/><path d="M-7,-10 H7 M-7,-6 H7" stroke="var(--paper)" stroke-width="1.4" opacity="0.6"/></g></g>'
-  + '</svg>'
-  + '<div class="exhibit-controls"><label class="peek-label">Peek inside <input type="range" class="chrono-peek" min="0" max="100" value="0" aria-label="Peek inside the chronometer"></label>'
-  + '<button type="button" class="exhibit-btn chrono-wind">Wind her</button></div>'
-  + '<p class="exhibit-readout chrono-state" role="status">Run down \u00b7 wind her</p></div>';
+  /* dial */
+  + '<g class="cx-layer" data-depth="3"><g class="chrono-dial"><circle cx="150" cy="100" r="57" fill="var(--bg)" fill-opacity="0.93"/><circle cx="150" cy="100" r="57" fill="none" stroke="currentColor" stroke-width="2"/><g class="chrono-ticks"></g>'
+  + '<path d="M150,100 L150,66" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M150,100 L178,112" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>'
+  + '<g class="chrono-second"><path d="M150,112 L150,57" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round"/></g><circle cx="150" cy="100" r="5" fill="currentColor"/>'
+  + '<text x="150" y="132" text-anchor="middle" font-size="8" letter-spacing="2" fill="currentColor">EVENFARING</text></g></g>'
+  /* case front */
+  + '<g class="cx-layer" data-depth="4"><circle cx="150" cy="100" r="66" fill="none" stroke="var(--timber)" stroke-width="7"/>'
+  + '<path class="chrono-glass" d="M104,58 A58,58 0 0 1 178,50" fill="none" stroke="#f7f1e3" stroke-width="5" opacity="0.5" stroke-linecap="round"/>'
+  + '<g class="chrono-crown" transform="translate(150,35)"><rect x="-7" y="-14" width="14" height="13" rx="3" fill="var(--timber)"/><path d="M-7,-10 H7 M-7,-6 H7" stroke="#f7f1e3" stroke-width="1.4" opacity="0.6"/></g></g>'
+  /* labels */
+  + '<g class="cx-labels cx-labels-case" opacity="0">'
+  + '<g><path d="M152,30 L196,20" class="cx-leader"/><circle cx="150" cy="29" r="1.6" class="cx-dot"/><text x="200" y="22" class="cx-lab">CROWN · WINDS HER</text></g>'
+  + '<g><path d="M88,86 L78,79" class="cx-leader"/><circle cx="86" cy="87" r="1.6" class="cx-dot"/><text x="74" y="81" text-anchor="end" class="cx-lab">BEZEL &amp; CASE</text></g></g>'
+  + '<g class="cx-labels cx-labels-a" opacity="0">'
+  + '<g><path d="M95,102 L68,100" class="cx-leader"/><circle cx="93" cy="100" r="1.6" class="cx-dot"/><text x="60" y="102" text-anchor="end" class="cx-lab">DIAL</text></g>'
+  + '<g><path d="M128,140 L196,152" class="cx-leader"/><circle cx="126" cy="139" r="1.6" class="cx-dot"/><text x="200" y="154" class="cx-lab">MAINSPRING BARREL</text></g></g>'
+  + '<g class="cx-labels cx-labels-b" opacity="0">'
+  + '<g><path d="M118,72 L78,56" class="cx-leader"/><circle cx="116" cy="71" r="1.6" class="cx-dot"/><text x="74" y="58" text-anchor="end" class="cx-lab">GEAR TRAIN</text></g>'
+  + '<g><path d="M186,68 L212,58" class="cx-leader"/><circle cx="188" cy="67" r="1.6" class="cx-dot"/><text x="216" y="60" class="cx-lab">BALANCE</text></g>'
+  + '<g><path d="M196,124 L216,122" class="cx-leader"/><circle cx="198" cy="123" r="1.6" class="cx-dot"/><text x="220" y="124" class="cx-lab">ESCAPE WHEEL</text></g></g>'
+  + '</svg></div>'
+  + '<div class="exhibit-controls"><label class="peek-label">Open her <input type="range" class="chrono-peek" min="0" max="300" value="0" step="1" aria-label="Open the chronometer, from case to escapement"></label>'
+  + '<button type="button" class="exhibit-btn chrono-wind">Wind her</button>'
+  + '<button type="button" class="exhibit-btn cx-labels-btn" aria-pressed="true">Labels</button></div>'
+  + '<div class="cx-detents" aria-hidden="true"><span>Case</span><span>Dial</span><span>Movement</span><span>Escapement</span></div>'
+  + '<div class="cx-spring-row"><span class="cx-spring-label">Spring</span><div class="cx-spring-track" role="meter" aria-label="Mainspring charge" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="cx-spring-fill"></div></div><span class="cx-spring-pct">0%</span></div>'
+  + '<p class="exhibit-readout chrono-state" role="status">Run down · wind her</p>'
+  + '<p class="exhibit-hint">Drag her sideways to turn her in the light.</p></div>';
 var ROUTE_HTML = '<div class="exhibit exhibit-route">'
   + '<svg class="route-svg" viewBox="0 0 300 190" role="group" aria-label="A blank patch of chart with four harbor marks">'
   + '<path d="M0,48 H300 M0,95 H300 M0,142 H300 M60,0 V190 M130,0 V190 M200,0 V190 M260,0 V190" stroke="currentColor" stroke-width="0.6" opacity="0.25"/>'
@@ -10302,7 +10358,8 @@ document.addEventListener('keydown', function(e){
 /* v21 THE HARBOR WORKS - exhibit instruments (null-safe, RM-aware). */
 (function(){
   var RM = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  /* the chronometer, opened */
+  /* the chronometer, opened — v23: exploded peel, labelled parts,
+     drag-to-turn, a spring you can watch give out. */
   var chrono = document.querySelector('.exhibit-chrono');
   if(chrono){
     var svgNS = 'http://www.w3.org/2000/svg';
@@ -10310,49 +10367,119 @@ document.addEventListener('keydown', function(e){
     if(ticks){
       for(var t = 0; t < 12; t++){
         var ln = document.createElementNS(svgNS, 'line');
-        var a = t * Math.PI / 6, big = t % 3 === 0;
+        var ang = t * Math.PI / 6, big = t % 3 === 0;
         var r1 = big ? 46 : 50, r2 = 55;
-        ln.setAttribute('x1', 150 + r1 * Math.sin(a)); ln.setAttribute('y1', 100 - r1 * Math.cos(a));
-        ln.setAttribute('x2', 150 + r2 * Math.sin(a)); ln.setAttribute('y2', 100 - r2 * Math.cos(a));
+        ln.setAttribute('x1', 150 + r1 * Math.sin(ang)); ln.setAttribute('y1', 100 - r1 * Math.cos(ang));
+        ln.setAttribute('x2', 150 + r2 * Math.sin(ang)); ln.setAttribute('y2', 100 - r2 * Math.cos(ang));
         ln.setAttribute('stroke', 'currentColor'); ln.setAttribute('stroke-width', big ? 2.4 : 1.2);
         ticks.appendChild(ln);
       }
     }
-    var dial = chrono.querySelector('.chrono-dial'), gears = chrono.querySelector('.chrono-gears'),
+    var stage = chrono.querySelector('.cx-stage'), svgEl = chrono.querySelector('.cx-instrument'),
+        layers = Array.prototype.slice.call(chrono.querySelectorAll('.cx-layer')),
         glass = chrono.querySelector('.chrono-glass'), peek = chrono.querySelector('.chrono-peek'),
         state = chrono.querySelector('.chrono-state'), balance = chrono.querySelector('.chrono-balance'),
-        gear1 = chrono.querySelector('.chrono-gear'), gear2 = chrono.querySelector('.chrono-gear2');
-    function applyPeek(){
-      var v = (parseInt(peek.value, 10) || 0) / 100;
-      dial.style.opacity = String(1 - 0.88 * v);
-      gears.style.opacity = String(0.14 + 0.86 * v);
-      if(glass) glass.style.opacity = String(0.5 * (1 - v));
+        gear1 = chrono.querySelector('.chrono-gear'), gear2 = chrono.querySelector('.chrono-gear2'),
+        escapeW = chrono.querySelector('.chrono-escape'), second = chrono.querySelector('.chrono-second'),
+        springArc = chrono.querySelector('.cx-spring'), labelsBtn = chrono.querySelector('.cx-labels-btn'),
+        labA = chrono.querySelector('.cx-labels-a'), labB = chrono.querySelector('.cx-labels-b'), labCase = chrono.querySelector('.cx-labels-case'),
+        meter = chrono.querySelector('.cx-spring-track'), fill = chrono.querySelector('.cx-spring-fill'),
+        pct = chrono.querySelector('.cx-spring-pct');
+    var STAGES = ['Case closed', 'Dial opened', 'Movement bared', 'Escapement bared'];
+    var peel = 0, turn = 0, labelsOn = true;
+    function clamp(v, lo, hi){ return Math.max(lo, Math.min(hi, v)); }
+    function band(p, a, b2){ return clamp((p - a) / (b2 - a), 0, 1); }
+    function applyView(){
+      var trad = turn * Math.PI / 180;
+      layers.forEach(function(g){
+        var d = parseInt(g.getAttribute('data-depth'), 10), o = 1;
+        if(d === 4) o = 1 - band(peel, 0, 0.9);
+        else if(d === 3) o = 1 - 0.9 * band(peel, 1, 2);
+        else if(d === 2) o = 1 - 0.38 * band(peel, 2, 3);
+        else if(d === 1) o = 0.3 + 0.7 * band(peel, 2, 3);
+        g.style.opacity = String(o);
+        var tx = Math.sin(trad) * (d - 2) * 4, ty = (d - 2) * peel * 3.4;
+        g.style.transform = 'translate(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px)';
+      });
+      if(glass) glass.style.opacity = String(0.5 * (1 - band(peel, 0, 0.9)));
+      if(svgEl) svgEl.style.transform = 'rotate(' + (turn * 0.45).toFixed(2) + 'deg)';
+      if(labCase) labCase.style.opacity = labelsOn ? String(1 - band(peel, 0.25, 0.85)) : '0';
+      if(labA) labA.style.opacity = labelsOn && peel >= 0.45 ? '1' : '0';
+      if(labB) labB.style.opacity = labelsOn && peel >= 1.8 ? '1' : '0';
+      if(peek) peek.setAttribute('aria-valuetext', STAGES[Math.round(peel)]);
     }
-    if(peek){ peek.addEventListener('input', applyPeek); applyPeek(); }
-    var wind = 0, raf = 0, lastT = 0, rot = 0;
+    if(peek) peek.addEventListener('input', function(){ peel = (parseInt(peek.value, 10) || 0) / 100; applyView(); });
+    if(labelsBtn) labelsBtn.addEventListener('click', function(){
+      labelsOn = !labelsOn;
+      labelsBtn.setAttribute('aria-pressed', labelsOn ? 'true' : 'false');
+      applyView();
+    });
+    /* drag to turn */
+    var dragX = null, dragTurn = 0, settleT = 0;
+    function endTurn(){
+      if(turn === 0) return;
+      chrono.classList.add('cx-settle'); turn = 0; applyView();
+      window.setTimeout(function(){ chrono.classList.remove('cx-settle'); }, 480);
+    }
+    if(stage){
+      stage.addEventListener('pointerdown', function(e){
+        if(e.button !== undefined && e.button !== 0) return;
+        dragX = e.clientX; dragTurn = turn;
+        try{ stage.setPointerCapture(e.pointerId); }catch(err){}
+      });
+      stage.addEventListener('pointermove', function(e){
+        if(dragX === null) return;
+        turn = clamp(dragTurn + (e.clientX - dragX) / 5, -16, 16); applyView();
+      });
+      ['pointerup', 'pointercancel'].forEach(function(ev){ stage.addEventListener(ev, function(){ dragX = null; endTurn(); }); });
+      stage.addEventListener('keydown', function(e){
+        if(e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+        e.preventDefault();
+        turn = clamp(turn + (e.key === 'ArrowRight' ? 4 : -4), -16, 16); applyView();
+        window.clearTimeout(settleT); settleT = window.setTimeout(endTurn, 1400);
+      });
+    }
+    /* the wind: a spring you can watch give out */
+    var wind = 0, raf = 0, lastT = 0, rot = 0, secRot = 0, lastPct = -1;
+    function setMeter(){
+      var pc = Math.round(wind * 100);
+      if(pc === lastPct) return; lastPct = pc;
+      if(fill) fill.style.width = pc + '%';
+      if(pct) pct.textContent = pc + '%';
+      if(meter) meter.setAttribute('aria-valuenow', String(pc));
+      if(springArc) springArc.setAttribute('stroke-dashoffset', String(84.8 * (1 - wind)));
+    }
     function setState(){
-      if(RM){ state.textContent = wind > 0 ? 'Wound \u00b7 resting still' : 'Run down \u00b7 wind her'; return; }
-      state.textContent = wind > 0.55 ? 'Wound \u00b7 running true' : wind > 0.18 ? 'Running \u00b7 the spring eases' : wind > 0.004 ? 'Running low \u00b7 wind her soon' : 'Run down \u00b7 wind her';
+      var pc = Math.round(wind * 100);
+      if(RM){ state.textContent = wind > 0 ? 'Wound · resting still · spring ' + pc + '%' : 'Run down · wind her'; setMeter(); return; }
+      state.textContent = wind > 0.55 ? 'Wound · running true · spring ' + pc + '%'
+        : wind > 0.18 ? 'Running · the spring eases · spring ' + pc + '%'
+        : wind > 0.004 ? 'Running low · wind her soon · spring ' + pc + '%'
+        : 'Run down · wind her';
     }
     function tick(now){
       var dt = Math.min(250, now - lastT); lastT = now;
       wind *= Math.exp(-dt / 13000);
       rot += dt * 0.05 * (0.25 + wind);
-      var swing = Math.sin(now / (620 - 320 * wind)) * 42 * Math.min(1, wind * 3);
+      secRot += dt * 0.06 * (0.15 + 0.85 * wind);
+      var swing = Math.sin(now / (640 - 340 * wind)) * 44 * Math.min(1, wind * 2.6);
       if(balance) balance.setAttribute('transform', 'translate(174,76) rotate(' + swing.toFixed(1) + ')');
       if(gear1) gear1.setAttribute('transform', 'translate(124,84) rotate(' + (rot % 360).toFixed(1) + ')');
       if(gear2) gear2.setAttribute('transform', 'translate(163,121) rotate(' + (-(rot * 1.6) % 360).toFixed(1) + ')');
-      setState();
-      if(wind > 0.004){ raf = requestAnimationFrame(tick); } else { raf = 0; wind = 0; setState(); }
+      if(escapeW) escapeW.setAttribute('transform', 'translate(187,120) rotate(' + (Math.floor(rot * 3) * 6 % 360) + ')');
+      if(second) second.setAttribute('transform', 'rotate(' + (secRot % 360).toFixed(1) + ' 150 100)');
+      setMeter(); setState();
+      if(wind > 0.004){ raf = requestAnimationFrame(tick); }
+      else { raf = 0; wind = 0; setMeter(); setState(); }
     }
     var windBtn = chrono.querySelector('.chrono-wind');
     if(windBtn) windBtn.addEventListener('click', function(){
       wind = Math.min(1, wind + 0.55);
-      if(RM){ setState(); return; }
+      setMeter(); setState();
+      if(RM) return;
       if(!raf){ lastT = performance.now(); raf = requestAnimationFrame(tick); }
-      setState();
     });
-    setState();
+    applyView(); setMeter(); setState();
   }
   /* rig the route */
   var route = document.querySelector('.exhibit-route');
