@@ -212,3 +212,19 @@ Fresh finish.
     untouched. The vessel readout also fades over the final approach
     (p>0.986), symmetric with the FIG. 00 fade at departure. Cache:
     evenfaring-studio-v20.2.
+
+33. **Arrival spacing + the end should feel like the end (Darius,
+    2026-10-21, on v20.2).** Three points: the inspector and the
+    "Write to the studio" panel crowded each other (contact copy began
+    at the card's edge); the footer landing left the right of the screen
+    as empty run-out; and the end should feel like the end — the
+    chart-index block seen AT the end, not before it. Fix (desktop
+    voyage only, min-width:861px): the contact panel gains a 6vw left
+    margin (measured gap card→heading: 114px); the footer panel widens
+    pw60 → 100vw with its block anchored bottom-right (margin-left:auto);
+    the run-out shrinks 42vw → 8vw, which makes the footer stop coincide
+    with maximum scroll (16,810 = 16,810 at 2048px) — the landing IS the
+    end of the chart, and the readout's final-approach fade leaves the
+    frame clean. Panel stops are offsetLeft-derived, so all landings
+    recomputed themselves. Regression 11/11. Cache:
+    evenfaring-studio-v20.3.
