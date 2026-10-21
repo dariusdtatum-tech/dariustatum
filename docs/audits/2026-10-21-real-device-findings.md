@@ -228,3 +228,26 @@ Fresh finish.
     frame clean. Panel stops are offsetLeft-derived, so all landings
     recomputed themselves. Regression 11/11. Cache:
     evenfaring-studio-v20.3.
+
+34. **v21 THE HARBOR WORKS (Darius, 2026-10-21).** His call: specimens
+    04–06 were the three apps repeated in workbench dress — filler.
+    Brainstormed from the Charted Waters study; his brief: "Do what you
+    think is best, and what will blend well with the foundation." The
+    trio with a story — touch, play, memory: SPECIMEN 04 is now The
+    Chronometer, Opened (study #16: a peek-inside slider fading case →
+    dial → gear train, and a wind control — she runs down over ~40s
+    unless rewound, state reported in the instrument voice); 05 is Rig
+    the Route (#18: tap four marks to lay your own course on a blank
+    chart patch, scored live in fathoms against the charted course,
+    with a Sail-it run); 06 is The Chart Drawer (#14: three rolled
+    charts — the v14 Parallax Chart, the Gemini Fork, the Fresh Studio
+    finish — unrolled by accordion, each with its honest striking note).
+    The leg is renamed LEG 3 · THE HARBOR WORKS with matching copy. The
+    workbenches themselves are untouched and still open full-screen from
+    specimens 01–03. Build notes: the exhibit wrapper had to escape
+    .card-live's flex row (display:block) or the SVG collapsed to
+    intrinsic size; gear train sits inside the dial's r57 so the opened
+    movement reads as one instrument. Regression 11/11; exhibits probed
+    (peek cross-fade, wind state, course math 143 vs 112 FM on A-C-D-B,
+    boat sails, drawer accordion); workbench modal verified opening from
+    card 01. Cache: evenfaring-studio-v21.
