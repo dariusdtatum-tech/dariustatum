@@ -1380,51 +1380,6 @@ footer a{display:inline-flex;align-items:center;padding:10px 0;min-height:44px;c
 }
 
 /* Hero 5-Second Quick-Jump Index Strip */
-.hero-index-strip{
-  margin-top:20px;
-  padding-top:16px;
-  border-top:1px solid var(--line);
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:8px;
-}
-.hero-index-chip{
-  display:flex;
-  flex-direction:column;
-  gap:2px;
-  padding:8px 10px;
-  border:1px solid var(--line);
-  border-radius:var(--radius-md);
-  background:var(--surface);
-  text-decoration:none;
-  transition:border-color .18s var(--ease-out-quart),background-color .18s var(--ease-out-quart),transform .18s var(--ease-out-quart);
-}
-.hero-index-chip:hover{
-  border-color:var(--teal);
-  background:var(--card-quiet);
-  transform:translateY(-1px);
-}
-.hero-index-chip-num{
-  font-size:var(--text-xs);
-  font-weight:700;
-  color:var(--teal);
-  font-variant-numeric:tabular-nums;
-}
-.hero-index-chip-name{
-  font-family:var(--font-display);
-  font-size:1.15rem;
-  font-weight:600;
-  color:var(--text);
-  line-height:1.15;
-}
-.hero-index-chip-state{
-  font-size:var(--text-xs);
-  color:var(--text-2);
-  display:inline-flex;
-  align-items:center;
-  gap:5px;
-}
-
 /* FIG. 08: Design System & Token Specimen Ledger in About Folio */
 .ds-ledger-note{margin:12px 0 0;font-size:var(--text-sm);color:var(--text-2);line-height:1.55;max-width:62ch}
 .ds-specimen-box{
@@ -1490,7 +1445,6 @@ footer a{display:inline-flex;align-items:center;padding:10px 0;min-height:44px;c
 }
 .ds-scale-row:last-child{border-bottom:0;padding-bottom:0}
 @media(max-width:600px){
-  .hero-index-strip{grid-template-columns:1fr}
 }
 
 
@@ -4503,6 +4457,28 @@ body.layers-off-soundings .curio{display:none}
   border-radius:3px;
 }
 </style>
+<style id="v26-one-appearance-home">
+/* ================= v26 ONE APPEARANCE HOME, TWO MAPS =================
+   Rec 3+4 (Darius 2026-10-21): Theme stays in the header; Light grade,
+   Finish (patina) and Reading view move behind ONE Appearance popover
+   — patina has exactly one home on the live page now. The footer's
+   eleven-link Chart Index is deleted (About / Contact / Colophon
+   survive in the footer link row); the hero index chips are gone.
+   What remains for wayfinding: the header legs and the chart room.
+   The leg dots are the progress instrument, the dock is utility. */
+.appearance-wrap{position:relative;display:inline-flex}
+.appearance-btn{border:1px solid var(--line);background:var(--chart-panel);color:var(--chart-ink);border-radius:999px;padding:7px 13px;font:600 var(--text-xs) var(--font-sans);cursor:pointer;white-space:nowrap}
+.appearance-btn:hover{border-color:var(--line-strong)}
+.appearance-btn[aria-expanded="true"]{border-color:var(--teal);color:var(--teal)}
+.appearance-cap{font:700 var(--text-xs) var(--font-sans);letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted)}
+.appearance-pop{position:absolute;top:calc(100% + 10px);right:0;z-index:70;display:flex;flex-direction:column;gap:9px;align-items:stretch;min-width:238px;background:var(--surface);border:1px solid var(--line-strong);border-radius:14px;padding:14px;box-shadow:0 18px 44px rgba(20,26,38,.22)}
+.appearance-pop[hidden]{display:none}
+.appearance-pop .grade-pills{display:flex;justify-content:space-between}
+.appearance-pop .patina-toggle-pill,.appearance-pop .reading-view-pill{width:100%;justify-content:center}
+header.site .appearance-pop .patina-toggle-pill,header.site .appearance-pop .reading-view-pill{display:inline-flex!important}
+@media(max-width:860px){.appearance-pop{position:static;box-shadow:none;min-width:0}}
+.voyage-stage>header.site{z-index:900}
+</style>
 </head>
 <body data-patina="aged" data-theme="light">
 <svg aria-hidden="true" class="v18-ink-defs" focusable="false" height="0" style="position:absolute;left:0;top:0" width="0"><defs><filter height="110%" id="ink-edge" width="110%" x="-5%" y="-5%"><feTurbulence baseFrequency="0.9" numOctaves="2" result="n" seed="7" type="fractalNoise"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3"/></filter></defs></svg>
@@ -4547,23 +4523,7 @@ body.layers-off-soundings .curio{display:none}
 <p class="lede">Evenfaring is a one-person studio drafting quiet, durable instruments for everyday life. Like a well-kept coastal chart, each tool is built to help you find your bearings—without noise, ad trackers, or streak guilt.</p>
 <p class="hero-positioning">Calm software, alive on the water.</p>
 <p class="returning-greeting" hidden="" id="returning-greeting"></p>
-<div aria-label="Studio apps at a glance" class="hero-index-strip" role="navigation">
-<button aria-label="01 · WELLBEING Urge Walk Walk · live web app — sail to the open sea" class="hero-index-chip" data-sail="1" type="button">
-<span class="hero-index-chip-num">01 · WELLBEING</span>
-<span class="hero-index-chip-name">Urge Walk</span>
-<span class="hero-index-chip-state"><span aria-hidden="true" class="status-dot"></span>Walk · live web app</span>
-</button>
-<button aria-label="02 · MOVEMENT Dayspan Move · in the works — sail to the open sea" class="hero-index-chip" data-sail="1" type="button">
-<span class="hero-index-chip-num">02 · MOVEMENT</span>
-<span class="hero-index-chip-name" id="hero-chip-fit-name">Dayspan</span>
-<span class="hero-index-chip-state"><span aria-hidden="true" class="status-dot status-dot-amber"></span>Move · in the works</span>
-</button>
-<button aria-label="03 · FELLOWSHIP A gentle game Play together · in the works — sail to the open sea" class="hero-index-chip" data-sail="1" type="button">
-<span class="hero-index-chip-num">03 · FELLOWSHIP</span>
-<span class="hero-index-chip-name">A gentle game</span>
-<span class="hero-index-chip-state"><span aria-hidden="true" class="status-dot status-dot-amber"></span>Play together · in the works</span>
-</button>
-</div>
+
 <div class="hero-actions">
 <a class="btn" data-sail="1">See the three apps <span aria-hidden="true">↓</span></a>
 <a class="text-link" data-folio-link="about" href="#about">Read the captain’s studio notes <span aria-hidden="true">→</span></a>
@@ -4845,30 +4805,11 @@ body.layers-off-soundings .curio{display:none}
 </div></div><div class="leg-panel pw60"><footer>
 <div class="wrap">
 <p class="footer-legal">© 2026 Evenfaring · Charted with care</p>
-<nav aria-label="Chart index" class="footer-index">
-<p>Chart index</p>
-<ul>
-<li><button class="footer-sail-link" data-sail="0" type="button">Solar chronometer</button></li>
-<li></li>
-<li><button class="footer-sail-link" data-sail="0" type="button">Tuesday tour</button></li>
-<li><button class="footer-sail-link" data-sail="1" type="button">Urge Walk</button></li>
-<li><button class="footer-sail-link" data-sail="1" type="button">Dayspan</button></li>
-<li><button class="footer-sail-link" data-sail="1" type="button">A gentle game</button></li>
-<li></li>
-<li><button class="footer-sail-link" data-sail="2" type="button">Workbenches</button></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li><button class="footer-sail-link" id="footer-ledger-open" type="button">The system behind this site</button></li>
-<li><button class="footer-sail-link" data-sail="3" type="button">Privacy inspector</button></li>
-</ul>
-</nav>
+
 <ul>
 <li><button class="footer-sail-link" data-sail="3" type="button">About</button></li>
-<li></li>
 <li><button class="footer-sail-link" data-sail="3" type="button">Contact</button></li>
+<li><button class="footer-sail-link" data-sail="3" data-anchor="colophon" type="button">Colophon</button></li>
 </ul>
 <p class="footer-shiplog">Ship’s log EF-2026 · All instruments run on your device — no accounts, no trackers.</p>
 </div>
@@ -4898,18 +4839,18 @@ body.layers-off-soundings .curio{display:none}
 <div class="header-controls">
 <button class="deck-extra-btn" id="chartroom-open" title="Open the chart room — an overview of the whole voyage" type="button">◈ Chart room</button>
 <button class="deck-extra-btn" id="setsail-replay" title="Replay the setting-sail departure" type="button">↻ Set sail</button> <button class="deck-extra-btn" id="fairwind-toggle" aria-pressed="false" title="Fair wind — sail the whole chart hands-free; any scroll takes the helm back" type="button">Fair wind</button> <span aria-label="Chart layers" class="grade-pills layer-pills" role="group"><button aria-pressed="true" data-layer="route" type="button">Route</button><button aria-pressed="true" data-layer="soundings" type="button">Soundings</button><button aria-pressed="true" data-layer="notes" type="button">Notes</button></span>
-<span aria-label="Light grade override — scroll to release back to the voyage" class="grade-pills" role="group">
+<span class="appearance-wrap"><button type="button" class="appearance-btn" id="appearance-toggle" aria-expanded="false" aria-haspopup="true" title="Appearance — light grade, finish, reading view">Appearance</button><span class="appearance-pop" id="appearance-pop" hidden><span class="appearance-cap">Light grade</span><span aria-label="Light grade override — scroll to release back to the voyage" class="grade-pills" role="group">
 <button aria-pressed="false" data-grade-lock="0" type="button">Dawn</button><button aria-pressed="false" data-grade-lock="1" type="button">Noon</button><button aria-pressed="false" data-grade-lock="2" type="button">Dusk</button><button aria-pressed="false" data-grade-lock="3" type="button">Night</button>
-</span>
-<button class="workbench-quick-pill" onclick="openFocusWorkbench('urge')" title="Open the full-screen pocket workbenches (Urge Walk, 40-Move Player, or Flat-Tabletop Game)" type="button"><span aria-hidden="true">⛶</span><span>Workbenches (3)</span></button>
-<button aria-pressed="true" class="patina-toggle-pill" id="patina-view-toggle" onclick="togglePatinaMode()" title="Switch between Fresh Studio finish and Aged &amp; Wiser Heirloom Patina" type="button">
+</span><span class="appearance-cap">Finish &amp; view</span><button aria-pressed="true" class="patina-toggle-pill" id="patina-view-toggle" onclick="togglePatinaMode()" title="Switch between Fresh Studio finish and Aged &amp; Wiser Heirloom Patina" type="button">
 <span aria-hidden="true" class="patina-seal-dot"></span>
 <span id="patina-view-label">Finish: Aged Patina</span>
-</button>
-<button aria-pressed="true" class="reading-view-pill" id="reading-view-toggle" title="Switch between uncluttered Calm Horizon reading view and Full Telemetry Chart view" type="button">
+</button><button aria-pressed="true" class="reading-view-pill" id="reading-view-toggle" title="Switch between uncluttered Calm Horizon reading view and Full Telemetry Chart view" type="button">
 <span aria-hidden="true" class="reading-view-dot"></span>
 <span id="reading-view-label">View: Calm Horizon</span>
-</button>
+</button></span></span>
+<button class="workbench-quick-pill" onclick="openFocusWorkbench('urge')" title="Open the full-screen pocket workbenches (Urge Walk, 40-Move Player, or Flat-Tabletop Game)" type="button"><span aria-hidden="true">⛶</span><span>Workbenches (3)</span></button>
+
+
 <button aria-pressed="true" class="harbor-audio-pill" data-harbor-audio-toggle="" title="Toggle procedural coastal waves &amp; harbor bell audio (Default: On)" type="button">
 <span aria-hidden="true" class="audio-wave-bars"><i></i><i></i><i></i></span>
 <span class="harbor-audio-label">Harbor Audio: On</span>
@@ -4927,7 +4868,7 @@ body.layers-off-soundings .curio{display:none}
 </div>
 </header><div aria-hidden="true" class="voyage-telemetry">
 <span id="voyage-legname">DEPARTURE</span><span aria-hidden="true"> · </span><b id="voyage-fathoms">000</b><span> FM</span>
-</div><nav aria-label="Sail between voyage legs" class="voyage-legnav">
+</div><nav aria-label="Voyage progress" class="voyage-legnav">
 <button aria-label="Sail to the previous leg" class="legnav-arrow" data-sailto="-1" type="button">‹</button>
 <button aria-label="Sail to Departure" class="legnav-dot" data-sail="0" type="button"><i></i></button>
 <button aria-label="Sail to The Open Sea" class="legnav-dot" data-sail="1" type="button"><i></i></button>
@@ -10575,6 +10516,26 @@ document.addEventListener('keydown', function(e){
     });
     applyView(); setMeter(); setState();
   }
+})();
+</script>
+
+<script>
+/* v26: the Appearance popover — grade, patina and reading view live here now. */
+(function(){
+  var btn = document.getElementById('appearance-toggle'), pop = document.getElementById('appearance-pop');
+  if(!btn || !pop) return;
+  function close(){ pop.hidden = true; btn.setAttribute('aria-expanded', 'false'); }
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    var open = pop.hidden;
+    pop.hidden = !open;
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  pop.addEventListener('click', function(e){ e.stopPropagation(); });
+  document.addEventListener('click', function(){ if(!pop.hidden) close(); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && !pop.hidden){ close(); btn.focus(); }
+  });
 })();
 </script>
 </body>
