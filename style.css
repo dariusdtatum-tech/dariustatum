@@ -4089,3 +4089,27 @@ html[data-theme="dark"] :focus-visible{outline-color:var(--teal-light)}
   .card-live *{animation:none!important}
 }
 /* ================== /v18 REFINEMENT ================== */
+
+/* ================== v19 REAL-DEVICE FIXES (2026-10-21) ==================
+   Mirror of <style id="v19-fixes"> in index.html (the page renders from the
+   inline styles; this file is kept in sync by convention). See PLAN-v19.md. */
+.voyage-legnav{right:auto;left:14px;box-shadow:0 6px 24px rgba(27,42,74,.18)}
+.log-fab{box-shadow:0 6px 24px rgba(27,42,74,.18)}
+#voyage-vessel-readout{transition:opacity .35s ease}
+@media (max-width: 860px){
+  .voyage-scroll{height:auto!important}
+  .voyage-stage{position:static!important;height:auto!important;overflow:visible!important;perspective:none!important}
+  .voyage-world{transform:none!important;flex-direction:column!important;width:auto!important;height:auto!important;transform-style:flat!important}
+  .leg{display:block!important;min-height:0!important;padding:30px 16px!important}
+  .leg-panel{flex:1 1 auto!important;width:auto!important;max-width:100%!important;min-width:0!important}
+  #instrument-cards,#workbench-cards{flex-basis:auto!important;max-width:100%!important;flex-wrap:wrap!important;height:auto!important}
+  .voyage-card{flex:1 1 100%!important;max-width:100%!important;min-width:0!important;height:auto!important}
+  .voyage-card-body{flex-direction:column!important}
+  .card-live{position:static!important;width:100%!important;max-width:100%!important;min-width:0!important}
+  .pw46,.pw40,.pw50,.pw44,.pw70,.pw60,.pw80{flex-basis:auto!important;max-width:100%!important}
+  .voyage-vessel,.voyage-route{display:none!important}
+  .voyage-legnav{display:none!important}
+  .chronometer-svg,.shoreline{touch-action:pan-y!important}
+  #log-fab{position:static!important;display:block;width:max-content;max-width:calc(100vw - 32px);margin:20px auto 28px}
+  .chart-table{transform:none!important}
+}

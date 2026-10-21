@@ -4232,6 +4232,39 @@ html[data-theme="dark"] :focus-visible{outline-color:var(--teal-light)}
 /* ================== /v18 REFINEMENT ================== */
 
 </style>
+<style id="v19-fixes">
+/* ================== v19 REAL-DEVICE FIXES (2026-10-21) ==================
+   From Darius's iPhone + PC verdict on v18. See PLAN-v19.md.
+   1) The horizontal voyage is desktop-only. At <=860px the page is a
+      native vertical stack: no sticky stage, no world transform, no
+      runway spacer (initVoyage returns early in stacked mode).
+   2) The legnav pill and the Pin-a-note fab no longer share a corner.
+   3) The vessel readout fades out over the FIG. 00 plate (JS, frame()). */
+
+/* --- de-collide the bottom-right corner (all sizes) --- */
+.voyage-legnav{right:auto;left:14px;box-shadow:0 6px 24px rgba(27,42,74,.18)}
+.log-fab{box-shadow:0 6px 24px rgba(27,42,74,.18)}
+#voyage-vessel-readout{transition:opacity .35s ease}
+
+/* --- stacked mobile layout --- */
+@media (max-width: 860px){
+  .voyage-scroll{height:auto!important}
+  .voyage-stage{position:static!important;height:auto!important;overflow:visible!important;perspective:none!important}
+  .voyage-world{transform:none!important;flex-direction:column!important;width:auto!important;height:auto!important;transform-style:flat!important}
+  .leg{display:block!important;min-height:0!important;padding:30px 16px!important}
+  .leg-panel{flex:1 1 auto!important;width:auto!important;max-width:100%!important;min-width:0!important}
+  #instrument-cards,#workbench-cards{flex-basis:auto!important;max-width:100%!important;flex-wrap:wrap!important;height:auto!important}
+  .voyage-card{flex:1 1 100%!important;max-width:100%!important;min-width:0!important;height:auto!important}
+  .voyage-card-body{flex-direction:column!important}
+  .card-live{position:static!important;width:100%!important;max-width:100%!important;min-width:0!important}
+  .pw46,.pw40,.pw50,.pw44,.pw70,.pw60,.pw80{flex-basis:auto!important;max-width:100%!important}
+  .voyage-vessel,.voyage-route{display:none!important}
+  .voyage-legnav{display:none!important}
+  .chronometer-svg,.shoreline{touch-action:pan-y!important}
+  #log-fab{position:static!important;display:block;width:max-content;max-width:calc(100vw - 32px);margin:20px auto 28px}
+  .chart-table{transform:none!important}
+}
+</style>
 </head>
 <body data-patina="aged" data-theme="light">
 <svg aria-hidden="true" class="v18-ink-defs" focusable="false" height="0" style="position:absolute;left:0;top:0" width="0"><defs><filter height="110%" id="ink-edge" width="110%" x="-5%" y="-5%"><feTurbulence baseFrequency="0.9" numOctaves="2" result="n" seed="7" type="fractalNoise"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3"/></filter></defs></svg>
@@ -9002,6 +9035,9 @@ updateChronometer = function(hourVal, driveBus = true) {
     /* v18 S8: Dayspan sundial arc fills with voyage progress */
     if(!dayArc) dayArc = document.querySelector('.dayspan-arc');
     if(dayArc) dayArc.style.strokeDashoffset = (157 * (1 - p)).toFixed(1);
+    /* v19: keep the vessel readout off the FIG. 00 plate at voyage start —
+       its footer text passes under the pill (Darius's PC shot, 2026-10-21). */
+    if (readoutEl) readoutEl.style.opacity = p < 0.045 ? '0' : '1';
     var fm = Math.round(p * 120);
     if(fm !== lastFm){
       lastFm = fm;
@@ -9023,6 +9059,55 @@ updateChronometer = function(hourVal, driveBus = true) {
       }
     }
     requestAnimationFrame(frame);
+  }
+
+  /* v19: small screens get the native stacked layout — the horizontal
+     voyage is desktop-only (Darius, 2026-10-21). No runway spacer, no
+     lerp, no world transform: the page simply scrolls, one axis only. */
+  if (window.matchMedia('(max-width: 860px)').matches) {
+    document.documentElement.dataset.voyageMode = 'stacked';
+    legs = [];
+    Array.prototype.forEach.call(document.querySelectorAll('.leg'), function(el){
+      legs.push({el: el, name: el.getAttribute('data-leg-name') || 'Leg'});
+    });
+    window.sailToLeg = function(i){
+      i = Math.max(0, Math.min(legs.length - 1, i | 0));
+      if (legs[i]) legs[i].el.scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth', block: 'start'});
+    };
+    Array.prototype.forEach.call(document.querySelectorAll('[data-sail]'), function(b){
+      b.addEventListener('click', function(){ window.sailToLeg(parseInt(b.getAttribute('data-sail'), 10)); });
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-sailto]'), function(b){
+      b.addEventListener('click', function(){
+        var cur = 0;
+        legs.forEach(function(L, ix){ if (L.el.getBoundingClientRect().top <= 90) cur = ix; });
+        window.sailToLeg(cur + (b.getAttribute('data-sailto') === '+1' ? 1 : -1));
+      });
+    });
+    var sgTick = false;
+    function stackedGrades(){
+      sgTick = false;
+      var max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+      var pp = Math.min(1, Math.max(0, (window.scrollY || 0) / max));
+      var gl = window.__v17GradeLock;
+      for (var gi = 0; gi < SCENES.length; gi++) {
+        if (!gradeEls[gi]) continue;
+        gradeEls[gi].style.opacity = (typeof gl === 'number' && gl >= 0)
+          ? (gi === gl ? '0.85' : '0')
+          : (Math.max(0, 1 - Math.abs(pp - SCENES[gi].gradeCenter) / 0.26) * 0.85).toFixed(3);
+      }
+      var li = 0;
+      legs.forEach(function(L, ix){ if (L.el.getBoundingClientRect().top <= window.innerHeight * 0.4) li = ix; });
+      if (li !== lastLeg) {
+        lastLeg = li;
+        dots.forEach(function(d){ d.setAttribute('aria-current', d.getAttribute('data-sail') === String(li) ? 'true' : 'false'); });
+        if (legNameEl) legNameEl.textContent = legs[li] ? legs[li].name.toUpperCase() : '';
+      }
+    }
+    window.addEventListener('scroll', function(){ if (!sgTick) { sgTick = true; requestAnimationFrame(stackedGrades); } }, {passive: true});
+    stackedGrades();
+    if (window.syncChartTableWithChrono) { try { window.syncChartTableWithChrono(); } catch(e){} }
+    return;
   }
 
   window.sailToLeg = function(i){
@@ -9050,7 +9135,13 @@ updateChronometer = function(hourVal, driveBus = true) {
     var nxt = cur + (e.key === 'ArrowRight' ? 1 : -1);
     if(nxt >= 0 && nxt < legs.length){ e.preventDefault(); window.sailToLeg(nxt); }
   });
-  window.addEventListener('resize', measure, {passive: true});
+  /* v19: debounce resize — rebuilding the runway mid-gesture remaps
+     progress under the user's thumb (iOS URL-bar resizes). */
+  var resizeTimer = 0;
+  window.addEventListener('resize', function(){
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(measure, 160);
+  }, {passive: true});
   measure();
   if(document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
   window.setTimeout(measure, 1500);
