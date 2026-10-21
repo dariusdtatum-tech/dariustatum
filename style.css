@@ -4168,3 +4168,9 @@ body.layers-off-soundings .curio{display:none}
 .notices ul{list-style:none;display:grid;gap:5px}
 .notices li{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16.5px;line-height:1.35;opacity:.85}
 @media (max-width:860px){.curio,.chart-note,.chart-stamp,.waters-name,.sheet-tag{display:none}}
+
+/* v20.1 footer placement (mirror) */
+#leg-arrival .leg-panel.pw60{align-self:flex-end;margin-bottom:9vh}
+
+/* v20.2 inspector drift exemption (mirror) */
+#fig-privacy{transform:none !important}

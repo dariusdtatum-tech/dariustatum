@@ -4342,6 +4342,13 @@ body.layers-off-soundings .curio{display:none}
 .notices ul{list-style:none;display:grid;gap:5px}
 .notices li{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16.5px;line-height:1.35;opacity:.85}
 @media (max-width:860px){.curio,.chart-note,.chart-stamp,.waters-name,.sheet-tag{display:none}}
+/* v20.1: the footer block sits in the bottom right of the final panel
+   (Darius's placement call; the fellow ship stays where it is). */
+#leg-arrival .leg-panel.pw60{align-self:flex-end;margin-bottom:9vh}
+/* v20.2: FIG. 07's drift offset (-56px) slides the inspector section under
+   its panel's clip edge — the card's left ~55px (header start, first cell)
+   was unreachable at ANY scroll position. The inspector does not drift. */
+#fig-privacy{transform:none !important}
 </style>
 </head>
 <body data-patina="aged" data-theme="light">
@@ -9118,7 +9125,7 @@ updateChronometer = function(hourVal, driveBus = true) {
     if(dayArc) dayArc.style.strokeDashoffset = (157 * (1 - p)).toFixed(1);
     /* v19: keep the vessel readout off the FIG. 00 plate at voyage start —
        its footer text passes under the pill (Darius's PC shot, 2026-10-21). */
-    if (readoutEl) readoutEl.style.opacity = p < 0.045 ? '0' : '1';
+    if (readoutEl) readoutEl.style.opacity = (p < 0.045 || p > 0.986) ? '0' : '1';
     var fm = Math.round(p * 120);
     if(fm !== lastFm){
       lastFm = fm;
@@ -9255,15 +9262,19 @@ updateChronometer = function(hourVal, driveBus = true) {
     var dlg = document.getElementById('log-dialog');
     if (dlg && !dlg.hidden) return;
     var y = window.scrollY || 0, best = null;
-    function consider(t, aheadLim){
+    function consider(t, aheadLim, behindLim){
       var d = t - y, ad = Math.abs(d);
       if (ad < 3) return;
       var ahead = (lastSnapDir === 0) || (d > 0) === (lastSnapDir > 0);
-      var lim = ahead ? aheadLim : doc * 0.007;
+      var lim = ahead ? aheadLim : behindLim;
       if (ad < lim && (best === null || ad < Math.abs(best - y))) best = t;
     }
+    /* v20.1: the behind limit was 0.7% — approached from the east on a
+       backtrack, the FIG. 07 stop fell outside it and the card rested cut
+       (Darius, 2026-10-21). Panels now land from 1.6% behind, legs 1.2% —
+       still well short of the ~500px rewinds the directional snap killed. */
     var legStops = [];
-    legs.forEach(function(L){ legStops.push(L.startP * doc); consider(L.startP * doc, doc * 0.026); });
+    legs.forEach(function(L){ legStops.push(L.startP * doc); consider(L.startP * doc, doc * 0.026, doc * 0.012); });
     if (!panelStops) {
       /* offsetLeft geometry, not getBoundingClientRect: rects read the
          world's mid-lerp transform and poisoned the cached stops —
@@ -9280,7 +9291,7 @@ updateChronometer = function(hourVal, driveBus = true) {
          (each within the other's limit). Within 64px they are one stop,
          and the leg's wins. */
       for (var i = 0; i < legStops.length; i++) { if (Math.abs(t - legStops[i]) < 64) return; }
-      consider(t, doc * 0.018);
+      consider(t, doc * 0.018, doc * 0.016);
     });
     if (best !== null) {
       snapLockUntil = performance.now() + 900;
