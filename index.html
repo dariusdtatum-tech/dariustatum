@@ -9037,8 +9037,8 @@ updateChronometer = function(hourVal, driveBus = true) {
 
   function frame(){
     var pT = Math.min(1, Math.max(0, (window.scrollY || 0) / doc));
-    p += (pT - p) * (reduceMotion ? 1 : 0.14);
-    if(Math.abs(pT - p) < 0.0004) p = pT;
+    p += (pT - p) * (reduceMotion ? 1 : 0.20);
+    if(Math.abs(pT - p) < 0.0008) p = pT;
     var reveal = sstep(0, 0.07, p);
     var worldX = -p * S;
     var tilt = reduceMotion ? 0 : (-5 * reveal);
@@ -9180,22 +9180,31 @@ updateChronometer = function(hourVal, driveBus = true) {
      keep emitting scroll events, so the idle timer never interrupts
      them, and a lockout prevents re-entry during the snap itself. */
   var snapLockUntil = 0, snapTimer = 0, panelStops = null;
+  /* v19.4: the snap is directional. Darius felt the v19.1/v19.2 snap as a
+     rewind — stop a little past a boundary and the page dragged itself back
+     up to ~500px. Now a stop ahead in the direction of travel completes
+     generously (legs 2.6%, panels 1.8% of the runway), while a stop behind
+     only settles within 0.7% (~80px — a landing, not a rewind). */
+  var lastSnapY = window.scrollY || 0, lastSnapDir = 0;
   window.addEventListener('scroll', function(){
     if (reduceMotion) return;
+    var yy = window.scrollY || 0;
+    if (yy !== lastSnapY) { lastSnapDir = yy > lastSnapY ? 1 : -1; lastSnapY = yy; }
     if (performance.now() < snapLockUntil) return;
     clearTimeout(snapTimer);
     snapTimer = setTimeout(function(){
       if (performance.now() < snapLockUntil) return;
       var dlg = document.getElementById('log-dialog');
       if (dlg && !dlg.hidden) return;
-      var y = window.scrollY || 0, best = null, bestLim = 0;
-      legs.forEach(function(L){
-        var t = L.startP * doc, d = Math.abs(t - y);
-        if (d < doc * 0.045 && (best === null || d < Math.abs(best - y))) { best = t; bestLim = doc * 0.045; }
-      });
-      /* v19.2: panels are stops too — the FIG. 00 plate panel (pw80) begins
-         a full screen into Departure, so leg-only snapping never frames it.
-         Panel stops use a tighter threshold so sailing stays free. */
+      var y = window.scrollY || 0, best = null;
+      function consider(t, aheadLim){
+        var d = t - y, ad = Math.abs(d);
+        if (ad < 3) return;
+        var ahead = (lastSnapDir === 0) || (d > 0) === (lastSnapDir > 0);
+        var lim = ahead ? aheadLim : doc * 0.007;
+        if (ad < lim && (best === null || ad < Math.abs(best - y))) best = t;
+      }
+      legs.forEach(function(L){ consider(L.startP * doc, doc * 0.026); });
       if (!panelStops) {
         panelStops = [];
         var wLeft = world.getBoundingClientRect().left;
@@ -9203,11 +9212,8 @@ updateChronometer = function(hourVal, driveBus = true) {
           panelStops.push((el.getBoundingClientRect().left - wLeft) / S * doc);
         });
       }
-      panelStops.forEach(function(t){
-        var d = Math.abs(t - y);
-        if (d < doc * 0.025 && (best === null || d < Math.abs(best - y))) { best = t; bestLim = doc * 0.025; }
-      });
-      if (best !== null && Math.abs(best - y) > 2) {
+      panelStops.forEach(function(t){ consider(t, doc * 0.018); });
+      if (best !== null) {
         snapLockUntil = performance.now() + 900;
         window.scrollTo({top: best, behavior: 'smooth'});
       }
@@ -9219,7 +9225,7 @@ updateChronometer = function(hourVal, driveBus = true) {
   var resizeTimer = 0;
   window.addEventListener('resize', function(){
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(measure, 160);
+    resizeTimer = setTimeout(function(){ panelStops = null; measure(); }, 160);
   }, {passive: true});
   measure();
   if(document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
