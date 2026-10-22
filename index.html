@@ -4517,6 +4517,23 @@ header.site .appearance-pop .patina-toggle-pill,header.site .appearance-pop .rea
   .colophon{border-left:none;border-top:1px dashed var(--line-strong);padding-left:0;padding-top:22px}
 }
 </style>
+<style id="v28-sea-answers">
+/* ================= v28 THE SEA ANSWERS · THE BENCH JOINS THE HOUSE =================
+   Rec 5+10 (Darius 2026-10-21): a lantern light follows the cursor
+   across every sheet (the module is #lantern, below), the route
+   brightens beneath it, and the chart's marginalia stir as you pass.
+   The workbenches speak chart now: serif bench titles, pill tabs in
+   the specimen register, and no prototype scaffolding in the labels
+   (the Speed preview button is gone from the bench; the walk count
+   is a quiet note beside the button, not part of its name). */
+#lantern{position:fixed;top:0;left:0;width:380px;height:380px;border-radius:50%;pointer-events:none;z-index:58;opacity:0;transition:opacity .6s ease;background:radial-gradient(circle,rgba(255,178,102,.55),rgba(255,178,102,.18) 42%,transparent 68%);mix-blend-mode:soft-light;will-change:transform}
+#voyage-route-path{transition:opacity .6s ease}
+.focus-workbench-topbar{background:var(--chart-panel)}
+#focus-wb-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:1.08rem;letter-spacing:.02em;text-transform:none;color:var(--chart-ink);background:none;border:none;padding:0}
+.focus-wb-tab{border-radius:999px;letter-spacing:.04em}
+.focus-wb-tab[aria-selected="true"]{background:var(--teal);border-color:var(--teal);color:var(--bg)}
+.wb-logged-note{font-size:var(--text-sm);color:var(--text-muted);font-style:italic;font-family:'Cormorant Garamond',serif}
+</style>
 </head>
 <body data-patina="aged" data-theme="light">
 <svg aria-hidden="true" class="v18-ink-defs" focusable="false" height="0" style="position:absolute;left:0;top:0" width="0"><defs><filter height="110%" id="ink-edge" width="110%" x="-5%" y="-5%"><feTurbulence baseFrequency="0.9" numOctaves="2" result="n" seed="7" type="fractalNoise"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3"/></filter></defs></svg>
@@ -7737,9 +7754,9 @@ function openFocusWorkbench(mode = 'urge') {
 
   const titleEl = document.getElementById('focus-wb-title');
   if (titleEl) {
-    if (mode === 'urge') titleEl.textContent = 'WORKBENCH 01 · URGE WALK FULL-SCREEN COASTAL COMPANION';
-    else if (mode === 'fitness') titleEl.textContent = `WORKBENCH 02 · ${(fitBrandIdentity || 'DAYSPAN').toUpperCase()} WORKOUT PLAYER & 40-MOVE LIBRARY`;
-    else titleEl.textContent = 'WORKBENCH 03 · A GENTLE GAME FLAT-TABLETOP COMPASS (360°)';
+    if (mode === 'urge') titleEl.textContent = 'BENCH 01 · URGE WALK \u2014 THE COASTAL COMPANION, AT THE BENCH';
+    else if (mode === 'fitness') titleEl.textContent = `BENCH 02 · ${(fitBrandIdentity || 'DAYSPAN').toUpperCase()} \u2014 THE MOVEMENT PLAYER, AT THE BENCHRARY`;
+    else titleEl.textContent = 'BENCH 03 · A GENTLE GAME \u2014 THE TABLETOP COMPASS, AT THE BENCH';
   }
 
   syncWbUrgeUI();
@@ -10176,11 +10193,11 @@ document.addEventListener('keydown', function(e){
 <div class="focus-workbench-shell">
 <div class="focus-workbench-topbar">
 <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-<span class="inst-tag" id="focus-wb-title">POCKET WORKBENCH · FULL-SCREEN INSTRUMENT MODE</span>
+<span class="inst-tag" id="focus-wb-title">THE BENCH \u00b7 A POCKET INSTRUMENT, OPEN</span>
 <div aria-label="Switch full-screen instrument workbench" class="focus-workbench-tabs" role="tablist">
-<button aria-controls="wb-pane-urge" aria-selected="true" class="focus-wb-tab" id="wb-tab-urge" onclick="openFocusWorkbench('urge')" role="tab" tabindex="0" type="button">01 · Urge Walk (5m Orb)</button>
-<button aria-controls="wb-pane-fitness" aria-selected="false" class="focus-wb-tab" id="wb-tab-fitness" onclick="openFocusWorkbench('fitness')" role="tab" tabindex="-1" type="button">02 · <span id="wb-tab-fit-name">Dayspan</span> (40 Moves)</button>
-<button aria-controls="wb-pane-game" aria-selected="false" class="focus-wb-tab" id="wb-tab-game" onclick="openFocusWorkbench('game')" role="tab" tabindex="-1" type="button">03 · A Gentle Game (Tabletop)</button>
+<button aria-controls="wb-pane-urge" aria-selected="true" class="focus-wb-tab" id="wb-tab-urge" onclick="openFocusWorkbench('urge')" role="tab" tabindex="0" type="button">FIG. 01 · Urge Walk</button>
+<button aria-controls="wb-pane-fitness" aria-selected="false" class="focus-wb-tab" id="wb-tab-fitness" onclick="openFocusWorkbench('fitness')" role="tab" tabindex="-1" type="button">FIG. 02 · <span id="wb-tab-fit-name">Dayspan</span></button>
+<button aria-controls="wb-pane-game" aria-selected="false" class="focus-wb-tab" id="wb-tab-game" onclick="openFocusWorkbench('game')" role="tab" tabindex="-1" type="button">FIG. 03 · A Gentle Game</button>
 </div>
 </div>
 <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
@@ -10188,13 +10205,13 @@ document.addEventListener('keydown', function(e){
 <span aria-hidden="true" class="audio-wave-bars"><i></i><i></i><i></i></span>
 <span class="harbor-audio-label">Harbor Audio: On</span>
 </button>
-<button class="tour-mini-btn" onclick="ringHarborBellNow()" type="button"><span aria-hidden="true">🔔</span> Bell</button>
+<button class="tour-mini-btn" onclick="ringHarborBellNow()" type="button"><span aria-hidden="true">♪</span> Bell</button>
 <button class="btn" onclick="closeFocusWorkbench()" style="min-height:40px;padding:4px 12px;" type="button"><span aria-hidden="true">✕</span> Return to Studio Chart (Esc)</button>
 </div>
 </div>
 <div class="focus-workbench-body">
 <!-- PANE 01: URGE WALK FULL-SCREEN COASTAL WALK COMPANION -->
-<div aria-labelledby="wb-tab-urge" class="wb-pane" data-specimen-region-label="Walk Companion live instrument" id="wb-pane-urge" role="tabpanel" tabindex="0">
+<div aria-labelledby="wb-tab-urge" class="wb-pane" data-specimen-region-label="Urge Walk — the instrument, live" id="wb-pane-urge" role="tabpanel" tabindex="0">
 <div class="wb-urge-grid">
 <!-- Left: Large Pacing Breath Orb (4s Inhale / 6s Exhale) -->
 <div class="wb-orb-stage">
@@ -10250,10 +10267,10 @@ document.addEventListener('keydown', function(e){
 <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding-top:8px;border-top:1px dashed var(--chart-border);">
 <div style="display:flex;flex-wrap:wrap;gap:6px;">
 <button class="btn" id="wb-urge-play-btn" onclick="toggleLiveUrgeWalkTimer();syncWbUrgeUI();" type="button">▶ Play / Pause 5m Walk</button>
-<button class="scene-step-btn" id="wb-urge-speed-mirror" onclick="toggleUrgeWalkSpeed();syncWbUrgeUI();" type="button">Speed: 10× Preview</button>
+
 <button class="scene-step-btn" onclick="updateUrgeWaveTimeline(0, false);syncWbUrgeUI();" type="button">↺ Reset 0:00</button>
 </div>
-<button class="scene-step-btn" onclick="logCompletedUrgeWalk();syncWbUrgeUI();" type="button">+ Complete &amp; Log Walk (<span id="wb-urge-walk-count">3</span>)</button>
+<button class="scene-step-btn" onclick="logCompletedUrgeWalk();syncWbUrgeUI();" type="button">Complete &amp; log the walk</button> <span class="wb-logged-note"><span id="wb-urge-walk-count">3</span> walks in the log</span>
 </div>
 <div class="v8-upgrade-strip">
 <span style="font-weight:700;">5-4-3-2-1 COASTAL GROUNDING:</span>
@@ -10269,7 +10286,7 @@ document.addEventListener('keydown', function(e){
 </div>
 </div>
 <!-- PANE 02: DAYSPAN / WAYMARK FULL WORKOUT PLAYER & 40-MOVE LIBRARY -->
-<div aria-labelledby="wb-tab-fitness" class="wb-pane" data-specimen-region-label="Workout Player live instrument" hidden="" id="wb-pane-fitness" role="tabpanel" tabindex="0">
+<div aria-labelledby="wb-tab-fitness" class="wb-pane" data-specimen-region-label="Dayspan — the instrument, live" hidden="" id="wb-pane-fitness" role="tabpanel" tabindex="0">
 <div class="wb-fit-grid">
 <!-- Left: Kinematic Workout Player + 8s Setup Countdown Buffer + Set Logger -->
 <div class="wb-fit-player-card">
@@ -10339,7 +10356,7 @@ document.addEventListener('keydown', function(e){
 </div>
 </div>
 <!-- PANE 03: A GENTLE GAME DISTRACTION-FREE FLAT-TABLETOP MODE -->
-<div aria-labelledby="wb-tab-game" class="wb-pane" data-specimen-region-label="Tabletop Compass live instrument" hidden="" id="wb-pane-game" role="tabpanel" tabindex="0">
+<div aria-labelledby="wb-tab-game" class="wb-pane" data-specimen-region-label="A gentle game — the instrument, live" hidden="" id="wb-pane-game" role="tabpanel" tabindex="0">
 <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;">
 <div>
 <span class="inst-tag">FLAT-PHONE CENTER-OF-TABLE FELLOWSHIP MODE · 4-SEAT ROTATION</span>
@@ -10719,6 +10736,52 @@ document.addEventListener('keydown', function(e){
   var saved = load(RKEY, null);
   if(saved && saved.y > 60 && !/workbench/.test(location.hash || '')){
     window.setTimeout(function(){ window.scrollTo({top: saved.y, behavior: 'instant'}); }, 550);
+  }
+})();
+</script>
+
+<script>
+/* v28: the whole sea answers the cursor — a lantern follows you
+   across every sheet, the route brightens under its light, and the
+   marginalia (curiosities, chart notes, stamps) stir as you pass.
+   Fine pointers only; reduced motion keeps the still site. */
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!window.matchMedia('(pointer: fine)').matches) return;
+  var stage = document.querySelector('.voyage-stage');
+  if (!stage) return;
+  var lamp = document.createElement('div');
+  lamp.id = 'lantern'; lamp.setAttribute('aria-hidden', 'true');
+  stage.appendChild(lamp);
+  var route = document.getElementById('voyage-route-path');
+  var stir = Array.prototype.slice.call(document.querySelectorAll('.curio, .chart-note, .chart-stamp'));
+  var tx = -999, ty = -999, x = -999, y = -999, running = false;
+  window.addEventListener('pointermove', function(e){
+    tx = e.clientX; ty = e.clientY;
+    if (x < -100) { x = tx; y = ty; }
+    if (!running) { running = true; requestAnimationFrame(tick); }
+  }, {passive: true});
+  document.documentElement.addEventListener('pointerleave', function(){
+    lamp.style.opacity = '0'; if (route) route.style.opacity = '';
+  });
+  function tick(){
+    x += (tx - x) * 0.16; y += (ty - y) * 0.16;
+    lamp.style.transform = 'translate3d(' + (x - 190).toFixed(1) + 'px,' + (y - 190).toFixed(1) + 'px,0)';
+    lamp.style.opacity = '1';
+    if (route) route.style.opacity = '0.85';
+    for (var i = 0; i < stir.length; i++){
+      var el = stir[i], r = el.getBoundingClientRect();
+      if (!r.width) continue;
+      var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+      var dx = cx - x, dy = cy - y, d = Math.sqrt(dx * dx + dy * dy);
+      if (d < 210){
+        var k = 1 - d / 210;
+        el.style.translate = (-dx * 0.03 * k).toFixed(1) + 'px ' + (-dy * 0.03 * k).toFixed(1) + 'px';
+        el.style.rotate = (dx * 0.006 * k).toFixed(2) + 'deg';
+      } else if (el.style.translate){ el.style.translate = ''; el.style.rotate = ''; }
+    }
+    if (Math.abs(tx - x) > 0.4 || Math.abs(ty - y) > 0.4) requestAnimationFrame(tick);
+    else running = false;
   }
 })();
 </script>
