@@ -25,6 +25,7 @@
 <meta content="light dark" name="color-scheme"/>
 <meta content="#faf7f1" media="(prefers-color-scheme: light)" name="theme-color"/>
 <meta content="#0f1d33" media="(prefers-color-scheme: dark)" name="theme-color"/>
+<script>try{var t=localStorage.getItem('evenfaring-theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link href="./manifest.webmanifest" rel="manifest"/>
 <meta content="yes" name="apple-mobile-web-app-capable"/>
 <meta content="default" name="apple-mobile-web-app-status-bar-style"/>
@@ -4969,7 +4970,7 @@ html[data-theme="dark"] [data-layer][aria-pressed="true"],html[data-theme="dark"
 </nav></div></div>
 <!-- v16 SHIP'S LOG — personal pinned notes (localStorage; per-device) -->
 <button aria-label="Pin a note to the chart" class="log-fab" id="log-fab" type="button">✎ Pin a note</button>
-<div aria-label="Your pinned chart notes" id="log-flags" role="group"></div>
+<div aria-label="Your pinned chart notes" id="log-flags" role="region"></div>
 <div hidden="" id="log-dialog">
 <div aria-labelledby="log-dialog-h" aria-modal="true" class="log-card" role="dialog">
 <h2 id="log-dialog-h">Pin a note to the chart</h2>
@@ -5094,7 +5095,7 @@ function applyThemePreference(pref) {
   rootEl.setAttribute('data-theme', resolved);
   if (bodyEl) bodyEl.setAttribute('data-theme', resolved);
   themeBtns.forEach((btn) => {
-    btn.setAttribute('aria-pressed', String(btn.dataset.themeOpt === pref));
+    btn.setAttribute('aria-pressed', String(btn.dataset.themeOpt === (pref === 'auto' ? resolved : pref)));
   });
   try {
     if (pref === 'auto') removeStudioPref('evenfaring-theme');
@@ -5112,10 +5113,10 @@ try {
   if (savedTheme === 'light' || savedTheme === 'dark' || savedTheme === 'auto') {
     applyThemePreference(savedTheme);
   } else {
-    applyThemePreference('light');
+    applyThemePreference('auto');
   }
 } catch (e) {
-  applyThemePreference('light');
+  applyThemePreference('auto');
 }
 
 
@@ -10825,6 +10826,30 @@ document.addEventListener('keydown', function(e){
   .voyage-stage{overflow:visible}
   .voyage-stage>header.site{position:sticky;top:0}
 }
+/* ==== Experience playbook (2026-10-22): one living element — the sea
+   (Solar Meridian + waterlight). Every other idle is still at rest and
+   wakes only under direct hover, focus or a leg transition. One easing
+   curve. Reduced motion: a still engraving. Hit areas only, no visuals. */
+:root{--ease-out-quart:cubic-bezier(0.16,1,0.3,1);--spring-calm:cubic-bezier(0.16,1,0.3,1);--spring-settle:cubic-bezier(0.16,1,0.3,1);--ease-weather:cubic-bezier(0.16,1,0.3,1)}
+.ct-contour,.ct-rose,.ct-beacon-dot circle,.curio-ship,.night-star-twinkle,
+.live-urge .live-dot,.live-urge .live-wave path,.live-pips i,.live-ready .live-status,
+.desk-steam-1,.desk-steam-2,.harbor-buoy-group,.harbor-buoy-light,.harbor-cloud-drift,.desk-seaglass-halo{animation-play-state:paused!important}
+.voyage-stage.leg-transition :is(.ct-contour,.ct-rose,.ct-beacon-dot circle),
+.voyage-card:is(:hover,:focus-within,:active) :is(.live-dot,.live-wave path,.live-pips i,.live-status),
+svg:is(:hover,:active) :is(.desk-steam-1,.desk-steam-2,.harbor-buoy-group,.harbor-buoy-light,.harbor-cloud-drift,.desk-seaglass-halo,.night-star-twinkle){animation-play-state:running!important}
+#lantern{background:radial-gradient(circle,rgba(255,178,102,.30),rgba(255,178,102,.09) 42%,transparent 68%);transition:opacity .6s var(--ease-weather)}
+.chrono-slider{height:44px;margin-block:-19px}
+@media (pointer: coarse), (max-width: 820px){.chrono-slider{min-height:44px;height:44px;margin-block:-4px}}
+.chrono-peek{height:44px;margin-block:-14px}
+.footer-sail-link{position:relative}
+.footer-sail-link::after{content:"";position:absolute;top:-11px;bottom:-11px;left:-2px;right:-2px}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  #lantern{display:none!important}
+}
+
 </style>
+<script>/* playbook: invisible 44px hit areas for the drafting stations (no visual change) */
+(function(){document.querySelectorAll('g.svg-interactive-node').forEach(function(g){try{var b=g.getBBox(),r=g.getBoundingClientRect();if(!b.width||!r.height)return;var s=r.height/b.height,pad=Math.max(0,(46-r.height)/2/s),x=document.createElementNS('http://www.w3.org/2000/svg','rect');x.setAttribute('x',b.x-pad);x.setAttribute('y',b.y-pad);x.setAttribute('width',b.width+2*pad);x.setAttribute('height',b.height+2*pad);x.setAttribute('fill','transparent');x.setAttribute('aria-hidden','true');x.style.pointerEvents='all';g.insertBefore(x,g.firstChild)}catch(e){}})})();</script>
 </body>
 </html>
