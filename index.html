@@ -1551,7 +1551,7 @@ main{
   font-weight:600;
 }
 
-/* Header Reading View Mode Pill (Calm Horizon vs. Full Telemetry) */
+/* Reading View pill styles (pill retired 2026-10-22; Calm Horizon is the only view) */
 .reading-view-pill{
   display:inline-flex;
   align-items:center;
@@ -3700,7 +3700,7 @@ html[data-theme="dark"] .ct-grid line{stroke:rgba(169,203,192,.13)}
 .chart-table[data-solar-phase="DAWN"] .ct-routex path,
 .chart-table[data-solar-phase="DUSK"] .ct-routex path{stroke-opacity:.8}
 .chart-table[data-solar-phase="MERIDIAN"] .ct-contour path{stroke-opacity:.58}
-/* Calm reading view (the default): the chart sits even further back */
+/* Calm reading view (always on since 2026-10-22): the chart sits further back */
 html[data-reading-view="calm"] .chart-table{opacity:.55}
 @media(prefers-reduced-motion:reduce){.chart-table{transform:none!important}}
 @media print{.chart-table{display:none}}
@@ -4518,10 +4518,9 @@ html[data-theme="dark"] .captain-note span{color:#a89a80}
 html[data-theme="dark"] [data-layer][aria-pressed="true"],html[data-theme="dark"] #ledger-open,html[data-theme="dark"] .arrival-panel .btn,html[data-theme="dark"] .voyage-card-board,html[data-theme="dark"] .btn-go,html[data-theme="dark"] .bottle-card button,html[data-theme="dark"] .grade-pills button[aria-pressed="true"]{color:#0f1d33}
 </style>
 <style id="vertical-everywhere">
-/* 2026-10-22 RETURN TO VERTICAL. The horizontal voyage (v17; desktop-only
-   since v19) is retired: every width reads as one native vertical scroll,
-   legs stacked top to bottom, no sticky stage, no world transform, no
-   runway, no snap, no horizontal overflow. Mirrors the v19 stacked block. */
+/* Layout: one stacked vertical column at every width, legs top to bottom,
+   max 1120px, never widened on desktop. No sticky stage, world transform,
+   runway or snap; no horizontal overflow. (Locked direction, 2026-10-22.) */
 html{scroll-behavior:smooth}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 .leg{scroll-margin-top:96px}
@@ -4641,9 +4640,8 @@ h3{margin:0 0 8px}
 .colophon-fine{margin:16px 0!important}
 </style>
 <style id="sculpt-6-cards">
-/* Sculpt 6 (2026-10-22): app entries are hairline-separated rows —
-   no box, no fill, no radius, no shadow; one chart label, the name,
-   one line, the true status, and a text-link "Step aboard". */
+/* App entries base: chart label, name, one line, true status, and a
+   text-link "Step aboard". The card surface itself is set by docstyle-2. */
 .voyage-card,.voyage-card:hover{background:none!important;border:0!important;border-top:1px solid var(--line-strong)!important;border-radius:0!important;box-shadow:none!important;transform:none!important}
 .voyage-card .specimen-plate{background:none!important;border:0!important;padding:24px 0 0!important}
 .voyage-card .specimen-tag{font:600 12px var(--font-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);background:none;border:0;padding:0}
@@ -4687,10 +4685,10 @@ body *:not(svg *):not(.btn):not(input):not([data-draft-btn][aria-pressed="true"]
 i[style*="rgba(28"],.leg i{background-color:transparent}
 </style>
 <style id="sculpt-10-ornament">
-/* Sculpt 10 (2026-10-22): one ornament per section (plus spacing touch-ups on the 8 scale). Hero keeps the
-   compass rose on FIG. 00 and the background chart stays as the single
-   spine; the card flourishes, colophon star, fog-burst route, dock icons
-   and the second (weather) canvas go. */
+/* Ornament: one per section, spacing on the 8 scale. Hero keeps the compass
+   rose on FIG. 00 and the background chart is the single spine; card
+   flourishes, fog-burst route, dock icons and the weather canvas stay off.
+   The colophon star is restored by rebalance-colophon. */
 header.site .wrap,.chrono-dispatch{gap:16px!important}
 .leg ul{padding-left:24px}
 .eyebrow span[aria-hidden]{padding:0 4px!important}
@@ -5249,7 +5247,7 @@ try {
 }
 
 
-/* Direction 2A: 1-Tap Reading View Toggle (Calm Horizon vs. Full Telemetry) */
+/* Reading view: always Calm Horizon (the toggle was retired 2026-10-22). */
 const readingViewBtn = document.getElementById('reading-view-toggle');
 const readingViewLbl = document.getElementById('reading-view-label');
 let currentReadingView = 'full';
@@ -9465,11 +9463,8 @@ updateChronometer = function(hourVal, driveBus = true) {
     requestAnimationFrame(frame);
   }
 
-  /* v19: small screens get the native stacked layout — the horizontal
-     voyage is desktop-only (Darius, 2026-10-21). No runway spacer, no
-     lerp, no world transform: the page simply scrolls, one axis only. */
-  /* 2026-10-22: the voyage is vertical at every width (Darius: 'return the
-     site to vertical'). The stacked layout is now the only layout. */
+  /* The stacked vertical layout is the only layout, at every width:
+     no runway spacer, no lerp, no world transform; one scroll axis. */
   if (true) {
     document.documentElement.dataset.voyageMode = 'stacked';
     /* v31: the header is the stage's LAST child in the DOM — absolute
@@ -10036,7 +10031,7 @@ document.addEventListener('click', function(e){
   document.getElementById('chartroom-close').addEventListener('click', closeRoom);
   document.getElementById('chartroom-backdrop').addEventListener('click', closeRoom);
   window.addEventListener('resize', function(){ if(!room.hidden) center(); });
-  /* Plot a course (v24) removed 2026-10-22; clear its old saved route. */
+  /* Clear a saved route left by a retired feature. */
   try{ localStorage.removeItem('evenfaring-course'); }catch(e){}
 
   /* you-are-here dot follows the voyage */
@@ -10049,7 +10044,7 @@ document.addEventListener('click', function(e){
   }, 800);
 })();
 
-/* 6. grade pills: manual override, scroll releases (Gemini's pills, calmed) */
+/* 6. light grade pills: tap to hold a grade, tap again for the scroll-driven day */
 (function(){
   var lock = -1;
   var pills = Array.prototype.slice.call(document.querySelectorAll('[data-grade-lock]'));
@@ -10716,7 +10711,7 @@ document.addEventListener('keydown', function(e){
 </script>
 
 <script>
-/* v26: the Appearance popover — grade, patina and reading view live here now. */
+/* Appearance popover: theme, voyage log, fair wind, light grade, finish, audio, studio. */
 (function(){
   var btn = document.getElementById('appearance-toggle'), pop = document.getElementById('appearance-pop');
   if(!btn || !pop) return;
