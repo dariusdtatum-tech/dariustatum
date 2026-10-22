@@ -3765,6 +3765,8 @@ html[data-theme="dark"] .ct-veil{
   border-radius:10px;padding:16px 16px;font:600 var(--text-sm) var(--font-sans);cursor:pointer;min-height:44px}
 .voyage-card-board kbd{font:600 12px var(--font-sans);border:1px solid rgba(255,255,255,.5);border-radius:5px;padding:4px 8px}
 .voyage-card-board:hover{background:var(--chart-water)}
+.voyage-card-site{display:flex;width:fit-content;align-items:center;gap:6px;margin-top:4px;min-height:44px;font:600 var(--text-sm) var(--font-sans);color:var(--teal);text-decoration:none}
+.voyage-card-site:hover{text-decoration:underline}
 .voyage-card.is-harbor{border-color:var(--teal);animation:harbor-settle .8s cubic-bezier(.2,1.4,.3,1)}
 @keyframes harbor-settle{0%{transform:translateY(10px)}100%{transform:translateY(0)}}
 /* tide pool */
@@ -9657,7 +9659,7 @@ var INSTRUMENTS = [
  {pane:'urge', spec:'PORTFOLIO 01', live:'urge', type:'INTERACTIVE', name:'Urge Walk', status:'In development · iPhone, December 2026 · core features free · $4.99/month premium · no ads',
   line:'When an urge hits, take a little room to breathe.',
   breath:'Drifts on the 12-second breath; its beacon pulses like a moored buoy.',
-  harbor:'HARBOR 01 · STEP ABOARD URGE WALK [ENTER]'},
+  harbor:'HARBOR 01 · STEP ABOARD URGE WALK [ENTER]', site:'https://dariusdtatum-tech.github.io/urgewalk/', siteLabel:'Visit the Urge Walk site'},
  {pane:'fitness', spec:'PORTFOLIO 02', live:'dayspan', type:'INTERACTIVE', name:'Fitness app', status:'In planning',
   line:'Forty gentle moves, practiced a little every day.',
   breath:'Runs its progression on the shared breath; the rig settles like a boat finding level.',
@@ -9733,7 +9735,7 @@ function cardHTML(it, ix){
       ? '<div class="card-live card-exhibit">' + liveHTML(it.live) + '</div></div></article>'
       : '<div class="card-live">' + liveHTML(it.live) + '</div>'
         + '<button type="button" class="voyage-card-board" data-board="' + it.pane + '">'
-        + '<span>Step aboard ' + it.name + '</span> <span aria-hidden="true">\u2192</span></button></div></article>');
+        + '<span>Step aboard ' + it.name + '</span> <span aria-hidden="true">\u2192</span></button>' + (it.site ? '<a class="voyage-card-site" href="' + it.site + '" target="_blank" rel="noopener">' + (it.siteLabel || 'Visit the site') + ' <span aria-hidden="true">\u2197</span></a>' : '') + '</div></article>');
 }
 var ic = document.getElementById('instrument-cards');
 var wc = document.getElementById('workbench-cards');
