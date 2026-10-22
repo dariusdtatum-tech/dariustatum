@@ -4739,6 +4739,17 @@ header.site .wrap,.chrono-dispatch{gap:16px!important}
   body.layers-off-soundings .leg .curio{display:none!important}
 }
 </style>
+<style id="rebalance-controls">
+/* Rebalance 3 (2026-10-22): Appearance controls that still act.
+   Theme, workbench and download pills were hidden on phones by an old
+   Deck-drawer rule; inside the menu they always show. Soundings/Notes
+   only appear where their marks are drawn (>=1600px). */
+header.site .appearance-pop .theme-switch,header.site:not(.is-mobile-drawer-open) .appearance-pop .theme-switch{display:flex!important}
+header.site:not(.is-mobile-drawer-open) .appearance-pop .workbench-quick-pill,header.site:not(.is-mobile-drawer-open) .appearance-pop .download-html-pill,header.site:not(.is-mobile-drawer-open) .appearance-pop .patina-toggle-pill{display:inline-flex!important}
+.appearance-pop .theme-switch button{min-height:44px;flex:1}
+.appearance-pop .layer-pills,.appearance-pop .layer-pills+*{}
+@media(max-width:1599px){.appearance-pop .layer-pills{display:none!important}}
+</style>
 </head>
 <body data-patina="aged" data-theme="light">
 <svg aria-hidden="true" class="v18-ink-defs" focusable="false" height="0" style="position:absolute;left:0;top:0" width="0"><defs><filter height="110%" id="ink-edge" width="110%" x="-5%" y="-5%"><feTurbulence baseFrequency="0.9" numOctaves="2" result="n" seed="7" type="fractalNoise"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3"/></filter></defs></svg>
@@ -5069,14 +5080,11 @@ header.site .wrap,.chrono-dispatch{gap:16px!important}
 <button aria-pressed="true" data-theme-opt="light" type="button">Daylight</button>
 <button aria-pressed="false" data-theme-opt="dark" type="button">Night Watch</button>
 <button aria-pressed="false" data-theme-opt="auto" type="button">Auto</button>
-</div><span class="appearance-cap">Voyage log</span><button class="deck-extra-btn" id="chartroom-open" title="Open the voyage log — real app status, studio principles and contact" type="button">◈ Voyage log</button><span class="appearance-cap">Chart</span><span class="appearance-row"><button class="deck-extra-btn" id="setsail-replay" title="Replay the setting-sail departure" type="button">↻ Set sail</button> <button class="deck-extra-btn" id="fairwind-toggle" aria-pressed="false" title="Fair wind — sail the whole chart hands-free; any scroll takes the helm back" type="button">Fair wind</button> <span aria-label="Chart layers" class="grade-pills layer-pills" role="group"><button aria-pressed="true" data-layer="route" type="button">Route</button><button aria-pressed="true" data-layer="soundings" type="button">Soundings</button><button aria-pressed="true" data-layer="notes" type="button">Notes</button></span></span><span class="appearance-cap">Light grade</span><span aria-label="Light grade override — scroll to release back to the voyage" class="grade-pills" role="group">
+</div><span class="appearance-cap">Voyage log</span><button class="deck-extra-btn" id="chartroom-open" title="Open the voyage log — real app status, studio principles and contact" type="button">◈ Voyage log</button><span class="appearance-cap">Chart</span><span class="appearance-row"><button class="deck-extra-btn" id="fairwind-toggle" aria-pressed="false" title="Fair wind — sail the whole chart hands-free; any scroll takes the helm back" type="button">Fair wind</button> <span aria-label="Chart layers" class="grade-pills layer-pills" role="group"><button aria-pressed="true" data-layer="soundings" type="button">Soundings</button><button aria-pressed="true" data-layer="notes" type="button">Notes</button></span></span><span class="appearance-cap">Light grade</span><span aria-label="Light grade override — scroll to release back to the voyage" class="grade-pills" role="group">
 <button aria-pressed="false" data-grade-lock="0" type="button">Dawn</button><button aria-pressed="false" data-grade-lock="1" type="button">Noon</button><button aria-pressed="false" data-grade-lock="2" type="button">Dusk</button><button aria-pressed="false" data-grade-lock="3" type="button">Night</button>
 </span><span class="appearance-cap">Finish &amp; view</span><button aria-pressed="true" class="patina-toggle-pill" id="patina-view-toggle" onclick="togglePatinaMode()" title="Switch between Fresh Studio finish and Aged &amp; Wiser Heirloom Patina" type="button">
 <span aria-hidden="true" class="patina-seal-dot"></span>
-<span id="patina-view-label">Finish: Aged Patina</span>
-</button><button aria-pressed="true" class="reading-view-pill" id="reading-view-toggle" title="Switch between uncluttered Calm Horizon reading view and Full Telemetry Chart view" type="button">
-<span aria-hidden="true" class="reading-view-dot"></span>
-<span id="reading-view-label">View: Calm Horizon</span>
+<span id="patina-view-label">Finish: Aged Vellum (current)</span>
 </button><span class="appearance-cap">Sound</span><button aria-pressed="false" class="harbor-audio-pill" data-harbor-audio-toggle="" title="Toggle procedural coastal waves &amp; harbor bell audio (Default: Off)" type="button">
 <span aria-hidden="true" class="audio-wave-bars"><i></i><i></i><i></i></span>
 <span class="harbor-audio-label">Harbor Audio: Off</span>
@@ -5257,12 +5265,8 @@ if (readingViewBtn) {
   });
 }
 /* v11: Calm Horizon is the first-visit default; a saved Full Chart preference is honored silently */
-try {
-  const savedView = localStorage.getItem('evenfaring-reading-view');
-  applyReadingView(savedView === 'full' ? 'full' : 'calm', false);
-} catch (e) {
-  applyReadingView('calm', false);
-}
+/* 2026-10-22: the View toggle is retired; Calm Horizon is the only view. */
+applyReadingView('calm', false);
 themeBtns.forEach((btn) => {
   btn.addEventListener('click', () => {
     applyThemePreference(btn.dataset.themeOpt);
@@ -6931,7 +6935,7 @@ function applyPatinaMode(mode, playSound = true) {
 
   const isAged = currentPatinaMode === 'aged';
   if (btn) btn.setAttribute('aria-pressed', String(isAged));
-  if (lbl) lbl.textContent = isAged ? 'Finish: Aged Patina' : 'Finish: Fresh Studio';
+  if (lbl) lbl.textContent = isAged ? 'Finish: Aged Vellum (current)' : 'Finish: Fresh Studio (current)';
   if (dsBtn) dsBtn.setAttribute('aria-pressed', String(isAged));
   if (dsTxt) dsTxt.textContent = isAged ? 'FINISH: AGED PATINA (HEIRLOOM VELLUM) ⇄' : 'FINISH: FRESH STUDIO ⇄ AGED PATINA';
 
@@ -10045,20 +10049,20 @@ document.addEventListener('click', function(e){
   if(!pills.length) return;
   pills.forEach(function(btn){
     btn.addEventListener('click', function(){
-      lock = parseInt(btn.getAttribute('data-grade-lock'), 10);
-      pills.forEach(function(b){ b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+      var n = parseInt(btn.getAttribute('data-grade-lock'), 10);
+      lock = (lock === n) ? -1 : n; /* tap the lit grade again to return to the scroll-driven day */
+      pills.forEach(function(b){ b.setAttribute('aria-pressed', (lock >= 0 && b === btn) ? 'true' : 'false'); });
       window.__v17GradeLock = lock;
+      Array.prototype.forEach.call(document.querySelectorAll('.ct-grade'), function(g, gi){ if(lock >= 0) g.style.opacity = gi === lock ? '0.85' : '0'; });
+      if(lock < 0) window.dispatchEvent(new Event('scroll'));
     });
   });
   var clear = function(){
     if(lock < 0) return; lock = -1; window.__v17GradeLock = -1;
     pills.forEach(function(b){ b.setAttribute('aria-pressed', 'false'); });
   };
-  var lastY = window.scrollY || 0, t = null;
-  window.addEventListener('scroll', function(){
-    var y = window.scrollY || 0;
-    if(Math.abs(y - lastY) > 40){ lastY = y; if(t) clearTimeout(t); t = setTimeout(clear, 400); }
-  }, {passive: true});
+  /* 2026-10-22: a chosen light grade now holds while you scroll (the old
+     scroll-release made the pills look dead in the vertical layout). */
 })();
 
 /* 7. setting sail (Bruno #8): first visit, the vessel slides in behind usable content */
