@@ -4535,6 +4535,16 @@ header.site .appearance-pop .patina-toggle-pill,header.site .appearance-pop .rea
 .focus-wb-tab[aria-selected="true"]{background:var(--teal);border-color:var(--teal);color:var(--bg)}
 .wb-logged-note{font-size:var(--text-sm);color:var(--text-muted);font-style:italic;font-family:'Cormorant Garamond',serif}
 </style>
+<style id="a11y-fixes">
+/* a11y (Oct 2026): transparent 44px hit areas, no visual change */
+.clutch-pill,.scene-step-btn,.mobile-drawer-toggle,header nav button[data-sail],.deck-extra-btn,[data-layer],.appearance-btn,.harbor-audio-pill,[data-theme-opt],.legnav-arrow,.legnav-dot,[data-draft-btn]{position:relative}
+.clutch-pill::after,.scene-step-btn::after,.mobile-drawer-toggle::after,header nav button[data-sail]::after,.deck-extra-btn::after,[data-layer]::after,.appearance-btn::after,.harbor-audio-pill::after,[data-theme-opt]::after,.legnav-arrow::after,.legnav-dot::after,[data-draft-btn]::after{content:"";position:absolute;left:50%;top:50%;width:max(100%,44px);height:max(100%,44px);transform:translate(-50%,-50%);background:transparent;pointer-events:auto}
+#log-name,#log-text{min-height:44px}
+/* a11y: contrast — text colour only */
+html:not([data-theme="dark"]) .inst-tag .fig-num{opacity:1;color:#2f5f52}
+html[data-theme="dark"] .captain-note span{color:#a89a80}
+html[data-theme="dark"] [data-layer][aria-pressed="true"],html[data-theme="dark"] #ledger-open,html[data-theme="dark"] .arrival-panel .btn,html[data-theme="dark"] .voyage-card-board,html[data-theme="dark"] .btn-go,html[data-theme="dark"] .bottle-card button,html[data-theme="dark"] .grade-pills button[aria-pressed="true"]{color:#0f1d33}
+</style>
 </head>
 <body data-patina="aged" data-theme="light">
 <svg aria-hidden="true" class="v18-ink-defs" focusable="false" height="0" style="position:absolute;left:0;top:0" width="0"><defs><filter height="110%" id="ink-edge" width="110%" x="-5%" y="-5%"><feTurbulence baseFrequency="0.9" numOctaves="2" result="n" seed="7" type="fractalNoise"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3"/></filter></defs></svg>
