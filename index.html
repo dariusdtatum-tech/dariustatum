@@ -4479,6 +4479,44 @@ header.site .appearance-pop .patina-toggle-pill,header.site .appearance-pop .rea
 @media(max-width:860px){.appearance-pop{position:static;box-shadow:none;min-width:0}}
 .voyage-stage>header.site{z-index:900}
 </style>
+<style id="v27-landing-and-memory">
+/* ================= v27 LAND THE ENDING · THE VOYAGE REMEMBERS =================
+   Rec 6+9 (Darius 2026-10-21): Arrival ends with a ship's log the
+   visitor can sign (on-device, like everything else) beside a real
+   colophon under the studio's compass star; the bottle sails home
+   to it. The voyage remembers: your scroll position is restored on
+   return, your pinned notes are listed in the log, and your plotted
+   course stays drawn on the chart room map (marks and the charted
+   line appear only in plot mode; your line is the memory trace). */
+.ships-log{display:grid;grid-template-columns:1.25fr .85fr;gap:36px;background:var(--chart-panel);border:1px solid var(--chart-border);border-radius:var(--radius-lg);padding:32px;margin:0 auto}
+.ships-log h2{margin:2px 0 8px}
+.log-lede{color:var(--text-2);max-width:46ch}
+.log-entries{list-style:none;margin:20px 0 4px;padding:0;display:flex;flex-direction:column;gap:12px}
+.log-entry{border-left:2px solid var(--teal);padding:2px 0 2px 13px}
+.log-entry b{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:1.12rem}
+.log-entry time{margin-left:9px;font-size:var(--text-xs);color:var(--text-muted);letter-spacing:.04em}
+.log-entry p{margin:2px 0 0;color:var(--text-2)}
+.log-form{display:grid;gap:10px;margin-top:18px;max-width:520px}
+.log-form label{display:grid;gap:5px;font:700 var(--text-xs) var(--font-sans);letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)}
+.log-form input{background:var(--surface);border:1px solid var(--line-strong);border-radius:9px;padding:10px 12px;font:400 var(--text-base) var(--font-sans);color:var(--text);text-transform:none;letter-spacing:0}
+.log-form .btn{justify-self:start;margin-top:2px}
+.log-status{margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--teal)}
+.log-pinned-wrap{margin-top:26px}
+.log-pinned-wrap h3{font-size:var(--text-sm);letter-spacing:.05em;text-transform:uppercase;color:var(--text-muted)}
+.log-pinned{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:7px;color:var(--text-2);font-size:var(--text-sm)}
+.log-pinned i{color:var(--chart-ink)}
+.colophon{border-left:1px dashed var(--line-strong);padding-left:28px;color:var(--text-2)}
+.colophon .eyebrow{margin-top:14px}
+.colophon-fine{font-size:var(--text-sm);color:var(--text-muted);font-style:italic;font-family:'Cormorant Garamond',serif}
+.cr-mark,.cr-charted-line{display:none}
+.chart-room.plotting .cr-mark,.chart-room.plotting .cr-charted-line{display:block}
+.log-flash{animation:logflash 2.4s ease}
+@keyframes logflash{0%,55%{box-shadow:0 0 0 3px var(--teal)}100%{box-shadow:0 0 0 0 transparent}}
+@media(max-width:860px){
+  .ships-log{grid-template-columns:1fr;padding:24px}
+  .colophon{border-left:none;border-top:1px dashed var(--line-strong);padding-left:0;padding-top:22px}
+}
+</style>
 </head>
 <body data-patina="aged" data-theme="light">
 <svg aria-hidden="true" class="v18-ink-defs" focusable="false" height="0" style="position:absolute;left:0;top:0" width="0"><defs><filter height="110%" id="ink-edge" width="110%" x="-5%" y="-5%"><feTurbulence baseFrequency="0.9" numOctaves="2" result="n" seed="7" type="fractalNoise"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3"/></filter></defs></svg>
@@ -4801,8 +4839,33 @@ header.site .appearance-pop .patina-toggle-pill,header.site .appearance-pop .rea
 <h2>Write to the studio.</h2>
 <p>Evenfaring takes on a small number of projects — calm instruments for everyday life. One tap, wherever you are on the voyage.</p>
 <a class="btn" href="mailto:dariusdtatum@gmail.com">dariusdtatum@gmail.com</a>
-<p style="margin-top:12px">The ship's log is yours too — the <b>Pin a note</b> button pins a few words to the chart, kept on this device.</p>
-</div></div><div class="leg-panel pw60"><footer>
+<p style="margin-top:12px">The ship's log is yours too — sign it at the end of this leg, or pin a note anywhere on the chart. Kept on this device, both of them.</p>
+</div></div><div class="leg-panel pw84"><section class="ships-log" id="ships-log" aria-label="The ship's log and colophon">
+<div class="log-col">
+<p class="eyebrow">THE SHIP'S LOG</p>
+<h2>Sign the log before you go.</h2>
+<p class="log-lede">Every voyage ends with an entry. Yours stays on this device — like everything else here, it is never sent anywhere.</p>
+<ul class="log-entries" id="log-entries"></ul>
+<form class="log-form" id="log-form">
+<label>Your name<input id="log-name" maxlength="40" autocomplete="name" placeholder="A passing sailor"/></label>
+<label>Your entry<input id="log-text" maxlength="140" placeholder="Fair winds, a calm chart, a good instrument…"/></label>
+<button type="submit" class="btn">Sign the log</button>
+<p class="log-status" id="log-status" role="status"></p>
+</form>
+<div class="log-pinned-wrap">
+<h3>Notes you pinned on this chart</h3>
+<ul class="log-pinned" id="log-pinned"></ul>
+</div>
+</div>
+<div class="colophon" id="colophon">
+<svg class="colophon-star" width="54" height="54" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="colophon-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ecd096"/><stop offset=".55" stop-color="#d4af6a"/><stop offset="1" stop-color="#a87f35"/></linearGradient></defs><path d="M50 2 L60 40 L98 50 L60 60 L50 98 L40 60 L2 50 L40 40 Z" fill="url(#colophon-gold)"/></svg>
+<p class="eyebrow">COLOPHON</p>
+<p>Set in <i>Cormorant Garamond</i> &amp; <i>Plus Jakarta Sans</i>, served from this page — no font ever phones home.</p>
+<p>Drawn, engraved &amp; built by hand in a single chart, corrected continuously since the first sounding.</p>
+<p>Evenfaring Studio · Calm software, alive on the water.</p>
+<p class="colophon-fine">No trackers were used in the making of this chart.</p>
+</div>
+</section></div><div class="leg-panel pw60"><footer>
 <div class="wrap">
 <p class="footer-legal">© 2026 Evenfaring · Charted with care</p>
 
@@ -4984,7 +5047,7 @@ header.site .appearance-pop .patina-toggle-pill,header.site .appearance-pop .rea
 <div aria-labelledby="bottle-h" aria-modal="true" class="bottle-card" role="dialog">
 <p id="bottle-h">“Thanks for staying awhile.”</p>
 <small>— Darius · found adrift on the voyage</small><br/>
-<button id="bottle-close" type="button">Keep sailing</button>
+<button id="bottle-log" type="button">Sign the ship\u2019s log</button><button id="bottle-close" type="button">Keep sailing</button>
 </div>
 </div><script>
 /* ============================================================================
@@ -9767,6 +9830,8 @@ document.addEventListener('click', function(e){
     lastFocus = document.activeElement;
     document.getElementById('chartroom-backdrop').hidden = false;
     room.hidden = false; center();
+    if(!laid.length) laid = savedCourse();
+    paintCourse();
     document.getElementById('chartroom-close').focus();
   }
   function closeRoom(){
@@ -9789,6 +9854,14 @@ document.addEventListener('click', function(e){
       courseG = document.getElementById('cr-course'),
       courseLine = document.getElementById('cr-course-line');
   var plotting = false, laid = [];
+  function savedCourse(){ try{ var a = JSON.parse(localStorage.getItem('evenfaring-course') || '[]'); return Array.isArray(a) ? a.filter(function(k){ return k >= 0 && k < 4; }) : []; }catch(e){ return []; } }
+  function saveCourse(){ try{ if(laid.length) localStorage.setItem('evenfaring-course', JSON.stringify(laid)); else localStorage.removeItem('evenfaring-course'); }catch(e){} }
+  function paintCourse(){
+    if(courseLine) courseLine.setAttribute('points', laid.map(function(k){ return MARKS[k].x + ',' + MARKS[k].y; }).join(' '));
+    Array.prototype.forEach.call(view.querySelectorAll('.cr-mark'), function(m){ m.classList.toggle('is-laid', laid.indexOf(parseInt(m.getAttribute('data-mark'), 10)) !== -1); });
+    if(courseG) courseG.style.display = (plotting || laid.length > 1) ? '' : 'none';
+    if(sailBtn) sailBtn.disabled = laid.length < 4;
+  }
   function mdist(p, q){ var dx = p.x - q.x, dy = p.y - q.y; return Math.sqrt(dx * dx + dy * dy); }
   var chartedPx = 0; for(var mi = 0; mi < 3; mi++) chartedPx += mdist(MARKS[mi], MARKS[mi + 1]);
   var FM = 112 / chartedPx;
@@ -9801,6 +9874,7 @@ document.addEventListener('click', function(e){
   }
   function clearCourse(){
     laid = [];
+    saveCourse();
     if(courseLine) courseLine.setAttribute('points', '');
     Array.prototype.forEach.call(view.querySelectorAll('.cr-mark.is-laid'), function(m){ m.classList.remove('is-laid'); });
     if(sailBtn) sailBtn.disabled = true;
@@ -9811,8 +9885,8 @@ document.addEventListener('click', function(e){
     room.classList.toggle('plotting', on);
     if(plotBtn) plotBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
     if(plotBar) plotBar.hidden = !on;
-    if(courseG) courseG.style.display = on ? '' : 'none';
-    if(on) plotReadout(); else clearCourse();
+    if(on){ if(!laid.length) laid = savedCourse(); paintCourse(); plotReadout(); }
+    else paintCourse();
   }
   function layMark(ix){
     if(laid.indexOf(ix) !== -1) return;
@@ -9821,6 +9895,7 @@ document.addEventListener('click', function(e){
     if(g) g.classList.add('is-laid');
     if(courseLine) courseLine.setAttribute('points', laid.map(function(k){ return MARKS[k].x + ',' + MARKS[k].y; }).join(' '));
     if(sailBtn) sailBtn.disabled = laid.length < 4;
+    saveCourse();
     plotReadout();
   }
   if(plotBtn) plotBtn.addEventListener('click', function(){ setPlotting(!plotting); });
@@ -10536,6 +10611,115 @@ document.addEventListener('keydown', function(e){
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape' && !pop.hidden){ close(); btn.focus(); }
   });
+})();
+</script>
+
+<script>
+/* v27: the ship's log (signable), the bottle's home port, anchors to
+   the ending, and the voyage's memory (resume where you left off). */
+(function(){
+  var GKEY = 'evenfaring-guestbook-v1', NKEY = 'evenfaring-ships-log-v1';
+  function load(k, fb){ try{ var v = JSON.parse(localStorage.getItem(k)); return v == null ? fb : v; }catch(e){ return fb; } }
+  function save(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+  function fmtDate(iso){
+    var d = new Date(iso); if(isNaN(d)) return '';
+    try{ return d.toLocaleDateString('en-GB', {day: 'numeric', month: 'short', year: 'numeric'}); }catch(e){ return ''; }
+  }
+  var list = document.getElementById('log-entries');
+  function renderLog(){
+    if(!list) return;
+    var entries = load(GKEY, null);
+    if(!entries){
+      entries = [{n: 'The Studio', t: 'First entry \u2014 the chart is drawn and the log opened. Sail her kindly, and sign before you go.', d: '2026-10-21T12:00:00'}];
+      save(GKEY, entries);
+    }
+    list.innerHTML = '';
+    entries.slice(-12).reverse().forEach(function(en){
+      var li = document.createElement('li'); li.className = 'log-entry';
+      var b = document.createElement('b'); b.textContent = en.n || 'A passing sailor';
+      var tm = document.createElement('time'); tm.textContent = fmtDate(en.d);
+      var p = document.createElement('p'); p.textContent = en.t || '';
+      li.appendChild(b); li.appendChild(tm); li.appendChild(p);
+      list.appendChild(li);
+    });
+  }
+  renderLog();
+  var form = document.getElementById('log-form');
+  if(form) form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('log-name').value.trim().slice(0, 40) || 'A passing sailor';
+    var text = document.getElementById('log-text').value.trim().slice(0, 140);
+    var status = document.getElementById('log-status');
+    if(!text){ if(status) status.textContent = 'Give the entry a line first.'; return; }
+    var entries = load(GKEY, []);
+    entries.push({n: name, t: text, d: new Date().toISOString()});
+    save(GKEY, entries);
+    renderLog();
+    document.getElementById('log-text').value = '';
+    if(status) status.textContent = 'Signed. Fair winds, ' + name + '.';
+  });
+  var pinned = document.getElementById('log-pinned');
+  function renderPinned(){
+    if(!pinned) return;
+    var notes = load(NKEY, []);
+    pinned.innerHTML = '';
+    if(!notes.length){
+      var li = document.createElement('li');
+      li.textContent = 'None yet \u2014 the \u270e Pin a note button, bottom right, pins your first.';
+      pinned.appendChild(li); return;
+    }
+    notes.forEach(function(n, i){
+      var li = document.createElement('li');
+      var b = document.createElement('i');
+      b.textContent = '\u2116 ' + (i + 1) + ' \u00b7 ' + String(Math.round((n.p || 0) * 120)).padStart(3, '0') + ' FM \u2014 ';
+      li.appendChild(b);
+      li.appendChild(document.createTextNode('\u201c' + (n.text || '') + '\u201d'));
+      pinned.appendChild(li);
+    });
+  }
+  renderPinned();
+  var logSection = document.getElementById('ships-log');
+  if(logSection && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting) renderPinned(); }); }, {threshold: 0.2}).observe(logSection);
+  }
+  function goEnding(id){
+    var el = document.getElementById(id);
+    if(window.sailToLeg) window.sailToLeg(3);
+    window.setTimeout(function(){
+      if(!el) return;
+      if(document.documentElement.dataset.voyageMode === 'stacked') el.scrollIntoView({behavior: 'smooth', block: 'center'});
+      el.classList.remove('log-flash'); void el.offsetWidth; el.classList.add('log-flash');
+    }, 1400);
+  }
+  var bottleLog = document.getElementById('bottle-log');
+  if(bottleLog) bottleLog.addEventListener('click', function(){
+    var dlg = document.getElementById('bottle-dialog');
+    if(dlg) dlg.hidden = true;
+    goEnding('ships-log');
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-anchor]'), function(b){
+    b.addEventListener('click', function(){ goEnding(b.getAttribute('data-anchor')); });
+  });
+  /* resume where you left off */
+  var RKEY = 'evenfaring-resume';
+  var ticking = false;
+  function record(){
+    if(ticking) return; ticking = true;
+    requestAnimationFrame(function(){
+      ticking = false;
+      var doc = document.documentElement;
+      var max = Math.max(1, doc.scrollHeight - innerHeight);
+      var y = window.scrollY || 0;
+      if(y > 30) save(RKEY, {y: y, p: y / max}); else try{ localStorage.removeItem(RKEY); }catch(e){}
+    });
+  }
+  window.addEventListener('scroll', record, {passive: true});
+  window.addEventListener('pagehide', record);
+  try{ if('scrollRestoration' in history) history.scrollRestoration = 'manual'; }catch(e){}
+  var saved = load(RKEY, null);
+  if(saved && saved.y > 60 && !/workbench/.test(location.hash || '')){
+    window.setTimeout(function(){ window.scrollTo({top: saved.y, behavior: 'instant'}); }, 550);
+  }
 })();
 </script>
 </body>
