@@ -4717,10 +4717,10 @@ header.site .appearance-pop .patina-toggle-pill,header.site .appearance-pop .rea
 <button class="tuesday-step-card" data-tuesday-step="0" onclick="triggerTuesdayMoment(0, true)" type="button">
 <div class="tuesday-step-kicker">
 <span>01 · 07:30 AM DAWN</span>
-<span>DAYSPAN (FIG. 02)</span>
+<span>FITNESS APP (FIG. 02)</span>
 </div>
 <div class="tuesday-step-title">Stiff morning back, no cold floor</div>
-<div class="tuesday-step-desc">Sets Solar Watch to 07:30 Dawn and configures Dayspan to a 7-minute standing overhead reach flow.</div>
+<div class="tuesday-step-desc">Sets Solar Watch to 07:30 Dawn and configures the fitness app to a 7-minute standing overhead reach flow.</div>
 <span class="tuesday-step-cta">See 07:30 Dawn state →</span>
 </button>
 <button class="tuesday-step-card is-active-tuesday" data-tuesday-step="1" onclick="triggerTuesdayMoment(1, true)" type="button">
@@ -4964,7 +4964,7 @@ header.site .appearance-pop .patina-toggle-pill,header.site .appearance-pop .rea
 <div aria-labelledby="log-dialog-h" aria-modal="true" class="log-card" role="dialog">
 <h2 id="log-dialog-h">Pin a note to the chart</h2>
 <p>A short note, pinned where you are on the voyage. Kept on this device only.</p>
-<textarea id="log-text" maxlength="140" placeholder="e.g. The Dayspan rig is what I needed today" rows="3"></textarea>
+<textarea id="log-text" maxlength="140" placeholder="e.g. The movement rig is what I needed today" rows="3"></textarea>
 <div class="log-actions">
 <button class="btn-quiet" id="log-cancel" type="button">Cancel</button>
 <button class="btn-go" id="log-save" type="button">Pin it</button>
@@ -6161,7 +6161,8 @@ fitFeelBtns.forEach((btn) => {
 /* ============================================================================
    5B. 1-TAP LIVE IDENTITY TOGGLE: DAYSPAN ⇄ WAYMARK (CARD 02 + COMMUNITIES)
    ============================================================================ */
-let fitBrandIdentity = 'Dayspan'; // 'Dayspan' | 'Waymark'
+let fitBrandIdentity = 'Dayspan'; // internal key: 'Dayspan' | 'Waymark'
+function fitDisplayName(b){ return b === 'Waymark' ? 'Waymark' : 'Fitness app'; }
 try {
   const savedBrand = localStorage.getItem('evenfaring-fit-brand');
   if (savedBrand === 'Dayspan' || savedBrand === 'Waymark') {
@@ -6171,13 +6172,13 @@ try {
 
 const fitBrandConfigs = {
   Dayspan: {
-    heading: 'Dayspan',
-    toggleHTML: '<b>Dayspan</b> ⇄ Waymark',
-    kicker: 'DAYSPAN · SUNDIAL SEAL ⇄',
+    heading: 'Fitness app',
+    toggleHTML: '<b>Fitness app</b> ⇄ Waymark',
+    kicker: 'FITNESS APP · IN PLANNING ⇄',
     desc: 'Small daily movement shaped around the span of your day. Adapts to your local clock—with a bodyweight-only mode for ages 13–17 and optional light dumbbell steps for adults 18+.',
-    harborNode: '02 · DAYSPAN',
-    harborBtn: '02 · Dayspan',
-    commHeading: 'Dayspan (Everyday Fitness)',
+    harborNode: '02 · FITNESS APP',
+    harborBtn: '02 · Fitness app',
+    commHeading: 'Fitness app (in planning)',
     emblemSVG: `
       <path d="M30 22H46C63.6731 22 78 34.536 78 50C78 65.464 63.6731 78 46 78H30V22Z" stroke="var(--text)" stroke-width="8" stroke-linejoin="round"/>
       <path d="M38 34C51.2548 34 62 41.1634 62 50C62 58.8366 51.2548 66 38 66V34Z" fill="var(--timber)"/>
@@ -6186,7 +6187,7 @@ const fitBrandConfigs = {
   },
   Waymark: {
     heading: 'Waymark',
-    toggleHTML: 'Dayspan ⇄ <b>Waymark</b>',
+    toggleHTML: 'Fitness app ⇄ <b>Waymark</b>',
     kicker: 'WAYMARK · CAIRN SEAL ⇄',
     desc: 'Small daily movement that marks your spot on the trail—so missing a day never resets your progress. Includes a bodyweight-only mode for ages 13–17 and light dumbbell steps for adults 18+.',
     harborNode: '02 · WAYMARK',
@@ -6845,8 +6846,8 @@ const tuesdayMoments = [
   {
     hour: 7.5,
     bells: 1,
-    status: 'STOP 01 OF 03 · 07:30 DAWN → DAYSPAN STANDING REACH',
-    narrator: '<b>Stop 01 · 07:30 Morning Watch (2 Bells):</b> You wake up with a stiff back. Solar Watch shifts to 07:30 Dawn, and Dayspan (FIG. 02) configures a 7-minute standing overhead reach—no cold floor required.',
+    status: 'STOP 01 OF 03 · 07:30 DAWN → FITNESS APP STANDING REACH',
+    narrator: '<b>Stop 01 · 07:30 Morning Watch (2 Bells):</b> You wake up with a stiff back. Solar Watch shifts to 07:30 Dawn, and the fitness app (FIG. 02) configures a 7-minute standing overhead reach—no cold floor required.',
     targetId: 'fit-card',
     apply: () => {
       if (chronoSlider) chronoSlider.value = '7.5';
@@ -6873,7 +6874,7 @@ const tuesdayMoments = [
     hour: 21.25,
     bells: 3,
     status: 'STOP 03 OF 03 · 21:15 NIGHT WATCH → GENTLE GAME FELLOWSHIP',
-    narrator: '<b>Stop 03 · 21:15 Night Watch (6 Bells):</b> The household gathers around the table. Solar Watch shifts to 21:15, Dayspan transitions to Evening Mat unwind, and A Gentle Game (FIG. 03) draws Suit IV Gratitude.',
+    narrator: '<b>Stop 03 · 21:15 Night Watch (6 Bells):</b> The household gathers around the table. Solar Watch shifts to 21:15, the fitness app transitions to Evening Mat unwind, and A Gentle Game (FIG. 03) draws Suit IV Gratitude.',
     targetId: 'game-card',
     apply: () => {
       if (chronoSlider) chronoSlider.value = '21.25';
@@ -7348,7 +7349,7 @@ let activeKitAppIdx = 0;
 let activePhoneStepIdx = 0;
 
 function getLaunchKitAppConfigs() {
-  const fitName = fitBrandIdentity || 'Dayspan';
+  const fitName = fitDisplayName(fitBrandIdentity);
   return [
     {
       readout: 'APP 01 ACTIVE · URGE WALK (WELLBEING · ADULTS 18+)',
@@ -7507,7 +7508,7 @@ function renderLaunchKitPhone() {
   if (acctEl) acctEl.textContent = appCfg.acct;
   if (syncEl) syncEl.textContent = appCfg.sync;
   if (emblemBox) emblemBox.innerHTML = appCfg.emblem;
-  if (fitTabBtn) fitTabBtn.textContent = `02 · ${fitBrandIdentity || 'Dayspan'}`;
+  if (fitTabBtn) fitTabBtn.textContent = `02 · ${fitDisplayName(fitBrandIdentity)}`;
 
   document.querySelectorAll('[data-kit-app]').forEach((b, i) => {
     b.setAttribute('aria-pressed', String(i === activeKitAppIdx));
@@ -7756,7 +7757,7 @@ function openFocusWorkbench(mode = 'urge') {
   const titleEl = document.getElementById('focus-wb-title');
   if (titleEl) {
     if (mode === 'urge') titleEl.textContent = 'BENCH 01 · URGE WALK \u2014 THE COASTAL COMPANION, AT THE BENCH';
-    else if (mode === 'fitness') titleEl.textContent = `BENCH 02 · ${(fitBrandIdentity || 'DAYSPAN').toUpperCase()} \u2014 THE MOVEMENT PLAYER, AT THE BENCHRARY`;
+    else if (mode === 'fitness') titleEl.textContent = `BENCH 02 · ${fitDisplayName(fitBrandIdentity).toUpperCase()} \u2014 THE MOVEMENT PLAYER, AT THE BENCHRARY`;
     else titleEl.textContent = 'BENCH 03 · A GENTLE GAME \u2014 THE TABLETOP COMPASS, AT THE BENCH';
   }
 
@@ -8189,9 +8190,9 @@ function syncWbFitnessUI() {
   if (cueEl) cueEl.textContent = mv.cue;
   if (easierEl) easierEl.textContent = `Easier Variant: ${mv.easier}${fitEasierActive ? ' (ACTIVE ✓)' : ''}`;
   if (loadEl) loadEl.textContent = fitIsAdultMode ? `Adult 18+: ${mv.adult}` : `Teen 13–17: ${mv.teen}`;
-  if (brandEl) brandEl.textContent = fitBrandIdentity || 'Dayspan';
-  if (tabBrandEl) tabBrandEl.textContent = fitBrandIdentity || 'Dayspan';
-  if (cardFitTitle) cardFitTitle.textContent = `${fitBrandIdentity || 'Dayspan'} · Workout Player & 40-Move Library`;
+  if (brandEl) brandEl.textContent = fitDisplayName(fitBrandIdentity);
+  if (tabBrandEl) tabBrandEl.textContent = fitDisplayName(fitBrandIdentity);
+  if (cardFitTitle) cardFitTitle.textContent = `${fitDisplayName(fitBrandIdentity)} · Workout Player & 40-Move Library`;
   if (ageBtn) ageBtn.textContent = fitIsAdultMode ? 'Mode: Adults 18+ Load' : 'Mode: Ages 13–17';
   if (setCnt) setCnt.textContent = String(completedSetsCount);
 
@@ -8332,7 +8333,7 @@ function syncWbGameUI() {
 const EVENFARING_MANIFEST_OBJ = {
   "name": "Evenfaring Studio \u2014 Calm Everyday Instruments",
   "short_name": "Evenfaring",
-  "description": "Three quiet, local-first instruments for everyday life: Urge Walk (5-minute wave companion), Dayspan / Waymark (40-move kinematic player), and A Gentle Game (16-card fellowship compass).",
+  "description": "Three quiet, local-first instruments for everyday life: Urge Walk (in development for iPhone, December 2026), a fitness app (in planning), and a Christian game for all ages (in planning).",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
@@ -8367,8 +8368,8 @@ const EVENFARING_MANIFEST_OBJ = {
       "url": "./index.html#workbench-urge"
     },
     {
-      "name": "Dayspan / Waymark (40-Move Player)",
-      "short_name": "Dayspan",
+      "name": "Fitness app (40-Move Player)",
+      "short_name": "Fitness app",
       "description": "Launch the full-screen kinematic workout player & 40-move library",
       "url": "./index.html#workbench-fitness"
     },
@@ -8572,7 +8573,7 @@ function toggleShipLogPrefill() {
   const cardEl = document.getElementById('plog-card-val');
   const fitHeadEl = document.getElementById('plog-fit-heading');
 
-  if (fitHeadEl) fitHeadEl.textContent = `II · ${fitBrandIdentity || 'Dayspan'} Daily Movement & 6-Zone Ledger`;
+  if (fitHeadEl) fitHeadEl.textContent = `II · ${fitDisplayName(fitBrandIdentity)} Daily Movement & 6-Zone Ledger`;
 
   if (shipLogPrefillEnabled) {
     const todayStr = new Date().toISOString().slice(0, 10);
@@ -8683,7 +8684,7 @@ function downloadPrintableArtifactSVG() {
       <text x="48" y="195" fill="#3f526d" font-family="sans-serif" font-size="12">5-4-3-2-1 Anchors: [ ] 5 Sight [ ] 4 Touch [ ] 3 Sound [ ] 2 Scent [ ] 1 Breath</text>
       <text x="48" y="230" fill="#3f526d" font-family="sans-serif" font-size="12">Waypoints: [ ] WP-01  [ ] WP-02  [ ] WP-03  [ ] WP-04  [ ] WP-05</text>
       <rect x="525" y="60" width="465" height="320" rx="8" fill="#fffdf8" stroke="#1b2e4b" stroke-width="1.5"/>
-      <text x="543" y="92" fill="#1b2e4b" font-family="Georgia, serif" font-size="16" font-weight="bold">II · Dayspan / Waymark Daily Movement &amp; 6-Zone Log</text>
+      <text x="543" y="92" fill="#1b2e4b" font-family="Georgia, serif" font-size="16" font-weight="bold">II · Fitness App Daily Movement &amp; 6-Zone Log</text>
       <text x="543" y="125" fill="#3f526d" font-family="sans-serif" font-size="12">Window: [ ] Morning Reach   [ ] Afternoon Squat   [ ] Evening Mat</text>
       <text x="543" y="160" fill="#3f526d" font-family="sans-serif" font-size="12">Move 01: ________________________   Sets × Reps: ___ × ___</text>
       <text x="543" y="195" fill="#3f526d" font-family="sans-serif" font-size="12">Post-Set Feel: ( ) Easy   ( ) Right   ( ) Hard   [ ] Easier Box Variant</text>
@@ -8807,7 +8808,7 @@ const deskObjectsConfig = [
     }
   },
   {
-    title: 'Object 03 · Articulated Wooden Mannequin (Dayspan / Waymark Rig)',
+    title: 'Object 03 · Articulated Wooden Mannequin (Fitness App Rig)',
     copy: 'A carver’s jointed timber figure on the drafting desk. Shifts posture automatically between Morning Reach, Afternoon Squat, and Evening Mat unwind.',
     cta: '⛶ Open 40-Move Workout Player →',
     onSelect: () => {
@@ -8964,7 +8965,7 @@ function syncLivingDeskWithChrono() {
 
   if (deskSec) deskSec.setAttribute('data-solar-phase', phase);
   if (badgeEl) badgeEl.textContent = `${formatHour(h)} ${phase} · HARBOR BEACON OCCULTING (4S)`;
-  if (fitLbl) fitLbl.textContent = `03 · ${(fitBrandIdentity || 'DAYSPAN').toUpperCase()} RIG`;
+  if (fitLbl) fitLbl.textContent = `03 · ${fitDisplayName(fitBrandIdentity).toUpperCase()} RIG`;
 
   // Update miniature wooden mannequin on the desk to mirror activeFitTod
   const mLegs = document.getElementById('desk-mannequin-legs');
@@ -9518,15 +9519,15 @@ var RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* 1. instruments as data (Jesper #7: you're the CMS) */
 var INSTRUMENTS = [
- {pane:'urge', spec:'SPECIMEN 01', live:'urge', type:'INTERACTIVE', name:'Urge Walk',
+ {pane:'urge', spec:'SPECIMEN 01', live:'urge', type:'INTERACTIVE', name:'Urge Walk', status:'In development · iPhone, December 2026 · core features free · $4.99/month premium · no ads',
   line:'When an urge hits, take a little room to breathe.',
   breath:'Drifts on the 12-second breath; its beacon pulses like a moored buoy.',
   harbor:'HARBOR 01 · STEP ABOARD URGE WALK [ENTER]'},
- {pane:'fitness', spec:'SPECIMEN 02', live:'dayspan', type:'INTERACTIVE', name:'Dayspan',
+ {pane:'fitness', spec:'SPECIMEN 02', live:'dayspan', type:'INTERACTIVE', name:'Fitness app', status:'In planning',
   line:'Forty gentle moves, practiced a little every day.',
   breath:'Runs its progression on the shared breath; the rig settles like a boat finding level.',
-  harbor:'HARBOR 02 · STEP ABOARD DAYSPAN [ENTER]'},
- {pane:'game', spec:'SPECIMEN 03', live:'game', type:'INTERACTIVE', name:'A gentle game',
+  harbor:'HARBOR 02 · STEP ABOARD THE FITNESS APP [ENTER]'},
+ {pane:'game', spec:'SPECIMEN 03', live:'game', type:'INTERACTIVE', name:'Christian game', status:'In planning · all ages',
   line:'A tabletop compass for playing together, phone laid flat.',
   breath:'Turns with a slow tide; nothing here hurries.',
   harbor:'HARBOR 03 · STEP ABOARD THE TABLETOP [ENTER]'},
@@ -9596,7 +9597,7 @@ function cardHTML(it, ix){
     + '<div class="voyage-card-body"><h3>' + it.name + '</h3>'
     + '<p class="voyage-card-line">' + it.line + '</p>'
     + '<p class="voyage-card-breath"><i>How it breathes \u2014</i> ' + it.breath + '</p>'
-    + '<p class="specimen-meta">' + STAGES[ix || 0] + ' · Charted by the studio · Scale 1:1 · First sounded 2026</p>'
+    + '<p class="specimen-meta">' + (it.status ? it.status + ' · ' : '') + STAGES[ix || 0] + ' · Charted by the studio · Scale 1:1 · First sounded 2026</p>'
     + (it.exhibit
       ? '<div class="card-live card-exhibit">' + liveHTML(it.live) + '</div></div></article>'
       : '<div class="card-live">' + liveHTML(it.live) + '</div>'
@@ -9730,7 +9731,7 @@ document.addEventListener('click', function(e){
   ];
   var islets = [
     {x: 640, y: 640, pane: 'urge', label: 'Urge Walk'},
-    {x: 900, y: 640, pane: 'fitness', label: 'Dayspan'},
+    {x: 900, y: 640, pane: 'fitness', label: 'Fitness app'},
     {x: 800, y: 220, pane: 'game', label: 'A gentle game'}
   ];
   var MARKS = [
@@ -10185,7 +10186,7 @@ document.addEventListener('keydown', function(e){
 </button>
 <button class="mobile-dock-btn" onclick="openFocusWorkbench('fitness')" type="button">
 <span aria-hidden="true" class="mobile-dock-icon"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><path d="M5.5 18.5L18.5 18.5L5.5 5.5z"></path><path d="M9.5 18.5v-3M13.5 18.5v-4.5"></path></svg></span>
-<span>Dayspan</span>
+<span>Fitness app</span>
 </button>
 <button class="mobile-dock-btn" onclick="openFocusWorkbench('game')" type="button">
 <span aria-hidden="true" class="mobile-dock-icon"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><circle cx="12" cy="12" r="8.6"></circle><polygon fill="currentColor" points="15.2,8.8 13.4,13.4 8.8,15.2 10.6,10.6" stroke="none"></polygon></svg></span>
@@ -10204,7 +10205,7 @@ document.addEventListener('keydown', function(e){
 <span class="inst-tag" id="focus-wb-title">THE BENCH \u00b7 A POCKET INSTRUMENT, OPEN</span>
 <div aria-label="Switch full-screen instrument workbench" class="focus-workbench-tabs" role="tablist">
 <button aria-controls="wb-pane-urge" aria-selected="true" class="focus-wb-tab" id="wb-tab-urge" onclick="openFocusWorkbench('urge')" role="tab" tabindex="0" type="button">FIG. 01 · Urge Walk</button>
-<button aria-controls="wb-pane-fitness" aria-selected="false" class="focus-wb-tab" id="wb-tab-fitness" onclick="openFocusWorkbench('fitness')" role="tab" tabindex="-1" type="button">FIG. 02 · <span id="wb-tab-fit-name">Dayspan</span></button>
+<button aria-controls="wb-pane-fitness" aria-selected="false" class="focus-wb-tab" id="wb-tab-fitness" onclick="openFocusWorkbench('fitness')" role="tab" tabindex="-1" type="button">FIG. 02 · <span id="wb-tab-fit-name">Fitness app</span></button>
 <button aria-controls="wb-pane-game" aria-selected="false" class="focus-wb-tab" id="wb-tab-game" onclick="openFocusWorkbench('game')" role="tab" tabindex="-1" type="button">FIG. 03 · A Gentle Game</button>
 </div>
 </div>
@@ -10294,14 +10295,14 @@ document.addEventListener('keydown', function(e){
 </div>
 </div>
 <!-- PANE 02: DAYSPAN / WAYMARK FULL WORKOUT PLAYER & 40-MOVE LIBRARY -->
-<div aria-labelledby="wb-tab-fitness" class="wb-pane" data-specimen-region-label="Dayspan — the instrument, live" hidden="" id="wb-pane-fitness" role="tabpanel" tabindex="0">
+<div aria-labelledby="wb-tab-fitness" class="wb-pane" data-specimen-region-label="Fitness app — the instrument, live" hidden="" id="wb-pane-fitness" role="tabpanel" tabindex="0">
 <div class="wb-fit-grid">
 <!-- Left: Kinematic Workout Player + 8s Setup Countdown Buffer + Set Logger -->
 <div class="wb-fit-player-card">
 <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;">
 <span class="inst-tag" id="wb-fit-move-code">MV-01 OF 40 · MORNING REACH</span>
 <div style="display:inline-flex;gap:6px;">
-<button class="tour-mini-btn" onclick="toggleFitBrandIdentity();syncWbFitnessUI();" type="button">Brand: <span id="wb-fit-brand-lbl">Dayspan</span> ⇄</button>
+<button class="tour-mini-btn" onclick="toggleFitBrandIdentity();syncWbFitnessUI();" type="button">Brand: <span id="wb-fit-brand-lbl">Fitness app</span> ⇄</button>
 <button class="tour-mini-btn" id="wb-fit-age-btn" onclick="if(fitAgeToggle)fitAgeToggle.click();syncWbFitnessUI();" type="button">Mode: Ages 13–17</button>
 </div>
 </div>
