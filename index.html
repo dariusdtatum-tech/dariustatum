@@ -4693,21 +4693,9 @@ h3{margin:0 0 8px}
 <div aria-label="Interactive solar and tidal studio chronometer" class="chronometer-card inked">
 <div class="inst-bar">
 <span class="inst-tag">Solar meridian &amp; tidal chart <span class="fig-num">FIG. 00</span></span>
-<span class="specimen-type" data-type="ambient">AMBIENT</span>
-<button aria-pressed="true" class="clutch-pill" id="chrono-sync-clutch" title="When engaged, scrubbing the solar hour drives Instruments 01–03 across the page" type="button">
-<span aria-hidden="true" class="clutch-dot"></span>
-<span id="clutch-label">LINKED TO APPS: ON</span>
-</button>
-<span class="inst-readout" id="chrono-coord-label">ALT 24° · AZ 243° WSW · M2 +1.1m</span>
 </div>
 <div class="chronometer-stage">
 <svg aria-label="Interactive nautical chart showing the sun path, compass rose, and M2 harmonic bathymetric contours across local solar hours. Drag horizontally on the chart or use the slider below." class="chronometer-svg" fill="none" id="chrono-svg" role="img" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 520 252">
-<!-- Corner Cartographic Registration Crosshairs -->
-<path d="M16 14 V24 M11 19 H21 M504 14 V24 M499 19 H509 M16 228 V238 M11 233 H21 M504 228 V238 M499 233 H509" opacity=".55" stroke="var(--chart-sub)" stroke-width="1.2"></path>
-<!-- Scale & Harmonic Tide Legend (Top Right of Chart) -->
-<text fill="var(--chart-sub)" font-size="8" font-weight="700" id="chrono-tide-legend" opacity=".85" stroke="none" text-anchor="end" x="492" y="26">M2 HARMONIC SOUNDINGS (FM)</text>
-<line opacity=".5" stroke="var(--chart-sub)" stroke-width="1" x1="354" x2="492" y1="32" y2="32"></line>
-<path d="M354 29 V35 M423 30 V34 M492 29 V35" opacity=".5" stroke="var(--chart-sub)" stroke-width="1"></path>
 <!-- Compass Rose & Rhumb Origin (Left Meridian Origin at 86, 78) -->
 <g id="chrono-compass-rose" transform="translate(86, 78)">
 <circle cx="0" cy="0" opacity=".32" r="38" stroke="var(--chart-sub)" stroke-dasharray="2 4" stroke-width="1"></circle>
@@ -4746,35 +4734,17 @@ h3{margin:0 0 8px}
 <path d="M36 178 C128 175 210 175 292 176 C368 173 432 174 484 180" id="chrono-tide-1" opacity=".82" stroke="var(--chart-water)" stroke-width="1.6"></path>
 <path d="M48 198 C142 188 224 206 310 196 C382 187 438 195 474 200" id="chrono-tide-2" opacity=".56" stroke="var(--chart-water)" stroke-width="1.3"></path>
 <path d="M68 217 C158 210 238 222 322 215 C388 210 432 214 458 218" id="chrono-tide-3" opacity=".35" stroke="var(--chart-water)" stroke-width="1.1"></path>
-<!-- Nautical Depth Sounding Numerals (Fathoms) -->
-<text fill="var(--chart-sub)" font-size="8" font-weight="700" id="sounding-txt-1" opacity=".78" stroke="none" text-anchor="middle" x="134" y="191">14.2 fm</text>
-<text fill="var(--chart-sub)" font-size="8" font-weight="700" id="sounding-txt-2" opacity=".78" stroke="none" text-anchor="middle" x="284" y="193">09.4 fm</text>
-<text fill="var(--chart-sub)" font-size="8" font-weight="700" id="sounding-txt-3" opacity=".78" stroke="none" text-anchor="middle" x="412" y="192">05.1 fm</text>
-<text fill="var(--chart-sub)" font-size="8" font-weight="700" id="sounding-txt-4" opacity=".62" stroke="none" text-anchor="middle" x="212" y="213">22.0 fm</text>
-<text class="xray-annotation" fill="var(--chart-beacon)" font-size="7.5" font-weight="700" stroke="none" text-anchor="middle" x="260" y="238">⌖ X-RAY MECHANISM: h(t) = H₀ + A·cos(ω_M2·t) + B·cos(ω_S2·t) → DRIVES APPS 01–03</text>
 </svg>
 </div>
 <div class="chronometer-controls">
 <div class="chrono-slider-row">
-<label for="chrono-time-slider">TIME OF DAY (SHAPES THE APPS BELOW)</label>
+<label for="chrono-time-slider">Time of day</label>
 <input aria-label="Solar time of day" class="chrono-slider" id="chrono-time-slider" max="22" min="5" step="0.25" type="range" value="18.75"/>
 <span class="inst-tag" id="chrono-time-val">18:45</span>
 </div>
-<div aria-label="Time of day presets" class="chrono-presets" role="group" style="grid-template-columns:repeat(5,minmax(0,1fr));">
-<button aria-pressed="false" data-chrono-hour="7.5" type="button">07:30 · Dawn</button>
-<button aria-pressed="false" data-chrono-hour="12.0" type="button">12:00 · Noon</button>
-<button aria-pressed="true" data-chrono-hour="18.75" type="button">18:45 · Dusk</button>
-<button aria-pressed="false" data-chrono-hour="21.25" type="button">21:15 · Watch</button>
-<button id="chrono-sync-local-btn" onclick="syncChronoToRealClock()" title="Set the Solar Watch to your device's real local time" type="button">Local Clock</button>
-</div>
 <div aria-live="polite" class="chrono-dispatch" id="chrono-dispatch">
 <span><strong>18:45 Coastal Dusk:</strong> When an evening urge crests, step outside for a 5-minute harbor walk.</span>
-<span class="dispatch-badge">INSTRUMENT 01 · URGE WALK</span>
-</div>
-<div aria-label="Ship's watch bells and lunar tidal coupling" class="v8-upgrade-strip">
-<span id="chrono-watch-bells"><b>SHIP’S WATCH:</b> LAST DOG WATCH · 5 BELLS</span>
-<span id="chrono-lunar-readout"><b>LUNAR PHASE:</b> WAXING GIBBOUS · SPRING TIDE</span>
-<span id="bus-pulse-readout" style="color:var(--chart-water);font-weight:600;">BUS SYNC → 01 · 02 · 03</span>
+
 </div>
 </div>
 </div>
@@ -5602,22 +5572,22 @@ function updateChronometer(hourVal, driveBus = true) {
   let phaseName = 'DUSK';
   let targetTod = 'evening';
   let targetSuit = 1; // Suit II: Evening Rest
-  let dispatchHTML = `<span><strong>${tStr} Coastal Dusk:</strong> When an evening urge crests, step outside for a 5-minute harbor walk.</span><span class="dispatch-badge">SHAPES 01 · URGE WALK</span>`;
+  let dispatchHTML = `<span><strong>${tStr} Coastal Dusk:</strong> When an evening urge crests, step outside for a 5-minute harbor walk.</span>`;
   if (h < 11.5) {
     phaseName = 'DAWN';
     targetTod = 'morning';
     targetSuit = 0; // Suit I: Ordinary Grace
-    dispatchHTML = `<span><strong>${tStr} Morning Rhythm:</strong> 7-minute standing overhead reach &amp; mobility—no cold floor required.</span><span class="dispatch-badge">SHAPES 02 · MORNING REACH</span>`;
+    dispatchHTML = `<span><strong>${tStr} Morning Rhythm:</strong> 7-minute standing overhead reach &amp; mobility—no cold floor required.</span>`;
   } else if (h < 17.5) {
     phaseName = 'MERIDIAN';
     targetTod = 'afternoon';
     targetSuit = 2; // Suit III: Steadiness
-    dispatchHTML = `<span><strong>${tStr} Solar Meridian:</strong> Rules-based 2-link squat &amp; hinge strength on fresh zones.</span><span class="dispatch-badge">SHAPES 02 · AFTERNOON SQUAT</span>`;
+    dispatchHTML = `<span><strong>${tStr} Solar Meridian:</strong> Rules-based 2-link squat &amp; hinge strength on fresh zones.</span>`;
   } else if (h >= 20) {
     phaseName = 'NIGHT WATCH';
     targetTod = 'evening';
     targetSuit = 3; // Suit IV: Shared Table / Gratitude
-    dispatchHTML = `<span><strong>${tStr} Night Watch:</strong> Set down the day’s worries with a quiet reflection card &amp; mat unwind.</span><span class="dispatch-badge">SHAPES 02 &amp; 03 · EVENING</span>`;
+    dispatchHTML = `<span><strong>${tStr} Night Watch:</strong> Set down the day’s worries with a quiet reflection card &amp; mat unwind.</span>`;
   }
 
   if (chronoDispatch) chronoDispatch.innerHTML = dispatchHTML;
