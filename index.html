@@ -4573,6 +4573,22 @@ html{scroll-behavior:smooth}
 .chart-table{transform:none!important}
 #leg-arrival .leg-panel.pw60{align-self:auto;margin-bottom:0}
 </style>
+<style id="align-everything">
+/* 2026-10-22 NEAT & ALIGNED (Darius: "have everything be neat and in
+   alignment"). Leftovers of the horizontal voyage removed: no panel
+   max-height or inner scroll, no staggered card margins, no tilt, drift
+   or rotation on content. One container: every leg's content shares one
+   left edge and one max width. Decorative chart lines are untouched. */
+.leg{padding:40px clamp(16px,4vw,48px)!important}
+.leg>.leg-panel{max-width:1120px!important;margin:0 auto!important;padding:0!important;max-height:none!important;overflow:visible!important;align-self:auto!important}
+.leg>.leg-panel+.leg-panel{margin-top:28px!important}
+#leg-opensea>#instrument-cards,#leg-harbors>#workbench-cards{max-width:1120px!important;margin-left:auto!important;margin-right:auto!important}
+#instrument-cards,#workbench-cards{display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;align-items:stretch!important;gap:28px!important;padding:0!important}
+#instrument-cards .voyage-card,#workbench-cards .voyage-card,.voyage-card:nth-child(n){margin:0!important}
+.snd-tilt-l,.snd-tilt-r,.snd-drift-l,.snd-drift-r{transform:none!important;rotate:none!important;translate:none!important}
+.leg-panel>section,.leg-panel>footer,.arrival-panel,.leg-head{margin-left:0!important;margin-right:0!important}
+#leg-arrival .leg-panel.pw60 footer .wrap{margin-left:0!important;margin-right:auto!important}
+</style>
 </head>
 <body data-patina="aged" data-theme="light">
 <svg aria-hidden="true" class="v18-ink-defs" focusable="false" height="0" style="position:absolute;left:0;top:0" width="0"><defs><filter height="110%" id="ink-edge" width="110%" x="-5%" y="-5%"><feTurbulence baseFrequency="0.9" numOctaves="2" result="n" seed="7" type="fractalNoise"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3"/></filter></defs></svg>
