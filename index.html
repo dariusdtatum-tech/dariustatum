@@ -4651,6 +4651,17 @@ h3{margin:0 0 8px}
 .voyage-card-board{background:none!important;border:0!important;padding:8px 0!important;min-height:44px;color:var(--terracotta,var(--timber))!important;font:600 16px var(--font-sans);text-decoration:underline;text-underline-offset:4px;cursor:pointer;box-shadow:none!important;border-radius:0!important}
 .voyage-card .specimen-meta{border-top:0!important;opacity:1;text-transform:none;letter-spacing:0;font-size:14px;color:var(--text-2)}
 </style>
+<style id="sculpt-7-motion">
+/* Sculpt 7 (2026-10-22): motion arrives, then rests. Every keyframe
+   plays once; the only always-on motion is the slow waterlight (the
+   sea, >8s, already off under reduced motion). Two transition recipes:
+   180ms for UI response, 600ms for entrances. */
+*,*::before,*::after{animation-iteration-count:1!important}
+#waterlight{animation-iteration-count:infinite!important}
+:where(a,button,input,select,.voyage-card,.appearance-pop,.map-island,.cr-light){transition-duration:180ms!important;transition-timing-function:var(--ease-out-quart)!important}
+.chart-room:not([hidden]),.focus-workbench-shell{animation-duration:600ms!important}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
 </head>
 <body data-patina="aged" data-theme="light">
 <svg aria-hidden="true" class="v18-ink-defs" focusable="false" height="0" style="position:absolute;left:0;top:0" width="0"><defs><filter height="110%" id="ink-edge" width="110%" x="-5%" y="-5%"><feTurbulence baseFrequency="0.9" numOctaves="2" result="n" seed="7" type="fractalNoise"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3"/></filter></defs></svg>
