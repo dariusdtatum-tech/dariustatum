@@ -10717,9 +10717,18 @@ document.addEventListener('keydown', function(e){
   Array.prototype.forEach.call(document.querySelectorAll('[data-anchor]'), function(b){
     b.addEventListener('click', function(){ goEnding(b.getAttribute('data-anchor')); });
   });
-  /* resume where you left off — desktop voyage only; in the stacked
-     mobile layout the site always begins at the beginning */
-  if(document.documentElement.dataset.voyageMode === 'stacked') return;
+  /* resume where you left off — desktop voyage only. In the stacked
+     mobile layout the site always begins at the beginning: switch off
+     the browser's own scroll restoration as well, or Safari quietly
+     puts you back where you were on every reload. */
+  if(document.documentElement.dataset.voyageMode === 'stacked'){
+    try{ if('scrollRestoration' in history) history.scrollRestoration = 'manual'; }catch(e){}
+    if(!/workbench/.test(location.hash || '')){
+      window.scrollTo({top: 0, behavior: 'instant'});
+      window.setTimeout(function(){ window.scrollTo({top: 0, behavior: 'instant'}); }, 350);
+    }
+    return;
+  }
   var RKEY = 'evenfaring-resume';
   var ticking = false;
   function record(){
