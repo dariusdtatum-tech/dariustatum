@@ -4675,7 +4675,7 @@ h3{margin:0 0 8px}
 header.site{background:var(--bg)!important;border-bottom:1px solid var(--rule)!important;box-shadow:none!important}
 body *:not(svg *){box-shadow:none!important;text-shadow:none!important}
 :focus-visible{outline:2px solid var(--timber)!important;outline-offset:2px}
-body *:not(svg *):not(.round):not(.legnav-dot):not(.live-dot):not(.patina-seal-dot):not(.reading-view-dot):not(.clutch-dot):not(.audio-wave-bars i){border-radius:0!important}
+body *:not(svg *):not(.round):not(:is(.voyage-card,.notices,.captain-note,.chronometer-card,.folio-chart-box,.privacy-inspector,.card-exhibit,.btn,.ledger-token-strip span,.specimen-meta)):not(.legnav-dot):not(.live-dot):not(.patina-seal-dot):not(.reading-view-dot):not(.clutch-dot):not(.audio-wave-bars i){border-radius:0!important}
 button,.btn,input,select,textarea,[class*="pill"],.theme-switch,.appearance-pop,.chart-room,.ledger-drawer,.focus-workbench-shell,.log-card,.bottle-card,.chronometer-card,.folio-chart-box,.privacy-inspector,.captain-note{border-radius:2px!important}
 .btn,a.btn,button.btn{background:var(--timber)!important;border:1px solid var(--timber)!important;color:#fff!important}
 html[data-theme="dark"] .btn,html[data-theme="dark"] a.btn{color:#1a140e!important}
@@ -4717,6 +4717,45 @@ header.site .wrap,.chrono-dispatch{gap:16px!important}
 header.site .appearance-pop .theme-switch,header.site:not(.is-mobile-drawer-open) .appearance-pop .theme-switch{display:flex!important}
 header.site:not(.is-mobile-drawer-open) .appearance-pop .workbench-quick-pill,header.site:not(.is-mobile-drawer-open) .appearance-pop .download-html-pill,header.site:not(.is-mobile-drawer-open) .appearance-pop .patina-toggle-pill{display:inline-flex!important}
 .appearance-pop .theme-switch button{min-height:44px;flex:1}
+</style>
+<style id="docstyle-1-heads">
+/* Docstyle 1 (2026-10-22): section heads read like the Playbook / Experience
+   Study chapters: a small italic serif kicker, the serif title, a short
+   essence line, and a 2px ink rule beneath the whole head. */
+:root{--doc-card:color-mix(in srgb,var(--bg) 52%,#fffaf0);--doc-tint:color-mix(in srgb,var(--bg) 88%,var(--line));--doc-sand:color-mix(in srgb,var(--bg) 80%,var(--line));--doc-shadow:0 1px 2px rgba(35,31,26,.06),0 10px 30px -18px rgba(35,31,26,.28)}
+html[data-theme="dark"]{--doc-card:var(--surface);--doc-tint:color-mix(in srgb,var(--surface) 70%,var(--bg));--doc-sand:var(--surface-elevated);--doc-shadow:0 1px 2px rgba(0,0,0,.3),0 12px 32px -18px rgba(0,0,0,.6)}
+.leg-head,.arrival-panel,.folio-hero .prose{max-width:none!important}
+.leg-head{width:100%!important;border-bottom:2px solid var(--text);padding-bottom:16px;margin-bottom:24px}
+.leg-head .eyebrow,.arrival-panel>.eyebrow,.folio-hero .prose>.eyebrow,.colophon .eyebrow{font-size:12px!important;font-weight:700!important;letter-spacing:.12em!important;color:var(--timber)!important;margin:0 0 8px!important}
+.leg-head h2,.arrival-panel>h2,.folio-h,.voyage-card h3{font-style:normal!important;font-weight:600!important;line-height:1.05;margin:0 0 8px!important;letter-spacing:-.01em}
+.leg-head p:not(.eyebrow){max-width:62ch!important;width:auto!important;font-size:16px!important;color:var(--text-2)}
+.arrival-panel>h2{border-bottom:2px solid var(--text);padding-bottom:16px;margin-bottom:16px!important}
+.arrival-panel>p:not(.eyebrow){max-width:62ch!important;width:auto!important;font-size:16px!important;color:var(--text-2)}
+</style>
+<style id="docstyle-2-cards">
+/* Docstyle 2: portfolio pieces as the documents' numbered entry cards:
+   warm card on the patina, hairline border, 14px radius, soft shadow; the
+   meta line becomes the tinted "take" note; actions stay terracotta. */
+.voyage-card,.voyage-card:hover{background:var(--doc-card)!important;border:1px solid var(--line)!important;border-radius:14px!important;box-shadow:var(--doc-shadow)!important;padding:24px!important;margin:0 0 16px!important;overflow:hidden}
+.voyage-card .specimen-plate{border:0!important;padding:0 0 8px!important;background:none!important}
+.voyage-card .specimen-tag{font-family:"Cormorant Garamond",Georgia,serif!important;font-style:italic;font-size:20px!important;letter-spacing:.04em!important;color:var(--timber)!important;font-weight:600}
+.voyage-card-body{padding:0!important}
+.voyage-card .voyage-card-line{color:var(--text-2)!important;max-width:62ch}
+.voyage-card .specimen-meta{background:var(--doc-tint)!important;border-radius:10px;padding:12px 16px!important;margin:16px 0!important;max-width:72ch;color:var(--text)!important;border:0!important}
+.chronometer-card,.folio-chart-box,.privacy-inspector,.card-exhibit{border-radius:14px!important;overflow:hidden;background:var(--doc-card)!important;border-color:var(--line)!important;box-shadow:var(--doc-shadow)}
+.voyage-card .card-exhibit{box-shadow:none}
+</style>
+<style id="docstyle-3-callouts">
+/* Docstyle 3: the documents' "limits" callout and stat strip. Notices to
+   Mariners and the captain's note sit on a sand panel; the live storage
+   cells read as a serif-number stat strip. */
+.notices{background:var(--doc-sand)!important;border:0!important;border-radius:10px!important;padding:16px 20px!important;margin-top:24px!important}
+.notices .notices-h{font-weight:700;color:var(--text)!important}
+blockquote.captain-note{background:var(--doc-sand)!important;border:0!important;border-radius:10px;padding:16px 20px!important;margin:16px 0!important}
+.inspector-grid{gap:8px 32px!important}
+.inspector-cell{border:0!important;background:none!important}
+.btn{border-radius:999px!important}
+.ledger-token-strip span{border-radius:999px!important}
 </style>
 </head>
 <body data-patina="aged" data-theme="light">
