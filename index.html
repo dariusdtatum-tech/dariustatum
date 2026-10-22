@@ -10452,13 +10452,40 @@ document.addEventListener('keydown', function(e){
 </div>
 <figure class="wb-fit-demo">
 <div class="wb-fit-demo-frame">
-<video aria-label="Demo render of a bodyweight squat on a looping mannequin" autoplay="" class="wb-fit-demo-video" data-src="assets/fitness-squat-demo.mp4" height="480" id="wb-fit-demo-video" data-poster="assets/fitness-squat-demo-poster.webp" loop="" muted="" playsinline="" preload="none" width="480"></video>
+<video aria-label="Demo render of a bodyweight squat on a looping mannequin" autoplay="" class="wb-fit-demo-video" data-src="assets/fitness-squat-demo.mp4" height="540" id="wb-fit-demo-video" data-poster="assets/fitness-squat-demo-poster.webp" loop="" muted="" playsinline="" preload="none" width="540"></video>
 </div>
 <figcaption class="wb-fit-demo-cap">Demo render, not the final app</figcaption>
 </figure>
 <div style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:var(--text-xs);font-weight:600;color:var(--chart-sub);">
 <span id="wb-fit-easier-readout">Easier Variant: Seated Chair Overhead Reach</span>
 <span id="wb-fit-load-readout">Bodyweight · 30s slow reach</span>
+</div>
+</div>
+<div id="wb-workshop-strip">
+<div class="wb-workshop-head">
+<span class="inst-tag">IN THE WORKSHOP · UNDER CONSTRUCTION</span>
+<span class="inst-readout">3 MOVEMENT STUDIES</span>
+</div>
+<p class="wb-workshop-note">Demo renders from the workshop bench, drawn while the fitness app is being built. Finished movement and human models come later.</p>
+<div class="wb-workshop-row">
+<figure class="wb-workshop-item">
+<div class="wb-fit-demo-frame">
+<video aria-label="Demo render of a bodyweight squat on a looping mannequin" class="wb-fit-demo-video wb-workshop-video" data-poster="assets/fitness-squat-demo-poster.webp" data-src="assets/fitness-squat-demo.mp4" height="540" loop="" muted="" playsinline="" preload="none" width="540"></video>
+</div>
+<figcaption>Squat · movement study</figcaption>
+</figure>
+<figure class="wb-workshop-item">
+<div class="wb-fit-demo-frame">
+<video aria-label="Demo render of a push-up on a looping mannequin" class="wb-fit-demo-video wb-workshop-video" data-poster="assets/fitness-pushup-demo-poster.webp" data-src="assets/fitness-pushup-demo.mp4" height="540" loop="" muted="" playsinline="" preload="none" width="540"></video>
+</div>
+<figcaption>Push-up · movement study</figcaption>
+</figure>
+<figure class="wb-workshop-item">
+<div class="wb-fit-demo-frame">
+<video aria-label="Demo render of a lunge on a looping mannequin" class="wb-fit-demo-video wb-workshop-video" data-poster="assets/fitness-lunge-demo-poster.webp" data-src="assets/fitness-lunge-demo.mp4" height="540" loop="" muted="" playsinline="" preload="none" width="540"></video>
+</div>
+<figcaption>Lunge · movement study</figcaption>
+</figure>
 </div>
 </div>
 <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;">
@@ -10973,5 +11000,39 @@ svg:is(:hover,:active) :is(.desk-steam-1,.desk-steam-2,.harbor-buoy-group,.harbo
 @keyframes colophon-turn{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion: reduce){.colophon-star{animation:none}}
 </style>
+<style id="v49-workshop-strip">
+/* v49 (Robin, at Darius's word, Oct 22 2026): the fitness Workbench gains a
+   workshop strip — three movement-study demo renders (squat, push-up, lunge)
+   under an under-construction head — and the main demo now plays the new
+   studio squat render. Strip videos lazy-load on first sight and hold their
+   poster under prefers-reduced-motion, same contract as the main demo. */
+#wb-workshop-strip{margin-top:16px;border-top:1px dashed var(--chart-border);padding-top:12px}
+.wb-workshop-head{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.wb-workshop-note{margin:6px 0 10px;font-size:var(--text-xs);color:var(--chart-sub)}
+.wb-workshop-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.wb-workshop-item{margin:0;display:flex;flex-direction:column;gap:6px}
+.wb-workshop-item figcaption{font-size:var(--text-xs);font-weight:600;color:var(--chart-sub);text-align:center}
+</style>
+<script id="v49-workshop-strip-js">
+/* v49: lazy-load the workshop-strip movement studies on first sight;
+   reduced motion keeps the still posters, same contract as the main demo. */
+(function () {
+  var vids = document.querySelectorAll('.wb-workshop-video');
+  if (!vids.length) return;
+  var rm = window.matchMedia('(prefers-reduced-motion: reduce)');
+  function arm(v) {
+    if (!v.getAttribute('poster') && v.dataset.poster) v.setAttribute('poster', v.dataset.poster);
+    if (rm.matches) return;
+    if (!v.getAttribute('src') && v.dataset.src) { v.src = v.dataset.src; v.load(); }
+    var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (ents) {
+      ents.forEach(function (e) { if (e.isIntersecting) { arm(e.target); io.unobserve(e.target); } });
+    });
+    vids.forEach(function (v) { io.observe(v); });
+  } else { vids.forEach(arm); }
+})();
+</script>
 </body>
 </html>
