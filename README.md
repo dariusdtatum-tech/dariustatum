@@ -25,7 +25,7 @@ service worker just won't register from `file://`.
 |---|---|
 | `index.html` | The whole site: markup, styles and script |
 | `style.css` | Shared styles for the small static pages (privacy); palette and fonts match `index.html` |
-| `sw.js` | Service worker. Bump `evenfaring-studio-vNN` on every deploy (currently v47) |
+| `sw.js` | Service worker. Bump `evenfaring-studio-vNN` on every deploy (currently v48) |
 | `manifest.webmanifest`, `icons/`, `apple-touch-icon.png`, `favicon.svg` | PWA and icons |
 | `privacy.html` | Privacy page, kept at the root so its URL stays stable |
 | `404.html` | Standalone not-found page |
