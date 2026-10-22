@@ -3818,9 +3818,9 @@ html[data-theme="dark"] .ct-veil{
 #weather-canvas{position:absolute;inset:0;z-index:3;pointer-events:none}
 /* header nav as sail buttons */
 header.site nav[aria-label="Main"] ul{list-style:none;display:flex;gap:4px;margin:0;padding:0}
-header.site nav[aria-label="Main"] button{background:none;border:none;font:600 var(--text-sm) var(--font-sans);
+header.site nav[aria-label="Main"] :is(button,a){display:inline-flex;align-items:center;text-decoration:none;background:none;border:none;font:600 var(--text-sm) var(--font-sans);
   color:var(--text);padding:10px 12px;border-radius:8px;cursor:pointer;min-height:40px}
-header.site nav[aria-label="Main"] button:hover{color:var(--teal);background:var(--surface)}
+header.site nav[aria-label="Main"] :is(button,a):hover{color:var(--teal);background:var(--surface)}
 .hero-index-chip{cursor:pointer}
 @media(max-width:640px){
   .leg-head{max-width:88vw}
@@ -4546,6 +4546,33 @@ html:not([data-theme="dark"]) .inst-tag .fig-num{opacity:1;color:#2f5f52}
 html[data-theme="dark"] .captain-note span{color:#a89a80}
 html[data-theme="dark"] [data-layer][aria-pressed="true"],html[data-theme="dark"] #ledger-open,html[data-theme="dark"] .arrival-panel .btn,html[data-theme="dark"] .voyage-card-board,html[data-theme="dark"] .btn-go,html[data-theme="dark"] .bottle-card button,html[data-theme="dark"] .grade-pills button[aria-pressed="true"]{color:#0f1d33}
 </style>
+<style id="vertical-everywhere">
+/* 2026-10-22 RETURN TO VERTICAL. The horizontal voyage (v17; desktop-only
+   since v19) is retired: every width reads as one native vertical scroll,
+   legs stacked top to bottom, no sticky stage, no world transform, no
+   runway, no snap, no horizontal overflow. Mirrors the v19 stacked block. */
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.leg{scroll-margin-top:96px}
+.voyage-runout{display:none}
+.voyage-scroll{height:auto!important}
+.voyage-stage{position:static!important;height:auto!important;overflow:visible!important;perspective:none!important}
+.voyage-stage>header.site{position:sticky!important;top:0}
+.voyage-world{transform:none!important;flex-direction:column!important;width:auto!important;max-width:100%;height:auto!important;transform-style:flat!important}
+.leg{display:block!important;min-height:0!important;padding:30px clamp(16px,4vw,56px)!important}
+.leg-panel{flex:1 1 auto!important;width:auto!important;max-width:100%!important;min-width:0!important}
+#instrument-cards,#workbench-cards{flex-basis:auto!important;max-width:100%!important;flex-wrap:wrap!important;height:auto!important}
+.voyage-card{flex:1 1 100%!important;max-width:100%!important;min-width:0!important;height:auto!important}
+.voyage-card-body{flex-direction:column!important}
+.card-live{position:static!important;width:100%!important;max-width:100%!important;min-width:0!important}
+.pw40,.pw44,.pw46,.pw50,.pw60,.pw70,.pw80,.pw100,.pw160,.pw204{flex-basis:auto!important;max-width:100%!important}
+.voyage-vessel,.voyage-route,.voyage-legnav{display:none!important}
+.curio,.chart-note,.chart-stamp,.waters-name,.sheet-tag{display:none}
+.chronometer-svg,.shoreline{touch-action:pan-y!important}
+#log-fab{position:static!important;display:block;width:max-content;max-width:calc(100vw - 32px);margin:20px auto 28px}
+.chart-table{transform:none!important}
+#leg-arrival .leg-panel.pw60{align-self:auto;margin-bottom:0}
+</style>
 </head>
 <body data-patina="aged" data-theme="light">
 <svg aria-hidden="true" class="v18-ink-defs" focusable="false" height="0" style="position:absolute;left:0;top:0" width="0"><defs><filter height="110%" id="ink-edge" width="110%" x="-5%" y="-5%"><feTurbulence baseFrequency="0.9" numOctaves="2" result="n" seed="7" type="fractalNoise"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3"/></filter></defs></svg>
@@ -4926,7 +4953,7 @@ html[data-theme="dark"] [data-layer][aria-pressed="true"],html[data-theme="dark"
 </a>
 <button aria-expanded="false" class="mobile-drawer-toggle" id="mobile-drawer-toggle-btn" onclick="toggleMobileHeaderDrawer()" type="button"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><circle cx="12" cy="12" r="3.2"></circle><path d="M12 2.8v3M12 18.2v3M2.8 12h3M18.2 12h3M5.5 5.5l2.1 2.1M16.4 16.4l2.1 2.1M18.5 5.5l-2.1 2.1M7.6 16.4l-2.1 2.1"></path></svg><span>Deck</span></button>
 <nav aria-label="Main">
-<ul><li><button data-sail="0" type="button">Departure</button></li><li><button data-sail="1" type="button">Open Sea</button></li><li><button data-sail="2" type="button">Harbors</button></li><li><button data-sail="3" type="button">Arrival</button></li></ul>
+<ul><li><a href="#leg-departure">Departure</a></li><li><a href="#leg-opensea">Open Sea</a></li><li><a href="#leg-harbors">Harbors</a></li><li><a href="#leg-arrival">Arrival</a></li></ul>
 </nav>
 <div class="header-controls">
 <button class="deck-extra-btn" id="chartroom-open" title="Open the chart room — an overview of the whole voyage" type="button">◈ Chart room</button>
@@ -9341,7 +9368,9 @@ updateChronometer = function(hourVal, driveBus = true) {
   /* v19: small screens get the native stacked layout — the horizontal
      voyage is desktop-only (Darius, 2026-10-21). No runway spacer, no
      lerp, no world transform: the page simply scrolls, one axis only. */
-  if (window.matchMedia('(max-width: 860px)').matches) {
+  /* 2026-10-22: the voyage is vertical at every width (Darius: 'return the
+     site to vertical'). The stacked layout is now the only layout. */
+  if (true) {
     document.documentElement.dataset.voyageMode = 'stacked';
     /* v31: the header is the stage's LAST child in the DOM — absolute
        positioning alone put it at the top, floating over (and hiding)
@@ -10743,7 +10772,7 @@ document.addEventListener('keydown', function(e){
      puts you back where you were on every reload. */
   if(document.documentElement.dataset.voyageMode === 'stacked'){
     try{ if('scrollRestoration' in history) history.scrollRestoration = 'manual'; }catch(e){}
-    if(!/workbench/.test(location.hash || '')){
+    if(!/workbench|leg-|ships-log|colophon/.test(location.hash || '')){
       window.scrollTo({top: 0, behavior: 'instant'});
       window.setTimeout(function(){ window.scrollTo({top: 0, behavior: 'instant'}); }, 350);
     }
