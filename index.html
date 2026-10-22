@@ -4640,6 +4640,17 @@ h2,.folio-h{margin:0 0 16px!important}
 h3{margin:0 0 8px}
 .colophon-fine{margin:16px 0!important}
 </style>
+<style id="sculpt-6-cards">
+/* Sculpt 6 (2026-10-22): app entries are hairline-separated rows —
+   no box, no fill, no radius, no shadow; one chart label, the name,
+   one line, the true status, and a text-link "Step aboard". */
+.voyage-card,.voyage-card:hover{background:none!important;border:0!important;border-top:1px solid var(--line-strong)!important;border-radius:0!important;box-shadow:none!important;transform:none!important}
+.voyage-card .specimen-plate{background:none!important;border:0!important;padding:24px 0 0!important}
+.voyage-card .specimen-tag{font:600 12px var(--font-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);background:none;border:0;padding:0}
+.voyage-card-body{padding:16px 0 24px!important}
+.voyage-card-board{background:none!important;border:0!important;padding:8px 0!important;min-height:44px;color:var(--terracotta,var(--timber))!important;font:600 16px var(--font-sans);text-decoration:underline;text-underline-offset:4px;cursor:pointer;box-shadow:none!important;border-radius:0!important}
+.voyage-card .specimen-meta{border-top:0!important;opacity:1;text-transform:none;letter-spacing:0;font-size:14px;color:var(--text-2)}
+</style>
 </head>
 <body data-patina="aged" data-theme="light">
 <svg aria-hidden="true" class="v18-ink-defs" focusable="false" height="0" style="position:absolute;left:0;top:0" width="0"><defs><filter height="110%" id="ink-edge" width="110%" x="-5%" y="-5%"><feTurbulence baseFrequency="0.9" numOctaves="2" result="n" seed="7" type="fractalNoise"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3"/></filter></defs></svg>
@@ -9655,19 +9666,15 @@ var CHRONO_HTML = '<div class="exhibit exhibit-chrono">'
 var STAGES = ['Charted & Corrected','Sounded','Sketch','Charted & Corrected','Sounded','Sketch'];
 function cardHTML(it, ix){
   return '<article class="voyage-card" data-pane="' + it.pane + '">'
-    + '<div class="specimen-plate inked"><span class="harbor-tag" aria-hidden="true">\u2693 Harbor</span>'
-    + '<span class="specimen-tag">' + it.spec + '</span>'
-    + '<span class="specimen-type" data-type="' + it.type.toLowerCase() + '">' + it.type + '</span>'
-    + '<span class="specimen-hint">' + it.harbor + '</span></div>'
+    + '<div class="specimen-plate"><span class="specimen-tag">' + it.spec + '</span></div>'
     + '<div class="voyage-card-body"><h3>' + it.name + '</h3>'
     + '<p class="voyage-card-line">' + it.line + '</p>'
-    + '<p class="voyage-card-breath"><i>How it breathes \u2014</i> ' + it.breath + '</p>'
-    + '<p class="specimen-meta">' + (it.status ? it.status + ' · ' : '') + STAGES[ix || 0] + ' · Charted by the studio · Scale 1:1 · First sounded 2026</p>'
+    + (it.status ? '<p class="specimen-meta">' + it.status + '</p>' : '')
     + (it.exhibit
       ? '<div class="card-live card-exhibit">' + liveHTML(it.live) + '</div></div></article>'
       : '<div class="card-live">' + liveHTML(it.live) + '</div>'
         + '<button type="button" class="voyage-card-board" data-board="' + it.pane + '">'
-        + '<span>Step aboard</span><kbd>Enter</kbd></button></div></article>');
+        + '<span>Step aboard ' + it.name + '</span> <span aria-hidden="true">\u2192</span></button></div></article>');
 }
 var ic = document.getElementById('instrument-cards');
 var wc = document.getElementById('workbench-cards');
