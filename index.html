@@ -2578,6 +2578,13 @@ body[data-embed-mode="compact"] header.site {
   align-items: center;
   gap: 8px;
 }
+#wb-pane-fitness button,
+#wb-pane-fitness .reflection-input { min-height: 44px !important; }
+#wb-pane-fitness .wb-move-item-top { color: var(--chart-ink); }
+.wb-fit-demo { margin: 0; width: 100%; max-width: 300px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.wb-fit-demo-frame { width: 100%; aspect-ratio: 1 / 1; border-radius: 14px; border: 1px solid var(--chart-border); background: #f7f6f2; overflow: hidden; box-shadow: 0 1px 2px rgba(36, 57, 92, 0.08); }
+.wb-fit-demo-video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.wb-fit-demo-cap { font-size: var(--text-xs); font-weight: 600; color: var(--chart-sub); text-align: center; }
 .wb-buffer-banner {
   width: 100%;
   padding: 8px 16px;
@@ -6302,12 +6309,10 @@ fitFeelBtns.forEach((btn) => {
    5B. 1-TAP LIVE IDENTITY TOGGLE: DAYSPAN ⇄ WAYMARK (CARD 02 + COMMUNITIES)
    ============================================================================ */
 let fitBrandIdentity = 'Dayspan'; // internal key: 'Dayspan' | 'Waymark'
-function fitDisplayName(b){ return b === 'Waymark' ? 'Waymark' : 'Fitness app'; }
+function fitDisplayName(b){ return 'Fitness app'; }
 try {
   const savedBrand = localStorage.getItem('evenfaring-fit-brand');
-  if (savedBrand === 'Dayspan' || savedBrand === 'Waymark') {
-    fitBrandIdentity = savedBrand;
-  }
+  if (savedBrand) fitBrandIdentity = 'Dayspan'; // Waymark name retired; always show Fitness app
 } catch (e) {}
 
 const fitBrandConfigs = {
@@ -6342,7 +6347,7 @@ const fitBrandConfigs = {
 };
 
 function applyFitBrandIdentity(brand, playSound = true) {
-  fitBrandIdentity = brand === 'Waymark' ? 'Waymark' : 'Dayspan';
+  fitBrandIdentity = 'Dayspan'; // single name: Fitness app
   const cfg = fitBrandConfigs[fitBrandIdentity];
   const hEl = document.getElementById('fit-app-heading');
   const tEl = document.getElementById('fit-brand-toggle-txt');
@@ -8265,7 +8270,7 @@ function renderWbMoveLibraryList() {
 
   container.innerHTML = filtered.map(({ m, i }) => {
     const sel = i === selectedMoveIdx ? ' is-selected-move' : '';
-    const loadSpec = fitIsAdultMode ? m.adult : m.teen;
+    const loadSpec = m.teen;
     return `<button type="button" class="wb-move-item${sel}" onclick="selectWbFitnessMove(${i})">
       <div class="wb-move-item-top">
         <span>${m.id} · ${m.zone.toUpperCase()}</span>
@@ -8328,17 +8333,60 @@ function syncWbFitnessUI() {
   if (codeEl) codeEl.textContent = `${mv.id} OF 40 · ${mv.cat.toUpperCase()} · ${mv.zone.toUpperCase()}`;
   if (titleEl) titleEl.textContent = mv.name;
   if (cueEl) cueEl.textContent = mv.cue;
-  if (easierEl) easierEl.textContent = `Easier Variant: ${mv.easier}${fitEasierActive ? ' (ACTIVE ✓)' : ''}`;
-  if (loadEl) loadEl.textContent = fitIsAdultMode ? `Adult 18+: ${mv.adult}` : `Teen 13–17: ${mv.teen}`;
+  if (easierEl) easierEl.textContent = `Easier Variant: ${mv.easier}${fitEasierActive ? ' (on)' : ''}`;
+  if (loadEl) loadEl.textContent = mv.teen;
+  const easierBtn = document.getElementById('wb-fit-easier-btn');
+  if (easierBtn) easierBtn.setAttribute('aria-pressed', String(fitEasierActive));
   if (brandEl) brandEl.textContent = fitDisplayName(fitBrandIdentity);
   if (tabBrandEl) tabBrandEl.textContent = fitDisplayName(fitBrandIdentity);
   if (cardFitTitle) cardFitTitle.textContent = `${fitDisplayName(fitBrandIdentity)} · Workout Player & 40-Move Library`;
-  if (ageBtn) ageBtn.textContent = fitIsAdultMode ? 'Mode: Adults 18+ Load' : 'Mode: Ages 13–17';
   if (setCnt) setCnt.textContent = String(completedSetsCount);
 
   syncWbFitnessRigGeometry();
   renderWbMoveLibraryList();
 }
+
+// Demo render player: lazy-loads the looping squat when the pane is shown; reduced motion keeps the still poster
+const wbFitRM = window.matchMedia('(prefers-reduced-motion: reduce)');
+function wbFitDemoVideo() { return document.getElementById('wb-fit-demo-video'); }
+function wbFitDemoLabel(playing) {
+  const btn = document.getElementById('wb-fit-demo-btn');
+  if (!btn) return;
+  btn.textContent = playing ? 'Pause demo' : 'Play demo';
+  btn.setAttribute('aria-pressed', String(!playing));
+}
+function wbFitDemoSet(play) {
+  const v = wbFitDemoVideo();
+  const btn = document.getElementById('wb-fit-demo-btn');
+  if (!v) return;
+  if (wbFitRM.matches) {
+    wbFitDemoPoster(v);
+    v.removeAttribute('autoplay');
+    if (!v.paused) v.pause();
+    if (btn) btn.hidden = true;
+    return;
+  }
+  if (!v.getAttribute('src') && v.dataset.src) { v.src = v.dataset.src; v.load(); }
+  wbFitDemoPoster(v);
+  if (btn) btn.hidden = false;
+  if (play) { const pr = v.play(); if (pr && pr.catch) pr.catch(() => wbFitDemoLabel(false)); wbFitDemoLabel(true); }
+  else { v.pause(); wbFitDemoLabel(false); }
+}
+function wbFitDemoPoster(v) { if (!v.getAttribute('poster') && v.dataset.poster) v.setAttribute('poster', v.dataset.poster); }
+function toggleWbFitDemo() { const v = wbFitDemoVideo(); if (v) wbFitDemoSet(v.paused); }
+function initWbFitDemo() {
+  const v = wbFitDemoVideo();
+  if (!v) return;
+  if (wbFitRM.matches) v.removeAttribute('autoplay');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((ents) => {
+      ents.forEach((e) => { if (e.isIntersecting) { wbFitDemoSet(true); io.disconnect(); } });
+    });
+    io.observe(v);
+  }
+  if (wbFitRM.addEventListener) wbFitRM.addEventListener('change', () => wbFitDemoSet(!wbFitRM.matches));
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initWbFitDemo); else initWbFitDemo();
 
 function startWbSetupBufferCountdown() {
   const txtEl = document.getElementById('wb-setup-buffer-txt');
@@ -8347,11 +8395,11 @@ function startWbSetupBufferCountdown() {
     clearInterval(wbSetupBufferTimer);
     wbSetupBufferTimer = null;
     if (txtEl) txtEl.textContent = 'POSTURE SETUP BUFFER: 8.0s READY (Zero Rush)';
-    if (btnEl) btnEl.textContent = '▶ Start 8s Setup & Set';
+    if (btnEl) btnEl.textContent = 'Start 8s Setup & Set';
     return;
   }
   wbSetupBufferRemDeci = 80;
-  if (btnEl) btnEl.textContent = '✕ Cancel Buffer';
+  if (btnEl) btnEl.textContent = 'Cancel Buffer';
   playSubtleTone('step');
 
   wbSetupBufferTimer = setInterval(() => {
@@ -8359,9 +8407,9 @@ function startWbSetupBufferCountdown() {
     if (wbSetupBufferRemDeci <= 0) {
       clearInterval(wbSetupBufferTimer);
       wbSetupBufferTimer = null;
-      if (txtEl) txtEl.textContent = '✓ POSTURE LOCKED · SET IN PROGRESS (SMOOTH CADENCE)';
-      if (btnEl) btnEl.textContent = '↺ Restart 8s Buffer';
-      if (!fitAnimTimer) toggleFitKinematicLoop();
+      if (txtEl) txtEl.textContent = 'POSTURE LOCKED · SET IN PROGRESS (SMOOTH CADENCE)';
+      if (btnEl) btnEl.textContent = 'Restart 8s Buffer';
+      wbFitDemoSet(true);
       if (soundEnabled) playHarborBellChime(0);
       else playSubtleTone('switch');
       return;
@@ -10395,47 +10443,29 @@ document.addEventListener('keydown', function(e){
 <div class="wb-fit-player-card">
 <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;">
 <span class="inst-tag" id="wb-fit-move-code">MV-01 OF 40 · MORNING REACH</span>
-<div style="display:inline-flex;gap:8px;">
-<button class="tour-mini-btn" onclick="toggleFitBrandIdentity();syncWbFitnessUI();" type="button">Brand: <span id="wb-fit-brand-lbl">Fitness app</span> ⇄</button>
-<button class="tour-mini-btn" id="wb-fit-age-btn" onclick="if(fitAgeToggle)fitAgeToggle.click();syncWbFitnessUI();" type="button">Mode: Ages 13–17</button>
-</div>
 </div>
 <h3 id="wb-fit-move-title" style="font-family:var(--font-display);font-size:32px;margin:0;color:var(--chart-ink);">Standing Overhead Reach &amp; Rib Opener</h3>
 <p id="wb-fit-move-cue" style="margin:0;font-size:var(--text-sm);color:var(--chart-sub);">Plant both heels at hip width, inhale as arms sweep overhead (θ = 32°), and lengthen the thoracic spine without overarching the lower back.</p>
 <div class="wb-fit-rig-box">
 <div class="wb-buffer-banner" id="wb-setup-buffer-banner">
 <span id="wb-setup-buffer-txt">POSTURE SETUP BUFFER: 8.0s READY (Zero Rush)</span>
-<button class="tour-mini-btn" id="wb-buffer-start-btn" onclick="startWbSetupBufferCountdown()" type="button">▶ Start 8s Setup &amp; Set</button>
+<button class="tour-mini-btn" id="wb-buffer-start-btn" onclick="startWbSetupBufferCountdown()" type="button">Start 8s Setup &amp; Set</button>
 </div>
-<svg aria-hidden="true" fill="none" height="150" id="wb-fit-large-svg" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 240 150" width="240">
-<rect fill="var(--teal-soft)" height="7" id="wb-mat-surface" opacity="0" rx="3.5" stroke="var(--chart-water)" stroke-width="1.2" width="192" x="24" y="126"></rect>
-<rect fill="var(--timber-soft)" height="34" id="wb-support-box" opacity="0" rx="4" stroke="var(--chart-beacon)" stroke-dasharray="3 3" stroke-width="1.5" width="38" x="76" y="94"></rect>
-<line stroke="var(--chart-ink)" stroke-width="1.6" x1="16" x2="224" y1="132" y2="132"></line>
-<line stroke="var(--chart-water)" stroke-dasharray="3 3" stroke-width="1.1" x1="125" x2="125" y1="10" y2="136"></line>
-<line id="wb-moment-bar" stroke="var(--chart-beacon)" stroke-width="3.2" x1="105" x2="125" y1="58" y2="58"></line>
-<line id="wb-shank" stroke="var(--chart-ink)" stroke-width="7" x1="125" x2="135" y1="128" y2="90"></line>
-<line id="wb-femur" stroke="var(--chart-water)" stroke-width="8" x1="135" x2="105" y1="90" y2="58"></line>
-<line id="wb-torso" stroke="var(--chart-ink)" stroke-width="9" x1="105" x2="120" y1="58" y2="20"></line>
-<line id="wb-arm" stroke="var(--chart-beacon)" stroke-width="5.5" x1="118" x2="152" y1="26" y2="30"></line>
-<circle cx="122" cy="11" fill="var(--chart-panel)" id="wb-head" r="7.5" stroke="var(--chart-ink)" stroke-width="2"></circle>
-<circle cx="125" cy="128" fill="var(--chart-ink)" id="wb-ankle-node" r="4" stroke="none"></circle>
-<circle cx="135" cy="90" fill="var(--chart-beacon)" id="wb-knee-node" r="4.5" stroke="var(--chart-ink)" stroke-width="1.5"></circle>
-<circle cx="105" cy="58" fill="var(--chart-beacon)" id="wb-hip-node" r="4.5" stroke="var(--chart-ink)" stroke-width="1.5"></circle>
-</svg>
+<figure class="wb-fit-demo">
+<div class="wb-fit-demo-frame">
+<video aria-label="Demo render of a bodyweight squat on a looping mannequin" autoplay="" class="wb-fit-demo-video" data-src="assets/fitness-squat-demo.mp4" height="480" id="wb-fit-demo-video" data-poster="assets/fitness-squat-demo-poster.webp" loop="" muted="" playsinline="" preload="none" width="480"></video>
+</div>
+<figcaption class="wb-fit-demo-cap">Demo render, not the final app</figcaption>
+</figure>
 <div style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:var(--text-xs);font-weight:600;color:var(--chart-sub);">
-<span id="wb-fit-easier-readout">Easier Variant: Chair / Wall Reach Support</span>
-<span id="wb-fit-load-readout">Teen 13–17: Bodyweight Skill</span>
+<span id="wb-fit-easier-readout">Easier Variant: Seated Chair Overhead Reach</span>
+<span id="wb-fit-load-readout">Bodyweight · 30s slow reach</span>
 </div>
-</div>
-<div class="chrono-slider-row">
-<label for="wb-fit-angle-slider">KINEMATIC JOINT ARC (θ)</label>
-<input class="chrono-slider" id="wb-fit-angle-slider" max="90" min="18" oninput="if(fitAngleSlider){fitAngleSlider.value=this.value;}updateFitnessRig(this.value);syncWbFitnessRigGeometry();" type="range" value="32"/>
-<span class="inst-tag" id="wb-fit-angle-lbl">32°</span>
 </div>
 <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;">
 <div style="display:inline-flex;flex-wrap:wrap;gap:8px;">
-<button class="scene-step-btn" onclick="toggleFitKinematicLoop();syncWbFitnessUI();" type="button">▶ Animate Rep Loop</button>
-<button class="scene-step-btn" onclick="toggleFitEasierVariant();syncWbFitnessUI();" type="button">Easier Variant Box ⇄</button>
+<button aria-pressed="false" class="scene-step-btn" hidden="" id="wb-fit-demo-btn" onclick="toggleWbFitDemo()" type="button">Pause demo</button>
+<button aria-pressed="false" class="scene-step-btn" id="wb-fit-easier-btn" onclick="toggleFitEasierVariant();syncWbFitnessUI();" type="button">Easier Variant Box</button>
 </div>
 <button class="btn" onclick="logCompletedFitnessSet();syncWbFitnessUI();" style="min-height:40px;padding:4px 16px;" type="button">+ Log Set (<span id="wb-fit-set-count">6</span>)</button>
 </div>
