@@ -272,3 +272,10 @@ Fresh finish.
     was a cold-Chromium flake — baseline v21 fetched from GitHub and
     re-run for comparison; warm runs pass 11/11 on both). Cache:
     evenfaring-studio-v22.
+
+## 42. 2026-10-21 (late) — REAL-DEVICE VERDICT: MOBILE ACCEPTED; resume scoped to desktop (v29)
+
+- Darius's phone verdict on the v19→v28 mobile build, with screenshots and a full screen recording: "The mobile version is 100x better than it was this morning... the mobile is clean." Solar Meridian & Tidal Chart functional; tide pool decently functional; Specimens 01–03 "smooth and clean"; the recording also shows the v23 chronometer winding/peeling/labels, the v24 chart room panning with correct island names, the v26 Appearance sheet, the ledger drawer with live patina flip, and the v27 ship's log + colophon all working on his iPhone. **The phone re-verdict that has gated the mobile build since item 21 is now given: ACCEPTED.** Desktop check deferred to tomorrow by Darius.
+- One defect reported: on load, the site did not show its beginning — the opening text was already scrolled past (he had to scroll and hold to screenshot it). Root cause: rec 9's resume (item 40) restored his saved scroll position in the stacked mobile layout too. On the desktop voyage resume is a feature; in the mobile stack a mid-page landing reads as a bug.
+- v29 fix (site commit pending below): the v27 module returns early when `dataset.voyageMode === 'stacked'` — no recording, no restore; mobile always begins at the beginning. Cache `evenfaring-studio-v29`.
+- Verified: verify-v29.py 5/5 (mobile emulation with a seeded saved position: scrollY stays 0, hero headline on screen; desktop: resume still restores exactly); harness 11/11.
