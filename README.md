@@ -1,12 +1,12 @@
 # Evenfaring — Studio Site
 
-Evenfaring is a one-person independent software studio making calm, steady
-software instruments for everyday life.
+Evenfaring is a one-person software studio founded by Darius, making calm,
+steady software instruments for everyday life. This repo is the studio's
+site: one static page, read as a voyage in four legs (Departure, The Open
+Sea, Harbors, Arrival) drawn on a nautical chart.
 
-This is the studio's site. It is a single static page built around one idea:
-a captain's voyage. The visitor sails east across four legs — Departure,
-The Open Sea, Harbors, Arrival — and meets the studio's instruments,
-workbenches, and the system behind the site along the way.
+**Live preview:** https://dariusdtatum-tech.github.io/evenfaring/
+(GitHub Pages; pushing to `main` redeploys. Pre-launch, so it is not indexed.)
 
 ## Run it
 
@@ -16,74 +16,123 @@ No build step. Any static file server works:
 python3 -m http.server
 ```
 
-Then open `http://localhost:8000`. (Opening `index.html` directly also works;
-the service worker just won't register off `file://`.)
-
-This repo is served by GitHub Pages at https://dariusdtatum-tech.github.io/evenfaring/ —
-pushing to `main` redeploys the site.
+Open `http://localhost:8000`. Opening `index.html` directly also works; the
+service worker just won't register from `file://`.
 
 ## Files
 
 | File | What it is |
 |---|---|
-| `index.html` | The whole site — markup, styles, and script |
-| `style.css` | The same stylesheet, kept in sync with the inline styles |
-| `sw.js` | Service worker (offline support) |
-| `manifest.webmanifest` | PWA manifest |
-| `icons/` | App icons |
-| `privacy.html` | Privacy page — kept live at the root deliberately, so its URL stays stable |
+| `index.html` | The whole site: markup, styles and script |
+| `style.css` | Shared styles for the small static pages (privacy); palette and fonts match `index.html` |
+| `sw.js` | Service worker. Bump `evenfaring-studio-vNN` on every deploy (currently v43) |
+| `manifest.webmanifest`, `icons/`, `apple-touch-icon.png`, `favicon.svg` | PWA and icons |
+| `privacy.html` | Privacy page, kept at the root so its URL stays stable |
 | `404.html` | Standalone not-found page |
 | `og-image.png` | Link-preview image |
-| `apple-touch-icon.png` | iOS home-screen icon |
-| `favicon.svg` | Favicon |
-| `robots.txt` | Crawler rules (see "Before launch" below) |
-| `sitemap.xml` | Sitemap — homepage and privacy page |
-| `docs/` | Working documents: `docs/app-store/` (App Store submission checklists & guides), `docs/audits/` (site audits) |
-| `archive/legacy-site/` | The pre-voyage multi-page site pages, archived 2026-10-20 |
-| `assets/` + `previews/` | Legacy site assets (self-hosted fonts & licenses, app icons) and screenshots of the old pages, kept for the archive |
+| `robots.txt`, `sitemap.xml` | Crawler rules (see "Pre-launch state") |
+| `docs/` | Working documents: App Store guides, site audits, studio roadmap |
+| `archive/legacy-site/` | The pre-voyage multi-page site, archived 2026-10-20 |
+| `assets/`, `previews/` | Self-hosted fonts and licences, legacy assets and screenshots |
 
-## What's on the voyage
+## Locked direction (approved Oct 22, 2026)
 
-- **The voyage itself** — vertical scrolling sails the world eastward; the
-  page tips into the chart table as you leave harbor, then settles back.
-- **A vessel that sails with you** — screen-fixed, riding a self-drawing
-  route with X-marked harbors and a fathoms readout.
-- **Dawn to night** — light grades crossfade across the four legs, with stars
-  on the final leg.
-- **Chart Room** — an explorable archipelago map; click an island to sail
-  there, click an islet to step into a workbench.
-- **Ship's log** — pinned personal notes, kept on your device only.
-- **Tide pool, message in a bottle, rain showers** — small ambient life.
-- **Cartographer's lens** — add `?chart` to the URL to see the site's
-  construction outlines.
-### New in v18 — Refinement
+Keep this focus. Changes should refine within it, not redirect it.
 
-- **Hand-inked edges** — card art frames, the hero chronometer, and chart-room
-  islands carry a subtle ink-displacement line; corners are hand-drawn.
-- **Route-mask transitions** — leg changes sweep along the route's own shape
-  instead of a generic mist.
-- **Waterlight** — a slow shimmer band drifting across the chart.
-- **Hand-held vessel** — the ship rides summed-sine noise on lift and trim,
-  not a metronome bob.
-- **Calm springs** — one motion language: a calm ease and a gentle settle,
-  on hovers, buttons, modals, and arrivals.
-- **Chart-room zoom** — wheel, pinch, `+`/`-` buttons, double-click; pan is
-  clamped so the map can't escape the view.
-- **Draggable workbench modal** — on desktop, drag it by the topbar like a
-  captain's desk; the position resets on open.
-- **Living previews** — each instrument card shows a tiny live instrument
-  (breathing dot, a sundial that fills with the voyage, cycling suit pips,
-  ready/listening status).
-- **Refinement checklist** — unified hover/active/focus tokens, sea-glass
-  text selection, slim timber scrollbar, hand-checked contrast, `100dvh`
-  fallbacks, a composable SCENES registry.
+- **Layout:** one stacked vertical column, max 1120px, one shared left edge.
+  Never horizontal, and never widened on desktop. Wide screens keep calm,
+  empty margins over the chart; there is no split heading/work layout.
+- **Style language:** the shared language of the *Aliveness Playbook* and
+  *Experience Study* documents:
+  - section heads: a small terracotta letter-spaced label, an upright
+    Cormorant Garamond serif title, a short summary line, and a 2px ink rule;
+  - portfolio pieces as numbered warm-paper cards ("Portfolio 01" in italic
+    terracotta serif), hairline border, 14px radius, soft shadow, with the
+    status line in a tinted note;
+  - sand callouts (Notices to Mariners, the captain's note) at 10px radius;
+  - pill buttons and chips.
+  Type: Cormorant Garamond + Plus Jakarta Sans on the 12/14/16/20/32/56 scale.
+- **Surface:** Aged Heirloom Vellum Patina is the default
+  (`data-patina="aged"`); the documents' paper tones are mixed into it, never
+  replacing it. The nautical chart background stays, fixed and full width.
+- **Colour:** terracotta (`--timber`) is the action colour.
+- **Theme:** Auto by default (follows the system), with Daylight and Night Watch.
+- **Sound:** Harbor Audio is off by default; a saved "On" choice is honoured.
+- **Voyage log:** the chart room, opened from the Appearance menu: drag,
+  zoom and islands, real app statuses, "Last updated" date, principles linked
+  to their sources, a harbor with support, privacy and contact, and a text list.
+- **Colophon:** restored under its compass star, on the hairline rules.
 
-Reduced motion is respected throughout: with `prefers-reduced-motion`, the
-voyage still sails, flat and still; every v18 animation goes inert or instant.
+## Header and Appearance menu
 
-## Before launch
+The header holds the brand, four leg links and the Appearance button. Every
+control in the menu does something visible:
 
-- The `robots.txt` in the repo still says `Disallow: /` from the preview
-  setup — update it when you're ready for search engines to crawl.
-- Supply a real `og-image.png` for link previews.
-- Point the "See the three apps" buttons at their real deployment URLs.
+| Control | What it does |
+|---|---|
+| Theme: Daylight / Night Watch / Auto | Switches the theme (shown on phones too) |
+| Voyage log | Opens the chart room |
+| Fair wind | Sails the page hands-free; any scroll takes the helm back |
+| Light grade: Dawn / Noon / Dusk / Night | Holds that light over the chart while you scroll; tap it again to return to the scroll-driven day |
+| Finish | Toggles Aged Vellum and Fresh Studio; the label names the current finish |
+| Harbor Audio | Off / On |
+| Workbenches (3) | Opens the workbench views |
+| Download HTML | Downloads the page |
+
+Retired on Oct 22, 2026 because their targets were gone: Route, Soundings,
+Notes, View (Calm Horizon is the only view), Set sail. Don't bring back a
+control unless its target is visible.
+
+## Motion
+
+- At most one living element at a time (two running animations at most, kept
+  slow and quiet). No new animations without a reason.
+- `prefers-reduced-motion` makes the page static: transitions and animations
+  become instant or inert.
+
+## Accessibility and QA bar
+
+Every deploy is checked on the live site (loaded with `?r=random` to bypass
+caches) at 390, 1024, 1280 and 1920px, light and dark:
+
+- axe-core: 0 violations (including colour contrast);
+- no horizontal overflow (`scrollWidth` ≤ viewport);
+- CLS ≈ 0 (layout-shift observer);
+- tap targets at least 44px;
+- each Appearance control changes something; theme switching verified at 390;
+- a fresh visit with no storage gives `data-patina="aged"`, audio off;
+- simplicity limits: ≤ 8 font sizes, ≤ 10 spacing values, ≤ 6 background
+  colours, ≤ 6 header controls, ≤ 20 visible buttons, ≤ 2 running animations.
+
+The Playwright scripts live outside this repo; the list above is the bar.
+
+## Truthful claims
+
+Copy states only what is true today. No invented numbers, users or dates.
+Current status lines:
+
+- **Urge Walk:** In development · iPhone, December 2026 · core features free ·
+  $4.99/month premium · no ads
+- **Fitness app:** In planning (no date)
+- **Christian game:** In planning · all ages
+
+## Pre-launch state
+
+- `<meta name="robots" content="noindex, nofollow">` is on the pages.
+- `robots.txt` says `Disallow: /`.
+- The contact address is the placeholder `hello@example.com`.
+- There is no `CNAME`; the site is served from the github.io URL.
+- `404.html` links use the `/evenfaring/` project path.
+- The canonical, `og:url`, `og:image` and `twitter:image` tags already point
+  at `https://evenfaring.com/`.
+
+## November launch checklist
+
+- [ ] Restore the `CNAME` file (`evenfaring.com`) and set the custom domain in Pages.
+- [ ] Remove the `noindex, nofollow` meta tags.
+- [ ] Change `robots.txt` to allow crawling and list the sitemap.
+- [ ] Replace `hello@example.com` with the real studio address everywhere.
+- [ ] Fix the 404 paths: `/evenfaring/…` becomes `/…` on the custom domain.
+- [ ] Update the description and link tags (canonical, og, twitter, sitemap)
+      to the final evenfaring.com URLs and check the preview image.
+- [ ] Bump the service worker cache and run the full QA bar on the domain.

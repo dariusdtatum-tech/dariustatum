@@ -5,7 +5,7 @@ Evenfaring is a one-person studio. This doc records the direction agreed on 2026
 ## Where things stand
 
 - Urge Walk v1.0 ships first. Nothing else starts building until it is submitted. (Grok Bot owns the app repo process; its Apple groundwork — privacy manifests, EAS config — is already in place.)
-- Evenfaring studio site is live (the voyage build); the domain evenfaring.com is a planned purchase.
+- Evenfaring studio site is live as a preview (the single-column voyage build, direction locked Oct 22, 2026); the domain evenfaring.com is a planned purchase.
 - Apple Developer Program enrollment is planned for early November 2026.
 
 ## The order of work
