@@ -33,6 +33,17 @@
   nav a {
     color: #3f7a6b;
     margin: 0 0.75rem;
+    position: relative;
+  }
+  /* Invisible 44px tap target; no visual change. */
+  nav a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: max(100%, 44px);
+    height: max(100%, 44px);
+    transform: translate(-50%, -50%);
   }
   footer {
     margin-top: 2.5rem;
