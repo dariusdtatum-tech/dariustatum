@@ -4698,7 +4698,17 @@ header.site .wrap,.chrono-dispatch{gap:16px!important}
 .chrono-slider,.chrono-peek{margin-top:0!important;margin-bottom:0!important}
 .mobile-harbor-dock{padding:8px!important}
 .mobile-dock-btn{padding:4px 8px!important}
-#instrument-cards .card-live,.colophon-star,.fogburst-route,.voyage-fogburst,.mobile-dock-icon,#weather-canvas{display:none!important}
+#instrument-cards .card-live,.fogburst-route,.voyage-fogburst,.mobile-dock-icon,#weather-canvas{display:none!important}
+</style>
+<style id="rebalance-colophon">
+/* Rebalance 1 (2026-10-22): the colophon returns under its compass star,
+   on the hairline system — star beside the text, one top hairline. */
+.ships-log{display:block!important;border:0!important;border-top:1px solid var(--rule)!important;padding:48px 0 0!important}
+.colophon{display:grid!important;grid-template-columns:64px minmax(0,62ch);column-gap:24px;border:0!important;padding:0!important}
+.colophon-star{grid-row:1/span 6;width:64px;height:64px;display:block}
+.colophon>*:not(svg){grid-column:2;margin:0 0 8px}
+.colophon .eyebrow{margin:0 0 16px!important}
+@media(max-width:640px){.colophon{grid-template-columns:48px minmax(0,1fr);column-gap:16px}.colophon-star{width:48px;height:48px}}
 </style>
 </head>
 <body data-patina="aged" data-theme="light">
