@@ -279,3 +279,10 @@ Fresh finish.
 - One defect reported: on load, the site did not show its beginning — the opening text was already scrolled past (he had to scroll and hold to screenshot it). Root cause: rec 9's resume (item 40) restored his saved scroll position in the stacked mobile layout too. On the desktop voyage resume is a feature; in the mobile stack a mid-page landing reads as a bug.
 - v29 fix (site commit pending below): the v27 module returns early when `dataset.voyageMode === 'stacked'` — no recording, no restore; mobile always begins at the beginning. Cache `evenfaring-studio-v29`.
 - Verified: verify-v29.py 5/5 (mobile emulation with a seeded saved position: scrollY stays 0, hero headline on screen; desktop: resume still restores exactly); harness 11/11.
+
+## 43. 2026-10-21 (late) — v29 incomplete: Safari's own scroll restoration (v30)
+
+- Darius re-checked and reported the beginning-text issue "still there," with a second screen recording. Two causes: (1) the recording begins from the iOS-restored tab — the old page state, no reload ever ran; (2) a genuine miss in v29: the early return skipped the whole resume block, including the line that set `history.scrollRestoration = 'manual'` — so Safari's native scroll restoration stayed active and put him back mid-page on any real reload. Item 42's fix was correct about the site's own code and incomplete about the browser's.
+- v30 fix (site commit pending below): in stacked mode the module now sets `history.scrollRestoration = 'manual'` AND forces an instant scroll to the top on load (immediately and again at 350ms, excepting #workbench hashes), then returns — no recording, no restore. Cache `evenfaring-studio-v30`.
+- Verified: verify-v30.py 7/7 — the suite now includes the reload case v29's probes missed (scroll to 4500, reload, lands at 0 with the hero headline on screen); desktop resume still restores exactly. Harness 11/11.
+- Note for the record: Darius's phone needs one manual refresh (or tab close/reopen) to pick up v30, because the currently open tab predates it.
