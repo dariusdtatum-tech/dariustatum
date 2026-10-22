@@ -4670,14 +4670,14 @@ header.site .appearance-pop .patina-toggle-pill,header.site .appearance-pop .rea
 <button aria-pressed="false" data-chrono-hour="12.0" type="button">12:00 · Noon</button>
 <button aria-pressed="true" data-chrono-hour="18.75" type="button">18:45 · Dusk</button>
 <button aria-pressed="false" data-chrono-hour="21.25" type="button">21:15 · Watch</button>
-<button id="chrono-sync-local-btn" onclick="syncChronoToRealClock()" title="Set the Solar Watch to your device's real local time" type="button">⌚ Local Clock</button>
+<button id="chrono-sync-local-btn" onclick="syncChronoToRealClock()" title="Set the Solar Watch to your device's real local time" type="button">Local Clock</button>
 </div>
 <div aria-live="polite" class="chrono-dispatch" id="chrono-dispatch">
 <span><strong>18:45 Coastal Dusk:</strong> When an evening urge crests, step outside for a 5-minute harbor walk.</span>
 <span class="dispatch-badge">INSTRUMENT 01 · URGE WALK</span>
 </div>
 <div aria-label="Ship's watch bells and lunar tidal coupling" class="v8-upgrade-strip">
-<span id="chrono-watch-bells"><b>SHIP’S WATCH:</b> LAST DOG WATCH · 5 BELLS <span aria-hidden="true">🔔</span></span>
+<span id="chrono-watch-bells"><b>SHIP’S WATCH:</b> LAST DOG WATCH · 5 BELLS</span>
 <span id="chrono-lunar-readout"><b>LUNAR PHASE:</b> WAXING GIBBOUS · SPRING TIDE</span>
 <span id="bus-pulse-readout" style="color:var(--chart-water);font-weight:700;">BUS SYNC → 01 · 02 · 03</span>
 </div>
@@ -4937,7 +4937,7 @@ header.site .appearance-pop .patina-toggle-pill,header.site .appearance-pop .rea
 <span class="harbor-audio-label">Harbor Audio: On</span>
 </button>
 <button class="download-html-pill" id="header-download-html-btn" onclick="downloadStandaloneHTML()" title="Download this complete standalone HTML file to your computer so you can double-click and open it anytime" type="button">
-<span aria-hidden="true">⬇</span>
+<span aria-hidden="true">↓</span>
 <span>Download HTML</span>
 </button>
 <div aria-label="Chart color theme" class="theme-switch" role="group">
@@ -7039,7 +7039,7 @@ updateChronometer = function(hourVal, driveBus = true) {
     else if (h >= 12 && h < 16) watchName = 'AFTERNOON WATCH';
     else if (h >= 16 && h < 20) watchName = 'DOG WATCH';
     else if (h >= 20) watchName = 'FIRST NIGHT WATCH';
-    watchEl.innerHTML = `<b>SHIP’S WATCH:</b> ${watchName} · ${bells} BELL${bells > 1 ? 'S' : ''} 🔔`;
+    watchEl.innerHTML = `<b>SHIP’S WATCH:</b> ${watchName} · ${bells} BELL${bells > 1 ? 'S' : ''}`;
   }
   if (pulseEl) {
     pulseEl.textContent = syncClutchEnabled
@@ -8206,7 +8206,7 @@ function startWbSetupBufferCountdown() {
   if (wbSetupBufferTimer) {
     clearInterval(wbSetupBufferTimer);
     wbSetupBufferTimer = null;
-    if (txtEl) txtEl.textContent = '⏱ POSTURE SETUP BUFFER: 8.0s READY (Zero Rush)';
+    if (txtEl) txtEl.textContent = 'POSTURE SETUP BUFFER: 8.0s READY (Zero Rush)';
     if (btnEl) btnEl.textContent = '▶ Start 8s Setup & Set';
     return;
   }
@@ -8227,7 +8227,7 @@ function startWbSetupBufferCountdown() {
       return;
     }
     const remSec = (wbSetupBufferRemDeci / 10).toFixed(1);
-    if (txtEl) txtEl.textContent = `⏱ SETUP BUFFER: ${remSec}s — Plant feet, soften ribs, find breath...`;
+    if (txtEl) txtEl.textContent = `SETUP BUFFER: ${remSec}s — Plant feet, soften ribs, find breath...`;
     if (wbSetupBufferRemDeci % 10 === 0) playSubtleTone('detent');
   }, 200);
 }
@@ -8442,7 +8442,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredInstallPrompt = e;
   const btn = document.getElementById('pwa-install-trigger-btn');
-  if (btn) btn.textContent = '📲 Install Evenfaring App Now';
+  if (btn) btn.textContent = 'Install Evenfaring App Now';
 });
 
 function triggerPwaInstallFlow() {
@@ -8527,7 +8527,7 @@ function renderPrintable16CardsGrid() {
     const numStr = idx + 1 < 10 ? '0' + (idx + 1) : '' + (idx + 1);
     return `<div class="print-linen-card">
       <div class="print-card-crop">
-        <span>✂ CARD ${numStr}/16</span>
+        <span>CARD ${numStr}/16</span>
         <span>${suitShort[c.suitIdx]}</span>
       </div>
       <p class="print-card-quote">${c.quote}</p>
@@ -8629,7 +8629,7 @@ function buildStandalonePrintableHTML(kind) {
 <body>
   <div class="print-banner">
     <span><b>${title}</b> · Ready for 8.5" × 11" or A4 Print</span>
-    <button class="print-btn" onclick="window.print()">🖨 Print Sheet Now</button>
+    <button class="print-btn" onclick="window.print()">Print Sheet Now</button>
   </div>
   ${innerMarkup}
 
@@ -8658,7 +8658,7 @@ function downloadPrintableArtifactSVG() {
       const l2 = cleanQuote.slice(38, 76);
       return `<g transform="translate(${x},${y})">
         <rect width="225" height="154" rx="6" fill="#fffdf8" stroke="#7a6a53" stroke-width="1.2" stroke-dasharray="5 4"/>
-        <text x="10" y="18" fill="#a85830" font-family="sans-serif" font-size="9" font-weight="bold">✂ CARD ${i + 1}/16 · SUIT ${c.suitIdx + 1}</text>
+        <text x="10" y="18" fill="#a85830" font-family="sans-serif" font-size="9" font-weight="bold">CARD ${i + 1}/16 · SUIT ${c.suitIdx + 1}</text>
         <text x="10" y="64" fill="#1b2e4b" font-family="Georgia, serif" font-size="11.5" font-style="italic">“${l1}</text>
         <text x="10" y="82" fill="#1b2e4b" font-family="Georgia, serif" font-size="11.5" font-style="italic">${l2}”</text>
         <line x1="10" y1="128" x2="215" y2="128" stroke="#d4c8b4" stroke-width="1"/>
@@ -8697,7 +8697,7 @@ function downloadPrintableArtifactSVG() {
       <rect x="525" y="410" width="465" height="320" rx="8" fill="#fffdf8" stroke="#1b2e4b" stroke-width="1.5"/>
       <text x="543" y="442" fill="#1b2e4b" font-family="Georgia, serif" font-size="16" font-weight="bold">IV · Cartographer’s Sketch &amp; Tomorrow’s Steady Step</text>
       <text x="543" y="485" fill="#3f526d" font-family="sans-serif" font-size="12">Tomorrow’s Single Step: ______________________________________</text>
-      <text x="543" y="535" fill="#3f526d" font-family="sans-serif" font-size="12">Captain’s Sign-Off: ______________________   Watch Bells: ___ 🔔</text>
+      <text x="543" y="535" fill="#3f526d" font-family="sans-serif" font-size="12">Captain’s Sign-Off: ______________________   Watch Bells: ___</text>
     </svg>`;
     downloadTextFileAsset('evenfaring_pocket_ships_log.svg', svg, 'image/svg+xml;charset=utf-8');
   }
@@ -8824,7 +8824,7 @@ const deskObjectsConfig = [
   {
     title: 'Object 04 · Open Ship’s Field Logbook & Fountain Pen',
     copy: '100% on-device ledger (`' + completedWalksCount + ' Walks · ' + completedSetsCount + ' Sets`). Pin a single steady intention for today on the right, or print a physical pocket sheet.',
-    cta: '🖨 Open Printable Ship’s Log →',
+    cta: 'Open Printable Ship’s Log →',
     onSelect: () => {
       playSubtleTone('step');
     },
@@ -8851,7 +8851,7 @@ const deskObjectsConfig = [
   {
     title: 'Object 06 · Brass Gimbal Desk Lamp & Ship’s Bell',
     copy: 'Pull the brass chain to switch the entire studio between Sunlit Daylight (#F6F1E6) and Deep-Sea Night Watch (#0F1D33) with a bronze bell strike.',
-    cta: '🏮 Pull Chain: Toggle Daylight ⇄ Night Watch',
+    cta: 'Pull Chain: Toggle Daylight ⇄ Night Watch',
     onSelect: () => {
       ringHarborBellNow();
     },
@@ -8938,7 +8938,7 @@ function toggleMobileHeaderDrawer() {
   const isOpen = hdr.classList.toggle('is-mobile-drawer-open');
   if (btn) {
     btn.setAttribute('aria-expanded', String(isOpen));
-    btn.textContent = isOpen ? '✕ Close Deck' : '⚙ Deck';
+    btn.textContent = isOpen ? '✕ Close Deck' : 'Deck';
   }
   if (isOpen) window.scrollTo({ top: 0, behavior: 'smooth' });
   playSubtleTone('switch');
@@ -10310,7 +10310,7 @@ document.addEventListener('keydown', function(e){
 <p id="wb-fit-move-cue" style="margin:0;font-size:var(--text-sm);color:var(--chart-sub);">Plant both heels at hip width, inhale as arms sweep overhead (θ = 32°), and lengthen the thoracic spine without overarching the lower back.</p>
 <div class="wb-fit-rig-box">
 <div class="wb-buffer-banner" id="wb-setup-buffer-banner">
-<span id="wb-setup-buffer-txt">⏱ POSTURE SETUP BUFFER: 8.0s READY (Zero Rush)</span>
+<span id="wb-setup-buffer-txt">POSTURE SETUP BUFFER: 8.0s READY (Zero Rush)</span>
 <button class="tour-mini-btn" id="wb-buffer-start-btn" onclick="startWbSetupBufferCountdown()" type="button">▶ Start 8s Setup &amp; Set</button>
 </div>
 <svg aria-hidden="true" fill="none" height="150" id="wb-fit-large-svg" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 240 150" width="240">
@@ -10374,7 +10374,7 @@ document.addEventListener('keydown', function(e){
 <div style="display:flex;flex-wrap:wrap;gap:6px;">
 <button aria-pressed="false" class="tour-mini-btn" id="wb-table-lock-btn" onclick="toggleTabletopRotationLock()" type="button">Rotation: Follow Active Seat (90°)</button>
 <button class="scene-step-btn" onclick="passWbTabletopSeat()" type="button">Pass the Compass Clockwise ↻</button>
-<button class="scene-step-btn" onclick="closeFocusWorkbench();if(typeof selectShipsLockerTab==='function')selectShipsLockerTab('print-artifacts',false);selectPrintArtifact('cards');document.getElementById('print-artifacts').scrollIntoView({behavior:'smooth'});" type="button"><span aria-hidden="true">🖨</span> Print 16-Card Sheet</button>
+<button class="scene-step-btn" onclick="closeFocusWorkbench();if(typeof selectShipsLockerTab==='function')selectShipsLockerTab('print-artifacts',false);selectPrintArtifact('cards');document.getElementById('print-artifacts').scrollIntoView({behavior:'smooth'});" type="button">Print 16-Card Sheet</button>
 </div>
 </div>
 <div class="wb-tabletop-stage">
