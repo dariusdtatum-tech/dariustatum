@@ -10717,7 +10717,9 @@ document.addEventListener('keydown', function(e){
   Array.prototype.forEach.call(document.querySelectorAll('[data-anchor]'), function(b){
     b.addEventListener('click', function(){ goEnding(b.getAttribute('data-anchor')); });
   });
-  /* resume where you left off */
+  /* resume where you left off — desktop voyage only; in the stacked
+     mobile layout the site always begins at the beginning */
+  if(document.documentElement.dataset.voyageMode === 'stacked') return;
   var RKEY = 'evenfaring-resume';
   var ticking = false;
   function record(){
