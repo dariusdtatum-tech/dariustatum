@@ -1,0 +1,27 @@
+/* Evenfaring — shared styles for the small static pages (privacy). Palette and fonts match index.html. */
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:600;font-display:swap;src:url(assets/fonts/cormorant-garamond-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:400 700;font-display:swap;src:url(assets/fonts/plus-jakarta-sans-latin-wght-normal.woff2) format('woff2')}
+:root{--bg:#faf7f1;--surface:#f1ebe0;--text:#24395c;--text-2:#3f526d;--line:#c4b59b;--link:#2f6155;--timber:#ae5f37;color-scheme:light dark}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1d33;--surface:#182b47;--text:#f3ede2;--text-2:#c3cad6;--line:#294063;--link:#a9cbc0;--timber:#df8d62}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;font-size:1.0625rem;line-height:1.65}
+.wrap{max-width:44rem;margin:0 auto;padding:0 1.25rem}
+a{color:var(--link);text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--link);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--bg);color:var(--text);padding:.75rem 1rem;z-index:10}
+.skip:focus{left:1rem;top:1rem}
+header.site{border-bottom:1px solid var(--line);background:var(--surface)}
+header.site .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.25rem 1rem;padding-top:.25rem;padding-bottom:.25rem}
+.wordmark{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:1.5rem;color:var(--text);text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+nav ul,footer ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:0 .25rem}
+nav a,footer a{display:inline-flex;align-items:center;min-height:44px;min-width:44px;padding:0 .5rem;color:var(--text)}
+main{padding:2.5rem 0 3rem}
+h1,h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-height:1.2;color:var(--text)}
+h1{font-size:2.5rem;margin:0 0 .5rem}
+h2{font-size:1.6rem;margin:2rem 0 .5rem}
+.status{color:var(--text-2);font-size:.95rem;margin-top:0}
+.prose p{color:var(--text)}
+footer{border-top:1px solid var(--line);color:var(--text-2);font-size:.95rem}
+footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem 1rem;padding-top:.75rem;padding-bottom:.75rem}
+footer p{margin:0}
