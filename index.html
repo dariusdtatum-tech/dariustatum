@@ -4710,45 +4710,13 @@ header.site .wrap,.chrono-dispatch{gap:16px!important}
 .colophon .eyebrow{margin:0 0 16px!important}
 @media(max-width:640px){.colophon{grid-template-columns:48px minmax(0,1fr);column-gap:16px}.colophon-star{width:48px;height:48px}}
 </style>
-<style id="rebalance-wide">
-/* Rebalance 2 (2026-10-22): wide desktop. At >=1100px the Open Sea and
-   Harbors legs read as two columns (heading left, work right) inside the
-   same 1120px container, so a narrow text column no longer floats in an
-   empty band. At >=1600px the chart's margin marks return to the empty
-   margins: notes, sheet names and waters on the left; curiosities and
-   stamps on the right, all quiet ink, never over content. */
-@media(min-width:1100px){
-  #leg-opensea,#leg-harbors{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,352px) minmax(0,720px) minmax(0,1fr);column-gap:48px;align-items:start;grid-auto-flow:dense}
-  #leg-opensea>.leg-panel,#leg-harbors>.leg-panel{grid-column:3;max-width:none!important;width:100%!important;margin:0 0 48px!important}
-  #opensea-heading,#harbors-heading{grid-column:2!important;grid-row:1/span 4;position:sticky;top:120px;margin:0!important}
-  #opensea-heading .leg-head,#harbors-heading .leg-head{width:auto!important;max-width:none}
-  #leg-opensea>.leg-panel:first-of-type+.leg-panel,#leg-harbors .leg-panel+.leg-panel{margin-top:0!important}
-}
-@media(min-width:1600px){
-  .leg{position:relative}
-  .leg .curio,.leg .chart-note,.leg .chart-stamp,.leg .waters-name,.leg .sheet-tag{display:block!important}
-  .leg .chart-note{left:auto!important;right:calc(50% + 592px)!important;width:200px;text-align:right;font-size:20px;line-height:1.3}
-  .leg .waters-name,.leg .sheet-tag{left:auto!important;right:calc(50% + 592px)!important;width:200px;text-align:right;letter-spacing:.12em!important}
-  .leg .waters-name{font-size:16px;bottom:64px!important}
-  .leg .sheet-tag{bottom:40px!important}
-  .leg .curio,.leg .chart-stamp{left:calc(50% + 592px)!important;width:200px}
-  .leg .chart-stamp{letter-spacing:.12em;line-height:1.5}
-  .leg .curio svg{max-width:200px;height:auto}
-  .leg .curio-cap{white-space:normal}
-  body.layers-off-notes .leg .chart-note,body.layers-off-notes .leg .chart-stamp,body.layers-off-notes .leg .waters-name,body.layers-off-notes .leg .sheet-tag{display:none!important}
-  body.layers-off-soundings .leg .curio{display:none!important}
-}
-</style>
 <style id="rebalance-controls">
 /* Rebalance 3 (2026-10-22): Appearance controls that still act.
    Theme, workbench and download pills were hidden on phones by an old
-   Deck-drawer rule; inside the menu they always show. Soundings/Notes
-   only appear where their marks are drawn (>=1600px). */
+   Deck-drawer rule; inside the menu they always show. */
 header.site .appearance-pop .theme-switch,header.site:not(.is-mobile-drawer-open) .appearance-pop .theme-switch{display:flex!important}
 header.site:not(.is-mobile-drawer-open) .appearance-pop .workbench-quick-pill,header.site:not(.is-mobile-drawer-open) .appearance-pop .download-html-pill,header.site:not(.is-mobile-drawer-open) .appearance-pop .patina-toggle-pill{display:inline-flex!important}
 .appearance-pop .theme-switch button{min-height:44px;flex:1}
-.appearance-pop .layer-pills,.appearance-pop .layer-pills+*{}
-@media(max-width:1599px){.appearance-pop .layer-pills{display:none!important}}
 </style>
 </head>
 <body data-patina="aged" data-theme="light">
@@ -5080,7 +5048,7 @@ header.site:not(.is-mobile-drawer-open) .appearance-pop .workbench-quick-pill,he
 <button aria-pressed="true" data-theme-opt="light" type="button">Daylight</button>
 <button aria-pressed="false" data-theme-opt="dark" type="button">Night Watch</button>
 <button aria-pressed="false" data-theme-opt="auto" type="button">Auto</button>
-</div><span class="appearance-cap">Voyage log</span><button class="deck-extra-btn" id="chartroom-open" title="Open the voyage log — real app status, studio principles and contact" type="button">◈ Voyage log</button><span class="appearance-cap">Chart</span><span class="appearance-row"><button class="deck-extra-btn" id="fairwind-toggle" aria-pressed="false" title="Fair wind — sail the whole chart hands-free; any scroll takes the helm back" type="button">Fair wind</button> <span aria-label="Chart layers" class="grade-pills layer-pills" role="group"><button aria-pressed="true" data-layer="soundings" type="button">Soundings</button><button aria-pressed="true" data-layer="notes" type="button">Notes</button></span></span><span class="appearance-cap">Light grade</span><span aria-label="Light grade override — scroll to release back to the voyage" class="grade-pills" role="group">
+</div><span class="appearance-cap">Voyage log</span><button class="deck-extra-btn" id="chartroom-open" title="Open the voyage log — real app status, studio principles and contact" type="button">◈ Voyage log</button><span class="appearance-cap">Chart</span><span class="appearance-row"><button class="deck-extra-btn" id="fairwind-toggle" aria-pressed="false" title="Fair wind — sail the whole chart hands-free; any scroll takes the helm back" type="button">Fair wind</button></span><span class="appearance-cap">Light grade</span><span aria-label="Light grade override — scroll to release back to the voyage" class="grade-pills" role="group">
 <button aria-pressed="false" data-grade-lock="0" type="button">Dawn</button><button aria-pressed="false" data-grade-lock="1" type="button">Noon</button><button aria-pressed="false" data-grade-lock="2" type="button">Dusk</button><button aria-pressed="false" data-grade-lock="3" type="button">Night</button>
 </span><span class="appearance-cap">Finish &amp; view</span><button aria-pressed="true" class="patina-toggle-pill" id="patina-view-toggle" onclick="togglePatinaMode()" title="Switch between Fresh Studio finish and Aged &amp; Wiser Heirloom Patina" type="button">
 <span aria-hidden="true" class="patina-seal-dot"></span>
