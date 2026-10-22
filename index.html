@@ -7236,7 +7236,7 @@ updateChronometer = function(hourVal, driveBus = true) {
 };
 const chronoLiveBtn = document.getElementById('chrono-live-btn');
 if (chronoLiveBtn) {
-  chronoLiveBtn.addEventListener('click', () => setChronoLive(true, false));
+  chronoLiveBtn.addEventListener('click', () => setChronoLive(!chronoLive, false));
 }
 document.addEventListener('visibilitychange', () => {
   if (chronoLive && !document.hidden) syncChronoToRealClock(true);
