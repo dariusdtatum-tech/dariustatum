@@ -4662,6 +4662,30 @@ h3{margin:0 0 8px}
 .chart-room:not([hidden]),.focus-workbench-shell{animation-duration:600ms!important}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
+<style id="sculpt-9-surfaces">
+/* Sculpt 9 (2026-10-22): patina + ink + one accent. Panels sit on the
+   vellum itself (the patina texture is the only surface effect); one
+   1px hairline in the patina-ink tint; radius 0 or 2px (circles only
+   for real round instruments); no shadows; terracotta = act here. */
+:root{--rule:color-mix(in srgb,var(--chart-ink) 25%,transparent)}
+#star-field{display:none!important}
+.chronometer-card,.folio-chart-box,.privacy-inspector,.inst-bar,.chronometer-controls,.folio-chart-deck,.inspector-cell,.ships-log,.seg-row,.captain-note,.brand-mark,footer p,.arrival-panel,.leg-head,.notices,.colophon{background:transparent!important;background-image:none!important}
+.chronometer-card,.folio-chart-box,.privacy-inspector,.ships-log,.captain-note{border:1px solid var(--rule)!important}
+.inst-bar,.chronometer-controls,.folio-chart-deck,.inspector-cell{border-color:var(--rule)!important;border-width:0 0 1px!important;border-style:solid!important}
+header.site{background:var(--bg)!important;border-bottom:1px solid var(--rule)!important;box-shadow:none!important}
+body *:not(svg *){box-shadow:none!important;text-shadow:none!important}
+:focus-visible{outline:2px solid var(--timber)!important;outline-offset:2px}
+body *:not(svg *):not(.round):not(.legnav-dot):not(.live-dot):not(.patina-seal-dot):not(.reading-view-dot):not(.clutch-dot):not(.audio-wave-bars i){border-radius:0!important}
+button,.btn,input,select,textarea,[class*="pill"],.theme-switch,.appearance-pop,.chart-room,.ledger-drawer,.focus-workbench-shell,.log-card,.bottle-card,.chronometer-card,.folio-chart-box,.privacy-inspector,.captain-note{border-radius:2px!important}
+.btn,a.btn,button.btn{background:var(--timber)!important;border:1px solid var(--timber)!important;color:#fff!important}
+html[data-theme="dark"] .btn,html[data-theme="dark"] a.btn{color:#1a140e!important}
+.leg p,.leg-head p,footer p,.appearance-btn,.voyage-telemetry,.scene-step-btn,[data-draft-btn],.mobile-dock-btn,.mobile-dock-btn.is-active-dock{background:transparent!important;background-image:none!important}
+[data-draft-btn][aria-pressed="true"],.mobile-dock-btn.is-active-dock{border:1px solid var(--chart-ink)!important;font-weight:600}
+body *:not(svg *):not(.btn):not(input):not([data-draft-btn][aria-pressed="true"]):not(.is-active-dock){border-color:var(--rule)!important}
+.leg *:not(svg *),header.site *,footer *{border-width:min(1px,100vw)}
+.mobile-harbor-dock{background:var(--bg)!important;border-top:1px solid var(--rule)!important}
+i[style*="rgba(28"],.leg i{background-color:transparent}
+</style>
 </head>
 <body data-patina="aged" data-theme="light">
 <svg aria-hidden="true" class="v18-ink-defs" focusable="false" height="0" style="position:absolute;left:0;top:0" width="0"><defs><filter height="110%" id="ink-edge" width="110%" x="-5%" y="-5%"><feTurbulence baseFrequency="0.9" numOctaves="2" result="n" seed="7" type="fractalNoise"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3"/></filter></defs></svg>
