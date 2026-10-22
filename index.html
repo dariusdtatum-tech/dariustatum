@@ -3798,7 +3798,7 @@ html[data-theme="dark"] .ct-veil{
 #calm-entry{border:1px dashed var(--teal);border-radius:12px;padding:16px;margin-top:14px}
 #calm-entry[hidden]{display:none}
 /* chart room map */
-.chart-room-world{position:absolute;left:0;top:0;will-change:transform}
+.chart-room-world{position:absolute;left:0;top:0;will-change:transform;transform-origin:0 0}
 .map-island{cursor:pointer}
 .map-island ellipse{fill:var(--chart-panel);stroke:var(--chart-water);stroke-width:2}
 .map-island text{font:700 22px var(--font-sans);fill:var(--chart-ink);letter-spacing:.06em}
@@ -4417,33 +4417,6 @@ body.layers-off-soundings .curio{display:none}
 .exhibit-hint{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.94rem;color:var(--ink-soft);margin:5px 0 0}
 @media(max-width:560px){.cx-detents{margin-left:0;max-width:300px}}
 </style>
-<style id="v24-chart-room-plotted">
-/* ================= v24 THE CHART ROOM, PLOTTED =================
-   Rec 2 (Darius 2026-10-21): the chart room becomes the explorative
-   heart. Island names return to the site's own vocabulary and the
-   alias islets (Walk Companion / Workout Player / Tabletop Compass)
-   are gone; the bench islets get roomier ellipses so their labels
-   fit. Rig the Route is absorbed: Plot a course lays marks A-D on
-   the chart, scores the course in FM against the charted 112, and
-   Sail it closes the room and sails your order through the voyage.
-   Specimens 05/06 are removed; Leg 3 is the chronometer alone. */
-.chart-room-head .cr-plot{margin-left:auto;white-space:nowrap;flex:none;width:auto;padding-left:14px;padding-right:14px}
-.cr-plot[aria-pressed="true"]{border-color:var(--teal);color:var(--teal)}
-.cr-plotbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:10px 18px;border-bottom:1px solid var(--line);background:var(--chart-panel)}
-.cr-plotbar[hidden]{display:none}
-.cr-plot-state{flex:1;min-width:220px;margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.02rem;color:var(--chart-ink)}
-.cr-plot-actions{display:flex;gap:8px}
-.cr-plot-actions .exhibit-btn[disabled]{opacity:.45;cursor:default}
-.cr-charted-line{fill:none;stroke:var(--chart-beacon);stroke-width:2.4;stroke-dasharray:8 7;opacity:.55}
-.cr-course-line{fill:none;stroke:var(--teal);stroke-width:3.4;stroke-linejoin:round;stroke-linecap:round}
-.cr-mark{cursor:pointer;outline:none}
-.cr-mark circle{fill:var(--chart-panel);stroke:var(--teal);stroke-width:2;stroke-dasharray:4 3}
-.cr-mark .cr-mark-letter{font:700 19px var(--font-sans);fill:var(--chart-ink)}
-.cr-mark:hover circle,.cr-mark:focus circle{stroke-width:3.4}
-.cr-mark.is-laid circle{fill:var(--teal);stroke-dasharray:none}
-.cr-mark.is-laid .cr-mark-letter{fill:var(--bg)}
-.chart-room.plotting .map-island{opacity:.38}
-</style>
 <style id="v25-correctness">
 /* ================= v25 CORRECTNESS & SELF-HOSTING =================
    Rec 7+8 (Darius 2026-10-21): the v11 strings are evergreen now;
@@ -4510,8 +4483,6 @@ header.site .appearance-pop .patina-toggle-pill,header.site .appearance-pop .rea
 .colophon{border-left:1px dashed var(--line-strong);padding-left:28px;color:var(--text-2)}
 .colophon .eyebrow{margin-top:14px}
 .colophon-fine{font-size:var(--text-sm);color:var(--text-muted);font-style:italic;font-family:'Cormorant Garamond',serif}
-.cr-mark,.cr-charted-line{display:none}
-.chart-room.plotting .cr-mark,.chart-room.plotting .cr-charted-line{display:block}
 .log-flash{animation:logflash 2.4s ease}
 @keyframes logflash{0%,55%{box-shadow:0 0 0 3px var(--teal)}100%{box-shadow:0 0 0 0 transparent}}
 @media(max-width:860px){
@@ -4588,6 +4559,30 @@ html{scroll-behavior:smooth}
 .snd-tilt-l,.snd-tilt-r,.snd-drift-l,.snd-drift-r{transform:none!important;rotate:none!important;translate:none!important}
 .leg-panel>section,.leg-panel>footer,.arrival-panel,.leg-head{margin-left:0!important;margin-right:0!important}
 #leg-arrival .leg-panel.pw60 footer .wrap{margin-left:0!important;margin-right:auto!important}
+</style>
+<style id="voyage-log">
+/* 2026-10-22 Voyage log (replaces the v24 plot-a-course chart room). */
+.chart-room-head .cr-listbtn{margin-left:auto;width:auto;padding:0 14px;white-space:nowrap}
+.chart-room-head .cr-listbtn[aria-pressed="true"]{border-color:var(--teal);color:var(--teal)}
+.chart-room-head button.cr-zoom:first-of-type{margin-left:0}
+.chart-room-head span{min-width:0}
+@media(max-width:640px){.chart-room-head{flex-wrap:wrap;gap:8px;padding:10px 12px}.chart-room-head span{flex-basis:100%;order:9}.chart-room-head .cr-listbtn{padding:0 10px}}
+.chart-room-view[hidden]{display:none}
+.cr-port rect{fill:var(--chart-panel);stroke:var(--chart-water);stroke-width:2}
+.cr-port:hover rect,.cr-port:focus rect{stroke:var(--chart-beacon);stroke-width:3}
+.cr-port:focus{outline:none}
+.cr-light{cursor:pointer}
+.cr-light-star{fill:var(--chart-beacon);opacity:.85}
+.cr-light-name{font:700 22px var(--font-sans);fill:var(--chart-ink);letter-spacing:.04em}
+.cr-light .map-sub{font:400 15px var(--font-sans);fill:var(--chart-sub)}
+.cr-src{font:400 14px var(--font-sans);fill:var(--chart-sub);font-style:italic}
+.cr-light:hover .cr-light-name,.cr-light:focus .cr-light-name{text-decoration:underline}
+.cr-harbor-link{font:600 17px var(--font-sans);fill:var(--chart-ink);text-decoration:underline}
+.cr-list{flex:1;overflow-y:auto;padding:18px 22px;max-width:70ch}
+.cr-list h3{margin:18px 0 6px;font-size:var(--text-sm);letter-spacing:.06em;text-transform:uppercase;color:var(--text-2)}
+.cr-list ul{margin:0;padding-left:20px;display:grid;gap:6px}
+.cr-list a{color:var(--text);text-decoration:underline}
+.cr-list-updated{margin:0;color:var(--text-2);font-style:italic}
 </style>
 </head>
 <body data-patina="aged" data-theme="light">
@@ -4811,7 +4806,7 @@ html{scroll-behavior:smooth}
 <div class="leg-head">
 <p class="eyebrow">LEG 3 · THE HARBOR WORKS</p>
 <h2>Harbors.</h2>
-<p>The harbor works: one instrument, opened for inspection. The whole voyage is drawn in the chart room, whenever you want the map. Tie up and come aboard.</p>
+<p>The harbor works: one instrument, opened for inspection. Where each app really is is kept in the voyage log, whenever you want the map. Tie up and come aboard.</p>
 </div></div><div class="leg-panel pw160" id="workbench-cards"></div></section><section aria-label="Leg 4 of 4: Arrival — the studio, logbook and contact" class="leg" data-leg="3" data-leg-name="Arrival" data-scene="arrival" id="leg-arrival" tabindex="-1"><p class="sheet-tag" aria-hidden="true">Sheet IV · Arrival</p><p class="waters-name" aria-hidden="true">Home Water</p><div class="curio curio-ship" style="left:84%;top:23%" data-curio="ship" aria-hidden="true"><svg width="92" height="56" viewBox="0 0 92 56" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14,44 L78,44 L68,52 L24,52 Z"/><path d="M38,44 L38,10 M38,12 L54,26 L38,26 M38,30 L52,40 M56,44 L56,20 M56,22 L68,32 L56,32" opacity=".85"/></svg><p class="curio-cap">Another captain, homeward bound</p></div><p class="chart-stamp" style="left:52%;top:85%" aria-hidden="true">Three quarters — home water soon.</p><div class="leg-panel pw70"><section aria-labelledby="about-h" class="folio-hero snd-tilt-l">
 <div class="prose">
 <p class="eyebrow">Folio III <span aria-hidden="true">/</span> The architect’s studio logbook</p>
@@ -4972,7 +4967,7 @@ html{scroll-behavior:smooth}
 <ul><li><a href="#leg-departure">Departure</a></li><li><a href="#leg-opensea">Open Sea</a></li><li><a href="#leg-harbors">Harbors</a></li><li><a href="#leg-arrival">Arrival</a></li></ul>
 </nav>
 <div class="header-controls">
-<button class="deck-extra-btn" id="chartroom-open" title="Open the chart room — an overview of the whole voyage" type="button">◈ Chart room</button>
+<button class="deck-extra-btn" id="chartroom-open" title="Open the voyage log — real app status, studio principles and contact" type="button">◈ Voyage log</button>
 <button class="deck-extra-btn" id="setsail-replay" title="Replay the setting-sail departure" type="button">↻ Set sail</button> <button class="deck-extra-btn" id="fairwind-toggle" aria-pressed="false" title="Fair wind — sail the whole chart hands-free; any scroll takes the helm back" type="button">Fair wind</button> <span aria-label="Chart layers" class="grade-pills layer-pills" role="group"><button aria-pressed="true" data-layer="route" type="button">Route</button><button aria-pressed="true" data-layer="soundings" type="button">Soundings</button><button aria-pressed="true" data-layer="notes" type="button">Notes</button></span>
 <span class="appearance-wrap"><button type="button" class="appearance-btn" id="appearance-toggle" aria-expanded="false" aria-haspopup="true" title="Appearance — light grade, finish, reading view">Appearance</button><span class="appearance-pop" id="appearance-pop" hidden><span class="appearance-cap">Light grade</span><span aria-label="Light grade override — scroll to release back to the voyage" class="grade-pills" role="group">
 <button aria-pressed="false" data-grade-lock="0" type="button">Dawn</button><button aria-pressed="false" data-grade-lock="1" type="button">Noon</button><button aria-pressed="false" data-grade-lock="2" type="button">Dusk</button><button aria-pressed="false" data-grade-lock="3" type="button">Night</button>
@@ -5102,12 +5097,12 @@ html{scroll-behavior:smooth}
 </div>
 </section></div>
 </aside><div class="drawer-backdrop" hidden="" id="chartroom-backdrop"></div>
-<aside aria-label="Chart room — overview of the voyage" aria-modal="true" class="chart-room" hidden="" id="chart-room" role="dialog">
-<div class="chart-room-head"><b>Chart room</b><span>Drag to look around · choose an island to sail there</span>
-<button type="button" class="cr-plot" id="chartroom-plot" aria-pressed="false">Plot a course</button><button type="button" class="cr-zoom" id="chartroom-zoomin" aria-label="Zoom in">+</button><button type="button" class="cr-zoom" id="chartroom-zoomout" aria-label="Zoom out">&minus;</button><button aria-label="Close the chart room" id="chartroom-close" type="button">✕</button></div>
-<div class="cr-plotbar" id="cr-plotbar" hidden><p class="cr-plot-state" id="cr-plot-state" role="status">Tap the marks in any order to lay your course. The dashed line is the charted course, 112 FM.</p><span class="cr-plot-actions"><button type="button" class="exhibit-btn" id="cr-sail" disabled>Sail it</button><button type="button" class="exhibit-btn" id="cr-clear">Clear</button></span></div>
+<div aria-label="Voyage log — where each app really is, the studio's principles, and how to reach us" aria-modal="true" class="chart-room" hidden="" id="chart-room" role="dialog">
+<div class="chart-room-head"><b>Voyage log</b><span>Last updated Oct 22, 2026 · drag to look around · choose a port</span>
+<button type="button" class="cr-listbtn" id="chartroom-list" aria-pressed="false" aria-controls="cr-list">Text list</button><button type="button" class="cr-zoom" id="chartroom-zoomin" aria-label="Zoom in">+</button><button type="button" class="cr-zoom" id="chartroom-zoomout" aria-label="Zoom out">&minus;</button><button aria-label="Close the voyage log" id="chartroom-close" type="button">✕</button></div>
 <div class="chart-room-view" id="chart-room-view"></div>
-</aside>
+<div class="cr-list" id="cr-list" hidden></div>
+</div>
 <button aria-label="A message in a bottle — open it" class="voyage-bottle" hidden="" id="voyage-bottle" type="button">
 <svg aria-hidden="true" fill="none" height="54" viewbox="0 0 54 54" width="54">
 <rect fill="#a9cbc0" height="14" rx="7" stroke="#1b2e4b" stroke-width="2" width="26" x="14" y="22"></rect>
@@ -9780,55 +9775,94 @@ document.addEventListener('click', function(e){
   var room = document.getElementById('chart-room');
   var view = document.getElementById('chart-room-view');
   if(!room || !view) return;
-  var W = 2000, H = 1000;
+  var W = 2000, H = 1000; /* voyage log */
   var islands = [
     {x: 300, y: 500, r: 120, label: 'DEPARTURE', sub: 'the studio at anchor', sail: 0},
     {x: 800, y: 420, r: 150, label: 'THE OPEN SEA', sub: 'instruments 01—03', sail: 1},
     {x: 1250, y: 580, r: 130, label: 'HARBORS', sub: 'the chronometer, opened', sail: 2},
     {x: 1700, y: 450, r: 140, label: 'ARRIVAL', sub: 'ledger · log · contact', sail: 3}
   ];
-  var islets = [
-    {x: 640, y: 640, pane: 'urge', label: 'Urge Walk'},
-    {x: 900, y: 640, pane: 'fitness', label: 'Fitness app'},
-    {x: 800, y: 220, pane: 'game', label: 'A gentle game'}
-  ];
-  var MARKS = [
-    {x: 430, y: 560, leg: 0, letter: 'A', name: 'Low Water'},
-    {x: 1010, y: 470, leg: 1, letter: 'B', name: 'The Buoy'},
-    {x: 1420, y: 620, leg: 2, letter: 'C', name: 'Halfway Rock'},
-    {x: 1700, y: 640, leg: 3, letter: 'D', name: 'Home Light'}
-  ];
   var s = '<div class="chart-room-world" id="chart-room-world">'
-    + '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Archipelago map of the voyage">'
+    + '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '" role="group" aria-label="Voyage log map: legs, app ports, principle lights and the studio harbor">'
     + '<path d="M150,500 C400,300 600,700 950,450 C1300,200 1450,750 1850,450" fill="none" stroke="var(--chart-beacon)" stroke-width="3" stroke-dasharray="10 8" opacity=".6"/>';
   islands.forEach(function(il){
-    s += '<g class="map-island" data-sail="' + il.sail + '" tabindex="0" role="button" aria-label="Sail to ' + il.label + '">'
+    s += '<g class="map-island" data-sail="' + il.sail + '" tabindex="0" role="button">'
       + '<ellipse cx="' + il.x + '" cy="' + il.y + '" rx="' + il.r + '" ry="' + (il.r * .72) + '"/>'
       + '<text x="' + il.x + '" y="' + (il.y - 4) + '" text-anchor="middle">' + il.label + '</text>'
       + '<text class="map-sub" x="' + il.x + '" y="' + (il.y + 24) + '" text-anchor="middle">' + il.sub + '</text></g>';
   });
-  islets.forEach(function(k){
-    s += '<g class="map-island" data-pane="' + k.pane + '" tabindex="0" role="button" aria-label="Step aboard ' + k.label + '">'
-      + '<ellipse cx="' + k.x + '" cy="' + k.y + '" rx="66" ry="46"/>'
-      + '<text class="map-sub" x="' + k.x + '" y="' + (k.y + 5) + '" text-anchor="middle">' + k.label + '</text></g>';
+  /* 2026-10-22 VOYAGE LOG (Darius-approved; ideas.md directions A + D + E).
+     The plot-a-course puzzle and its saved route are gone. The chart now
+     answers three questions: what is real and when, what the studio
+     promises (each light linked to its source), and how to reach us.
+     One data set drives both the map and the plain text list. */
+  var UPDATED = 'Last updated Oct 22, 2026';
+  var PORTS = [
+    {x: 120, pane: 'urge', name: 'Urge Walk', lines: ['In development · iPhone, December 2026', 'Core features free · $4.99/month premium · no ads'],
+     text: 'In development · iPhone, December 2026 · core features free · $4.99/month premium · no ads'},
+    {x: 600, pane: 'fitness', name: 'Fitness app', lines: ['In planning'], text: 'In planning'},
+    {x: 1080, pane: 'game', name: 'Christian game', lines: ['In planning · all ages'], text: 'In planning · all ages'}
+  ];
+  var LIGHTS = [
+    {x: 250, name: 'No ads', note: 'Urge Walk: no ads', href: '#leg-opensea', src: 'Urge Walk card, The Open Sea'},
+    {x: 750, name: 'Core features free', note: 'Urge Walk: core features free', href: '#leg-opensea', src: 'Urge Walk card, The Open Sea'},
+    {x: 1250, name: 'Prices stated up front', note: 'Urge Walk: $4.99/month premium', href: '#leg-opensea', src: 'Urge Walk card, The Open Sea'},
+    {x: 1750, name: 'No tracking', note: 'This site uses no tracking, no cookies and no analytics', href: 'privacy.html', src: 'Privacy page'}
+  ];
+  var HARBOR = [
+    {label: 'Support', href: 'mailto:hello@example.com?subject=Support', text: 'Support: hello@example.com'},
+    {label: 'Privacy', href: 'privacy.html', text: 'Privacy page'},
+    {label: 'Contact', href: 'mailto:hello@example.com', text: 'Contact: hello@example.com'}
+  ];
+  function esc(t){ return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  /* principle lights — fixed lights to steer by, each linked to its evidence */
+  LIGHTS.forEach(function(L){
+    s += '<a class="cr-light" href="' + L.href + '">'
+      + '<path d="M' + L.x + ',58 l7,14 15,2 -11,10 3,15 -14,-7 -14,7 3,-15 -11,-10 15,-2z" class="cr-light-star"/>'
+      + '<text x="' + L.x + '" y="136" text-anchor="middle" class="cr-light-name">' + esc(L.name) + '</text>'
+      + '<text x="' + L.x + '" y="162" text-anchor="middle" class="map-sub">' + esc(L.note) + '</text>'
+      + '<text x="' + L.x + '" y="186" text-anchor="middle" class="cr-src">source: ' + esc(L.src) + ' ↗</text></a>';
   });
-  var chartedPts = MARKS.map(function(m){ return m.x + ',' + m.y; }).join(' ');
-  s += '<g class="cr-course" id="cr-course" style="display:none">'
-    + '<polyline class="cr-charted-line" points="' + chartedPts + '"/>'
-    + '<polyline class="cr-course-line" id="cr-course-line" points=""/>';
-  MARKS.forEach(function(m, ix){
-    s += '<g class="cr-mark" data-mark="' + ix + '" tabindex="0" role="button" aria-label="Lay mark ' + m.letter + ' · ' + m.name + '">'
-      + '<circle cx="' + m.x + '" cy="' + m.y + '" r="17"/>'
-      + '<text class="cr-mark-letter" x="' + m.x + '" y="' + (m.y + 7) + '" text-anchor="middle">' + m.letter + '</text>'
-      + '<text class="map-sub" x="' + m.x + '" y="' + (m.y + 40) + '" text-anchor="middle">' + m.name + '</text></g>';
+  /* app ports — real status, target and price */
+  PORTS.forEach(function(P){
+    s += '<g class="map-island cr-port" data-pane="' + P.pane + '" tabindex="0" role="button">'
+      + '<rect x="' + P.x + '" y="730" width="440" height="150" rx="18"/>'
+      + '<text x="' + (P.x + 28) + '" y="778">' + esc(P.name) + '</text>';
+    P.lines.forEach(function(ln, k){ s += '<text class="map-sub" x="' + (P.x + 28) + '" y="' + (812 + k * 26) + '">' + esc(ln) + '</text>'; });
+    s += '</g>';
+  });
+  /* the studio harbor — an ordinary contact desk, not a help line */
+  s += '<g class="cr-harbor"><text x="1880" y="760" text-anchor="end" class="cr-light-name">Studio harbor</text>';
+  HARBOR.forEach(function(h, k){
+    s += '<a href="' + h.href + '"><text x="1880" y="' + (796 + k * 30) + '" text-anchor="end" class="cr-harbor-link">' + esc(h.text) + '</text></a>';
   });
   s += '</g>';
+  s += '<text x="1000" y="975" text-anchor="middle" class="cr-src">' + UPDATED + ' · status words are targets, not promises of a date</text>';
   s += '<circle class="map-you" id="map-you" r="10" cx="300" cy="380"><title>You are here</title></circle>';
   s += '</svg></div>';
   view.innerHTML = s;
+  var listEl = document.getElementById('cr-list');
+  if(listEl){
+    var h = '<p class="cr-list-updated">' + UPDATED + '</p><h3>Where each app is</h3><ul>';
+    PORTS.forEach(function(P){ h += '<li><b>' + esc(P.name) + '</b> — ' + esc(P.text) + '</li>'; });
+    h += '</ul><h3>Studio principles</h3><ul>';
+    LIGHTS.forEach(function(L){ h += '<li><b>' + esc(L.name) + '</b> — ' + esc(L.note) + ' (source: <a href="' + L.href + '">' + esc(L.src) + '</a>)</li>'; });
+    h += '</ul><h3>Studio harbor</h3><ul>';
+    HARBOR.forEach(function(x){ h += '<li><a href="' + x.href + '">' + esc(x.text) + '</a></li>'; });
+    listEl.innerHTML = h + '</ul>';
+    listEl.addEventListener('click', function(e){ var a2 = e.target.closest && e.target.closest('a[href^="#"]'); if(a2) closeRoom(); });
+  }
+  var listBtn = document.getElementById('chartroom-list');
+  if(listBtn) listBtn.addEventListener('click', function(){
+    var on = listBtn.getAttribute('aria-pressed') !== 'true';
+    listBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    listEl.hidden = !on; view.hidden = on;
+  });
   var world2 = document.getElementById('chart-room-world');
   var tx = 0, ty = 0, dragging = false, sx = 0, sy = 0, moved = false;
-  function center(){ tx = (view.clientWidth - W) / 2; ty = (view.clientHeight - H) / 2; apply(); }
+  function fitZoom(){ return Math.min((view.clientWidth || W) / W, (view.clientHeight || H) / H); }
+  /* voyage log: open on the whole chart (or close to it); zoom out as far as the whole chart */
+  function center(){ ZMIN = Math.min(1, fitZoom()); zoom = Math.min(1, Math.max(ZMIN, 0.55)); tx = (view.clientWidth - W * zoom) / 2; ty = (view.clientHeight - H * zoom) / 2; apply(); }
   /* v18 S6: zoom state — wheel / pinch / +/- buttons / double-click.
      Transform gains a scale(); single-pointer drag behavior unchanged. */
   var zoom = 1, ZMIN = 1, ZMAX = 2.5;
@@ -9873,13 +9907,10 @@ document.addEventListener('click', function(e){
   window.addEventListener('pointerup', function(e){ pts.delete(e.pointerId); dragging = false; });
   window.addEventListener('pointercancel', function(e){ pts.delete(e.pointerId); dragging = false; });
   view.addEventListener('click', function(e){
-    if(moved) return;
+    if(moved){ if(e.target.closest && e.target.closest('a')) e.preventDefault(); return; }
     if(e.detail > 1) return; /* v18 S6: a double-click zooms; it must not also sail */
-    if(plotting){
-      var mk = e.target.closest ? e.target.closest('.cr-mark') : null;
-      if(mk) layMark(parseInt(mk.getAttribute('data-mark'), 10));
-      return;
-    }
+    var lk = e.target.closest ? e.target.closest('a') : null;
+    if(lk){ if((lk.getAttribute('href') || '').charAt(0) === '#') closeRoom(); return; }
     var g = e.target.closest ? e.target.closest('.map-island') : null;
     if(!g) return;
     closeRoom();
@@ -9888,11 +9919,6 @@ document.addEventListener('click', function(e){
   });
   view.addEventListener('keydown', function(e){
     if(e.key !== 'Enter' && e.key !== ' ') return;
-    if(plotting){
-      var mk = e.target.closest ? e.target.closest('.cr-mark') : null;
-      if(mk){ e.preventDefault(); layMark(parseInt(mk.getAttribute('data-mark'), 10)); }
-      return;
-    }
     var g = e.target.closest ? e.target.closest('.map-island') : null;
     if(g){ e.preventDefault(); g.click(); }
   });
@@ -9914,8 +9940,6 @@ document.addEventListener('click', function(e){
     lastFocus = document.activeElement;
     document.getElementById('chartroom-backdrop').hidden = false;
     room.hidden = false; center();
-    if(!laid.length) laid = savedCourse();
-    paintCourse();
     document.getElementById('chartroom-close').focus();
   }
   function closeRoom(){
@@ -9929,78 +9953,8 @@ document.addEventListener('click', function(e){
   document.getElementById('chartroom-close').addEventListener('click', closeRoom);
   document.getElementById('chartroom-backdrop').addEventListener('click', closeRoom);
   window.addEventListener('resize', function(){ if(!room.hidden) center(); });
-  /* v24: rig the route, absorbed — plot a course on the chart, then sail it. */
-  var plotBtn = document.getElementById('chartroom-plot'),
-      plotBar = document.getElementById('cr-plotbar'),
-      plotState = document.getElementById('cr-plot-state'),
-      sailBtn = document.getElementById('cr-sail'),
-      clearBtn = document.getElementById('cr-clear'),
-      courseG = document.getElementById('cr-course'),
-      courseLine = document.getElementById('cr-course-line');
-  var plotting = false, laid = [];
-  function savedCourse(){ try{ var a = JSON.parse(localStorage.getItem('evenfaring-course') || '[]'); return Array.isArray(a) ? a.filter(function(k){ return k >= 0 && k < 4; }) : []; }catch(e){ return []; } }
-  function saveCourse(){ try{ if(laid.length) localStorage.setItem('evenfaring-course', JSON.stringify(laid)); else localStorage.removeItem('evenfaring-course'); }catch(e){} }
-  function paintCourse(){
-    if(courseLine) courseLine.setAttribute('points', laid.map(function(k){ return MARKS[k].x + ',' + MARKS[k].y; }).join(' '));
-    Array.prototype.forEach.call(view.querySelectorAll('.cr-mark'), function(m){ m.classList.toggle('is-laid', laid.indexOf(parseInt(m.getAttribute('data-mark'), 10)) !== -1); });
-    if(courseG) courseG.style.display = (plotting || laid.length > 1) ? '' : 'none';
-    if(sailBtn) sailBtn.disabled = laid.length < 4;
-  }
-  function mdist(p, q){ var dx = p.x - q.x, dy = p.y - q.y; return Math.sqrt(dx * dx + dy * dy); }
-  var chartedPx = 0; for(var mi = 0; mi < 3; mi++) chartedPx += mdist(MARKS[mi], MARKS[mi + 1]);
-  var FM = 112 / chartedPx;
-  function courseFM(){ var t = 0; for(var i2 = 0; i2 + 1 < laid.length; i2++) t += mdist(MARKS[laid[i2]], MARKS[laid[i2 + 1]]); return Math.round(t * FM); }
-  function plotReadout(){
-    if(!laid.length){ plotState.textContent = 'Tap the marks in any order to lay your course. The dashed line is the charted course, 112 FM.'; return; }
-    if(laid.length < 4){ plotState.textContent = 'Your course so far: ' + courseFM() + ' FM \u00b7 ' + laid.length + ' of 4 marks.'; return; }
-    var fm = courseFM();
-    plotState.textContent = 'Your course: ' + fm + ' FM \u00b7 Charted course: 112 FM \u2014 ' + (fm === 112 ? 'the charted course, matched. Well sailed.' : fm < 112 ? 'shorter than the charted course \u2014 you found water the chart does not know.' : 'longer by ' + (fm - 112) + ' FM \u2014 a scenic course.');
-  }
-  function clearCourse(){
-    laid = [];
-    saveCourse();
-    if(courseLine) courseLine.setAttribute('points', '');
-    Array.prototype.forEach.call(view.querySelectorAll('.cr-mark.is-laid'), function(m){ m.classList.remove('is-laid'); });
-    if(sailBtn) sailBtn.disabled = true;
-    plotReadout();
-  }
-  function setPlotting(on){
-    plotting = on;
-    room.classList.toggle('plotting', on);
-    if(plotBtn) plotBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
-    if(plotBar) plotBar.hidden = !on;
-    if(on){ if(!laid.length) laid = savedCourse(); paintCourse(); plotReadout(); }
-    else paintCourse();
-  }
-  function layMark(ix){
-    if(laid.indexOf(ix) !== -1) return;
-    laid.push(ix);
-    var g = view.querySelector('.cr-mark[data-mark="' + ix + '"]');
-    if(g) g.classList.add('is-laid');
-    if(courseLine) courseLine.setAttribute('points', laid.map(function(k){ return MARKS[k].x + ',' + MARKS[k].y; }).join(' '));
-    if(sailBtn) sailBtn.disabled = laid.length < 4;
-    saveCourse();
-    plotReadout();
-  }
-  if(plotBtn) plotBtn.addEventListener('click', function(){ setPlotting(!plotting); });
-  if(clearBtn) clearBtn.addEventListener('click', clearCourse);
-  if(sailBtn) sailBtn.addEventListener('click', function(){
-    if(laid.length < 4) return;
-    var legs = laid.map(function(k){ return MARKS[k].leg; });
-    setPlotting(false); closeRoom();
-    var step = 0, timer = 0;
-    function helm(){
-      window.clearTimeout(timer);
-      ['wheel', 'pointerdown', 'keydown'].forEach(function(ev){ window.removeEventListener(ev, helm, true); });
-    }
-    function next(){
-      if(step >= legs.length){ helm(); return; }
-      if(window.sailToLeg) window.sailToLeg(legs[step]);
-      step++; timer = window.setTimeout(next, 2900);
-    }
-    ['wheel', 'pointerdown', 'keydown'].forEach(function(ev){ window.addEventListener(ev, helm, true); });
-    next();
-  });
+  /* Plot a course (v24) removed 2026-10-22; clear its old saved route. */
+  try{ localStorage.removeItem('evenfaring-course'); }catch(e){}
 
   /* you-are-here dot follows the voyage */
   window.setInterval(function(){
