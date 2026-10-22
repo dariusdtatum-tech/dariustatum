@@ -4584,6 +4584,27 @@ html{scroll-behavior:smooth}
 .cr-list a{color:var(--text);text-decoration:underline}
 .cr-list-updated{margin:0;color:var(--text-2);font-style:italic}
 </style>
+<style id="sculpt-1-header">
+/* Sculpt 1 (2026-10-22): header = wordmark, 4 voyage links, one
+   Appearance menu. Everything else lives inside that menu. */
+header.site .mobile-drawer-toggle{display:none!important}
+header.site .header-controls{display:flex!important;grid-column:auto!important;grid-row:1!important;width:auto!important;justify-self:end!important;flex-wrap:nowrap}
+header.site .wrap{display:flex!important;align-items:center;gap:16px;flex-wrap:wrap}
+header.site nav[aria-label="Main"]{margin-left:auto;order:0!important}
+header.site .header-controls{order:1!important}
+.appearance-pop{max-height:min(80vh,640px);overflow-y:auto;min-width:280px}
+.appearance-pop>*{display:flex!important}
+.appearance-pop .appearance-cap{display:block!important;margin-top:8px}
+.appearance-row{flex-wrap:wrap;gap:8px}
+.appearance-pop .theme-switch{display:flex!important}
+@media(max-width:860px){
+  header.site .wrap{gap:8px}
+  header.site nav[aria-label="Main"]{order:2!important;margin-left:0;flex-basis:100%}
+  header.site nav[aria-label="Main"] ul{display:flex!important;flex-wrap:wrap;gap:0}
+  header.site .header-controls{margin-left:auto}
+  .appearance-pop{position:absolute!important;right:0;top:calc(100% + 8px);min-width:min(300px,calc(100vw - 32px))}
+}
+</style>
 </head>
 <body data-patina="aged" data-theme="light">
 <svg aria-hidden="true" class="v18-ink-defs" focusable="false" height="0" style="position:absolute;left:0;top:0" width="0"><defs><filter height="110%" id="ink-edge" width="110%" x="-5%" y="-5%"><feTurbulence baseFrequency="0.9" numOctaves="2" result="n" seed="7" type="fractalNoise"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3"/></filter></defs></svg>
@@ -4967,9 +4988,11 @@ html{scroll-behavior:smooth}
 <ul><li><a href="#leg-departure">Departure</a></li><li><a href="#leg-opensea">Open Sea</a></li><li><a href="#leg-harbors">Harbors</a></li><li><a href="#leg-arrival">Arrival</a></li></ul>
 </nav>
 <div class="header-controls">
-<button class="deck-extra-btn" id="chartroom-open" title="Open the voyage log — real app status, studio principles and contact" type="button">◈ Voyage log</button>
-<button class="deck-extra-btn" id="setsail-replay" title="Replay the setting-sail departure" type="button">↻ Set sail</button> <button class="deck-extra-btn" id="fairwind-toggle" aria-pressed="false" title="Fair wind — sail the whole chart hands-free; any scroll takes the helm back" type="button">Fair wind</button> <span aria-label="Chart layers" class="grade-pills layer-pills" role="group"><button aria-pressed="true" data-layer="route" type="button">Route</button><button aria-pressed="true" data-layer="soundings" type="button">Soundings</button><button aria-pressed="true" data-layer="notes" type="button">Notes</button></span>
-<span class="appearance-wrap"><button type="button" class="appearance-btn" id="appearance-toggle" aria-expanded="false" aria-haspopup="true" title="Appearance — light grade, finish, reading view">Appearance</button><span class="appearance-pop" id="appearance-pop" hidden><span class="appearance-cap">Light grade</span><span aria-label="Light grade override — scroll to release back to the voyage" class="grade-pills" role="group">
+<div class="appearance-wrap"><button type="button" class="appearance-btn" id="appearance-toggle" aria-expanded="false" aria-haspopup="true" title="Appearance — theme, voyage log, chart, sound and finish">Appearance</button><div class="appearance-pop" id="appearance-pop" hidden><span class="appearance-cap">Theme</span><div aria-label="Chart color theme" class="theme-switch" role="group">
+<button aria-pressed="true" data-theme-opt="light" type="button">Daylight</button>
+<button aria-pressed="false" data-theme-opt="dark" type="button">Night Watch</button>
+<button aria-pressed="false" data-theme-opt="auto" type="button">Auto</button>
+</div><span class="appearance-cap">Voyage log</span><button class="deck-extra-btn" id="chartroom-open" title="Open the voyage log — real app status, studio principles and contact" type="button">◈ Voyage log</button><span class="appearance-cap">Chart</span><span class="appearance-row"><button class="deck-extra-btn" id="setsail-replay" title="Replay the setting-sail departure" type="button">↻ Set sail</button> <button class="deck-extra-btn" id="fairwind-toggle" aria-pressed="false" title="Fair wind — sail the whole chart hands-free; any scroll takes the helm back" type="button">Fair wind</button> <span aria-label="Chart layers" class="grade-pills layer-pills" role="group"><button aria-pressed="true" data-layer="route" type="button">Route</button><button aria-pressed="true" data-layer="soundings" type="button">Soundings</button><button aria-pressed="true" data-layer="notes" type="button">Notes</button></span></span><span class="appearance-cap">Light grade</span><span aria-label="Light grade override — scroll to release back to the voyage" class="grade-pills" role="group">
 <button aria-pressed="false" data-grade-lock="0" type="button">Dawn</button><button aria-pressed="false" data-grade-lock="1" type="button">Noon</button><button aria-pressed="false" data-grade-lock="2" type="button">Dusk</button><button aria-pressed="false" data-grade-lock="3" type="button">Night</button>
 </span><span class="appearance-cap">Finish &amp; view</span><button aria-pressed="true" class="patina-toggle-pill" id="patina-view-toggle" onclick="togglePatinaMode()" title="Switch between Fresh Studio finish and Aged &amp; Wiser Heirloom Patina" type="button">
 <span aria-hidden="true" class="patina-seal-dot"></span>
@@ -4977,23 +5000,13 @@ html{scroll-behavior:smooth}
 </button><button aria-pressed="true" class="reading-view-pill" id="reading-view-toggle" title="Switch between uncluttered Calm Horizon reading view and Full Telemetry Chart view" type="button">
 <span aria-hidden="true" class="reading-view-dot"></span>
 <span id="reading-view-label">View: Calm Horizon</span>
-</button></span></span>
-<button class="workbench-quick-pill" onclick="openFocusWorkbench('urge')" title="Open the full-screen pocket workbenches (Urge Walk, 40-Move Player, or Flat-Tabletop Game)" type="button"><span aria-hidden="true">⛶</span><span>Workbenches (3)</span></button>
-
-
-<button aria-pressed="false" class="harbor-audio-pill" data-harbor-audio-toggle="" title="Toggle procedural coastal waves &amp; harbor bell audio (Default: Off)" type="button">
+</button><span class="appearance-cap">Sound</span><button aria-pressed="false" class="harbor-audio-pill" data-harbor-audio-toggle="" title="Toggle procedural coastal waves &amp; harbor bell audio (Default: Off)" type="button">
 <span aria-hidden="true" class="audio-wave-bars"><i></i><i></i><i></i></span>
 <span class="harbor-audio-label">Harbor Audio: Off</span>
-</button>
-<button class="download-html-pill" id="header-download-html-btn" onclick="downloadStandaloneHTML()" title="Download this complete standalone HTML file to your computer so you can double-click and open it anytime" type="button">
+</button><span class="appearance-cap">Studio</span><span class="appearance-row"><button class="workbench-quick-pill" onclick="openFocusWorkbench('urge')" title="Open the full-screen pocket workbenches (Urge Walk, 40-Move Player, or Flat-Tabletop Game)" type="button"><span aria-hidden="true">⛶</span><span>Workbenches (3)</span></button><button class="download-html-pill" id="header-download-html-btn" onclick="downloadStandaloneHTML()" title="Download this complete standalone HTML file to your computer so you can double-click and open it anytime" type="button">
 <span aria-hidden="true">↓</span>
 <span>Download HTML</span>
-</button>
-<div aria-label="Chart color theme" class="theme-switch" role="group">
-<button aria-pressed="true" data-theme-opt="light" type="button">Daylight</button>
-<button aria-pressed="false" data-theme-opt="dark" type="button">Night Watch</button>
-<button aria-pressed="false" data-theme-opt="auto" type="button">Auto</button>
-</div>
+</button></span></div></div>
 </div>
 </div>
 </header><div aria-hidden="true" class="voyage-telemetry">
@@ -10204,7 +10217,7 @@ document.addEventListener('keydown', function(e){
 <span aria-hidden="true" class="mobile-dock-icon"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><circle cx="12" cy="12" r="8.6"></circle><polygon fill="currentColor" points="15.2,8.8 13.4,13.4 8.8,15.2 10.6,10.6" stroke="none"></polygon></svg></span>
 <span>Tabletop</span>
 </button>
-<button class="mobile-dock-btn" onclick="toggleMobileHeaderDrawer()" type="button">
+<button class="mobile-dock-btn" onclick="event.stopPropagation();window.scrollTo({top:0});document.getElementById('appearance-toggle').click()" type="button">
 <span aria-hidden="true" class="mobile-dock-icon"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><path d="M3.5 7.5h17M3.5 16.5h17"></path><circle cx="9" cy="7.5" r="2.3"></circle><circle cx="15" cy="16.5" r="2.3"></circle></svg></span>
 <span>Controls</span>
 </button>
