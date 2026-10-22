@@ -5580,8 +5580,9 @@ if (syncClutchBtn) {
 }
 
 function formatHour(hFloat) {
-  const h = Math.floor(hFloat);
-  const m = Math.round((hFloat - h) * 60);
+  const totalMin = Math.round(hFloat * 60) % 1440;
+  const h = Math.floor(totalMin / 60);
+  const m = totalMin % 60;
   const hStr = h < 10 ? '0' + h : '' + h;
   const mStr = m < 10 ? '0' + m : '' + m;
   return `${hStr}:${mStr}`;
@@ -5608,8 +5609,10 @@ function updateChronometer(hourVal, driveBus = true) {
   const angle = Math.PI * (h - 6) / 12;
   const cx = Math.round(260 - 164 * Math.cos(angle));
   const cy = Math.round(148 - 94 * Math.sin(angle));
+  const sunX = (260 - 164 * Math.cos(angle)).toFixed(1);
+  const sunY = (148 - 94 * Math.sin(angle)).toFixed(1);
 
-  if (chronoSunGroup) chronoSunGroup.setAttribute('transform', `translate(${cx}, ${cy})`);
+  if (chronoSunGroup) chronoSunGroup.setAttribute('transform', `translate(${sunX}, ${sunY})`);
   if (chronoSunGroup) chronoSunGroup.setAttribute('opacity', Math.sin(angle) < 0 ? '.45' : '1');
   if (chronoPlumbLine) {
     chronoPlumbLine.setAttribute('x1', String(cx));
@@ -7177,9 +7180,7 @@ let chronoClockDriving = false;
 
 function syncChronoToRealClock(silent) {
   const now = new Date();
-  let hFloat = now.getHours() + now.getMinutes() / 60;
-  hFloat = Math.round(hFloat * 4) / 4;
-  if (hFloat >= 24) hFloat = 0;
+  const hFloat = now.getHours() + now.getMinutes() / 60 + now.getSeconds() / 3600;
   if (chronoSlider) chronoSlider.value = String(hFloat);
   chronoClockDriving = true;
   updateChronometer(hFloat, true);
@@ -7197,7 +7198,7 @@ function setChronoLive(on, silent) {
   if (chronoLive) {
     syncChronoToRealClock(silent);
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      chronoLiveTimer = setInterval(() => syncChronoToRealClock(true), 30000);
+      chronoLiveTimer = setInterval(() => syncChronoToRealClock(true), 20000);
     }
   }
 }
