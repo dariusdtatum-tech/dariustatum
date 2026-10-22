@@ -4750,6 +4750,8 @@ header.site:not(.is-mobile-drawer-open) .appearance-pop .workbench-quick-pill,he
 .appearance-pop .layer-pills,.appearance-pop .layer-pills+*{}
 @media(max-width:1599px){.appearance-pop .layer-pills{display:none!important}}
 </style>
+<script id="rebalance-marks">/* margin chart marks are decoration: hide them from assistive tech */
+document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.chart-note,.chart-stamp,.waters-name,.sheet-tag,.curio').forEach(function(e){e.setAttribute('aria-hidden','true')})});</script>
 </head>
 <body data-patina="aged" data-theme="light">
 <svg aria-hidden="true" class="v18-ink-defs" focusable="false" height="0" style="position:absolute;left:0;top:0" width="0"><defs><filter height="110%" id="ink-edge" width="110%" x="-5%" y="-5%"><feTurbulence baseFrequency="0.9" numOctaves="2" result="n" seed="7" type="fractalNoise"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3"/></filter></defs></svg>
