@@ -4836,16 +4836,24 @@ h3{margin:0 0 8px}
 <h2>The open sea.</h2>
 <p>Three small instruments, sailing in company. Each one is a working portfolio piece — step aboard to try it.</p>
 <p>Drag nothing; the sea comes to you. Scroll, and the harbors arrive.</p>
-<figure class="tide-pool">
-<div class="tide-pool-frame"><canvas aria-label="Tide pool: sounding dots drift and gather near your cursor" height="440" id="tide-pool-canvas" width="440"></canvas></div>
-<figcaption>◈ TIDE POOL · <span class="specimen-type" data-type="interactive">INTERACTIVE</span></figcaption>
-</figure>
 </div></div><div class="leg-panel pw204" id="instrument-cards"></div></section><section aria-label="Leg 3 of 4: Harbors — the workbenches" class="leg" data-leg="2" data-leg-name="Harbors" data-scene="harbors" id="leg-harbors" tabindex="-1"><p class="sheet-tag" aria-hidden="true">Sheet III · Harbors</p><p class="waters-name" aria-hidden="true">The Harbor Reaches</p><div class="curio curio-wreck" style="left:62%;top:76%" data-curio="wreck" aria-hidden="true"><svg width="120" height="52" viewBox="0 0 120 52" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><g transform="rotate(7 60 34)"><path d="M10,32 L110,32 L96,46 L26,46 Z"/><path d="M60,32 L60,8 M60,14 L84,20 M60,20 L44,27" opacity=".8"/><path d="M84,20 l7,-3" opacity=".8"/></g></svg><p class="curio-cap">The good ship Distraction, sunk 2026 · 80 FM</p></div><p class="chart-stamp" style="left:50%;top:21%" aria-hidden="true">Halfway across — the harbor lights are not yet visible.</p><div class="leg-panel pw40" id="harbors-heading">
 <div class="leg-head">
 <p class="eyebrow">LEG 3 · THE HARBOR WORKS</p>
 <h2>Harbors.</h2>
 <p>The harbor works: one instrument, opened for inspection. Where each app really is is kept in the voyage log, whenever you want the map. Tie up and come aboard.</p>
-</div></div><div class="leg-panel pw160" id="workbench-cards"></div></section><section aria-label="Leg 4 of 4: Arrival — the studio, logbook and contact" class="leg" data-leg="3" data-leg-name="Arrival" data-scene="arrival" id="leg-arrival" tabindex="-1"><p class="sheet-tag" aria-hidden="true">Sheet IV · Arrival</p><p class="waters-name" aria-hidden="true">Home Water</p><div class="curio curio-ship" style="left:84%;top:23%" data-curio="ship" aria-hidden="true"><svg width="92" height="56" viewBox="0 0 92 56" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14,44 L78,44 L68,52 L24,52 Z"/><path d="M38,44 L38,10 M38,12 L54,26 L38,26 M38,30 L52,40 M56,44 L56,20 M56,22 L68,32 L56,32" opacity=".85"/></svg><p class="curio-cap">Another captain, homeward bound</p></div><p class="chart-stamp" style="left:52%;top:85%" aria-hidden="true">Three quarters — home water soon.</p><div class="leg-panel pw70"><section aria-labelledby="about-h" class="folio-hero snd-tilt-l">
+</div></div><div class="leg-panel pw160" id="workbench-cards"></div><div class="leg-panel pw50" id="ledger-panel">
+<div class="arrival-panel">
+<p class="eyebrow">THE LEDGER</p>
+<h2>Every plank documented.</h2>
+<p>The full design-system ledger — tokens, ratios, specimens — travels in the drawer.</p>
+<div aria-hidden="true" class="ledger-token-strip">
+<span>#faf7f1 cream</span><span>#24395c navy</span><span>#3f7a6b deep sea</span><span>#a9cbc0 sea glass</span>
+</div>
+<button class="btn" id="ledger-open" type="button">Open the ledger</button>
+<div class="notices"><p class="notices-h">Notices to Mariners</p><ul><li>№ 1 — FIG. 00 plate: the hand-ink warp is struck; she reads true.</li><li>№ 2 — Tide pool: now sounded in Night Watch, sea-glass on dark.</li><li>№ 3 — End of the chart: a run-out is laid down; the footer may be landed on.</li><li>№ 4 — This chart is re-sounded daily; one curiosity is inked darkest each morning.</li></ul></div> <div hidden="" id="calm-entry">
+<p><i>“Calm is a discipline, not a decoration.”</i> — found in the margin of the chart. You typed the word; the site noticed.</p>
+</div>
+</div></div></section><section aria-label="Leg 4 of 4: Arrival — the studio, logbook and contact" class="leg" data-leg="3" data-leg-name="Arrival" data-scene="arrival" id="leg-arrival" tabindex="-1"><p class="sheet-tag" aria-hidden="true">Sheet IV · Arrival</p><p class="waters-name" aria-hidden="true">Home Water</p><div class="curio curio-ship" style="left:84%;top:23%" data-curio="ship" aria-hidden="true"><svg width="92" height="56" viewBox="0 0 92 56" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14,44 L78,44 L68,52 L24,52 Z"/><path d="M38,44 L38,10 M38,12 L54,26 L38,26 M38,30 L52,40 M56,44 L56,20 M56,22 L68,32 L56,32" opacity=".85"/></svg><p class="curio-cap">Another captain, homeward bound</p></div><p class="chart-stamp" style="left:52%;top:85%" aria-hidden="true">Three quarters — home water soon.</p><div class="leg-panel pw70"><section aria-labelledby="about-h" class="folio-hero snd-tilt-l">
 <div class="prose">
 <p class="eyebrow">Folio III <span aria-hidden="true">/</span> The architect’s studio logbook</p>
 <h2 class="folio-h" id="about-h">About Evenfaring</h2>
@@ -4901,19 +4909,7 @@ h3{margin:0 0 8px}
 </div>
 </div>
 </div>
-</section></div><div class="leg-panel pw50" id="ledger-panel">
-<div class="arrival-panel">
-<p class="eyebrow">THE LEDGER</p>
-<h2>Every plank documented.</h2>
-<p>The full design-system ledger — tokens, ratios, specimens — travels in the drawer.</p>
-<div aria-hidden="true" class="ledger-token-strip">
-<span>#faf7f1 cream</span><span>#24395c navy</span><span>#3f7a6b deep sea</span><span>#a9cbc0 sea glass</span>
-</div>
-<button class="btn" id="ledger-open" type="button">Open the ledger</button>
-<div class="notices"><p class="notices-h">Notices to Mariners</p><ul><li>№ 1 — FIG. 00 plate: the hand-ink warp is struck; she reads true.</li><li>№ 2 — Tide pool: now sounded in Night Watch, sea-glass on dark.</li><li>№ 3 — End of the chart: a run-out is laid down; the footer may be landed on.</li><li>№ 4 — This chart is re-sounded daily; one curiosity is inked darkest each morning.</li></ul></div> <div hidden="" id="calm-entry">
-<p><i>“Calm is a discipline, not a decoration.”</i> — found in the margin of the chart. You typed the word; the site noticed.</p>
-</div>
-</div></div><div class="leg-panel pw40"><section aria-label="Live browser storage and zero-telemetry inspector" class="privacy-inspector snd-drift-l" id="fig-privacy">
+</section></div><div class="leg-panel pw40"><section aria-label="Live browser storage and zero-telemetry inspector" class="privacy-inspector snd-drift-l" id="fig-privacy">
 <div class="inst-bar">
 <span class="inst-tag">On-device storage inspector <span class="fig-num">FIG. 07</span></span>
 <span class="inst-readout" id="privacy-audit-timestamp">LIVE STORAGE CHECK · RUN IN YOUR BROWSER</span>
@@ -4948,24 +4944,7 @@ h3{margin:0 0 8px}
 <h2>Write to the studio.</h2>
 <p>Evenfaring takes on a small number of projects — calm instruments for everyday life. One tap, wherever you are on the voyage.</p>
 <a class="btn" href="mailto:hello@example.com">hello@example.com</a>
-<p style="margin-top:16px">The ship's log is yours too — sign it at the end of this leg, or pin a note anywhere on the chart. Both are stored only on your device.</p>
-</div></div><div class="leg-panel pw84"><section class="ships-log" id="ships-log" aria-label="The ship's log and colophon">
-<div class="log-col">
-<p class="eyebrow">THE SHIP'S LOG</p>
-<h2>Sign the log before you go.</h2>
-<p class="log-lede">Every voyage ends with an entry. Signatures are stored only on your device, in this browser — never sent to a server.</p>
-<ul class="log-entries" id="log-entries"></ul>
-<form class="log-form" id="log-form">
-<label>Your name<input id="log-name" maxlength="40" autocomplete="name" placeholder="A passing sailor"/></label>
-<label>Your entry<input id="log-text" maxlength="140" placeholder="Fair winds, a calm chart, a good instrument…"/></label>
-<button type="submit" class="btn">Sign the log</button>
-<p class="log-status" id="log-status" role="status"></p>
-</form>
-<div class="log-pinned-wrap">
-<h3>Notes you pinned on this chart</h3>
-<ul class="log-pinned" id="log-pinned"></ul>
-</div>
-</div>
+</div></div><div class="leg-panel pw84"><section class="ships-log" id="ships-log" aria-label="Colophon">
 <div class="colophon" id="colophon">
 <svg class="colophon-star" width="54" height="54" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="colophon-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ecd096"/><stop offset=".55" stop-color="#d4af6a"/><stop offset="1" stop-color="#a87f35"/></linearGradient></defs><path d="M50 2 L60 40 L98 50 L60 60 L50 98 L40 60 L2 50 L40 40 Z" fill="url(#colophon-gold)"/></svg>
 <p class="eyebrow">COLOPHON</p>
@@ -4979,9 +4958,9 @@ h3{margin:0 0 8px}
 <p class="footer-legal">© 2026 Evenfaring · Charted with care</p>
 
 <ul>
-<li><button class="footer-sail-link" data-sail="3" type="button">About</button></li>
-<li><button class="footer-sail-link" data-sail="3" type="button">Contact</button></li>
-<li><button class="footer-sail-link" data-sail="3" data-anchor="colophon" type="button">Colophon</button></li>
+<li><a class="footer-sail-link" href="#about-h">About</a></li>
+<li><a class="footer-sail-link" href="#contact-panel">Contact</a></li>
+<li><a class="footer-sail-link" href="#colophon">Colophon</a></li>
 </ul>
 <p class="footer-shiplog">Ship’s log EF-2026 · No ad trackers · accounts optional.</p>
 </div>
@@ -5040,20 +5019,6 @@ h3{margin:0 0 8px}
 <button aria-label="Sail to Arrival" class="legnav-dot" data-sail="3" type="button"><i></i></button>
 <button aria-label="Sail to the next leg" class="legnav-arrow" data-sailto="+1" type="button">›</button>
 </nav></div></div>
-<!-- v16 SHIP'S LOG — personal pinned notes (localStorage; per-device) -->
-<button aria-label="Pin a note to the chart" class="log-fab" id="log-fab" type="button">✎ Pin a note</button>
-<div aria-label="Your pinned chart notes" id="log-flags" role="region"></div>
-<div hidden="" id="log-dialog">
-<div aria-labelledby="log-dialog-h" aria-modal="true" class="log-card" role="dialog">
-<h2 id="log-dialog-h">Pin a note to the chart</h2>
-<p>A short note, pinned where you are on the voyage. Kept on this device only.</p>
-<textarea id="log-text" maxlength="140" placeholder="e.g. The movement rig is what I needed today" rows="3"></textarea>
-<div class="log-actions">
-<button class="btn-quiet" id="log-cancel" type="button">Cancel</button>
-<button class="btn-go" id="log-save" type="button">Pin it</button>
-</div>
-</div>
-</div>
 <div hidden="" id="lens-badge">◈ CARTOGRAPHER'S LENS · ?chart</div>
 <div class="drawer-backdrop" hidden="" id="ledger-backdrop"></div>
 <aside aria-label="Design system ledger" aria-modal="true" class="ledger-drawer" hidden="" id="ledger-drawer" role="dialog">
@@ -5148,7 +5113,7 @@ h3{margin:0 0 8px}
 <div aria-labelledby="bottle-h" aria-modal="true" class="bottle-card" role="dialog">
 <p id="bottle-h">“Thanks for staying awhile.”</p>
 <small>— Darius · found adrift on the voyage</small><br/>
-<button id="bottle-log" type="button">Sign the ship\u2019s log</button><button id="bottle-close" type="button">Keep sailing</button>
+<button id="bottle-close" type="button">Keep sailing</button>
 </div>
 </div><script>
 /* ============================================================================
