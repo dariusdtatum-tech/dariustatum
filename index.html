@@ -9330,6 +9330,13 @@ updateChronometer = function(hourVal, driveBus = true) {
      lerp, no world transform: the page simply scrolls, one axis only. */
   if (window.matchMedia('(max-width: 860px)').matches) {
     document.documentElement.dataset.voyageMode = 'stacked';
+    /* v31: the header is the stage's LAST child in the DOM — absolute
+       positioning alone put it at the top, floating over (and hiding)
+       the hero. In the stack it must lead the flow: move it first,
+       where the v31 CSS keeps it sticky and in-flow. */
+    var stageEl = document.querySelector('.voyage-stage');
+    var hdrEl = document.querySelector('.voyage-stage > header.site');
+    if (stageEl && hdrEl) stageEl.insertBefore(hdrEl, stageEl.firstChild);
     legs = [];
     Array.prototype.forEach.call(document.querySelectorAll('.leg'), function(el){
       legs.push({el: el, name: el.getAttribute('data-leg-name') || 'Leg'});
@@ -10796,5 +10803,16 @@ document.addEventListener('keydown', function(e){
   }
 })();
 </script>
+
+<style id="v31-stacked-header">
+/* v31: in the stacked mobile layout the header takes its place IN the
+   flow (sticky) instead of floating over the first sheet — as an
+   absolute overlay it covered the hero's eyebrow and headline
+   entirely (header 255px closed / 376px open; headline at y109-231). */
+@media (max-width: 860px){
+  .voyage-stage{overflow:visible}
+  .voyage-stage>header.site{position:sticky;top:0}
+}
+</style>
 </body>
 </html>
