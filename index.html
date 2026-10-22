@@ -4426,6 +4426,21 @@ body.layers-off-soundings .curio{display:none}
 .exhibit-hint{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--ink-soft);margin:4px 0 0}
 @media(max-width:560px){.cx-detents{margin-left:0;max-width:300px}}
 </style>
+<style id="v53-chronometer">
+/* ================= v53 THE CHRONOMETER, TRUER MECHANICS =================
+   Beat-locked escapement, a real exploded fan, crown winding, the full
+   gear train with a power trace, teaching labels, selectable parts. */
+.cx-lab-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:10px;letter-spacing:.02em;fill:var(--ink-soft);opacity:.85}
+.cx-lab-item{transition:opacity .35s ease}
+.chrono-crown{cursor:grab;touch-action:none}
+.chrono-crown:active{cursor:grabbing}
+.cx-instrument [data-part]{transition:opacity .3s ease}
+.cx-instrument.focus [data-part]{opacity:.16}
+.cx-instrument.focus [data-part].sel{opacity:1}
+.cx-hot{filter:drop-shadow(0 0 3.5px var(--timber))}
+.cx-trace-btn[aria-pressed="true"]{border-color:var(--teal);color:var(--teal)}
+.cx-lab-tight{letter-spacing:.05em}
+</style>
 <style id="v25-correctness">
 /* ================= v25 CORRECTNESS & SELF-HOSTING =================
    Rec 7+8 (Darius 2026-10-21): the v11 strings are evergreen now;
@@ -9781,48 +9796,49 @@ function liveHTML(kind){
 }
 var CHRONO_HTML = '<div class="exhibit exhibit-chrono">'
   + '<div class="cx-stage" tabindex="0" role="img" aria-label="A chronometer taken apart in layers: case, dial, gear train and escapement, with the parts labelled. Drag sideways to turn her; use the slider below to open her.">'
-  + '<svg class="chrono-svg cx-instrument" viewBox="20 4 260 182" aria-hidden="true">'
+  + '<svg class="chrono-svg cx-instrument" viewBox="4 -28 292 240" aria-hidden="true">'
   /* case back */
   + '<g class="cx-layer" data-depth="0"><circle cx="150" cy="100" r="64" fill="var(--bg)" opacity="0.85"/><circle cx="150" cy="100" r="64" fill="none" stroke="var(--line-strong)" stroke-width="1"/>'
   + '<circle cx="150" cy="44" r="2.2" fill="var(--line-strong)"/><circle cx="150" cy="156" r="2.2" fill="var(--line-strong)"/><circle cx="94" cy="100" r="2.2" fill="var(--line-strong)"/><circle cx="206" cy="100" r="2.2" fill="var(--line-strong)"/></g>'
   /* escapement */
-  + '<g class="cx-layer" data-depth="1"><g class="chrono-escape" transform="translate(187,120)"><circle r="11" fill="none" stroke="var(--teal)" stroke-width="5" stroke-dasharray="3.2 3.9"/><circle r="5.5" fill="none" stroke="var(--teal)" stroke-width="1.2"/><circle r="1.8" fill="var(--teal)"/></g>'
-  + '<path d="M178,112 L168,96" stroke="var(--teal)" stroke-width="2" stroke-linecap="round"/><path d="M168,96 l-5,-3 M168,96 l1,-6" stroke="var(--teal)" stroke-width="2" stroke-linecap="round"/>'
-  + '<g class="chrono-balance" transform="translate(174,76)"><circle r="17" fill="none" stroke="currentColor" stroke-width="3"/><path d="M-17,0 H17" stroke="currentColor" stroke-width="3"/><circle cx="-11" cy="0" r="2.6" fill="var(--timber)"/><circle cx="11" cy="0" r="2.6" fill="var(--timber)"/><circle r="4" fill="var(--timber)"/></g>'
+  + '<g class="cx-layer" data-depth="1"><g class="chrono-escape" data-part="escape" transform="translate(187,120)"><circle r="11" fill="none" stroke="var(--teal)" stroke-width="5" stroke-dasharray="3.3 2.46"/><circle r="5.5" fill="none" stroke="var(--teal)" stroke-width="1.2"/><circle r="1.8" fill="var(--teal)"/></g>'
+  + '<g class="chrono-pallet" data-part="pallet" transform="translate(173,104)"><path d="M5,8 L-5,-8" stroke="var(--teal)" stroke-width="2" stroke-linecap="round"/><path d="M-5,-8 l-5,-3 M-5,-8 l1,-6" stroke="var(--teal)" stroke-width="2" stroke-linecap="round"/><circle r="1.8" fill="var(--teal)"/></g>'
+  + '<g class="chrono-balance" data-part="balance" transform="translate(174,76)"><circle r="17" fill="none" stroke="currentColor" stroke-width="3"/><path d="M-17,0 H17" stroke="currentColor" stroke-width="3"/><circle cx="-11" cy="0" r="2.6" fill="var(--timber)"/><circle cx="11" cy="0" r="2.6" fill="var(--timber)"/><circle r="4" fill="var(--timber)"/></g>'
   + '<path d="M174,76 m-6,0 a6,6 0 1,1 6,6 a4,4 0 1,0 -4,-4" fill="none" stroke="var(--teal)" stroke-width="0.9" opacity="0.8"/></g>'
   /* movement */
-  + '<g class="cx-layer" data-depth="2"><g class="chrono-gear" transform="translate(124,84)"><circle r="22" fill="none" stroke="currentColor" stroke-width="9" stroke-dasharray="5 5"/><circle r="13" fill="none" stroke="currentColor" stroke-width="2"/><path d="M-13,0 H13 M0,-13 V13" stroke="currentColor" stroke-width="2"/></g>'
-  + '<g class="chrono-gear2" transform="translate(163,121)"><circle r="15" fill="none" stroke="currentColor" stroke-width="8" stroke-dasharray="4 4"/><circle r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M-9,0 H9 M0,-9 V9" stroke="currentColor" stroke-width="2"/></g>'
-  + '<g class="chrono-barrel" transform="translate(114,128)"><circle r="19" fill="none" stroke="currentColor" stroke-width="3"/><circle class="cx-spring" r="13.5" fill="none" stroke="var(--teal)" stroke-width="3.4" stroke-dasharray="84.8" stroke-dashoffset="84.8" transform="rotate(-90)"/><circle r="3.4" fill="currentColor"/></g>'
-  + '<circle cx="150" cy="100" r="5" fill="currentColor"/></g>'
+  + '<g class="cx-layer" data-depth="2"><g class="chrono-barrel" data-part="barrel" transform="translate(116,116)"><circle r="24" fill="none" stroke="currentColor" stroke-width="3"/><circle class="cx-spring" r="17.5" fill="none" stroke="var(--teal)" stroke-width="3.4" stroke-dasharray="110" stroke-dashoffset="110" transform="rotate(-90)"/><circle r="4" fill="currentColor"/></g>'
+  + '<g class="chrono-center" data-part="center" transform="translate(150,100)"><circle r="16" fill="none" stroke="currentColor" stroke-width="7" stroke-dasharray="4.6 3.77"/><circle r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M-8.5,0 H8.5 M0,-8.5 V8.5" stroke="currentColor" stroke-width="1.6"/><circle r="3" fill="currentColor"/></g>'
+  + '<g class="chrono-third" data-part="third" transform="translate(168,82)"><circle r="12" fill="none" stroke="currentColor" stroke-width="6.5" stroke-dasharray="3.6 3.25"/><circle r="6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M-6,0 H6 M0,-6 V6" stroke="currentColor" stroke-width="1.4"/><circle r="2.2" fill="currentColor"/></g>'
+  + '<g class="chrono-fourth" data-part="fourth" transform="translate(190,96)"><circle r="13" fill="none" stroke="currentColor" stroke-width="7" stroke-dasharray="3.5 3.3"/><circle r="6.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M-6.5,0 H6.5 M0,-6.5 V6.5" stroke="currentColor" stroke-width="1.4"/><circle r="2.2" fill="currentColor"/></g></g>'
   /* dial */
-  + '<g class="cx-layer" data-depth="3"><g class="chrono-dial"><circle cx="150" cy="100" r="57" fill="var(--bg)" fill-opacity="0.93"/><circle cx="150" cy="100" r="57" fill="none" stroke="currentColor" stroke-width="2"/><g class="chrono-ticks"></g>'
-  + '<path d="M150,100 L150,66" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M150,100 L178,112" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>'
+  + '<g class="cx-layer" data-depth="3"><g class="chrono-dial" data-part="dial"><circle class="chrono-dial-disc" cx="150" cy="100" r="57" fill="var(--bg)" fill-opacity="0.93"/><circle cx="150" cy="100" r="57" fill="none" stroke="currentColor" stroke-width="2"/><g class="chrono-ticks"></g>'
+  + '<g class="chrono-hour"><path d="M150,100 L150,68" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></g><g class="chrono-minute"><path d="M150,100 L150,60" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></g>'
   + '<g class="chrono-second"><path d="M150,112 L150,57" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round"/></g><circle cx="150" cy="100" r="5" fill="currentColor"/>'
   + '<text x="150" y="132" text-anchor="middle" font-size="8" letter-spacing="2" fill="currentColor">EVENFARING</text></g></g>'
   /* case front */
-  + '<g class="cx-layer" data-depth="4"><circle cx="150" cy="100" r="66" fill="none" stroke="var(--timber)" stroke-width="7"/>'
+  + '<g class="cx-layer" data-depth="4"><circle data-part="case" cx="150" cy="100" r="66" fill="none" stroke="var(--timber)" stroke-width="7"/>'
   + '<path class="chrono-glass" d="M104,58 A58,58 0 0 1 178,50" fill="none" stroke="#f7f1e3" stroke-width="5" opacity="0.5" stroke-linecap="round"/>'
-  + '<g class="chrono-crown" transform="translate(150,35)"><rect x="-7" y="-14" width="14" height="13" rx="3" fill="var(--timber)"/><path d="M-7,-10 H7 M-7,-6 H7" stroke="#f7f1e3" stroke-width="1.4" opacity="0.6"/></g></g>'
+  + '<g class="chrono-crown" data-part="crown" transform="translate(150,35)"><circle r="17" fill="#ffffff" opacity="0"/><rect x="-7" y="-14" width="14" height="13" rx="3" fill="var(--timber)"/><path d="M-7,-10 H7 M-7,-6 H7" stroke="#f7f1e3" stroke-width="1.4" opacity="0.6"/></g></g>'
   /* labels */
   + '<g class="cx-labels cx-labels-case" opacity="0">'
-  + '<g><path d="M152,30 L196,20" class="cx-leader"/><circle cx="150" cy="29" r="1.6" class="cx-dot"/><text x="200" y="22" class="cx-lab">CROWN · WINDS HER</text></g>'
-  + '<g><path d="M88,86 L78,79" class="cx-leader"/><circle cx="86" cy="87" r="1.6" class="cx-dot"/><text x="74" y="81" text-anchor="end" class="cx-lab">BEZEL &amp; CASE</text></g></g>'
+  + '<g class="cx-lab-item" data-follow="4"><path d="M152,30 L196,20" class="cx-leader"/><circle cx="150" cy="29" r="1.6" class="cx-dot"/><text x="200" y="22" class="cx-lab">CROWN</text><text x="200" y="33" class="cx-lab-sub">winds the spring</text></g>'
+  + '<g class="cx-lab-item" data-follow="4"><path d="M88,86 L92,80" class="cx-leader"/><circle cx="86" cy="87" r="1.6" class="cx-dot"/><text x="96" y="81" text-anchor="end" class="cx-lab">BEZEL &amp; CASE</text><text x="96" y="92" text-anchor="end" class="cx-lab-sub">holds the glass</text></g></g>'
   + '<g class="cx-labels cx-labels-a" opacity="0">'
-  + '<g><path d="M95,102 L68,100" class="cx-leader"/><circle cx="93" cy="100" r="1.6" class="cx-dot"/><text x="60" y="102" text-anchor="end" class="cx-lab">DIAL</text></g>'
-  + '<g><path d="M128,140 L196,152" class="cx-leader"/><circle cx="126" cy="139" r="1.6" class="cx-dot"/><text x="200" y="154" class="cx-lab">MAINSPRING BARREL</text></g></g>'
+  + '<g class="cx-lab-item" data-follow="3"><path d="M95,102 L72,100" class="cx-leader"/><circle cx="93" cy="100" r="1.6" class="cx-dot"/><text x="64" y="102" text-anchor="end" class="cx-lab">DIAL</text><text x="64" y="113" text-anchor="end" class="cx-lab-sub">tells the hour</text></g>'
+  + '<g class="cx-lab-item" data-follow="2"><path d="M116,142 L116,166" class="cx-leader"/><circle cx="116" cy="140" r="1.6" class="cx-dot"/><text x="116" y="178" text-anchor="middle" class="cx-lab">MAINSPRING BARREL</text><text x="116" y="189" text-anchor="middle" class="cx-lab-sub">her stored wind</text></g></g>'
   + '<g class="cx-labels cx-labels-b" opacity="0">'
-  + '<g><path d="M118,72 L78,56" class="cx-leader"/><circle cx="116" cy="71" r="1.6" class="cx-dot"/><text x="74" y="58" text-anchor="end" class="cx-lab">GEAR TRAIN</text></g>'
-  + '<g><path d="M186,68 L212,58" class="cx-leader"/><circle cx="188" cy="67" r="1.6" class="cx-dot"/><text x="216" y="60" class="cx-lab">BALANCE</text></g>'
-  + '<g><path d="M196,124 L216,122" class="cx-leader"/><circle cx="198" cy="123" r="1.6" class="cx-dot"/><text x="220" y="124" class="cx-lab">ESCAPE WHEEL</text></g></g>'
+  + '<g class="cx-lab-item" data-follow="2"><path d="M138,102 L88,114" class="cx-leader"/><circle cx="136" cy="103" r="1.6" class="cx-dot"/><text x="84" y="120" text-anchor="end" class="cx-lab">GEAR TRAIN</text><text x="84" y="131" text-anchor="end" class="cx-lab-sub">carries the power</text></g>'
+  + '<g class="cx-lab-item" data-follow="1"><path d="M186,68 L212,58" class="cx-leader"/><circle cx="188" cy="67" r="1.6" class="cx-dot"/><text x="216" y="60" class="cx-lab">BALANCE</text><text x="216" y="71" class="cx-lab-sub">keeps the beat</text></g>'
+  + '<g class="cx-lab-item" data-follow="1"><path d="M196,124 L206,122" class="cx-leader"/><circle cx="198" cy="123" r="1.6" class="cx-dot"/><text x="210" y="124" class="cx-lab cx-lab-tight">ESCAPE WHEEL</text><text x="210" y="135" class="cx-lab-sub">one tooth a swing</text></g></g>'
   + '</svg></div>'
   + '<div class="exhibit-controls"><label class="peek-label">Open her <input type="range" class="chrono-peek" min="0" max="300" value="0" step="1" aria-label="Open the chronometer, from case to escapement"></label>'
   + '<button type="button" class="exhibit-btn chrono-wind">Wind her</button>'
-  + '<button type="button" class="exhibit-btn cx-labels-btn" aria-pressed="true">Labels</button></div>'
+  + '<button type="button" class="exhibit-btn cx-labels-btn" aria-pressed="true">Labels</button>'
+  + '<button type="button" class="exhibit-btn cx-trace-btn" aria-pressed="false">Trace her power</button></div>'
   + '<div class="cx-detents" aria-hidden="true"><span>Case</span><span>Dial</span><span>Movement</span><span>Escapement</span></div>'
   + '<div class="cx-spring-row"><span class="cx-spring-label">Spring</span><div class="cx-spring-track" role="meter" aria-label="Mainspring charge" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="cx-spring-fill"></div></div><span class="cx-spring-pct">0%</span></div>'
   + '<p class="exhibit-readout chrono-state" role="status">Run down · wind her</p>'
-  + '<p class="exhibit-hint">Drag her sideways to turn her in the light.</p></div>';
+  + '<p class="exhibit-hint">Drag her sideways to turn her in the light · drag her crown round to wind her · tap a part to meet it.</p></div>';
 var STAGES = ['Charted & Corrected','Sounded','Sketch','Charted & Corrected','Sounded','Sketch'];
 function cardHTML(it, ix){
   return '<article class="voyage-card" data-pane="' + it.pane + '">'
@@ -10715,8 +10731,12 @@ document.addEventListener('keydown', function(e){
         layers = Array.prototype.slice.call(chrono.querySelectorAll('.cx-layer')),
         glass = chrono.querySelector('.chrono-glass'), peek = chrono.querySelector('.chrono-peek'),
         state = chrono.querySelector('.chrono-state'), balance = chrono.querySelector('.chrono-balance'),
-        gear1 = chrono.querySelector('.chrono-gear'), gear2 = chrono.querySelector('.chrono-gear2'),
+        gearC = chrono.querySelector('.chrono-center'), gear3 = chrono.querySelector('.chrono-third'),
+        gear4 = chrono.querySelector('.chrono-fourth'), barrelG = chrono.querySelector('.chrono-barrel'),
+        pallet = chrono.querySelector('.chrono-pallet'),
         escapeW = chrono.querySelector('.chrono-escape'), second = chrono.querySelector('.chrono-second'),
+        hourH = chrono.querySelector('.chrono-hour'), minuteH = chrono.querySelector('.chrono-minute'),
+        dialDisc = chrono.querySelector('.chrono-dial-disc'),
         springArc = chrono.querySelector('.cx-spring'), labelsBtn = chrono.querySelector('.cx-labels-btn'),
         labA = chrono.querySelector('.cx-labels-a'), labB = chrono.querySelector('.cx-labels-b'), labCase = chrono.querySelector('.cx-labels-case'),
         meter = chrono.querySelector('.cx-spring-track'), fill = chrono.querySelector('.cx-spring-fill'),
@@ -10725,17 +10745,29 @@ document.addEventListener('keydown', function(e){
     var peel = 0, turn = 0, labelsOn = true;
     function clamp(v, lo, hi){ return Math.max(lo, Math.min(hi, v)); }
     function band(p, a, b2){ return clamp((p - a) / (b2 - a), 0, 1); }
+    var LIFTS = {0: [40, 2.0, 3], 1: [24, 1.8, 3], 2: [0, 0, 1], 3: [-20, 0.7, 1.9], 4: [-40, 0, 1]};
+    var labItems = Array.prototype.slice.call(chrono.querySelectorAll('.cx-lab-item'));
     function applyView(){
       var trad = turn * Math.PI / 180;
+      var layerT = {};
       layers.forEach(function(g){
         var d = parseInt(g.getAttribute('data-depth'), 10), o = 1;
-        if(d === 4) o = 1 - band(peel, 0, 0.9);
-        else if(d === 3) o = 1 - 0.9 * band(peel, 1, 2);
-        else if(d === 2) o = 1 - 0.38 * band(peel, 2, 3);
+        if(d === 3) o = 1 - 0.25 * band(peel, 2.2, 3);
         else if(d === 1) o = 0.3 + 0.7 * band(peel, 2, 3);
+        else if(d === 0) o = 1 - 0.45 * band(peel, 2, 3);
         g.style.opacity = String(o);
-        var tx = Math.sin(trad) * (d - 2) * 4, ty = (d - 2) * peel * 3.4;
+        var L = LIFTS[d];
+        var tx = Math.sin(trad) * (d - 2) * 6, ty = L[0] * band(peel, L[1], L[2]);
+        layerT[d] = [tx, ty];
         g.style.transform = 'translate(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px)';
+      });
+      if(dialDisc){
+        dialDisc.style.fillOpacity = String(0.93 - 0.78 * band(peel, 2, 3));
+        dialDisc.style.pointerEvents = peel >= 2 ? 'none' : '';
+      }
+      labItems.forEach(function(it){
+        var t = layerT[parseInt(it.getAttribute('data-follow'), 10)] || [0, 0];
+        it.style.transform = 'translate(' + t[0].toFixed(1) + 'px,' + t[1].toFixed(1) + 'px)';
       });
       if(glass) glass.style.opacity = String(0.5 * (1 - band(peel, 0, 0.9)));
       if(svgEl) svgEl.style.transform = 'rotate(' + (turn * 0.45).toFixed(2) + 'deg)';
@@ -10775,17 +10807,23 @@ document.addEventListener('keydown', function(e){
         window.clearTimeout(settleT); settleT = window.setTimeout(endTurn, 1400);
       });
     }
-    /* the wind: a spring you can watch give out */
-    var wind = 0, raf = 0, lastT = 0, rot = 0, secRot = 0, lastPct = -1;
+    /* the wind: a spring you can watch give out — v53: the escapement is
+       locked to the balance (one tooth per swing, the fork rocks with the
+       beat), the whole train is driven from the beat at mesh ratios, her
+       hands keep the true time while she runs, and the crown winds her. */
+    var wind = 0, raf = 0, lastT = 0, lastPct = -1;
+    var phase = 0, prevSin = 0, beats = 0, escapeAng = 0, forkAng = 6.5, crownRot = 0, secOffset = 0;
+    var selPart = null, tracing = false, traceTimer = 0;
     function setMeter(){
       var pc = Math.round(wind * 100);
       if(pc === lastPct) return; lastPct = pc;
       if(fill) fill.style.width = pc + '%';
       if(pct) pct.textContent = pc + '%';
       if(meter) meter.setAttribute('aria-valuenow', String(pc));
-      if(springArc) springArc.setAttribute('stroke-dashoffset', String(84.8 * (1 - wind)));
+      if(springArc) springArc.setAttribute('stroke-dashoffset', String(110 * (1 - wind)));
     }
     function setState(){
+      if(selPart || tracing) return;
       var pc = Math.round(wind * 100);
       if(RM){ state.textContent = wind > 0 ? 'Wound · resting still · spring ' + pc + '%' : 'Run down · wind her'; setMeter(); return; }
       state.textContent = wind > 0.55 ? 'Wound · running true · spring ' + pc + '%'
@@ -10793,28 +10831,175 @@ document.addEventListener('keydown', function(e){
         : wind > 0.004 ? 'Running low · wind her soon · spring ' + pc + '%'
         : 'Run down · wind her';
     }
+    function renderHands(){
+      var d = new Date();
+      var hh = (d.getHours() % 12) + d.getMinutes() / 60;
+      var mm = d.getMinutes() + d.getSeconds() / 60;
+      if(hourH) hourH.setAttribute('transform', 'rotate(' + (hh * 30).toFixed(2) + ' 150 100)');
+      if(minuteH) minuteH.setAttribute('transform', 'rotate(' + (mm * 6).toFixed(2) + ' 150 100)');
+    }
     function tick(now){
       var dt = Math.min(250, now - lastT); lastT = now;
-      wind *= Math.exp(-dt / 13000);
-      rot += dt * 0.05 * (0.25 + wind);
-      secRot += dt * 0.06 * (0.15 + 0.85 * wind);
-      var swing = Math.sin(now / (640 - 340 * wind)) * 44 * Math.min(1, wind * 2.6);
-      if(balance) balance.setAttribute('transform', 'translate(174,76) rotate(' + swing.toFixed(1) + ')');
-      if(gear1) gear1.setAttribute('transform', 'translate(124,84) rotate(' + (rot % 360).toFixed(1) + ')');
-      if(gear2) gear2.setAttribute('transform', 'translate(163,121) rotate(' + (-(rot * 1.6) % 360).toFixed(1) + ')');
-      if(escapeW) escapeW.setAttribute('transform', 'translate(187,120) rotate(' + (Math.floor(rot * 3) * 6 % 360) + ')');
-      if(second) second.setAttribute('transform', 'rotate(' + (secRot % 360).toFixed(1) + ' 150 100)');
+      wind *= Math.exp(-dt / 75000);
+      phase += dt / (640 - 340 * wind);
+      var s = Math.sin(phase);
+      if(wind > 0.01 && prevSin !== 0 && ((prevSin < 0 && s >= 0) || (prevSin > 0 && s <= 0))) beats++;
+      prevSin = s;
+      if(balance) balance.setAttribute('transform', 'translate(174,76) rotate(' + (s * 44 * Math.min(1, wind * 2.6)).toFixed(1) + ')');
+      var target = beats * 30;
+      escapeAng += (target - escapeAng) * Math.min(1, dt / 40);
+      if(Math.abs(target - escapeAng) < 0.02) escapeAng = target;
+      if(escapeW) escapeW.setAttribute('transform', 'translate(187,120) rotate(' + escapeAng.toFixed(1) + ')');
+      var forkT = (beats % 2 === 0) ? 6.5 : -6.5;
+      forkAng += (forkT - forkAng) * Math.min(1, dt / 35);
+      if(pallet) pallet.setAttribute('transform', 'translate(173,104) rotate(' + forkAng.toFixed(1) + ')');
+      if(gear4) gear4.setAttribute('transform', 'translate(190,96) rotate(' + (-escapeAng * 5 / 13).toFixed(1) + ')');
+      if(gear3) gear3.setAttribute('transform', 'translate(168,82) rotate(' + (escapeAng * 25 / 156).toFixed(1) + ')');
+      if(gearC) gearC.setAttribute('transform', 'translate(150,100) rotate(' + (-escapeAng * 125 / 2496).toFixed(1) + ')');
+      if(barrelG) barrelG.setAttribute('transform', 'translate(116,116) rotate(' + (escapeAng * 625 / 59904).toFixed(2) + ')');
+      if(second) second.setAttribute('transform', 'rotate(' + ((beats * 6 + secOffset) % 360).toFixed(1) + ' 150 100)');
+      renderHands();
       setMeter(); setState();
       if(wind > 0.004){ raf = requestAnimationFrame(tick); }
-      else { raf = 0; wind = 0; setMeter(); setState(); }
+      else { raf = 0; wind = 0; if(balance) balance.setAttribute('transform', 'translate(174,76) rotate(0)'); setMeter(); setState(); }
     }
-    var windBtn = chrono.querySelector('.chrono-wind');
-    if(windBtn) windBtn.addEventListener('click', function(){
-      wind = Math.min(1, wind + 0.55);
+    function startHer(){
+      prevSin = Math.sin(phase);
+      var d = new Date();
+      secOffset = ((d.getSeconds() + d.getMilliseconds() / 1000) * 6 - beats * 6) % 360;
+      lastT = performance.now();
+      raf = requestAnimationFrame(tick);
+    }
+    function addWind(d){
+      var before = wind;
+      wind = Math.min(1, wind + d);
+      if(Math.floor(before * 20) !== Math.floor(wind * 20) && window.playSubtleTone) playSubtleTone('step');
       setMeter(); setState();
       if(RM) return;
-      if(!raf){ lastT = performance.now(); raf = requestAnimationFrame(tick); }
+      if(wind > 0 && !raf) startHer();
+    }
+    var windBtn = chrono.querySelector('.chrono-wind');
+    if(windBtn) windBtn.addEventListener('click', function(){ stopTrace(); addWind(0.55); });
+    /* wind the crown herself: drag her round (up / right winds) */
+    var crown = chrono.querySelector('.chrono-crown');
+    if(crown){
+      var windDrag = null;
+      crown.addEventListener('pointerdown', function(e){
+        if(peel > 0.6) return;
+        e.stopPropagation();
+        windDrag = {x: e.clientX, y: e.clientY};
+        try{ crown.setPointerCapture(e.pointerId); }catch(err){}
+      });
+      crown.addEventListener('pointermove', function(e){
+        if(!windDrag) return;
+        var d = ((windDrag.y - e.clientY) + (e.clientX - windDrag.x)) * 0.0035;
+        windDrag = {x: e.clientX, y: e.clientY};
+        if(d > 0){
+          crownRot = (crownRot + d * 540) % 360;
+          crown.setAttribute('transform', 'translate(150,35) rotate(' + crownRot.toFixed(0) + ')');
+          addWind(d);
+        }
+      });
+      ['pointerup', 'pointercancel'].forEach(function(ev){ crown.addEventListener(ev, function(){ windDrag = null; }); });
+    }
+    /* trace her power: barrel to balance, station by station */
+    var STATIONS = [
+      ['barrel', 'Mainspring barrel — her stored wind, spent slowly.'],
+      ['center', 'Center wheel — the first courier of the wind.'],
+      ['third', 'Third wheel — carries it across the plate.'],
+      ['fourth', 'Fourth wheel — the last before the escapement.'],
+      ['escape', 'Escape wheel — one tooth escapes per swing.'],
+      ['pallet', 'Pallet fork — locks, releases, locks again.'],
+      ['balance', 'Balance — keeps the beat; everything answers to her.']
+    ];
+    var NOTES = {
+      crown: 'Crown — winds the spring. Drag her round, or use Wind her.',
+      case: 'Bezel & case — holds the glass; takes the knocks so she doesn’t have to.',
+      dial: 'Dial — tells the hour. While she runs, her hands keep your time.',
+      barrel: 'Mainspring barrel — her stored wind, spent slowly through the train.',
+      center: 'Center wheel — her arbor carries the minute hand through the plate.',
+      third: 'Third wheel — a courier between the center and the fourth.',
+      fourth: 'Fourth wheel — in a true movement she turns once a minute and carries the seconds.',
+      escape: 'Escape wheel — one tooth escapes per swing of the balance.',
+      pallet: 'Pallet fork — locks and releases the escape wheel, beat by beat.',
+      balance: 'Balance — keeps the beat. Every other motion in her answers to this swing.'
+    };
+    function partEl(name){ return chrono.querySelector('[data-part="' + name + '"]'); }
+    function stopTrace(){
+      if(traceTimer){ window.clearInterval(traceTimer); traceTimer = 0; }
+      if(tracing){
+        tracing = false;
+        STATIONS.forEach(function(st){ var el = partEl(st[0]); if(el) el.classList.remove('cx-hot'); });
+        var tb = chrono.querySelector('.cx-trace-btn');
+        if(tb) tb.setAttribute('aria-pressed', 'false');
+        setState();
+      }
+    }
+    var traceBtn = chrono.querySelector('.cx-trace-btn');
+    if(traceBtn) traceBtn.addEventListener('click', function(){
+      if(tracing){ stopTrace(); return; }
+      clearSel();
+      tracing = true;
+      traceBtn.setAttribute('aria-pressed', 'true');
+      var i = 0;
+      var stepFn = function(){
+        STATIONS.forEach(function(st){ var el = partEl(st[0]); if(el) el.classList.remove('cx-hot'); });
+        if(i >= STATIONS.length){ stopTrace(); return; }
+        var el = partEl(STATIONS[i][0]);
+        if(el) el.classList.add('cx-hot');
+        if(state) state.textContent = 'Her power: ' + STATIONS[i][1];
+        i++;
+      };
+      stepFn();
+      traceTimer = window.setInterval(stepFn, 560);
     });
+    /* tap a part to meet it */
+    function clearSel(){
+      if(!selPart) return;
+      selPart = null;
+      if(svgEl) svgEl.classList.remove('focus');
+      Array.prototype.forEach.call(chrono.querySelectorAll('[data-part].sel'), function(el){ el.classList.remove('sel'); });
+      setState();
+    }
+    function selectPart(name){
+      var el = partEl(name);
+      if(!el) return;
+      if(selPart === name){ clearSel(); return; }
+      stopTrace();
+      selPart = name;
+      if(svgEl) svgEl.classList.add('focus');
+      Array.prototype.forEach.call(chrono.querySelectorAll('[data-part].sel'), function(n){ n.classList.remove('sel'); });
+      el.classList.add('sel');
+      if(state && NOTES[name]) state.textContent = NOTES[name];
+    }
+    var downPos = null, dragMoved = false;
+    if(stage){
+      stage.addEventListener('pointerdown', function(e){ downPos = {x: e.clientX, y: e.clientY}; dragMoved = false; });
+      stage.addEventListener('pointermove', function(e){
+        if(downPos && Math.abs(e.clientX - downPos.x) + Math.abs(e.clientY - downPos.y) > 7) dragMoved = true;
+      });
+    }
+    if(stage) stage.addEventListener('click', function(e){
+      if(dragMoved) return;
+      /* her drag captures the pointer, so clicks land on the stage itself —
+         hit-test by point. Where parts stack in the projection, the topmost
+         is chosen first and tapping again digs to the part beneath. */
+      var els = document.elementsFromPoint ? document.elementsFromPoint(e.clientX, e.clientY) : [];
+      var parts = [];
+      els.forEach(function(el){
+        var t = el && el.closest ? el.closest('[data-part]') : null;
+        if(t && svgEl && svgEl.contains(t)){
+          var n = t.getAttribute('data-part');
+          if(parts.indexOf(n) === -1) parts.push(n);
+        }
+      });
+      if(!parts.length){ clearSel(); return; }
+      var ix = parts.indexOf(selPart);
+      if(ix >= 0 && ix < parts.length - 1) selectPart(parts[ix + 1]);
+      else selectPart(parts[0]);
+    });
+    renderHands();
+    if(second){ var sd = new Date(); second.setAttribute('transform', 'rotate(' + ((sd.getSeconds() + sd.getMilliseconds() / 1000) * 6).toFixed(1) + ' 150 100)'); }
     applyView(); setMeter(); setState();
   }
 })();
