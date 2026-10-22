@@ -10934,5 +10934,15 @@ svg:is(:hover,:active) :is(.desk-steam-1,.desk-steam-2,.harbor-buoy-group,.harbo
 </style>
 <script>/* playbook: invisible 44px hit areas for the drafting stations (no visual change) */
 (function(){document.querySelectorAll('g.svg-interactive-node').forEach(function(g){try{var b=g.getBBox(),r=g.getBoundingClientRect();if(!b.width||!r.height)return;var s=r.height/b.height,pad=Math.max(0,(46-r.height)/2/s),x=document.createElementNS('http://www.w3.org/2000/svg','rect');x.setAttribute('x',b.x-pad);x.setAttribute('y',b.y-pad);x.setAttribute('width',b.width+2*pad);x.setAttribute('height',b.height+2*pad);x.setAttribute('fill','transparent');x.setAttribute('aria-hidden','true');x.style.pointerEvents='all';g.insertBefore(x,g.firstChild)}catch(e){}})})();</script>
+<style id="v46-colophon-turn">
+/* ================= v46 THE COLOPHON TURNS (Robin, 2026-10-22) =================
+   Playbook §5 locks a slowly rotating compass colophon; the shipped code
+   never carried the turn. The colophon star now turns — one revolution
+   every 40 seconds, the calm speed of the Playbook document — and holds
+   still under prefers-reduced-motion. Nothing else changes. */
+.colophon-star{animation:colophon-turn 40s linear infinite;transform-origin:50% 50%}
+@keyframes colophon-turn{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion: reduce){.colophon-star{animation:none}}
+</style>
 </body>
 </html>
