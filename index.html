@@ -189,7 +189,7 @@ body{
   flex-direction:column;
   background:var(--bg);
   color:var(--text);
-  font:400 1rem/1.65 "Plus Jakarta Sans",system-ui,sans-serif;
+  font:400 16px/1.65 "Plus Jakarta Sans",system-ui,sans-serif;
 }
 a{color:var(--text);text-underline-offset:3px}
 a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
@@ -205,7 +205,7 @@ button:active{background-color:var(--surface-elevated)}
 .telemetry-ribbon{
   border-bottom:1px solid var(--line);
   background:var(--card-quiet);
-  font-size:.7rem;
+  font-size:12px;
   font-weight:600;
   color:var(--text-muted);
   letter-spacing:.04em;
@@ -221,16 +221,16 @@ button:active{background-color:var(--surface-elevated)}
   padding-bottom:7px;
 }
 .telemetry-coords{display:inline-flex;flex-wrap:wrap;align-items:center;gap:8px 10px}
-.telemetry-coords b{color:var(--teal);font-weight:700}
+.telemetry-coords b{color:var(--teal);font-weight:600}
 
 header.site{border-bottom:1px solid var(--line);background:var(--bg);position:sticky;top:0;z-index:40}
 header.site .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 20px;padding-top:11px;padding-bottom:11px}
 .brand-lockup{display:inline-flex;align-items:center;gap:11px;text-decoration:none;min-height:44px}
 .brand-mark{width:32px;height:32px;border-radius:8px;border:1px solid var(--line-strong);background:var(--surface);display:inline-flex;align-items:center;justify-content:center;color:var(--text)}
-.wordmark{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;font-size:1.8rem;letter-spacing:.01em;text-decoration:none;line-height:1;color:var(--text)}
+.wordmark{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;font-size:32px;letter-spacing:.01em;text-decoration:none;line-height:1;color:var(--text)}
 .header-controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
 nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:0 16px}
-nav a{display:inline-flex;align-items:center;padding:10px 0;min-height:44px;text-decoration:none;font-size:.92rem;font-weight:600;cursor:pointer}
+nav a{display:inline-flex;align-items:center;padding:10px 0;min-height:44px;text-decoration:none;font-size:14px;font-weight:600;cursor:pointer}
 nav a:hover,nav a[aria-current=page]{text-decoration:underline;color:var(--teal);font-weight:600}
 
 /* Global Harbor Audio Button in Header & Urge Walk Deck */
@@ -244,7 +244,7 @@ nav a:hover,nav a[aria-current=page]{text-decoration:underline;color:var(--teal)
   border-radius:9px;
   background:var(--surface);
   color:var(--text-2);
-  font:600 .72rem "Plus Jakarta Sans",system-ui,sans-serif;
+  font:600 12px "Plus Jakarta Sans",system-ui,sans-serif;
   font-variant-numeric:tabular-nums;
   cursor:pointer;
   transition:background-color .18s var(--ease-out-quart),color .18s var(--ease-out-quart),border-color .18s var(--ease-out-quart);
@@ -280,28 +280,28 @@ nav a:hover,nav a[aria-current=page]{text-decoration:underline;color:var(--teal)
 .scene-sound-btn[aria-pressed=true] .audio-wave-bars i:nth-child(3){animation:wave-bar-pulse 2.4s .96s ease-in-out infinite}
 
 .theme-switch{display:inline-flex;align-items:center;gap:2px;padding:3px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
-.theme-switch button{min-height:30px;padding:4px 9px;border:0;border-radius:7px;background:transparent;color:var(--text-2);font:600 .72rem "Plus Jakarta Sans",system-ui,sans-serif;cursor:pointer;font-variant-numeric:tabular-nums;transition:background-color .18s var(--ease-out-quart),color .18s var(--ease-out-quart)}
+.theme-switch button{min-height:30px;padding:4px 9px;border:0;border-radius:7px;background:transparent;color:var(--text-2);font:600 12px "Plus Jakarta Sans",system-ui,sans-serif;cursor:pointer;font-variant-numeric:tabular-nums;transition:background-color .18s var(--ease-out-quart),color .18s var(--ease-out-quart)}
 .theme-switch button[aria-pressed=true]{background:var(--accent);color:var(--on-accent)}
 
 main{flex:1 0 auto;padding:36px 0 64px}
 .prose p a,.prose li a{padding:12px 0;margin:-12px 0}
 h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;line-height:1.12;margin:0 0 .45em;color:var(--text)}
 h1{font-size:clamp(2.35rem,6vw,3.55rem)}
-h2{font-size:2.1rem;margin-top:1.4em}
+h2{font-size:32px;margin-top:1.4em}
 /* v11: folio section titles keep their display size after h1->h2 demotion (single-h1 document) */
 .folio-h{font-size:clamp(2.35rem,6vw,3.55rem);margin-top:0}
 /* v11: figure numbers demoted to small tags; the human phrase leads */
-.inst-tag .fig-num{font-size:.72em;letter-spacing:.08em;opacity:.72;font-weight:700}
+.inst-tag .fig-num{font-size:.72em;letter-spacing:.08em;opacity:.72;font-weight:600}
 /* v11: footer chart index */
 .footer-index{margin:18px 0 6px}
-.footer-index p{margin:0 0 8px;font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);font-weight:700}
+.footer-index p{margin:0 0 8px;font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);font-weight:600}
 .footer-index ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 14px}
 .footer-index a{font-size:var(--text-sm);color:var(--text-2);text-decoration:none;border-bottom:1px solid var(--line)}
 .footer-index a:hover{color:var(--text);border-color:var(--line-strong)}
 .footer-shiplog{margin:14px 0 0;font-size:var(--text-xs);color:var(--text-muted);font-variant-numeric:tabular-nums}
-h3{font-size:1.5rem}
-.lede{max-width:52ch;font-size:1.06rem;color:var(--text-2)}
-.eyebrow{margin:0;color:var(--text-2);font-size:.73rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;font-variant-numeric:tabular-nums}
+h3{font-size:20px}
+.lede{max-width:52ch;font-size:16px;color:var(--text-2)}
+.eyebrow{margin:0;color:var(--text-2);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;font-variant-numeric:tabular-nums}
 .eyebrow span{padding:0 .45em;color:var(--teal)}
 
 /* Shared utility classes for sibling static pages (about.html, communities.html, etc.) */
@@ -313,15 +313,15 @@ h3{font-size:1.5rem}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:10px;transition:border-color .18s var(--ease-out-quart),background-color .18s var(--ease-out-quart)}
 .card.quiet{background:var(--card-quiet)}
 .card.is-active-harbor{border-color:var(--teal);background:var(--card-quiet)}
-.card h2{font-size:1.65rem;margin:0}.card h3{margin:0}
+.card h2{font-size:32px;margin:0}.card h3{margin:0}
 .card img{width:64px;height:64px;border-radius:14px}
 .card p{margin:0;color:var(--text-2)}
-.tag{align-self:flex-start;font-size:.75rem;font-weight:700;border:1px solid var(--accent);border-radius:999px;padding:2px 10px;font-variant-numeric:tabular-nums}
-.status{font-size:.88rem;font-style:italic;color:var(--text-2)}
-.btn{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;padding:10px 16px;min-height:44px;border:1px solid var(--accent);border-radius:10px;text-decoration:none;font-weight:600;font-size:.92rem;background:transparent;color:var(--text);cursor:pointer;transition:background-color .2s var(--ease-out-quart),color .2s var(--ease-out-quart)}
+.tag{align-self:flex-start;font-size:12px;font-weight:600;border:1px solid var(--accent);border-radius:999px;padding:2px 10px;font-variant-numeric:tabular-nums}
+.status{font-size:14px;font-style:italic;color:var(--text-2)}
+.btn{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;padding:10px 16px;min-height:44px;border:1px solid var(--accent);border-radius:10px;text-decoration:none;font-weight:600;font-size:14px;background:transparent;color:var(--text);cursor:pointer;transition:background-color .2s var(--ease-out-quart),color .2s var(--ease-out-quart)}
 .btn:hover{background:var(--accent);color:var(--on-accent)}
 .prose{max-width:64ch}
-.note{font-size:.85rem;border:1px solid var(--line);border-radius:8px;padding:6px 10px;display:inline-block;background:var(--surface)}
+.note{font-size:14px;border:1px solid var(--line);border-radius:8px;padding:6px 10px;display:inline-block;background:var(--surface)}
 
 /* Architect / Captain's Log Margin Quote */
 .captain-note{
@@ -332,14 +332,14 @@ h3{font-size:1.5rem}
   border-radius:0 8px 8px 0;
   font-family:"Cormorant Garamond",Georgia,serif;
   font-style:italic;
-  font-size:1.12rem;
+  font-size:16px;
   line-height:1.35;
   color:var(--text);
 }
 .captain-note span{
   display:block;
   margin-top:4px;
-  font:600 .68rem "Plus Jakarta Sans",system-ui,sans-serif;
+  font:600 12px "Plus Jakarta Sans",system-ui,sans-serif;
   text-transform:uppercase;
   letter-spacing:.05em;
   color:var(--text-muted);
@@ -387,12 +387,12 @@ h3{font-size:1.5rem}
   padding:9px 14px;
   border-bottom:1px solid var(--chart-border);
   background:var(--chart-panel);
-  font-size:.69rem;
+  font-size:12px;
   font-weight:600;
   font-variant-numeric:tabular-nums;
   letter-spacing:.03em;
 }
-.inst-tag{color:var(--chart-water);font-weight:700}
+.inst-tag{color:var(--chart-water);font-weight:600}
 .inst-readout{color:var(--chart-sub)}
 
 /* Brass Sync Clutch Button in FIG. 00 */
@@ -406,7 +406,7 @@ h3{font-size:1.5rem}
   border-radius:999px;
   background:var(--chart-bg);
   color:var(--chart-sub);
-  font:700 .65rem "Plus Jakarta Sans",system-ui,sans-serif;
+  font:600 12px "Plus Jakarta Sans",system-ui,sans-serif;
   letter-spacing:.03em;
   font-variant-numeric:tabular-nums;
   cursor:pointer;
@@ -457,7 +457,7 @@ h3{font-size:1.5rem}
   flex-wrap:wrap;
   align-items:center;
   gap:8px 12px;
-  font-size:.72rem;
+  font-size:12px;
   font-weight:600;
   font-variant-numeric:tabular-nums;
 }
@@ -481,7 +481,7 @@ h3{font-size:1.5rem}
   border-radius:7px;
   background:var(--chart-bg);
   color:var(--chart-sub);
-  font:600 .7rem "Plus Jakarta Sans",system-ui,sans-serif;
+  font:600 12px "Plus Jakarta Sans",system-ui,sans-serif;
   font-variant-numeric:tabular-nums;
   cursor:pointer;
   transition:background-color .18s var(--ease-out-quart),color .18s var(--ease-out-quart),border-color .18s var(--ease-out-quart);
@@ -492,7 +492,7 @@ h3{font-size:1.5rem}
   border-color:var(--accent);
 }
 .chrono-dispatch{
-  font-size:.77rem;
+  font-size:12px;
   color:var(--chart-ink);
   display:flex;
   flex-wrap:wrap;
@@ -508,8 +508,8 @@ h3{font-size:1.5rem}
   border-radius:6px;
   border:1px solid var(--chart-border);
   background:var(--chart-bg);
-  font-size:.67rem;
-  font-weight:700;
+  font-size:12px;
+  font-weight:600;
   color:var(--chart-water);
   white-space:nowrap;
 }
@@ -520,7 +520,7 @@ h3{font-size:1.5rem}
 .work{padding-top:44px}
 .section-heading{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 20px;padding-bottom:14px;margin-bottom:22px;border-bottom:1px solid var(--line)}
 .section-heading .eyebrow{margin-bottom:4px}
-.section-heading h2{margin:0;font-size:2.25rem}
+.section-heading h2{margin:0;font-size:32px}
 
 .featured-app{
   display:grid;
@@ -539,7 +539,7 @@ h3{font-size:1.5rem}
   align-items:flex-start;
   padding:28px;
 }
-.app-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;color:var(--text-2);font-size:.73rem;font-weight:600;font-variant-numeric:tabular-nums}
+.app-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;color:var(--text-2);font-size:12px;font-weight:600;font-variant-numeric:tabular-nums}
 .app-meta span+span::before{content:"/";padding-right:12px;color:var(--line-strong)}
 .app-emblem{
   margin-top:18px;
@@ -552,9 +552,9 @@ h3{font-size:1.5rem}
   align-items:center;
   justify-content:center;
 }
-.featured-copy h3{margin:12px 0 4px;font-size:2.45rem}
-.featured-copy .app-promise{margin:0;font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-size:1.42rem;line-height:1.28;color:var(--text)}
-.featured-copy p{max-width:40ch;margin:10px 0 0;color:var(--text-2);font-size:.94rem}
+.featured-copy h3{margin:12px 0 4px;font-size:32px}
+.featured-copy .app-promise{margin:0;font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-size:20px;line-height:1.28;color:var(--text)}
+.featured-copy p{max-width:40ch;margin:10px 0 0;color:var(--text-2);font-size:16px}
 
 /* Key Spec Readout Pills inside Urge Walk Copy */
 .spec-pills{
@@ -573,11 +573,11 @@ h3{font-size:1.5rem}
   background:var(--card-quiet);
   font-variant-numeric:tabular-nums;
 }
-.spec-pill-label{display:block;font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--text-muted)}
-.spec-pill-val{display:block;font-size:.8rem;font-weight:700;color:var(--text);margin-top:2px}
+.spec-pill-label{display:block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--text-muted)}
+.spec-pill-val{display:block;font-size:12px;font-weight:600;color:var(--text);margin-top:2px}
 
 .featured-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:auto;padding-top:18px}
-.featured-actions .status{display:inline-flex;align-items:center;gap:8px;margin:0;font-style:normal;font-size:.82rem;font-weight:600}
+.featured-actions .status{display:inline-flex;align-items:center;gap:8px;margin:0;font-style:normal;font-size:14px;font-weight:600}
 .status-dot{width:8px;height:8px;border-radius:50%;background:var(--teal);flex:none}
 .status-dot-amber{background:var(--timber)}
 
@@ -604,8 +604,8 @@ h3{font-size:1.5rem}
   background:var(--chart-panel);
 }
 .scene-header-titles{display:flex;flex-direction:column;gap:2px}
-.scene-kicker{font-size:.67rem;font-weight:700;letter-spacing:.05em;color:var(--chart-water);text-transform:uppercase;font-variant-numeric:tabular-nums}
-.scene-title{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.7rem;line-height:1.05;color:var(--chart-ink);font-weight:600}
+.scene-kicker{font-size:12px;font-weight:600;letter-spacing:.05em;color:var(--chart-water);text-transform:uppercase;font-variant-numeric:tabular-nums}
+.scene-title{font-family:"Cormorant Garamond",Georgia,serif;font-size:32px;line-height:1.05;color:var(--chart-ink);font-weight:600}
 
 .scene-controls{
   display:grid;
@@ -623,7 +623,7 @@ h3{font-size:1.5rem}
   border-radius:7px;
   background:transparent;
   color:var(--chart-sub);
-  font:600 .73rem "Plus Jakarta Sans",system-ui,sans-serif;
+  font:600 12px "Plus Jakarta Sans",system-ui,sans-serif;
   cursor:pointer;
   transition:background-color .18s var(--ease-out-quart),color .18s var(--ease-out-quart);
 }
@@ -670,8 +670,8 @@ h3{font-size:1.5rem}
 }
 .wp-label{
   fill:var(--chart-sub);
-  font-size:8px;
-  font-weight:700;
+  font-size:12px;
+  font-weight:600;
   stroke:none;
   transition:fill .2s var(--ease-out-quart);
 }
@@ -720,13 +720,13 @@ h3{font-size:1.5rem}
   gap:6px 10px;
 }
 .scene-caption{
-  font-size:.82rem;
+  font-size:14px;
   font-weight:600;
   color:var(--chart-ink);
   margin:0;
 }
 .scene-physio-note{
-  font-size:.73rem;
+  font-size:12px;
   color:var(--chart-sub);
   margin:0;
   font-variant-numeric:tabular-nums;
@@ -735,8 +735,8 @@ h3{font-size:1.5rem}
   color:var(--chart-beacon);
 }
 .scene-telemetry{
-  font-size:.72rem;
-  font-weight:700;
+  font-size:12px;
+  font-weight:600;
   color:var(--chart-water);
   font-variant-numeric:tabular-nums;
 }
@@ -754,7 +754,7 @@ h3{font-size:1.5rem}
   border-radius:8px;
   background:var(--chart-bg);
   color:var(--chart-ink);
-  font:600 .73rem "Plus Jakarta Sans",system-ui,sans-serif;
+  font:600 12px "Plus Jakarta Sans",system-ui,sans-serif;
   font-variant-numeric:tabular-nums;
   cursor:pointer;
   transition:background-color .18s var(--ease-out-quart),color .18s var(--ease-out-quart),border-color .18s var(--ease-out-quart);
@@ -780,7 +780,7 @@ h3{font-size:1.5rem}
   border-radius:8px;
   background:var(--chart-bg);
   color:var(--chart-sub);
-  font:600 .71rem "Plus Jakarta Sans",system-ui,sans-serif;
+  font:600 12px "Plus Jakarta Sans",system-ui,sans-serif;
   font-variant-numeric:tabular-nums;
   cursor:pointer;
   transition:background-color .18s var(--ease-out-quart),color .18s var(--ease-out-quart),border-color .18s var(--ease-out-quart);
@@ -790,7 +790,7 @@ h3{font-size:1.5rem}
   color:var(--chart-ink);
   background:var(--teal-soft);
 }
-.scene-index{font-size:.71rem;font-weight:700;color:var(--chart-sub);font-variant-numeric:tabular-nums}
+.scene-index{font-size:12px;font-weight:600;color:var(--chart-sub);font-variant-numeric:tabular-nums}
 .scene-index span{color:var(--chart-water)}
 
 /* ==========================================================================
@@ -828,8 +828,8 @@ h3{font-size:1.5rem}
   justify-content:center;
   flex:none;
 }
-.next-app h3{margin:0;font-size:1.95rem}
-.next-app p{margin:0;color:var(--text-2);font-size:.92rem;max-width:44ch}
+.next-app h3{margin:0;font-size:32px}
+.next-app p{margin:0;color:var(--text-2);font-size:14px;max-width:44ch}
 
 
 /* 1-Tap Live Brand Identity Toggle (Dayspan ⇄ Waymark) */
@@ -844,7 +844,7 @@ h3{font-size:1.5rem}
   border-radius:999px;
   background:var(--card-quiet);
   color:var(--text);
-  font:700 .69rem "Plus Jakarta Sans",system-ui,sans-serif;
+  font:600 12px "Plus Jakarta Sans",system-ui,sans-serif;
   letter-spacing:.03em;
   font-variant-numeric:tabular-nums;
   cursor:pointer;
@@ -888,8 +888,8 @@ h3{font-size:1.5rem}
   padding:8px 16px;
   border-bottom:1px solid var(--chart-border);
   background:var(--chart-panel);
-  font-size:.68rem;
-  font-weight:700;
+  font-size:12px;
+  font-weight:600;
   color:var(--chart-sub);
   font-variant-numeric:tabular-nums;
 }
@@ -928,8 +928,8 @@ h3{font-size:1.5rem}
   height:126px;
 }
 .compass-drag-hint{
-  font-size:.61rem;
-  font-weight:700;
+  font-size:12px;
+  font-weight:600;
   letter-spacing:.04em;
   text-transform:uppercase;
   color:var(--chart-sub);
@@ -967,8 +967,8 @@ h3{font-size:1.5rem}
   gap:4px 8px;
   padding-bottom:5px;
   border-bottom:1px solid var(--chart-border);
-  font-size:.65rem;
-  font-weight:700;
+  font-size:12px;
+  font-weight:600;
   letter-spacing:.04em;
   text-transform:uppercase;
   color:var(--chart-beacon);
@@ -979,8 +979,8 @@ h3{font-size:1.5rem}
   color:var(--chart-sub);
 }
 .ortho-spec-title{
-  font-size:.88rem;
-  font-weight:700;
+  font-size:14px;
+  font-weight:600;
   color:var(--chart-ink);
   line-height:1.22;
 }
@@ -988,11 +988,11 @@ h3{font-size:1.5rem}
   display:flex;
   flex-direction:column;
   gap:2px;
-  font-size:.74rem;
+  font-size:12px;
   color:var(--chart-sub);
   font-variant-numeric:tabular-nums;
 }
-.ortho-spec-rows b{color:var(--chart-water);font-weight:700}
+.ortho-spec-rows b{color:var(--chart-water);font-weight:600}
 
 /* Double-Progression Simulator Mini Bar inside FIG. 02 */
 .prog-sim-row{
@@ -1003,8 +1003,8 @@ h3{font-size:1.5rem}
   gap:6px;
   padding-top:5px;
   border-top:1px dashed var(--chart-border);
-  font-size:.68rem;
-  font-weight:700;
+  font-size:12px;
+  font-weight:600;
   color:var(--chart-ink);
   font-variant-numeric:tabular-nums;
 }
@@ -1021,7 +1021,7 @@ h3{font-size:1.5rem}
   border-radius:5px;
   background:var(--chart-bg);
   color:var(--chart-ink);
-  font:700 .65rem "Plus Jakarta Sans",system-ui,sans-serif;
+  font:600 12px "Plus Jakarta Sans",system-ui,sans-serif;
   font-variant-numeric:tabular-nums;
   cursor:pointer;
 }
@@ -1038,8 +1038,8 @@ h3{font-size:1.5rem}
 .ortho-spec-badge{
   padding-top:4px;
   border-top:1px dashed var(--chart-border);
-  font-size:.68rem;
-  font-weight:700;
+  font-size:12px;
+  font-weight:600;
   color:var(--chart-water);
   font-variant-numeric:tabular-nums;
 }
@@ -1050,7 +1050,7 @@ h3{font-size:1.5rem}
   font-family:"Cormorant Garamond",Georgia,serif;
   font-style:italic;
   font-weight:600;
-  font-size:1.15rem;
+  font-size:20px;
   line-height:1.26;
   color:var(--chart-ink);
   overflow-wrap:break-word;
@@ -1063,8 +1063,8 @@ h3{font-size:1.5rem}
   gap:4px 8px;
   padding-top:5px;
   border-top:1px dashed var(--chart-border);
-  font-size:.66rem;
-  font-weight:700;
+  font-size:12px;
+  font-weight:600;
   letter-spacing:.03em;
   text-transform:uppercase;
   color:var(--chart-sub);
@@ -1078,7 +1078,7 @@ h3{font-size:1.5rem}
   border-radius:5px;
   background:var(--chart-bg);
   color:var(--chart-ink);
-  font:700 .64rem "Plus Jakarta Sans",system-ui,sans-serif;
+  font:600 12px "Plus Jakarta Sans",system-ui,sans-serif;
   cursor:pointer;
   font-variant-numeric:tabular-nums;
 }
@@ -1111,7 +1111,7 @@ h3{font-size:1.5rem}
   border-radius:6px;
   background:transparent;
   color:var(--chart-sub);
-  font:600 .7rem "Plus Jakarta Sans",system-ui,sans-serif;
+  font:600 12px "Plus Jakarta Sans",system-ui,sans-serif;
   font-variant-numeric:tabular-nums;
   cursor:pointer;
   transition:background-color .18s var(--ease-out-quart),color .18s var(--ease-out-quart);
@@ -1121,7 +1121,7 @@ h3{font-size:1.5rem}
   color:var(--on-accent);
 }
 .mini-readout{
-  font-size:.74rem;
+  font-size:12px;
   color:var(--chart-ink);
   font-variant-numeric:tabular-nums;
   display:flex;
@@ -1154,7 +1154,7 @@ h3{font-size:1.5rem}
   justify-content:space-between;
   gap:16px;
 }
-.blueprint-header h2{margin:6px 0 0;font-size:2.1rem}
+.blueprint-header h2{margin:6px 0 0;font-size:32px}
 .blueprint-body{
   display:grid;
   grid-template-columns:1fr;
@@ -1198,9 +1198,9 @@ h3{font-size:1.5rem}
 }
 .practice-list li:hover{background:var(--card-quiet)}
 .practice-list li.is-active-pillar{background:var(--card-quiet);border-color:var(--teal)}
-.practice-number{padding-top:4px;color:var(--teal);font-size:.75rem;font-weight:700;font-variant-numeric:tabular-nums}
-.practice-list h3{margin:0 0 2px;font-size:1.32rem}
-.practice-list p{margin:0;color:var(--text-2);font-size:.89rem}
+.practice-number{padding-top:4px;color:var(--teal);font-size:12px;font-weight:600;font-variant-numeric:tabular-nums}
+.practice-list h3{margin:0 0 2px;font-size:20px}
+.practice-list p{margin:0;color:var(--text-2);font-size:14px}
 
 /* ==========================================================================
    FOLIO SUB-PAGE SECTIONS (COMMUNITIES, ABOUT, CONTACT, PRIVACY)
@@ -1235,7 +1235,7 @@ h3{font-size:1.5rem}
   padding:12px 16px;
   border-top:1px solid var(--chart-border);
   background:var(--chart-panel);
-  font-size:.8rem;
+  font-size:12px;
   color:var(--chart-ink);
   display:flex;
   flex-direction:column;
@@ -1277,27 +1277,27 @@ h3{font-size:1.5rem}
 }
 .inspector-cell-label{
   display:block;
-  font-size:.66rem;
-  font-weight:700;
+  font-size:12px;
+  font-weight:600;
   text-transform:uppercase;
   letter-spacing:.04em;
   color:var(--chart-sub);
 }
 .inspector-cell-val{
   display:block;
-  font-size:1.35rem;
-  font-weight:700;
+  font-size:20px;
+  font-weight:600;
   color:var(--chart-water);
   margin-top:2px;
 }
 .inspector-cell-sub{
   display:block;
-  font-size:.73rem;
+  font-size:12px;
   color:var(--chart-sub);
   margin-top:2px;
 }
 
-footer{border-top:1px solid var(--line);padding:24px 0;font-size:.9rem}
+footer{border-top:1px solid var(--line);padding:24px 0;font-size:14px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;align-items:center}
 footer ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:18px}
 footer p{margin:0;display:flex;align-items:center;min-height:44px}
@@ -1424,7 +1424,7 @@ footer a{display:inline-flex;align-items:center;padding:10px 0;min-height:44px;c
   border-radius:5px;
   border:1px solid var(--line-strong);
 }
-.ds-swatch-name{font-size:var(--text-xs);font-weight:700;color:var(--chart-ink)}
+.ds-swatch-name{font-size:var(--text-xs);font-weight:600;color:var(--chart-ink)}
 .ds-swatch-meta{font-size:var(--text-xs);color:var(--chart-sub)}
 .ds-scale-card{
   border:1px solid var(--chart-border);
@@ -1493,7 +1493,7 @@ main{
   margin:0.32em 0 0.32em;
 }
 .hero .lede{
-  font-size:1.1rem;
+  font-size:16px;
   line-height:1.7;
   max-width:50ch;
 }
@@ -1501,7 +1501,7 @@ main{
   margin:22px 0 0;
   padding:14px 18px;
   border-left:3px solid var(--teal);
-  font-size:1.16rem;
+  font-size:20px;
   line-height:1.42;
 }
 .work{
@@ -1548,7 +1548,7 @@ main{
 }
 .human-origin-note b{
   color:var(--text);
-  font-weight:700;
+  font-weight:600;
 }
 
 /* Header Reading View Mode Pill (Calm Horizon vs. Full Telemetry) */
@@ -1616,7 +1616,7 @@ html[data-reading-view="calm"] .mini-machine-controls{
   border-radius:9px;
   background:var(--teal-soft);
   color:var(--text);
-  font:700 var(--text-xs) var(--font-sans);
+  font:600 var(--text-xs) var(--font-sans);
   font-variant-numeric:tabular-nums;
   cursor:pointer;
   transition:background-color .18s var(--ease-out-quart),color .18s var(--ease-out-quart),transform .18s var(--ease-out-quart);
@@ -1651,7 +1651,7 @@ html[data-reading-view="calm"] .mini-machine-controls{
 }
 .tuesday-story-top h2{
   margin:0;
-  font-size:1.55rem;
+  font-size:20px;
 }
 .tuesday-story-top p{
   margin:2px 0 0;
@@ -1668,7 +1668,7 @@ html[data-reading-view="calm"] .mini-machine-controls{
   border-radius:var(--radius-md);
   background:var(--accent);
   color:var(--on-accent);
-  font:700 var(--text-xs) var(--font-sans);
+  font:600 var(--text-xs) var(--font-sans);
   font-variant-numeric:tabular-nums;
   cursor:pointer;
   transition:opacity .18s var(--ease-out-quart),transform .18s var(--ease-out-quart);
@@ -1713,7 +1713,7 @@ html[data-reading-view="calm"] .mini-machine-controls{
   justify-content:space-between;
   gap:6px;
   font-size:var(--text-xs);
-  font-weight:700;
+  font-weight:600;
   color:var(--chart-water);
   font-variant-numeric:tabular-nums;
 }
@@ -1722,7 +1722,7 @@ html[data-reading-view="calm"] .mini-machine-controls{
 }
 .tuesday-step-title{
   font-family:var(--font-display);
-  font-size:1.3rem;
+  font-size:20px;
   font-weight:600;
   color:var(--chart-ink);
   line-height:1.15;
@@ -1734,7 +1734,7 @@ html[data-reading-view="calm"] .mini-machine-controls{
 }
 .tuesday-step-cta{
   font-size:var(--text-xs);
-  font-weight:700;
+  font-weight:600;
   color:var(--chart-ink);
   display:inline-flex;
   align-items:center;
@@ -1762,7 +1762,7 @@ html[data-reading-view="calm"] .mini-machine-controls{
 }
 .launch-kit-header h2{
   margin:4px 0 0;
-  font-size:2rem;
+  font-size:32px;
 }
 .launch-kit-tabs{
   display:grid;
@@ -1780,7 +1780,7 @@ html[data-reading-view="calm"] .mini-machine-controls{
   border-radius:var(--radius-sm);
   background:transparent;
   color:var(--chart-sub);
-  font:700 var(--text-xs) var(--font-sans);
+  font:600 var(--text-xs) var(--font-sans);
   font-variant-numeric:tabular-nums;
   cursor:pointer;
 }
@@ -1822,7 +1822,7 @@ html[data-reading-view="calm"] .mini-machine-controls{
   justify-content:space-between;
   padding:2px 10px 4px;
   font-size:var(--text-xs);
-  font-weight:700;
+  font-weight:600;
   color:var(--chart-sub);
   font-variant-numeric:tabular-nums;
 }
@@ -1860,7 +1860,7 @@ html[data-reading-view="calm"] .mini-machine-controls{
   border-radius:6px;
   background:transparent;
   color:var(--text-2);
-  font:700 var(--text-xs) var(--font-sans);
+  font:600 var(--text-xs) var(--font-sans);
   cursor:pointer;
 }
 .iphone-screen-tabs button[aria-pressed="true"]{
@@ -1914,14 +1914,14 @@ html[data-reading-view="calm"] .mini-machine-controls{
 .store-spec-cell span:first-child{
   display:block;
   font-size:var(--text-xs);
-  font-weight:700;
+  font-weight:600;
   color:var(--chart-sub);
   text-transform:uppercase;
 }
 .store-spec-cell span:last-child{
   display:block;
   font-size:var(--text-sm);
-  font-weight:700;
+  font-weight:600;
   color:var(--chart-ink);
   margin-top:2px;
 }
@@ -1965,7 +1965,7 @@ html[data-reading-view="calm"] .mini-machine-controls{
 }
 .portable-export-copy h3{
   margin:4px 0;
-  font-size:1.45rem;
+  font-size:20px;
 }
 .portable-export-copy p{
   margin:0;
@@ -2119,7 +2119,7 @@ html[data-patina="aged"] .wordmark{
   background:var(--surface);
   color:var(--text);
   font-size:var(--text-xs);
-  font-weight:700;
+  font-weight:600;
   letter-spacing:0.05em;
   text-transform:uppercase;
   font-variant-numeric:tabular-nums;
@@ -2179,7 +2179,7 @@ html[data-patina="aged"] .patina-heirloom-stamp{
   border-radius:var(--radius-sm);
   background:var(--chart-panel);
   color:var(--chart-ink);
-  font:700 var(--text-xs) var(--font-sans);
+  font:600 var(--text-xs) var(--font-sans);
   font-variant-numeric:tabular-nums;
   cursor:pointer;
 }
@@ -2223,7 +2223,7 @@ html[data-patina="aged"] .patina-heirloom-stamp{
   border-radius:var(--radius-sm);
   background:var(--chart-bg);
   color:var(--chart-sub);
-  font:700 var(--text-xs) var(--font-sans);
+  font:600 var(--text-xs) var(--font-sans);
   font-variant-numeric:tabular-nums;
   cursor:pointer;
 }
@@ -2247,7 +2247,7 @@ html[data-patina="aged"] .patina-heirloom-stamp{
   border-radius:6px;
   background:var(--chart-bg);
   color:var(--chart-ink);
-  font:700 .66rem var(--font-sans);
+  font:600 12px var(--font-sans);
   font-variant-numeric:tabular-nums;
   cursor:pointer;
 }
@@ -2317,7 +2317,7 @@ body[data-embed-mode="compact"] header.site {
   border: 1px solid var(--teal-border);
   background: var(--teal-soft);
   color: var(--teal);
-  font: 700 var(--text-xs) var(--font-sans);
+  font: 600 var(--text-xs) var(--font-sans);
   letter-spacing: 0.03em;
   cursor: pointer;
   user-select: none;
@@ -2370,7 +2370,7 @@ body[data-embed-mode="compact"] header.site {
   justify-content: space-between;
   gap: 6px;
   font-size: var(--text-xs);
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--chart-beacon);
@@ -2379,7 +2379,7 @@ body[data-embed-mode="compact"] header.site {
 }
 .wb-launch-card h3 {
   font-family: var(--font-display);
-  font-size: 1.45rem;
+  font-size: 20px;
   font-weight: 600;
   margin: 4px 0 6px;
   color: var(--chart-ink);
@@ -2460,7 +2460,7 @@ body[data-embed-mode="compact"] header.site {
   border: 1px solid var(--chart-border);
   background: var(--chart-panel);
   color: var(--chart-sub);
-  font: 700 var(--text-xs) var(--font-sans);
+  font: 600 var(--text-xs) var(--font-sans);
   letter-spacing: 0.04em;
   text-transform: uppercase;
   cursor: pointer;
@@ -2545,7 +2545,7 @@ body[data-embed-mode="compact"] header.site {
   background: var(--teal-soft);
   border-color: var(--chart-water);
   color: var(--chart-ink);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 /* Workbench 02: Dayspan / Waymark Full Workout Player & 40-Move Library */
@@ -2586,7 +2586,7 @@ body[data-embed-mode="compact"] header.site {
   background: var(--timber-soft);
   color: var(--chart-ink);
   font-size: var(--text-xs);
-  font-weight: 700;
+  font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2628,14 +2628,14 @@ body[data-embed-mode="compact"] header.site {
   justify-content: space-between;
   gap: 4px;
   font-size: var(--text-xs);
-  font-weight: 700;
+  font-weight: 600;
   color: var(--chart-beacon);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 .wb-move-item-name {
   font-size: var(--text-sm);
-  font-weight: 700;
+  font-weight: 600;
   color: var(--chart-ink);
 }
 .wb-move-item-meta {
@@ -2674,7 +2674,7 @@ body[data-embed-mode="compact"] header.site {
   border: 1.5px solid var(--chart-border);
   background: var(--chart-panel);
   color: var(--chart-sub);
-  font: 700 var(--text-xs) var(--font-sans);
+  font: 600 var(--text-xs) var(--font-sans);
   letter-spacing: 0.05em;
   text-transform: uppercase;
   cursor: pointer;
@@ -2704,7 +2704,7 @@ body[data-embed-mode="compact"] header.site {
 }
 .wb-rotatable-quote {
   font-family: var(--font-display);
-  font-size: 1.32rem;
+  font-size: 20px;
   font-style: italic;
   line-height: 1.25;
   color: var(--chart-ink);
@@ -2744,7 +2744,7 @@ body[data-embed-mode="compact"] header.site {
 }
 .pwa-status-cell span:first-child {
   font-size: var(--text-xs);
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--chart-sub);
@@ -2771,7 +2771,7 @@ body[data-embed-mode="compact"] header.site {
   border: 1px solid var(--chart-border);
   background: var(--chart-bg);
   color: var(--chart-ink);
-  font: 500 11.5px/1.45 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font: 400 12px/1.45 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   white-space: pre;
   margin: 0;
 }
@@ -2821,8 +2821,8 @@ html[data-theme="dark"] .print-sheet-stage {
   min-height: 138px;
 }
 .print-card-crop {
-  font-size: 10px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--chart-beacon);
@@ -2832,15 +2832,15 @@ html[data-theme="dark"] .print-sheet-stage {
 }
 .print-card-quote {
   font-family: var(--font-display);
-  font-size: 1.02rem;
+  font-size: 16px;
   font-style: italic;
   line-height: 1.26;
   color: var(--chart-ink);
   margin: 0;
 }
 .print-card-foot {
-  font-size: 10px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 600;
   color: var(--chart-sub);
   border-top: 1px solid var(--chart-border);
   padding-top: 6px;
@@ -2870,7 +2870,7 @@ html[data-theme="dark"] .print-sheet-stage {
 .print-shiplog-quadrant h3.print-quad-h {
   margin: 0;
   font-family: var(--font-display);
-  font-size: 1.2rem;
+  font-size: 20px;
   color: var(--chart-ink);
   border-bottom: 1px solid var(--chart-border);
   padding-bottom: 4px;
@@ -3123,7 +3123,7 @@ html[data-theme="dark"] .desk-lamp-cone {
   border-radius: var(--radius-sm);
   background: var(--chart-bg);
   color: var(--chart-sub);
-  font: 700 var(--text-xs) var(--font-sans);
+  font: 600 var(--text-xs) var(--font-sans);
   font-variant-numeric: tabular-nums;
   cursor: pointer;
   display: inline-flex;
@@ -3182,7 +3182,7 @@ html[data-theme="dark"] .desk-lamp-cone {
   border-radius: var(--radius-sm);
   background: var(--surface);
   color: var(--text);
-  font: 700 var(--text-xs) var(--font-sans);
+  font: 600 var(--text-xs) var(--font-sans);
   cursor: pointer;
 }
 .header-secondary- utilities {
@@ -3216,7 +3216,7 @@ html[data-theme="dark"] .desk-lamp-cone {
   border-radius: var(--radius-sm);
   background: transparent;
   color: var(--text-2);
-  font: 700 11px/1.15 var(--font-sans);
+  font: 600 12px/1.15 var(--font-sans);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -3233,7 +3233,7 @@ html[data-theme="dark"] .desk-lamp-cone {
   border-color: var(--teal);
 }
 .mobile-dock-icon {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1;
 }
 
@@ -3257,7 +3257,7 @@ html[data-theme="dark"] .desk-lamp-cone {
     padding-bottom: 72px; /* Space for Fixed Bottom Harbor Dock */
   }
   .telemetry-ribbon .wrap {
-    font-size: 10.5px;
+    font-size: 12px;
     justify-content: center;
     text-align: center;
   }
@@ -3405,13 +3405,13 @@ header.site.is-mobile-drawer-open .header-controls {
   align-items: center;
   gap: 8px;
   font-size: var(--text-xs);
-  font-weight: 700;
+  font-weight: 600;
   color: var(--text-2);
   letter-spacing: 0.03em;
 }
 .observatory-stage-title em {
   font-family: var(--font-display);
-  font-size: 1.08rem;
+  font-size: 16px;
   font-weight: 600;
   color: var(--text);
   letter-spacing: 0;
@@ -3508,7 +3508,7 @@ html[data-theme="dark"] .reflection-input-row {
 .scene-physio-note {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 0.96rem;
+  font-size: 16px;
   line-height: 1.35;
   color: var(--chart-ink);
 }
@@ -3537,7 +3537,7 @@ html[data-theme="dark"] .reflection-input-row {
 }
 .ships-locker-copy h2 {
   margin: 2px 0 2px;
-  font-size: 1.65rem;
+  font-size: 32px;
 }
 .ships-locker-copy p {
   margin: 0;
@@ -3556,7 +3556,7 @@ html[data-theme="dark"] .reflection-input-row {
   border-radius: var(--radius-sm);
   background: var(--card-quiet);
   color: var(--text-2);
-  font: 700 var(--text-xs) var(--font-sans);
+  font: 600 var(--text-xs) var(--font-sans);
   cursor: pointer;
   transition: background-color 0.18s var(--ease-out-quart), color 0.18s var(--ease-out-quart), border-color 0.18s var(--ease-out-quart);
 }
@@ -3680,7 +3680,7 @@ html[data-theme="dark"] .ct-grid line{stroke:rgba(169,203,192,.13)}
 .ct-contour path{stroke:var(--chart-water);stroke-opacity:.45;stroke-width:1.2}
 .ct-rose{fill:none;stroke:var(--chart-ink);stroke-opacity:.5;stroke-width:1.4}
 .ct-rose .ct-rose-n{fill:var(--chart-ink);stroke:none}
-.ct-rose-label{fill:var(--chart-ink);fill-opacity:.55;font-size:22px;font-style:italic;stroke:none}
+.ct-rose-label{fill:var(--chart-ink);fill-opacity:.55;font-size:20px;font-style:italic;stroke:none}
 .ct-rhumb line{stroke:var(--chart-sub);stroke-opacity:.34;stroke-width:1;stroke-dasharray:10 8}
 .ct-beacon-dot circle{fill:var(--chart-beacon);opacity:.4;stroke:none}
 .ct-route{stroke:var(--chart-beacon);stroke-opacity:.55;stroke-width:2;stroke-dasharray:14 10}
@@ -3741,7 +3741,7 @@ html[data-theme="dark"] .ct-veil{
 /* ===== v17b — voyage content ===== */
 .leg-panel{max-height:94vh;overflow-y:auto;scrollbar-width:thin;padding:2vh 0}
 .leg-head{max-width:34vw}
-.leg-head .eyebrow{font:700 var(--text-xs) var(--font-sans);letter-spacing:.14em;color:var(--chart-sub);margin:0 0 10px}
+.leg-head .eyebrow{font:600 var(--text-xs) var(--font-sans);letter-spacing:.14em;color:var(--chart-sub);margin:0 0 10px}
 .leg-head h2{font:italic 600 clamp(2rem,4.5vw,3.4rem)/1.05 var(--font-display);color:var(--text);margin:0 0 12px}
 .leg-head p{font:400 var(--text-sm)/1.65 var(--font-sans);color:var(--text-2);margin:0 0 8px;max-width:30em}
 /* instrument cards: diagonal echelon, spread wide (Gemini's wings, calmed) */
@@ -3756,14 +3756,14 @@ html[data-theme="dark"] .ct-veil{
 #workbench-cards .voyage-card:nth-child(3){margin-top:4vh}
 .voyage-card .specimen-plate{border-bottom:1px solid var(--line)}
 .voyage-card-body{padding:20px 22px 22px}
-.voyage-card-body h3{font:italic 600 1.7rem/1.15 var(--font-display);color:var(--text);margin:0 0 8px}
+.voyage-card-body h3{font:italic 600 32px/1.15 var(--font-display);color:var(--text);margin:0 0 8px}
 .voyage-card-line{font:400 var(--text-base)/1.55 var(--font-sans);color:var(--text);margin:0 0 10px}
 .voyage-card-breath{font:400 var(--text-xs)/1.6 var(--font-sans);color:var(--text-2);margin:0 0 16px;
   border-left:2px solid var(--teal);padding-left:10px}
-.voyage-card-breath i{font-style:normal;font-weight:700;color:var(--teal)}
+.voyage-card-breath i{font-style:normal;font-weight:600;color:var(--teal)}
 .voyage-card-board{display:inline-flex;align-items:center;gap:10px;background:var(--teal);color:#fff;border:none;
   border-radius:10px;padding:12px 18px;font:600 var(--text-sm) var(--font-sans);cursor:pointer;min-height:44px}
-.voyage-card-board kbd{font:700 10px var(--font-sans);border:1px solid rgba(255,255,255,.5);border-radius:5px;padding:2px 7px}
+.voyage-card-board kbd{font:600 12px var(--font-sans);border:1px solid rgba(255,255,255,.5);border-radius:5px;padding:2px 7px}
 .voyage-card-board:hover{background:var(--chart-water)}
 .voyage-card.is-harbor{border-color:var(--teal);animation:harbor-settle .8s cubic-bezier(.2,1.4,.3,1)}
 @keyframes harbor-settle{0%{transform:translateY(10px)}100%{transform:translateY(0)}}
@@ -3772,7 +3772,7 @@ html[data-theme="dark"] .ct-veil{
 .tide-pool-frame{width:220px;height:220px;border-radius:50%;overflow:hidden;position:relative;
   border:2px solid var(--chart-border);background:var(--chart-panel)}
 .tide-pool canvas{width:100%;height:100%;display:block}
-.tide-pool figcaption{font:700 var(--text-xs) var(--font-sans);letter-spacing:.1em;color:var(--chart-sub);margin-top:8px}
+.tide-pool figcaption{font:600 var(--text-xs) var(--font-sans);letter-spacing:.1em;color:var(--chart-sub);margin-top:8px}
 /* arrival panels */
 .arrival-panel h2{font:italic 600 clamp(1.6rem,3vw,2.4rem)/1.1 var(--font-display);color:var(--text);margin:0 0 10px}
 .arrival-panel p{font:400 var(--text-sm)/1.65 var(--font-sans);color:var(--text-2);margin:0 0 10px;max-width:26em}
@@ -3790,7 +3790,7 @@ html[data-theme="dark"] .ct-veil{
 .bottle-dialog[hidden]{display:none!important}
 .bottle-card{background:var(--surface);border:1px solid var(--line-strong);border-radius:14px;padding:26px;
   max-width:360px;color:var(--text);text-align:center}
-.bottle-card p{font:italic 400 1.2rem/1.5 var(--font-display);margin:0 0 6px}
+.bottle-card p{font:italic 400 20px/1.5 var(--font-display);margin:0 0 6px}
 .bottle-card small{font:400 var(--text-xs) var(--font-sans);color:var(--text-2)}
 .bottle-card button{margin-top:16px;background:var(--teal);color:#fff;border:none;border-radius:10px;
   padding:10px 22px;font:600 var(--text-sm) var(--font-sans);cursor:pointer;min-height:44px}
@@ -3801,13 +3801,13 @@ html[data-theme="dark"] .ct-veil{
 .chart-room-world{position:absolute;left:0;top:0;will-change:transform;transform-origin:0 0}
 .map-island{cursor:pointer}
 .map-island ellipse{fill:var(--chart-panel);stroke:var(--chart-water);stroke-width:2}
-.map-island text{font:700 22px var(--font-sans);fill:var(--chart-ink);letter-spacing:.06em}
-.map-island small,.map-island .map-sub{font:400 15px var(--font-sans);fill:var(--chart-sub)}
+.map-island text{font:600 20px var(--font-sans);fill:var(--chart-ink);letter-spacing:.06em}
+.map-island small,.map-island .map-sub{font:400 16px var(--font-sans);fill:var(--chart-sub)}
 .map-island:hover ellipse,.map-island:focus ellipse{stroke:var(--chart-beacon);stroke-width:3}
 .map-you{fill:var(--chart-beacon);stroke:#fff;stroke-width:2}
 /* grade pills */
 .grade-pills{display:inline-flex;gap:4px;align-items:center;border:1px solid var(--line);border-radius:999px;padding:3px 6px}
-.grade-pills button{border:none;background:none;font:700 10px var(--font-sans);letter-spacing:.06em;
+.grade-pills button{border:none;background:none;font:600 12px var(--font-sans);letter-spacing:.06em;
   color:var(--text-2);border-radius:999px;padding:7px 10px;cursor:pointer;min-height:32px}
 .grade-pills button[aria-pressed="true"]{background:var(--teal);color:#fff}
 .deck-extra-btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:none;
@@ -3828,7 +3828,7 @@ header.site nav[aria-label="Main"] :is(button,a):hover{color:var(--teal);backgro
   .voyage-card{flex-basis:84vw;max-width:84vw}
   #instrument-cards .voyage-card:nth-child(n),
   #workbench-cards .voyage-card:nth-child(n){margin-top:0;margin-bottom:0}
-  .voyage-card-body h3{font-size:1.35rem}
+  .voyage-card-body h3{font-size:20px}
 }
 @media(prefers-reduced-motion:reduce){
   .voyage-card.is-harbor{animation:none}
@@ -3870,7 +3870,7 @@ header.site nav[aria-label="Main"] :is(button,a):hover{color:var(--teal);backgro
 .voyage-vessel{position:absolute;left:0;top:0;z-index:2;pointer-events:none;will-change:transform;color:var(--chart-ink)}
 .voyage-vessel svg{display:block;filter:drop-shadow(0 2px 6px rgba(20,30,50,.25))}
 .voyage-vessel-badge{position:absolute;left:52px;top:50%;transform:translateY(-50%);white-space:nowrap;
-  font:700 10px var(--font-sans);letter-spacing:.08em;color:var(--chart-ink);
+  font:600 12px var(--font-sans);letter-spacing:.08em;color:var(--chart-ink);
   background:var(--chart-panel);border:1px solid var(--chart-border);border-radius:999px;padding:4px 10px}
 /* per-leg transition: a breath of fog as you cross into new waters */
 .voyage-fogburst{position:absolute;inset:0;z-index:4;pointer-events:none;opacity:0;
@@ -3882,7 +3882,7 @@ html[data-theme="dark"] .voyage-fogburst{
 /* fixed chrome inside the stage */
 .voyage-stage>header.site{position:absolute;top:0;left:0;right:0;z-index:60}
 .voyage-telemetry{position:absolute;left:14px;bottom:14px;z-index:60;display:flex;gap:8px;align-items:baseline;
-  font:700 11px var(--font-sans);letter-spacing:.1em;color:var(--chart-ink);
+  font:600 12px var(--font-sans);letter-spacing:.1em;color:var(--chart-ink);
   background:var(--chart-panel);border:1px solid var(--chart-border);border-radius:8px;padding:8px 12px}
 .voyage-legnav{position:absolute;right:14px;bottom:14px;z-index:60;display:flex;gap:4px;align-items:center;
   background:var(--chart-panel);border:1px solid var(--chart-border);border-radius:999px;padding:5px 8px}
@@ -3902,18 +3902,18 @@ html[data-theme="dark"] .voyage-fogburst{
   border-left:1px solid var(--line-strong);display:flex;flex-direction:column;color:var(--text)}
 .ledger-drawer[hidden]{display:none!important}
 .ledger-drawer-head{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;
-  border-bottom:1px solid var(--line);font:700 var(--text-sm) var(--font-sans);letter-spacing:.06em}
+  border-bottom:1px solid var(--line);font:600 var(--text-sm) var(--font-sans);letter-spacing:.06em}
 .ledger-drawer-head button{background:none;border:1px solid var(--line);border-radius:8px;color:var(--text);
-  width:40px;height:40px;cursor:pointer;font-size:15px}
+  width:40px;height:40px;cursor:pointer;font-size:16px}
 .ledger-drawer-body{overflow-y:auto;padding:18px}
 .chart-room{position:fixed;inset:4vh 4vw;z-index:9600;background:var(--bg);color:var(--text);
   border:1px solid var(--line-strong);border-radius:16px;display:flex;flex-direction:column;overflow:hidden}
 .chart-room[hidden]{display:none!important}
 .chart-room-head{display:flex;align-items:center;gap:14px;padding:12px 18px;border-bottom:1px solid var(--line);
-  font:700 var(--text-sm) var(--font-sans)}
+  font:600 var(--text-sm) var(--font-sans)}
 .chart-room-head span{font:400 var(--text-xs) var(--font-sans);color:var(--text-2)}
 .chart-room-head button{margin-left:auto;background:none;border:1px solid var(--line);border-radius:8px;
-  color:var(--text);width:40px;height:40px;cursor:pointer;font-size:15px}
+  color:var(--text);width:40px;height:40px;cursor:pointer;font-size:16px}
 .chart-room-view{position:relative;flex:1;overflow:hidden;cursor:grab;touch-action:none}
 .chart-room-view:active{cursor:grabbing}
 @media(max-width:640px){
@@ -3969,7 +3969,7 @@ html[data-theme="dark"] .ct-grade[data-grade="night"]{background:linear-gradient
 #log-flags{position:fixed;inset:0;z-index:9390;pointer-events:none}
 .log-flag{position:absolute;transform:translate(-50%,-50%);width:30px;height:30px;border-radius:50%;
   pointer-events:auto;cursor:pointer;background:var(--chart-beacon);color:#fff;border:2px solid var(--surface);
-  font:700 12px/1 var(--font-sans);display:flex;align-items:center;justify-content:center;padding:0}
+  font:600 12px/1 var(--font-sans);display:flex;align-items:center;justify-content:center;padding:0}
 #log-dialog{position:fixed;inset:0;z-index:9600;display:flex;align-items:center;justify-content:center;
   background:rgba(11,22,40,.55);padding:20px}
 #log-dialog[hidden]{display:none!important}
@@ -3986,7 +3986,7 @@ html[data-theme="dark"] .ct-grade[data-grade="night"]{background:linear-gradient
   font:600 var(--text-sm) var(--font-sans);cursor:pointer;min-height:44px}
 /* -- 4. cartographer's lens -------------------------------------------------- */
 #lens-badge{position:fixed;left:14px;bottom:14px;z-index:9400;background:var(--text);color:var(--bg);
-  font:700 11px var(--font-sans);letter-spacing:.08em;padding:8px 12px;border-radius:8px}
+  font:600 12px var(--font-sans);letter-spacing:.08em;padding:8px 12px;border-radius:8px}
 #lens-badge[hidden]{display:none}
 html[data-lens="on"] main#main section{outline:1px dashed var(--chart-ink);outline-offset:8px}
 html[data-lens="on"] .chart-table{opacity:.95}
@@ -3994,7 +3994,7 @@ html[data-lens="on"] .ct-grade{opacity:0!important}
 /* -- 5. harbor arrivals ------------------------------------------------------ */
 .specimen{transition:border-color .6s ease}
 .specimen.is-harbor{border-color:var(--teal)}
-.harbor-tag{display:none;align-items:center;gap:6px;font-size:.62rem;font-weight:700;letter-spacing:.08em;
+.harbor-tag{display:none;align-items:center;gap:6px;font-size:12px;font-weight:600;letter-spacing:.08em;
   color:var(--teal);text-transform:uppercase}
 .specimen.is-harbor .harbor-tag{display:inline-flex}
 @media(prefers-reduced-motion:reduce){.specimen{transition:none}}
@@ -4027,7 +4027,7 @@ html[data-lens="on"] .ct-grade{opacity:0!important}
    specimens ship collapsed and receive the real workbench pane on expand.
    ========================================================================== */
 .specimen{position:relative}
-.specimen-plate{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:7px 16px;border-bottom:1px solid var(--line);background:var(--chart-panel);font-size:.68rem;font-weight:700;letter-spacing:.05em;color:var(--chart-sub)}
+.specimen-plate{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:7px 16px;border-bottom:1px solid var(--line);background:var(--chart-panel);font-size:12px;font-weight:600;letter-spacing:.05em;color:var(--chart-sub)}
 .featured-app > .specimen-plate{grid-column:1/-1}
 .specimen-tag{color:var(--chart-ink)}
 .specimen-type{display:inline-flex;align-items:center;gap:6px;padding:2px 9px;border:1px solid var(--line-strong);border-radius:999px;color:var(--chart-ink);background:transparent;white-space:nowrap}
@@ -4035,8 +4035,8 @@ html[data-lens="on"] .ct-grade{opacity:0!important}
 .specimen-type[data-type="interactive"]::before{background:var(--chart-water)}
 .specimen-type[data-type="ambient"]::before{background:var(--chart-beacon)}
 .specimen-hint{font-weight:400;letter-spacing:.01em;color:var(--chart-sub);text-transform:none}
-.specimen-legend{margin:6px 0 0;font-size:.78rem;color:var(--text-2)}
-.specimen-legend .specimen-type{font-size:.66rem}
+.specimen-legend{margin:6px 0 0;font-size:12px;color:var(--text-2)}
+.specimen-legend .specimen-type{font-size:12px}
 
 /* Expand/collapse toggle — 40px floor, matches scene-step-btn voice */
 .specimen-toggle{min-height:40px;display:inline-flex;align-items:center;gap:8px}
@@ -4064,8 +4064,8 @@ html[data-lens="on"] .ct-grade{opacity:0!important}
 /* Hover peek (desktop only): a compact live glance, never a trap */
 .specimen-peek{position:absolute;top:52px;right:12px;z-index:6;display:flex;align-items:center;gap:10px;max-width:250px;background:var(--chart-panel);border:1px solid var(--line-strong);border-radius:12px;padding:8px 12px;pointer-events:none;opacity:0;transform:translateY(8px);transition:opacity .22s ease-out,transform .22s ease-out}
 .specimen-peek .peek-txt{display:flex;flex-direction:column;line-height:1.3}
-.specimen-peek .peek-txt b{font-size:.76rem;color:var(--chart-ink)}
-.specimen-peek .peek-txt i{font-style:normal;font-size:.68rem;color:var(--chart-sub)}
+.specimen-peek .peek-txt b{font-size:12px;color:var(--chart-ink)}
+.specimen-peek .peek-txt i{font-style:normal;font-size:12px;color:var(--chart-sub)}
 .peek-anim{flex:none;width:34px;height:34px}
 .peek-orb{border-radius:50%;background:radial-gradient(circle,var(--teal-soft) 30%,var(--chart-water) 100%);animation:peek-breathe 10s ease-in-out infinite}
 @keyframes peek-breathe{0%,100%{transform:scale(.7)}40%,60%{transform:scale(1)}}
@@ -4287,20 +4287,20 @@ html[data-patina="fresh"] .chronometer-stage{--chart-grid:rgba(36,57,92,.22)}
 @keyframes curio-drift{from{transform:translateX(0)}to{transform:translateX(52px)}}
 @media (prefers-reduced-motion: reduce){.curio-ship{animation:none}}
 .chart-note{position:absolute;z-index:1;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:var(--chart-ink);opacity:.55;pointer-events:none}
-.chart-stamp{position:absolute;z-index:1;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--chart-ink);opacity:.5;pointer-events:none}
-.waters-name{position:absolute;left:2.2%;bottom:5%;z-index:1;font-family:'Cormorant Garamond',serif;font-size:17px;letter-spacing:.38em;text-transform:uppercase;color:var(--chart-ink);opacity:.45;pointer-events:none}
-.sheet-tag{position:absolute;left:2.2%;bottom:1.6%;z-index:1;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--chart-ink);opacity:.5;pointer-events:none}
+.chart-stamp{position:absolute;z-index:1;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--chart-ink);opacity:.5;pointer-events:none}
+.waters-name{position:absolute;left:2.2%;bottom:5%;z-index:1;font-family:'Cormorant Garamond',serif;font-size:16px;letter-spacing:.38em;text-transform:uppercase;color:var(--chart-ink);opacity:.45;pointer-events:none}
+.sheet-tag{position:absolute;left:2.2%;bottom:1.6%;z-index:1;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--chart-ink);opacity:.5;pointer-events:none}
 body.layers-off-route #voyage-route{opacity:0}
 #voyage-route{transition:opacity .45s ease}
 body.layers-off-notes .chart-note,body.layers-off-notes .chart-stamp,body.layers-off-notes .waters-name{display:none}
 body.layers-off-soundings .curio{display:none}
 .layer-pills button[aria-pressed="false"]{opacity:.45}
 #fairwind-toggle[aria-pressed="true"]{background:var(--teal-soft,#a9cbc0);color:var(--ink)}
-.specimen-meta{margin-top:9px;padding-top:7px;border-top:1px dashed var(--line);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;opacity:.72}
+.specimen-meta{margin-top:9px;padding-top:7px;border-top:1px dashed var(--line);font-size:12px;letter-spacing:.09em;text-transform:uppercase;opacity:.72}
 .notices{margin-top:16px;padding-top:12px;border-top:1px solid var(--line)}
-.notices-h{font-size:11px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:7px}
+.notices-h{font-size:12px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:7px}
 .notices ul{list-style:none;display:grid;gap:5px}
-.notices li{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16.5px;line-height:1.35;opacity:.85}
+.notices li{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;line-height:1.35;opacity:.85}
 @media (max-width:860px){.curio,.chart-note,.chart-stamp,.waters-name,.sheet-tag{display:none}}
 /* v20.1: the footer block sits in the bottom right of the final panel
    (Darius's placement call; the fellow ship stays where it is). */
@@ -4330,11 +4330,11 @@ body.layers-off-soundings .curio{display:none}
 .exhibit svg{width:100%;height:auto;display:block}
 .exhibit-chrono svg{max-width:400px;margin:0 auto}
 .exhibit-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px}
-.exhibit-btn{border:1px solid var(--line-strong);background:transparent;color:inherit;border-radius:999px;padding:6px 14px;font:600 .78rem/1 'Plus Jakarta Sans',sans-serif;letter-spacing:.04em;cursor:pointer}
+.exhibit-btn{border:1px solid var(--line-strong);background:transparent;color:inherit;border-radius:999px;padding:6px 14px;font:600 12px/1 'Plus Jakarta Sans',sans-serif;letter-spacing:.04em;cursor:pointer}
 .exhibit-btn:hover{border-color:var(--teal);color:var(--teal)}
 .exhibit-btn:focus-visible,.chrono-peek:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
-.exhibit-readout{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.02rem;color:var(--ink-soft);margin:10px 0 0;min-height:1.4em}
-.peek-label{display:flex;align-items:center;gap:8px;font:600 .74rem/1 'Plus Jakarta Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+.exhibit-readout{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--ink-soft);margin:10px 0 0;min-height:1.4em}
+.peek-label{display:flex;align-items:center;gap:8px;font:600 12px/1 'Plus Jakarta Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
 .chrono-peek{accent-color:var(--teal);width:120px}
 </style>
 <style id="v22-three-zone-header">
@@ -4405,16 +4405,16 @@ body.layers-off-soundings .curio{display:none}
 .cx-labels{transition:opacity .35s ease;pointer-events:none}
 .cx-leader{stroke:var(--line-strong);stroke-width:.6;fill:none}
 .cx-dot{fill:var(--teal)}
-.cx-lab{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:6.4px;letter-spacing:.13em;fill:var(--ink-soft)}
+.cx-lab{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:12px;letter-spacing:.13em;fill:var(--ink-soft)}
 .exhibit-chrono .chrono-peek{width:172px}
 .cx-labels-btn[aria-pressed="true"]{border-color:var(--teal);color:var(--teal)}
-.cx-detents{display:flex;justify-content:space-between;max-width:262px;margin:5px 0 0 62px;font:600 .6rem/1 'Plus Jakarta Sans',sans-serif;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft)}
+.cx-detents{display:flex;justify-content:space-between;max-width:262px;margin:5px 0 0 62px;font:600 12px/1 'Plus Jakarta Sans',sans-serif;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft)}
 .cx-spring-row{display:flex;align-items:center;gap:10px;margin-top:13px;max-width:430px}
-.cx-spring-label{font:600 .66rem/1 'Plus Jakarta Sans',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.cx-spring-label{font:600 12px/1 'Plus Jakarta Sans',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
 .cx-spring-track{flex:1;height:6px;border:1px solid var(--line-strong);border-radius:99px;overflow:hidden}
 .cx-spring-fill{height:100%;width:0;background:var(--teal);transition:width .35s linear}
-.cx-spring-pct{font:600 .72rem/1 'Plus Jakarta Sans',sans-serif;color:var(--ink-soft);min-width:4ch}
-.exhibit-hint{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.94rem;color:var(--ink-soft);margin:5px 0 0}
+.cx-spring-pct{font:600 12px/1 'Plus Jakarta Sans',sans-serif;color:var(--ink-soft);min-width:4ch}
+.exhibit-hint{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--ink-soft);margin:5px 0 0}
 @media(max-width:560px){.cx-detents{margin-left:0;max-width:300px}}
 </style>
 <style id="v25-correctness">
@@ -4445,7 +4445,7 @@ body.layers-off-soundings .curio{display:none}
 .appearance-btn{border:1px solid var(--line);background:var(--chart-panel);color:var(--chart-ink);border-radius:999px;padding:7px 13px;font:600 var(--text-xs) var(--font-sans);cursor:pointer;white-space:nowrap}
 .appearance-btn:hover{border-color:var(--line-strong)}
 .appearance-btn[aria-expanded="true"]{border-color:var(--teal);color:var(--teal)}
-.appearance-cap{font:700 var(--text-xs) var(--font-sans);letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted)}
+.appearance-cap{font:600 var(--text-xs) var(--font-sans);letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted)}
 .appearance-pop{position:absolute;top:calc(100% + 10px);right:0;z-index:70;display:flex;flex-direction:column;gap:9px;align-items:stretch;min-width:238px;background:var(--surface);border:1px solid var(--line-strong);border-radius:14px;padding:14px;box-shadow:0 18px 44px rgba(20,26,38,.22)}
 .appearance-pop[hidden]{display:none}
 .appearance-pop .grade-pills{display:flex;justify-content:space-between}
@@ -4468,11 +4468,11 @@ header.site .appearance-pop .patina-toggle-pill,header.site .appearance-pop .rea
 .log-lede{color:var(--text-2);max-width:46ch}
 .log-entries{list-style:none;margin:20px 0 4px;padding:0;display:flex;flex-direction:column;gap:12px}
 .log-entry{border-left:2px solid var(--teal);padding:2px 0 2px 13px}
-.log-entry b{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:1.12rem}
+.log-entry b{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:16px}
 .log-entry time{margin-left:9px;font-size:var(--text-xs);color:var(--text-muted);letter-spacing:.04em}
 .log-entry p{margin:2px 0 0;color:var(--text-2)}
 .log-form{display:grid;gap:10px;margin-top:18px;max-width:520px}
-.log-form label{display:grid;gap:5px;font:700 var(--text-xs) var(--font-sans);letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)}
+.log-form label{display:grid;gap:5px;font:600 var(--text-xs) var(--font-sans);letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)}
 .log-form input{background:var(--surface);border:1px solid var(--line-strong);border-radius:9px;padding:10px 12px;font:400 var(--text-base) var(--font-sans);color:var(--text);text-transform:none;letter-spacing:0}
 .log-form .btn{justify-self:start;margin-top:2px}
 .log-status{margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--teal)}
@@ -4502,7 +4502,7 @@ header.site .appearance-pop .patina-toggle-pill,header.site .appearance-pop .rea
 #lantern{position:fixed;top:0;left:0;width:380px;height:380px;border-radius:50%;pointer-events:none;z-index:58;opacity:0;transition:opacity .6s ease;background:radial-gradient(circle,rgba(255,178,102,.55),rgba(255,178,102,.18) 42%,transparent 68%);mix-blend-mode:soft-light;will-change:transform}
 #voyage-route-path{transition:opacity .6s ease}
 .focus-workbench-topbar{background:var(--chart-panel)}
-#focus-wb-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:1.08rem;letter-spacing:.02em;text-transform:none;color:var(--chart-ink);background:none;border:none;padding:0}
+#focus-wb-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:16px;letter-spacing:.02em;text-transform:none;color:var(--chart-ink);background:none;border:none;padding:0}
 .focus-wb-tab{border-radius:999px;letter-spacing:.04em}
 .focus-wb-tab[aria-selected="true"]{background:var(--teal);border-color:var(--teal);color:var(--bg)}
 .wb-logged-note{font-size:var(--text-sm);color:var(--text-muted);font-style:italic;font-family:'Cormorant Garamond',serif}
@@ -4573,11 +4573,11 @@ html{scroll-behavior:smooth}
 .cr-port:focus{outline:none}
 .cr-light{cursor:pointer}
 .cr-light-star{fill:var(--chart-beacon);opacity:.85}
-.cr-light-name{font:700 22px var(--font-sans);fill:var(--chart-ink);letter-spacing:.04em}
-.cr-light .map-sub{font:400 15px var(--font-sans);fill:var(--chart-sub)}
+.cr-light-name{font:600 20px var(--font-sans);fill:var(--chart-ink);letter-spacing:.04em}
+.cr-light .map-sub{font:400 16px var(--font-sans);fill:var(--chart-sub)}
 .cr-src{font:400 14px var(--font-sans);fill:var(--chart-sub);font-style:italic}
 .cr-light:hover .cr-light-name,.cr-light:focus .cr-light-name{text-decoration:underline}
-.cr-harbor-link{font:600 17px var(--font-sans);fill:var(--chart-ink);text-decoration:underline}
+.cr-harbor-link{font:600 16px var(--font-sans);fill:var(--chart-ink);text-decoration:underline}
 .cr-list{flex:1;overflow-y:auto;padding:18px 22px;max-width:70ch}
 .cr-list h3{margin:18px 0 6px;font-size:var(--text-sm);letter-spacing:.06em;text-transform:uppercase;color:var(--text-2)}
 .cr-list ul{margin:0;padding-left:20px;display:grid;gap:6px}
@@ -4604,6 +4604,20 @@ header.site .header-controls{order:1!important}
   header.site .header-controls{margin-left:auto}
   .appearance-pop{position:absolute!important;right:0;top:calc(100% + 8px);min-width:min(300px,calc(100vw - 32px))}
 }
+</style>
+<style id="sculpt-2-type">
+/* Sculpt 2 (2026-10-22): six sizes (12/14/16/20/32/56, mobile H1 40),
+   400/600 for Plus Jakarta, Cormorant 500 for display only, no Arial. */
+:root{--text-xs:12px;--text-sm:14px;--text-base:16px;--text-lg:20px;--text-xl:20px;--text-2xl:32px;--text-3xl:32px;--text-display:56px}
+@media(max-width:860px){:root{--text-display:40px}}
+h1,h2,.display{font-weight:500!important;letter-spacing:-.01em;line-height:1.15}
+b,strong{font-weight:600}
+h1{font-size:var(--text-display)!important}
+h2,.folio-h{font-size:32px!important}
+h1 em,h2 em{font-weight:inherit!important}
+.fig-num{font-size:12px!important}
+svg [font-weight="700"],svg [font-weight="800"],svg [font-weight="900"],svg [font-weight="bold"],svg text[style*="700"]{font-weight:600!important}
+body,button,input,select,textarea{font-family:'Plus Jakarta Sans',system-ui,sans-serif}
 </style>
 </head>
 <body data-patina="aged" data-theme="light">
@@ -4749,7 +4763,7 @@ header.site .header-controls{order:1!important}
 <div aria-label="Ship's watch bells and lunar tidal coupling" class="v8-upgrade-strip">
 <span id="chrono-watch-bells"><b>SHIP’S WATCH:</b> LAST DOG WATCH · 5 BELLS</span>
 <span id="chrono-lunar-readout"><b>LUNAR PHASE:</b> WAXING GIBBOUS · SPRING TIDE</span>
-<span id="bus-pulse-readout" style="color:var(--chart-water);font-weight:700;">BUS SYNC → 01 · 02 · 03</span>
+<span id="bus-pulse-readout" style="color:var(--chart-water);font-weight:600;">BUS SYNC → 01 · 02 · 03</span>
 </div>
 </div>
 </div>
@@ -4780,7 +4794,7 @@ header.site .header-controls{order:1!important}
 </div>
 <div aria-live="polite" class="tuesday-narrator-bar" id="tuesday-narrator-banner">
 <span id="tuesday-narrator-text"><b>Stop 02 · 18:45 Coastal Dusk (5 Bells):</b> Work ends and an evening craving crests. Solar Watch shifts to 18:45, Harbor Audio surf deepens, and Urge Walk (FIG. 01) steps onto Waypoint 03 (2:30 Crest).</span>
-<span id="tuesday-timer-readout" style="font-weight:700;color:var(--chart-water);">STOP 02 / 03 · 04.0s PER STOP</span>
+<span id="tuesday-timer-readout" style="font-weight:600;color:var(--chart-water);">STOP 02 / 03 · 04.0s PER STOP</span>
 </div>
 </div>
 <div aria-label="Three moments in an ordinary Tuesday" class="tuesday-steps-grid" role="group">
@@ -10249,7 +10263,7 @@ document.addEventListener('keydown', function(e){
 <div class="wb-urge-grid">
 <!-- Left: Large Pacing Breath Orb (4s Inhale / 6s Exhale) -->
 <div class="wb-orb-stage">
-<div style="width:100%;display:flex;align-items:center;justify-content:space-between;font-size:var(--text-xs);font-weight:700;color:var(--chart-sub);">
+<div style="width:100%;display:flex;align-items:center;justify-content:space-between;font-size:var(--text-xs);font-weight:600;color:var(--chart-sub);">
 <span>PACING BREATH ORB · 4S IN / 6S OUT</span>
 <span id="wb-breath-cycle-count">CYCLES: 0</span>
 </div>
@@ -10271,7 +10285,7 @@ document.addEventListener('keydown', function(e){
 <div>
 <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
 <span class="inst-tag">5-MINUTE URGE WAVE TRACKER (300 SECONDS)</span>
-<span class="inst-readout" id="wb-urge-clock-readout" style="font-size:1.1rem;color:var(--chart-beacon);">00:45 / 05:00</span>
+<span class="inst-readout" id="wb-urge-clock-readout" style="font-size:16px;color:var(--chart-beacon);">00:45 / 05:00</span>
 </div>
 <p id="wb-urge-step-guidance" style="margin:8px 0;font-size:var(--text-base);font-weight:600;color:var(--chart-ink);">Waypoint 01 (0:45) · Step away from the room where the urge started.</p>
 <p id="wb-urge-physio-note" style="margin:0;font-size:var(--text-xs);color:var(--chart-sub);">Physiology: Catecholamine surge begins; changing physical view interrupts the conditioned loop.</p>
@@ -10307,7 +10321,7 @@ document.addEventListener('keydown', function(e){
 <button class="scene-step-btn" onclick="logCompletedUrgeWalk();syncWbUrgeUI();" type="button">Complete &amp; log the walk</button> <span class="wb-logged-note"><span id="wb-urge-walk-count">3</span> walks in the log</span>
 </div>
 <div class="v8-upgrade-strip">
-<span style="font-weight:700;">5-4-3-2-1 COASTAL GROUNDING:</span>
+<span style="font-weight:600;">5-4-3-2-1 COASTAL GROUNDING:</span>
 <div class="sensory-pills-row">
 <button class="sensory-pill" data-wb-sensory="0" onclick="toggleUrgeSensoryPill(0);syncWbUrgeUI();" type="button">5 Sight <span aria-hidden="true">✓</span></button>
 <button class="sensory-pill" data-wb-sensory="1" onclick="toggleUrgeSensoryPill(1);syncWbUrgeUI();" type="button">4 Touch</button>
@@ -10331,7 +10345,7 @@ document.addEventListener('keydown', function(e){
 <button class="tour-mini-btn" id="wb-fit-age-btn" onclick="if(fitAgeToggle)fitAgeToggle.click();syncWbFitnessUI();" type="button">Mode: Ages 13–17</button>
 </div>
 </div>
-<h3 id="wb-fit-move-title" style="font-family:var(--font-display);font-size:1.65rem;margin:0;color:var(--chart-ink);">Standing Overhead Reach &amp; Rib Opener</h3>
+<h3 id="wb-fit-move-title" style="font-family:var(--font-display);font-size:32px;margin:0;color:var(--chart-ink);">Standing Overhead Reach &amp; Rib Opener</h3>
 <p id="wb-fit-move-cue" style="margin:0;font-size:var(--text-sm);color:var(--chart-sub);">Plant both heels at hip width, inhale as arms sweep overhead (θ = 32°), and lengthen the thoracic spine without overarching the lower back.</p>
 <div class="wb-fit-rig-box">
 <div class="wb-buffer-banner" id="wb-setup-buffer-banner">
@@ -10353,7 +10367,7 @@ document.addEventListener('keydown', function(e){
 <circle cx="135" cy="90" fill="var(--chart-beacon)" id="wb-knee-node" r="4.5" stroke="var(--chart-ink)" stroke-width="1.5"></circle>
 <circle cx="105" cy="58" fill="var(--chart-beacon)" id="wb-hip-node" r="4.5" stroke="var(--chart-ink)" stroke-width="1.5"></circle>
 </svg>
-<div style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:var(--text-xs);font-weight:700;color:var(--chart-sub);">
+<div style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:var(--text-xs);font-weight:600;color:var(--chart-sub);">
 <span id="wb-fit-easier-readout">Easier Variant: Chair / Wall Reach Support</span>
 <span id="wb-fit-load-readout">Teen 13–17: Bodyweight Skill</span>
 </div>
@@ -10410,7 +10424,7 @@ document.addEventListener('keydown', function(e){
 <button aria-pressed="false" class="wb-seat-pill" data-wb-seat="2" onclick="selectWbTabletopSeat(2)" type="button">◀ Seat 2 · West (90°)</button>
 <!-- Center Rotatable Linen Card Rig -->
 <div class="wb-rotatable-card-rig" id="wb-rotatable-card">
-<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:var(--text-xs);font-weight:700;color:var(--chart-beacon);">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:var(--text-xs);font-weight:600;color:var(--chart-beacon);">
 <span id="wb-game-suit-lbl">SUIT I · ORDINARY GRACE (1/4)</span>
 <span id="wb-game-scripture-lbl">PSALM 23 · ALL AGES</span>
 </div>
@@ -10419,7 +10433,7 @@ document.addEventListener('keydown', function(e){
               </blockquote>
 <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:var(--text-xs);color:var(--chart-sub);border-top:1px dashed var(--chart-border);padding-top:10px;">
 <span id="wb-game-rule-lbl"><b>RULE:</b> LISTEN WITHOUT RUSHING</span>
-<span id="wb-game-seat-indicator" style="font-weight:700;color:var(--chart-water);">FACING SEAT 1 (SOUTH · 0°)</span>
+<span id="wb-game-seat-indicator" style="font-weight:600;color:var(--chart-water);">FACING SEAT 1 (SOUTH · 0°)</span>
 </div>
 <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding-top:4px;">
 <button class="scene-step-btn" onclick="selectGameCard(activeGameCardIdx - 1);syncWbGameUI();" type="button">◀ Prev Card</button>
