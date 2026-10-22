@@ -4970,9 +4970,9 @@ html{scroll-behavior:smooth}
 <button class="workbench-quick-pill" onclick="openFocusWorkbench('urge')" title="Open the full-screen pocket workbenches (Urge Walk, 40-Move Player, or Flat-Tabletop Game)" type="button"><span aria-hidden="true">⛶</span><span>Workbenches (3)</span></button>
 
 
-<button aria-pressed="true" class="harbor-audio-pill" data-harbor-audio-toggle="" title="Toggle procedural coastal waves &amp; harbor bell audio (Default: On)" type="button">
+<button aria-pressed="false" class="harbor-audio-pill" data-harbor-audio-toggle="" title="Toggle procedural coastal waves &amp; harbor bell audio (Default: Off)" type="button">
 <span aria-hidden="true" class="audio-wave-bars"><i></i><i></i><i></i></span>
-<span class="harbor-audio-label">Harbor Audio: On</span>
+<span class="harbor-audio-label">Harbor Audio: Off</span>
 </button>
 <button class="download-html-pill" id="header-download-html-btn" onclick="downloadStandaloneHTML()" title="Download this complete standalone HTML file to your computer so you can double-click and open it anytime" type="button">
 <span aria-hidden="true">↓</span>
@@ -5189,7 +5189,8 @@ themeBtns.forEach((btn) => {
         Urge Walk 4s Inhale / 6s Exhale cadence
       - Spatial StereoPannerNode harbor buoy bell (G4-D5-B5) + wooden compass detent
    ============================================================================ */
-let soundEnabled = true;
+/* 2026-10-22: Harbor Audio is OFF by default; a saved 'on' choice wins. */
+let soundEnabled = (function(){ try { return localStorage.getItem('ef-harbor-audio') === 'on'; } catch (e) { return false; } })();
 let audioCtx = null;
 let harborAmbienceNodes = null;
 let harborBellTimer = null;
@@ -5370,6 +5371,7 @@ function syncHarborAudioButtons() {
 document.querySelectorAll('[data-harbor-audio-toggle]').forEach((btn) => {
   btn.addEventListener('click', () => {
     soundEnabled = !soundEnabled;
+    try { localStorage.setItem('ef-harbor-audio', soundEnabled ? 'on' : 'off'); } catch (e) {}
     syncHarborAudioButtons();
     if (soundEnabled) {
       startHarborSoundscape();
@@ -6768,7 +6770,7 @@ if (fitKickerToggle) {
 initStudioInstruments();
 
 /* ============================================================================
-   11. HARBOR AUDIO DEFAULT ON + GUARANTEED FIRST-GESTURE UNLOCK (v8.0 FIX)
+   11. HARBOR AUDIO (DEFAULT OFF since 2026-10-22) + GUARANTEED FIRST-GESTURE UNLOCK (v8.0 FIX)
    ============================================================================ */
 function ringHarborBellNow() {
   if (!soundEnabled) {
@@ -10250,9 +10252,9 @@ document.addEventListener('keydown', function(e){
 </div>
 </div>
 <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-<button aria-pressed="true" class="scene-sound-btn" data-harbor-audio-toggle="" type="button">
+<button aria-pressed="false" class="scene-sound-btn" data-harbor-audio-toggle="" type="button">
 <span aria-hidden="true" class="audio-wave-bars"><i></i><i></i><i></i></span>
-<span class="harbor-audio-label">Harbor Audio: On</span>
+<span class="harbor-audio-label">Harbor Audio: Off</span>
 </button>
 <button class="tour-mini-btn" onclick="ringHarborBellNow()" type="button"><span aria-hidden="true">♪</span> Bell</button>
 <button class="btn" onclick="closeFocusWorkbench()" style="min-height:40px;padding:4px 12px;" type="button"><span aria-hidden="true">✕</span> Return to Studio Chart (Esc)</button>
