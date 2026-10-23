@@ -13,9 +13,12 @@ retired; the page no longer sells or invites an experience — it records
 the work, at whose foundation is sophisticated calm. The v43–v53 direction
 documented below is superseded by this note. The custom domain, when
 bought, will be dariustatum.com (verified unregistered Oct 22, 2026); the
-November checklist below applies to that domain.
+November checklist below applies to that domain. The repo itself was
+renamed from `evenfaring` to `dariustatum` the same evening — the old repo
+URL redirects to the new one — and the favicon and PWA icons are now the
+still gold compass star on night blue.
 
-**Live preview:** https://dariusdtatum-tech.github.io/evenfaring/
+**Live preview:** https://dariusdtatum-tech.github.io/dariustatum/
 (GitHub Pages; pushing to `main` redeploys. Pre-launch, so it is not indexed.)
 
 ## Run it
@@ -35,7 +38,7 @@ service worker just won't register from `file://`.
 |---|---|
 | `index.html` | The whole site: markup, styles and script |
 | `style.css` | Shared styles for the small static pages (privacy); palette and fonts match `index.html` |
-| `sw.js` | Service worker. Bump `evenfaring-studio-vNN` on every deploy (currently v54) |
+| `sw.js` | Service worker. Bump `evenfaring-studio-vNN` on every deploy (currently v55) |
 | `manifest.webmanifest`, `icons/`, `apple-touch-icon.png`, `favicon.svg` | PWA and icons |
 | `privacy.html` | Privacy page, kept at the root so its URL stays stable |
 | `404.html` | Standalone not-found page |

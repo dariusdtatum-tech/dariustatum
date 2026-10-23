@@ -1,1 +1,7 @@
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192' width='512' height='512' fill='none'> <rect width='512' height='512' rx='42' fill='#0f1d33'/> <rect x='10' y='10' width='172' height='172' rx='34' stroke='#2f4b73' stroke-width='2' stroke-dasharray='4 4'/> <circle cx='96' cy='96' r='64' stroke='#a9cbc0' stroke-width='4' opacity='0.45'/> <path d='M44 114 C68 96 124 96 148 114' stroke='#a9cbc0' stroke-width='8' stroke-linecap='round'/> <path d='M96 34 V142' stroke='#f3ede2' stroke-width='8' stroke-linecap='round'/> <polygon points='96,26 106,56 86,56' fill='#df8d62'/> <circle cx='96' cy='68' r='11' fill='#df8d62' stroke='#0f1d33' stroke-width='3'/> </svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512"><rect width="512" height="512" rx="112" fill="#0f1d33"/><g transform="translate(87.04,87.04) scale(1.4080)"><defs><linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#ecd096"/><stop offset="0.5" stop-color="#d4af6a"/><stop offset="1" stop-color="#a87f35"/>
+</linearGradient></defs>
+<path fill="url(#gold)" d="M120 8 L138.9 101.1 L232 120 L138.9 138.9 L120 232 L101.1 138.9 L8 120 L101.1 101.1 Z"/>
+<path fill="url(#gold)" opacity="0.85" d="M120 120 L158 82 L168 92 L130 130 Z M120 120 L158 158 L148 168 L110 130 Z M120 120 L82 158 L72 148 L110 110 Z M120 120 L82 82 L92 72 L130 110 Z"/>
+<circle cx="120" cy="120" r="10" fill="#0f1d33"/>
+<circle cx="120" cy="120" r="10" fill="none" stroke="url(#gold)" stroke-width="3"/></g></svg>
