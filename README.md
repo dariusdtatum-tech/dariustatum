@@ -14,7 +14,7 @@ the work, at whose foundation is sophisticated calm. The v43–v53 direction
 documented below is superseded by this note. The custom domain, when
 bought, will be dariustatum.com (verified unregistered Oct 22, 2026); the
 November checklist below applies to that domain. The repo itself was
-renamed from `evenfaring` to `dariustatum` the same evening — the old repo
+renamed to `dariustatum` the same evening — the old repo
 URL redirects to the new one — and the favicon and PWA icons are now the
 still gold compass star on night blue.
 
@@ -45,7 +45,7 @@ service worker just won't register from `file://`.
 |---|---|
 | `index.html` | The whole site: markup, styles and script |
 | `style.css` | Shared styles for the small static pages (privacy); palette and fonts match `index.html` |
-| `sw.js` | Service worker. Bump `evenfaring-studio-vNN` on every deploy (currently v57) |
+| `sw.js` | Service worker. Bump `dariustatum-vNN` on every deploy (currently v58) |
 | `manifest.webmanifest`, `icons/`, `apple-touch-icon.png`, `favicon.svg` | PWA and icons |
 | `privacy.html` | Privacy page, kept at the root so its URL stays stable |
 | `404.html` | Standalone not-found page |
@@ -145,17 +145,17 @@ Current status lines:
 - `robots.txt` says `Disallow: /`.
 - The contact address is the placeholder `hello@example.com`.
 - There is no `CNAME`; the site is served from the github.io URL.
-- `404.html` links use the `/evenfaring/` project path.
-- The canonical, `og:url`, `og:image` and `twitter:image` tags already point
-  at `https://evenfaring.com/`.
+- `404.html` links use the `/dariustatum/` project path.
+- The canonical, `og:url`, `og:image` and `twitter:image` tags use the
+  github.io address until launch, then `https://dariustatum.com/`.
 
 ## November launch checklist
 
-- [ ] Restore the `CNAME` file (`evenfaring.com`) and set the custom domain in Pages.
+- [ ] Restore the `CNAME` file (`dariustatum.com`) and set the custom domain in Pages.
 - [ ] Remove the `noindex, nofollow` meta tags.
 - [ ] Change `robots.txt` to allow crawling and list the sitemap.
 - [ ] Replace `hello@example.com` with the real studio address everywhere.
-- [ ] Fix the 404 paths: `/evenfaring/…` becomes `/…` on the custom domain.
+- [ ] Fix the 404 paths: `/dariustatum/…` becomes `/…` on the custom domain.
 - [ ] Update the description and link tags (canonical, og, twitter, sitemap)
-      to the final evenfaring.com URLs and check the preview image.
+      to the final dariustatum.com URLs and check the preview image.
 - [ ] Bump the service worker cache and run the full QA bar on the domain.

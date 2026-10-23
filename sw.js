@@ -1,8 +1,8 @@
 /* ============================================================================
-   EVENFARING STUDIO — ZERO-DEPENDENCY OFFLINE SERVICE WORKER
+   DARIUS TATUM — ZERO-DEPENDENCY OFFLINE SERVICE WORKER
    100% On-Device Cache-First Architecture · Zero Analytics or Tracking Beacons
    ============================================================================ */
-const CACHE_NAME = 'evenfaring-studio-v57';
+const CACHE_NAME = 'dariustatum-v58';
 const CORE_ASSETS = [
   './',
   './index.html',

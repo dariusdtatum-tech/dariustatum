@@ -1,7 +1,7 @@
 # Compass star
 
 The studio mark, in two cuts. Both are four-pointed compass stars in the
-Evenfaring gold gradient (#ecd096 to #d4af6a to #a87f35), drawn to sit on
+Darius Tatum gold gradient (#ecd096 to #d4af6a to #a87f35), drawn to sit on
 the night navy #0f1d33 or on transparency.
 
 - `compass-star.svg` — the sharp cut. Long nautical points, a small night
@@ -12,4 +12,4 @@ the night navy #0f1d33 or on transparency.
 
 The SVGs are the masters. PNG renders at any size can be regenerated from
 them; working renders live in the studio workspace under
-`your_files/evenfaring-compass/`.
+`your_files/dariustatum-compass/`.

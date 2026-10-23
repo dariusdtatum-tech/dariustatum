@@ -1,4 +1,4 @@
-/* Evenfaring — shared styles for the small static pages (privacy). Palette and fonts match index.html. */
+/* Darius Tatum — shared styles for the small static pages (privacy). Palette and fonts match index.html. */
 @font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:600;font-display:swap;src:url(assets/fonts/cormorant-garamond-latin-600-normal.woff2) format('woff2')}
 @font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:400 700;font-display:swap;src:url(assets/fonts/plus-jakarta-sans-latin-wght-normal.woff2) format('woff2')}
 :root{--bg:#faf7f1;--surface:#f1ebe0;--text:#24395c;--text-2:#3f526d;--line:#c4b59b;--link:#2f6155;--timber:#ae5f37;color-scheme:light dark}
