@@ -2,7 +2,7 @@
    EVENFARING STUDIO — ZERO-DEPENDENCY OFFLINE SERVICE WORKER
    100% On-Device Cache-First Architecture · Zero Analytics or Tracking Beacons
    ============================================================================ */
-const CACHE_NAME = 'evenfaring-studio-v53';
+const CACHE_NAME = 'evenfaring-studio-v54';
 const CORE_ASSETS = [
   './',
   './index.html',
@@ -47,7 +47,7 @@ self.addEventListener('fetch', (event) => {
         if (event.request.mode === 'navigate') {
           return caches.match('./index.html');
         }
-        return new Response('Offline — Evenfaring Local Mode Active', {
+        return new Response('Offline — Darius Tatum', {
           status: 200,
           headers: { 'Content-Type': 'text/plain;charset=utf-8' }
         });

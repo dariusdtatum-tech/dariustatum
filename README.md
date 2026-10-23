@@ -1,9 +1,19 @@
-# Evenfaring — Studio Site
+# Darius Tatum — Studio Site
 
-Evenfaring is a one-person software studio founded by Darius, making calm,
-steady software instruments for everyday life. This repo is the studio's
-site: one static page, read as a voyage in four legs (Departure, The Open
-Sea, Harbors, Arrival) drawn on a nautical chart.
+The studio site of Darius Tatum, a one-person studio making calm, steady
+software instruments for everyday life. This repo is the site: one static
+page — a still photograph, a verse laid over it, and the work listed
+plainly.
+
+**Direction update (Oct 22, 2026, Darius's call):** the site now carries
+his own name. Stills over motion — real photographs, free to use, sourced
+from Pixabay; the header shape, the colours and the rotating compass star
+stay; the voyage legs (Departure, The Open Sea, Harbors, Arrival) are
+retired; the page no longer sells or invites an experience — it records
+the work, at whose foundation is sophisticated calm. The v43–v53 direction
+documented below is superseded by this note. The custom domain, when
+bought, will be dariustatum.com (verified unregistered Oct 22, 2026); the
+November checklist below applies to that domain.
 
 **Live preview:** https://dariusdtatum-tech.github.io/evenfaring/
 (GitHub Pages; pushing to `main` redeploys. Pre-launch, so it is not indexed.)
@@ -25,7 +35,7 @@ service worker just won't register from `file://`.
 |---|---|
 | `index.html` | The whole site: markup, styles and script |
 | `style.css` | Shared styles for the small static pages (privacy); palette and fonts match `index.html` |
-| `sw.js` | Service worker. Bump `evenfaring-studio-vNN` on every deploy (currently v53) |
+| `sw.js` | Service worker. Bump `evenfaring-studio-vNN` on every deploy (currently v54) |
 | `manifest.webmanifest`, `icons/`, `apple-touch-icon.png`, `favicon.svg` | PWA and icons |
 | `privacy.html` | Privacy page, kept at the root so its URL stays stable |
 | `404.html` | Standalone not-found page |
@@ -36,6 +46,9 @@ service worker just won't register from `file://`.
 | `assets/`, `previews/` | Self-hosted fonts and licences, legacy assets and screenshots |
 
 ## Locked direction (approved Oct 22, 2026)
+
+*Superseded the same evening by Darius's direction update at the top of
+this file; kept here for history.*
 
 Keep this focus. Changes should refine within it, not redirect it.
 
