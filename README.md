@@ -18,6 +18,13 @@ renamed from `evenfaring` to `dariustatum` the same evening — the old repo
 URL redirects to the new one — and the favicon and PWA icons are now the
 still gold compass star on night blue.
 
+**Photographs (provenance):** the hero is Pixabay photo
+`lighthouse-3973197` (lighthouse in ice, lamp lit) and the second still is
+`sea-4257204` (red sun, distant ship) — both free to use, including
+commercially, under the Pixabay Content License; no attribution is
+required (the footer credits the source as a courtesy). Two more chosen
+stills are held in reserve: `sailboat-9597523` and `anchored-1850849`.
+
 **Live preview:** https://dariusdtatum-tech.github.io/dariustatum/
 (GitHub Pages; pushing to `main` redeploys. Pre-launch, so it is not indexed.)
 
@@ -38,7 +45,7 @@ service worker just won't register from `file://`.
 |---|---|
 | `index.html` | The whole site: markup, styles and script |
 | `style.css` | Shared styles for the small static pages (privacy); palette and fonts match `index.html` |
-| `sw.js` | Service worker. Bump `evenfaring-studio-vNN` on every deploy (currently v55) |
+| `sw.js` | Service worker. Bump `evenfaring-studio-vNN` on every deploy (currently v56) |
 | `manifest.webmanifest`, `icons/`, `apple-touch-icon.png`, `favicon.svg` | PWA and icons |
 | `privacy.html` | Privacy page, kept at the root so its URL stays stable |
 | `404.html` | Standalone not-found page |
