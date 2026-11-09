@@ -17,8 +17,16 @@ first ten improvement rounds (PR #1).
 
 - **The compass mark is not a rule.** It fit the earlier approach and the current one,
   but if a better focus appears, take it. Darius: "there seems to always be a better focus".
-- The lighthouse hero, the verse and the cartography language are the current direction,
-  not locked. They are judged against the principles above.
+- Nothing from earlier versions is a standing design: not the lighthouse, the verse, the
+  cartography language or the palette. The next direction may be completely new.
+
+## The focus (Darius, 2026-11-09)
+
+"Overcoming the hardest period of one's life and choosing a totally different career …
+that kind of expression of being into a different zone and mentality, i want to see that."
+Open questions he put on the table: larger than life or minimal, or both; something few
+have done or something many have done; thinking outside the box; nothing like earlier
+versions; completely anew.
 
 ## Standing project facts (unchanged)
 
