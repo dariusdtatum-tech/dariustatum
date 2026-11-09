@@ -5,6 +5,13 @@ software instruments for everyday life. This repo is the site: one static
 page — a still photograph, a verse laid over it, and the work listed
 plainly.
 
+**Current (Nov 9, 2026): read `docs/product/DESIGN-PRINCIPLES.md` first.** The
+homepage is now Long Exposure: a misty sea in 4K motion (Pixabay footage,
+self-hosted Geist fonts), live at dariustatum.com, still noindex. The
+Oct 22 lighthouse/compass direction below is history. Prototypes (Long
+Exposure, The Rebuild) are on branch `design-direction-groundwork`; the ten
+improvement rounds are in `docs/audits/2026-11-09-improvement-rounds.md`.
+
 **Direction update (Oct 22, 2026, Darius's call):** the site now carries
 his own name. Stills over motion — real photographs, free to use, sourced
 from Pixabay; the header shape, the colours and the rotating compass star
