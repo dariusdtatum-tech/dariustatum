@@ -56,7 +56,8 @@ header::after{background:linear-gradient(90deg,rgba(31,42,61,.35),transparent)}
 .block h2{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:42px;margin:14px 0 10px}
 .rule{height:2px;background:var(--ink);opacity:.85;margin:22px 0 8px}
 .course{display:block;width:100%;height:auto;margin:30px 0 4px;overflow:visible}
-.course .coast{fill:rgba(31,42,61,.08);stroke:rgba(31,42,61,.55);stroke-width:1.2}
+.course .shoal{fill:rgba(96,138,170,.16)}
+.course .coast{fill:#dcc391;stroke:rgba(31,42,61,.6);stroke-width:1.2}
 .course .depth path{fill:none;stroke:rgba(31,42,61,.28);stroke-width:1;stroke-dasharray:2 5}
 .course .snd text{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:16px;fill:rgba(31,42,61,.5);text-anchor:middle}
 .course .lt{fill:var(--terra);opacity:.32}.course .ltc{fill:var(--ink)}
@@ -154,6 +155,7 @@ footer .links a::after,header .brand::after{content:"";position:absolute;left:50
   <h2>Made one at a time.</h2>
   <div class="rule"></div>
   <svg class="course" viewBox="0 0 1000 260" aria-hidden="true">
+    <path class="shoal" d="M0 0H124C150 48 110 88 136 126S116 208 144 260H0Z"/>
     <path class="coast" d="M0 0H70C95 40 58 82 86 122S68 204 96 260H0Z"/>
     <g class="depth"><path d="M138 0C168 52 124 92 154 132S134 212 164 260"/><path d="M262 0C304 62 240 110 292 152S270 222 302 260"/><path d="M470 0C522 72 440 140 502 190S482 240 512 260"/><path d="M720 0C770 80 690 150 750 200S740 240 760 260"/></g>
     <g class="snd"><text x="182" y="62">4</text><text x="206" y="214">5</text><text x="378" y="52">9</text><text x="352" y="226">11</text><text x="566" y="88">17</text><text x="640" y="220">22</text><text x="808" y="58">31</text><text x="900" y="206">40</text></g>
