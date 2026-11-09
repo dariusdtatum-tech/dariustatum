@@ -58,6 +58,16 @@ photograph settles) and The Rebuild (24 numbered parts fit into place as you scr
 Darius: "Both speak to me but Long Exposure is the better path." Long Exposure is the
 direction; The Rebuild stays as a reference.
 
+## Premium, with the tools we have (Darius, 2026-11-09)
+
+- No location shoot and no new paid library until the work earns money: stay on free sources
+  and existing subscriptions (Pixabay, Unsplash+, ZapSplat).
+- Reference for the feeling: Portal (free, yet premium through motion and smooth transitions).
+- Stop designing around older phones. Motion and 4K are the default; 4K sources wherever
+  Pixabay has them. Reduce Motion stays (an accessibility setting, not an old-phone fallback).
+- The Urge Walk app's motion is built in the Expo app until the Mac mini arrives.
+- Homepage: Long Exposure replaced the chart site (v70). The old page is in git history.
+
 ## Pixabay licence, as read on 2026-11-09 (not legal advice)
 
 Source: pixabay.com/service/terms (section 5) and pixabay.com/api/docs.
