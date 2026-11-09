@@ -9,8 +9,8 @@ first ten improvement rounds (PR #1).
 - **No impersonation.** Nothing presents as another person, studio or brand.
 - **Sophisticated elegance.** Calm, restrained, considered.
 - **Creative.** The site is a piece of craft, not a container for one.
-- **Anti-slop, no AI slop.** No generic template moves; AI output is sketch material,
-  never shipped as-is.
+- **Anti-slop, no AI slop.** No generic template moves. AI slop is what looks or sounds like AI
+  (Darius, 2026-11-09): AI work that respects the visuals and feels authentic is valued, not slop.
 - **Give everything to the icons and the designs.** Every mark and drawing gets full care.
 - **How can we evolve further?** (Darius, 2026-11-09.) Every time a direction works, ask
   what the next step in its evolution is, instead of polishing the current one. Motion is
