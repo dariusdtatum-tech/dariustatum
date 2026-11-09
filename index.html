@@ -54,6 +54,23 @@ nav a:hover{color:var(--ink)}
 .label{color:var(--terra-deep);font-size:11px;font-weight:700;letter-spacing:.32em;text-transform:uppercase}
 .block h2{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:42px;margin:14px 0 10px}
 .rule{height:2px;background:var(--ink);opacity:.85;margin:22px 0 8px}
+.course{display:block;width:100%;height:auto;margin:30px 0 4px;overflow:visible}
+.course .coast{fill:rgba(31,42,61,.08);stroke:rgba(31,42,61,.55);stroke-width:1.2}
+.course .depth path{fill:none;stroke:rgba(31,42,61,.28);stroke-width:1;stroke-dasharray:2 5}
+.course .snd text{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:16px;fill:rgba(31,42,61,.5);text-anchor:middle}
+.course .lt{fill:var(--terra);opacity:.32}.course .ltc{fill:var(--ink)}
+.course .made,.course .ahead{fill:none;stroke-linecap:round;stroke-width:2}
+.course .made{stroke:var(--terra)}.course .ahead{stroke:rgba(31,42,61,.5);stroke-dasharray:8 7}
+.course .mk text{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:24px;fill:var(--ink);text-anchor:middle}
+.course .mk .nm{font-style:italic;font-weight:400;font-size:21px;fill:var(--ink-soft)}
+.course .dot{fill:var(--vellum);stroke:var(--ink);stroke-width:2}.course .dot.lit{fill:var(--terra);stroke:var(--terra-deep)}
+.course .halo{fill:none;stroke:var(--terra);stroke-width:1.5;opacity:0;transition:opacity .4s}
+.course .mk.on .halo{opacity:.6}
+.legend{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:16px;color:var(--ink-soft);margin-bottom:6px}
+.key{list-style:none}
+.row .n{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:20px;color:var(--terra-deep);width:30px;flex:none}
+.row .t{flex:1}
+.key li.on .t{color:var(--terra-deep)}
 .row{display:flex;align-items:baseline;justify-content:space-between;gap:30px;padding:25px 2px;border-bottom:1px solid rgba(31,42,61,.16);text-decoration:none;color:var(--ink)}
 .row .t{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:27px}
 .row .t .arr{color:var(--terra-deep);font-size:20px;margin-left:8px}
@@ -81,6 +98,9 @@ footer .credit{margin-top:22px;font-size:11px;color:var(--ink-soft);letter-spaci
   .block h2{font-size:34px}
   .row{flex-direction:column;gap:5px;padding:21px 2px}
   .row .s{text-align:left;white-space:normal}
+  .course .nm{display:none}
+  .course .mk text{font-size:44px}
+  .course .snd{display:none}
   .about p.lede{font-size:26px}
 }
 @media (prefers-reduced-motion: reduce){
@@ -117,18 +137,23 @@ nav a::after,footer .links a::after,header .brand::after{content:"";position:abs
   <div class="label">Selected Work</div>
   <h2>Made one at a time.</h2>
   <div class="rule"></div>
-  <a class="row" href="https://urgewalk.app/" target="_blank" rel="noopener">
-    <span class="t">Urge Walk<span class="arr">&#8599;</span></span>
-    <span class="s">In development &middot; iPhone, December 2026</span>
-  </a>
-  <div class="row">
-    <span class="t">Fitness app</span>
-    <span class="s">In planning</span>
-  </div>
-  <div class="row">
-    <span class="t">Christian game</span>
-    <span class="s">In planning</span>
-  </div>
+  <svg class="course" viewBox="0 0 1000 260" aria-hidden="true">
+    <path class="coast" d="M0 0H70C95 40 58 82 86 122S68 204 96 260H0Z"/>
+    <g class="depth"><path d="M138 0C168 52 124 92 154 132S134 212 164 260"/><path d="M262 0C304 62 240 110 292 152S270 222 302 260"/><path d="M470 0C522 72 440 140 502 190S482 240 512 260"/><path d="M720 0C770 80 690 150 750 200S740 240 760 260"/></g>
+    <g class="snd"><text x="182" y="62">4</text><text x="206" y="214">5</text><text x="378" y="52">9</text><text x="352" y="226">11</text><text x="566" y="88">17</text><text x="640" y="220">22</text><text x="808" y="58">31</text><text x="900" y="206">40</text></g>
+    <path class="lt" d="M86 122Q108 104 130 112Q138 122 130 132Q108 140 86 122Z"/><circle cx="86" cy="122" r="5" class="ltc"/>
+    <path class="ahead" d="M280 121C400 112 500 140 600 135S760 122 840 128L944 126"/><path class="made" d="M140 120C190 119 236 119 280 121"/>
+    <path class="ahead" d="M932 118l14 8-14 8"/>
+    <g class="mk on" data-mk="1"><circle class="halo" cx="280" cy="121" r="21"/><circle class="dot lit" cx="280" cy="121" r="9"/><text x="280" y="88">1</text><text class="nm" x="280" y="166">Urge Walk</text></g>
+    <g class="mk" data-mk="2"><circle class="halo" cx="600" cy="135" r="21"/><circle class="dot" cx="600" cy="135" r="9"/><text x="600" y="102">2</text><text class="nm" x="600" y="180">Fitness app</text></g>
+    <g class="mk" data-mk="3"><circle class="halo" cx="840" cy="128" r="21"/><circle class="dot" cx="840" cy="128" r="9"/><text x="840" y="95">3</text><text class="nm" x="840" y="173">Christian game</text></g>
+  </svg>
+  <p class="legend">Marks are set by stage, not by date. Solid: under way. Dashed: laid down, not yet sailed.</p>
+  <ol class="key">
+    <li data-mk="1"><a class="row" href="https://urgewalk.app/" target="_blank" rel="noopener"><span class="n">1</span><span class="t">Urge Walk<span class="arr">&#8599;</span></span><span class="s">In development &middot; iPhone, December 2026</span></a></li>
+    <li data-mk="2"><div class="row" tabindex="0"><span class="n">2</span><span class="t">Fitness app</span><span class="s">In planning</span></div></li>
+    <li data-mk="3"><div class="row" tabindex="0"><span class="n">3</span><span class="t">Christian game</span><span class="s">In planning</span></div></li>
+  </ol>
 </section>
 <section class="block about" id="about">
   <div class="label">About</div>
@@ -154,6 +179,11 @@ nav a::after,footer .links a::after,header .brand::after{content:"";position:abs
   <div class="credit">Photographs via Pixabay, free to use. Verse: Psalm 107:29, King James Version.</div>
 </footer>
 <script>
+document.querySelectorAll('.key li').forEach(function (li) {
+  var mk = document.querySelector('.course .mk[data-mk="' + li.dataset.mk + '"]');
+  function on() { document.querySelectorAll('.course .mk,.key li').forEach(function (e) { e.classList.remove('on'); }); mk.classList.add('on'); li.classList.add('on'); }
+  li.addEventListener('mouseenter', on); li.addEventListener('focusin', on); li.addEventListener('click', on);
+});
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
     navigator.serviceWorker.register('./sw.js').catch(function () {});

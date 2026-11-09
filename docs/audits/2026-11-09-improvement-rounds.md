@@ -13,7 +13,8 @@ Run of Darius's "Improve this site, one round at a time" prompt, on branch
   restyling the existing layout.
 - **Locked:** hero photo and Psalm 107:29 verse; the compass star mark and
   its slow spin (Oct 22 direction); palette tokens and the two typefaces;
-  the three work rows and their status wording; About copy; second still;
+  the three works and their status wording (the form around them may change);
+  About copy; second still;
   `noindex, nofollow`, `robots.txt`; the `hello@example.com` placeholder;
   the footer credit; Darius's open items (terracotta, VERIFIED wording,
   Dayspan, emoji sweep, lantern).
@@ -37,3 +38,4 @@ One line per round: what changed · why · expected effect. SW cache bumped
 each round.
 
 1. Urge Walk row now links to https://urgewalk.app/ (was the old github.io URL) · canonical domain · visitors land on the real site · v59
+2. Selected Work plotted as a course chart: coast and light, depth contours, soundings, three numbered marks set by stage (solid course = under way, dashed = laid down, not yet sailed), keyed list below lights its mark on touch · the list was the most generic part of the page · the work reads as a voyage only this studio would chart, and touching an entry teaches the key · v60
