@@ -1,0 +1,135 @@
+<title>The Rebuild</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+/* Layout: a workbench. The studio arrives as 24 numbered parts and a scattered name;
+   scrolling fits each part into place. Single committed look: drafting paper, ink, one cobalt for marks. */
+:root{
+  --paper:#ecebe6; --ink:#1c1d1f; --ink-soft:#5d5f63; --rule:#c9c7bf; --mark:#2b49c4;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+body{font:16px/1.6 var(--sans);font-weight:300}
+.build{position:relative;height:340svh}
+.bench{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;place-items:center;
+  background-image:linear-gradient(var(--rule) 1px,transparent 1px),linear-gradient(90deg,var(--rule) 1px,transparent 1px);
+  background-size:48px 48px;background-position:center;background-color:var(--paper)}
+.bench::before{content:"";position:absolute;inset:0;background:var(--paper);opacity:.72}
+.rig{position:relative;width:min(84vw,1040px,calc((100svh - 220px) * 1.509));display:grid;gap:22px;justify-items:center}
+.name{display:flex;justify-content:center;font-weight:300;font-size:clamp(22px,3.6vw,44px);letter-spacing:.32em;text-indent:.32em;text-transform:uppercase;margin:0;white-space:nowrap}
+.name span{display:inline-block;will-change:transform}
+.frame{position:relative;width:100%;aspect-ratio:1280/848;max-width:100%}
+.tile{position:absolute;width:calc(100% / 6);height:calc(100% / 4);background-image:url("workshop.jpg");background-size:600% 400%;will-change:transform}
+.tile i{position:absolute;left:6px;top:5px;font:400 10px/1 var(--mono);font-style:normal;color:#fff;letter-spacing:.06em;mix-blend-mode:difference}
+.corner{position:absolute;width:18px;height:18px;border-color:var(--mark);border-style:solid;border-width:0}
+.c1{left:-10px;top:-10px;border-left-width:1px;border-top-width:1px}
+.c2{right:-10px;top:-10px;border-right-width:1px;border-top-width:1px}
+.c3{left:-10px;bottom:-10px;border-left-width:1px;border-bottom-width:1px}
+.c4{right:-10px;bottom:-10px;border-right-width:1px;border-bottom-width:1px}
+.readout{display:flex;justify-content:space-between;width:100%;font:400 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.readout b{color:var(--mark);font-weight:400}
+.line{margin:0;text-align:center;font-size:clamp(14px,1.6vw,17px);color:var(--ink-soft);transition:opacity .8s ease}
+.hint{position:absolute;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:0;right:0;text-align:center;font:400 11px/1 var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft);transition:opacity .4s ease}
+
+.far{max-width:680px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:88px 72px;display:grid;gap:52px}
+.label{font:400 11px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--mark);margin:0 0 18px}
+.lead{font-size:clamp(22px,2.6vw,28px);line-height:1.4;font-weight:300;margin:0;text-wrap:balance}
+.draft{font:400 11px/1.4 var(--mono);letter-spacing:.08em;color:var(--ink-soft);margin-top:12px}
+.parts{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.parts li{display:grid;grid-template-columns:3.2em minmax(0,1fr) auto;gap:4px 14px;padding:16px 0;border-bottom:1px solid var(--rule);align-items:baseline}
+.parts .no{font:400 12px/1 var(--mono);color:var(--mark)}
+.parts b{font-weight:400}
+.parts b a{color:inherit}
+.parts em{font:400 11px/1 var(--mono);font-style:normal;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);text-align:right}
+.parts span:not(.no){grid-column:2 / -1;color:var(--ink-soft);font-size:14px}
+.still{width:100%;aspect-ratio:3/2;max-width:100%;object-fit:cover;display:block}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;font-size:13px;color:var(--ink-soft)}
+@media (max-width:560px){.rig{width:92vw}.tile i{font-size:8px;left:3px;top:3px}}
+@media (prefers-reduced-motion:reduce){.build{height:auto}.bench{position:relative;height:100svh}.hint{display:none}}
+</style>
+
+<section class="build" id="build" aria-label="The studio, assembled as you scroll">
+  <div class="bench">
+    <div class="rig">
+      <h1 class="name" id="name" aria-label="Darius Tatum"></h1>
+      <div class="frame" id="frame" role="img" aria-label="A carpenter's workshop: benches, a table saw, tools on the walls, light from the windows">
+        <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+      </div>
+      <div class="readout" aria-hidden="true"><span>Parts placed <b id="placed">00</b> / 24</span><span id="stage">Loose</span></div>
+      <p class="line" id="line">Calm, steady software for everyday life.</p>
+    </div>
+    <p class="hint" id="hint" aria-hidden="true">Scroll to rebuild</p>
+  </div>
+</section>
+
+<main class="far">
+  <section>
+    <p class="label">Rebuilt, part by part</p>
+    <p class="lead">After the hardest stretch of my life, I took everything apart and started a different trade. Now I make small, calm tools for the moments that are hard to sit through.</p>
+    <p class="draft">Draft line for Darius to rewrite in his own words.</p>
+  </section>
+  <img class="still" src="shavings.jpg" alt="Curls of wood shaving on an old workbench" loading="lazy">
+  <section>
+    <p class="label">On the bench</p>
+    <ul class="parts">
+      <li><span class="no">01</span><b><a href="https://urgewalk.app/" target="_blank" rel="noopener">Urge Walk</a></b><em>Dec 2026</em><span>Ride out an urge with a short walk, a breath or a few senses. iPhone, in development.</span></li>
+      <li><span class="no">02</span><b>A fitness app</b><em>Planning</em><span>Early days.</span></li>
+      <li><span class="no">03</span><b>A Christian game for all ages</b><em>Planning</em><span>Early days.</span></li>
+    </ul>
+  </section>
+  <footer class="foot">
+    <span>hello@example.com</span>
+    <span>Photographs from Pixabay: ThMilherou, Pexels</span>
+  </footer>
+</main>
+
+<script>
+(() => {
+  const COLS = 6, ROWS = 4, frame = document.getElementById("frame"), nameEl = document.getElementById("name");
+  const build = document.getElementById("build"), placedEl = document.getElementById("placed"), stageEl = document.getElementById("stage");
+  const hint = document.getElementById("hint"), line = document.getElementById("line");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647; // fixed layout, same every visit
+  const parts = [];
+  for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+    const t = document.createElement("div"); t.className = "tile";
+    t.style.left = (c * 100 / COLS) + "%"; t.style.top = (r * 100 / ROWS) + "%";
+    t.style.backgroundPosition = `${c * 100 / (COLS - 1)}% ${r * 100 / (ROWS - 1)}%`;
+    const tag = document.createElement("i"); tag.textContent = "ABCDEF"[c] + (r + 1); t.appendChild(tag);
+    frame.appendChild(t);
+    const a = rnd() * Math.PI * 2, d = .55 + rnd() * .6;
+    parts.push({ el: t, tag, dx: Math.cos(a) * d * 70, dy: Math.sin(a) * d * 55, rot: (rnd() - .5) * 38, at: rnd() * .62 });
+  }
+  const letters = [..."Darius Tatum"].map(ch => {
+    const s = document.createElement("span"); s.textContent = ch === " " ? " " : ch; s.setAttribute("aria-hidden", "true"); nameEl.appendChild(s);
+    return { el: s, dx: (rnd() - .5) * 60, dy: -10 - rnd() * 30, rot: (rnd() - .5) * 70, at: .55 + rnd() * .25 };
+  });
+  const ease = x => 1 - Math.pow(1 - x, 3);
+  const local = (p, at, span) => ease(Math.min(1, Math.max(0, (p - at) / span)));
+  function render(p){
+    let placed = 0;
+    for (const t of parts){
+      const e = local(p, t.at, .3), k = 1 - e;
+      t.el.style.transform = k ? `translate(${t.dx * k}vw, ${t.dy * k}vh) rotate(${t.rot * k}deg) scale(${.94 + e * .06})` : "none";
+      t.tag.style.opacity = (k * 1.2).toFixed(2);
+      if (e >= 1) placed++;
+    }
+    for (const l of letters){ const k = 1 - local(p, l.at, .2); l.el.style.transform = k ? `translate(${l.dx * k}vw, ${l.dy * k}vh) rotate(${l.rot * k}deg)` : "none"; }
+    placedEl.textContent = String(placed).padStart(2, "0");
+    stageEl.textContent = placed === 24 ? "Whole" : placed ? "Fitting" : "Loose";
+    line.style.opacity = placed === 24 ? 1 : .0;
+    hint.style.opacity = p > .05 ? 0 : 1;
+  }
+  if (reduce){ render(1); return; }
+  let queued = false;
+  const progress = () => { const r = build.getBoundingClientRect(), span = r.height - innerHeight; return span > 0 ? Math.min(1, Math.max(0, -r.top / span)) : 1; };
+  const update = () => { queued = false; render(progress()); };
+  addEventListener("scroll", () => { if (!queued){ queued = true; requestAnimationFrame(update); } }, { passive: true });
+  addEventListener("resize", update);
+  update();
+})();
+</script>
