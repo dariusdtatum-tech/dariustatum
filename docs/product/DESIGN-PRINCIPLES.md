@@ -68,6 +68,11 @@ direction; The Rebuild stays as a reference.
 - The Urge Walk app's motion is built in the Expo app until the Mac mini arrives.
 - Homepage: Long Exposure replaced the chart site (v70). The old page is in git history.
 
+## Working agreement (Darius, 2026-11-09)
+
+"Yeah merge any small verified site fixes then." Small, verified fixes to the websites are merged by
+Claude without asking, then reported. Larger changes (a new direction, a new page) still wait for "merge".
+
 ## Pixabay licence, as read on 2026-11-09 (not legal advice)
 
 Source: pixabay.com/service/terms (section 5) and pixabay.com/api/docs.
