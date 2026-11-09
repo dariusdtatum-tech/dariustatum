@@ -12,6 +12,10 @@ first ten improvement rounds (PR #1).
 - **Anti-slop, no AI slop.** No generic template moves; AI output is sketch material,
   never shipped as-is.
 - **Give everything to the icons and the designs.** Every mark and drawing gets full care.
+- **How can we evolve further?** (Darius, 2026-11-09.) Every time a direction works, ask
+  what the next step in its evolution is, instead of polishing the current one. Motion is
+  the first answer: a still that becomes a living scene, nature that moves (sea, grass,
+  branches in the wind), always calm, never decoration.
 
 ## What is no longer fixed
 

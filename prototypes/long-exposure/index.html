@@ -34,10 +34,15 @@ body{font:16px/1.6 var(--sans);font-weight:300}
 .count{position:absolute;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(9% + 10px + env(safe-area-inset-bottom,0px));font:400 11px/1 var(--mono);letter-spacing:.18em;color:var(--ink);opacity:calc(var(--p) * 1.4);font-variant-numeric:tabular-nums}
 .skip{position:absolute;left:max(16px,env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));font:400 11px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);background:none;border:0;padding:10px 0;cursor:pointer}
 .skip:focus-visible,.stage:focus-visible{outline:2px solid var(--ink);outline-offset:-6px}
+.sea{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;max-width:none;opacity:0;transition:opacity 2.6s ease;pointer-events:none}
+.stage.open .sea{opacity:1}
+.stage.open .horizon,.stage.open .count{opacity:0;transition:opacity 2s ease}
+.stage.open .base,.stage.open .ghost{opacity:0;transition:opacity 2.6s ease}
 .stage.clear{cursor:default}
 .stage.clear .prompt{opacity:0}
 .stage.clear .name{opacity:1}
 .stage.clear .skip{visibility:hidden}
+.stage.clear .skip.motion{visibility:visible}
 
 .far{max-width:640px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:96px 72px;display:grid;gap:56px}
 .label{font:400 11px/1 var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 18px}
@@ -59,12 +64,14 @@ body{font:16px/1.6 var(--sans);font-weight:300}
   <img class="ghost g1" src="posts.jpg" alt="" aria-hidden="true">
   <img class="ghost g2" src="posts.jpg" alt="" aria-hidden="true">
   <img class="base" src="posts.jpg" alt="Wooden groyne posts leading out into a still, misty sea">
+  <video class="sea" id="sea" muted loop playsinline preload="auto" poster="sea-poster.jpg" aria-hidden="true"><source src="sea.mp4" type="video/mp4"></video>
   <div class="veil"></div>
   <div class="prompt" id="hint"><p>Press and hold</p><small>Be still. It settles.</small></div>
   <div class="horizon" aria-hidden="true"></div>
   <div class="count" id="count" aria-hidden="true">0.0 s</div>
   <div class="name"><h1>Darius Tatum</h1><p>Calm, steady software for everyday life.</p></div>
   <button class="skip" id="skip" type="button">Show it still</button>
+  <button class="skip motion" id="motion" type="button" hidden>Pause the sea</button>
 </section>
 
 <main class="far" id="far">
@@ -84,7 +91,7 @@ body{font:16px/1.6 var(--sans);font-weight:300}
   </section>
   <footer class="foot">
     <span>hello@example.com</span>
-    <span>Photographs from Pixabay: DBU_DirektesSehen, the1willy</span>
+    <span>Photographs and film from Pixabay: DBU_DirektesSehen, the1willy, ambivalent-</span>
   </footer>
 </main>
 
@@ -103,8 +110,20 @@ body{font:16px/1.6 var(--sans);font-weight:300}
   }
   function start(){ if (clear) return; holding = true; if (!raf){ last = 0; raf = requestAnimationFrame(tick); } }
   function stop(){ holding = false; if (!raf && !clear && p > 0){ last = 0; raf = requestAnimationFrame(tick); } }
-  function settle(){ clear = true; holding = false; set(1); stage.classList.add("clear"); stage.removeAttribute("role"); stage.setAttribute("aria-label", "The photograph, now still"); }
-  stage.addEventListener("pointerdown", e => { if (e.target.id === "skip") return; stage.setPointerCapture?.(e.pointerId); start(); });
+  const sea = document.getElementById("sea"), motionBtn = document.getElementById("motion");
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function playSea(){ sea.playbackRate = .8; const r = sea.play(); if (r && r.catch) r.catch(() => {}); motionBtn.textContent = "Pause the sea"; }
+  function settle(){
+    clear = true; holding = false; set(1); stage.classList.add("clear");
+    stage.removeAttribute("role"); stage.setAttribute("aria-label", "The photograph, now still, opening onto a misty sea");
+    // A beat of stillness, then the long exposure opens into the living sea.
+    setTimeout(() => {
+      stage.classList.add("open"); motionBtn.hidden = false;
+      if (still){ motionBtn.textContent = "Play the sea"; } else { playSea(); }
+    }, 1400);
+  }
+  motionBtn.addEventListener("click", () => { if (sea.paused) playSea(); else { sea.pause(); motionBtn.textContent = "Play the sea"; } });
+  stage.addEventListener("pointerdown", e => { if (e.target.closest("button")) return; stage.setPointerCapture?.(e.pointerId); start(); });
   ["pointerup", "pointercancel", "lostpointercapture"].forEach(n => stage.addEventListener(n, stop));
   stage.addEventListener("keydown", e => { if ((e.key === " " || e.key === "Enter") && !e.repeat && e.target === stage){ e.preventDefault(); start(); } });
   stage.addEventListener("keyup", e => { if (e.key === " " || e.key === "Enter") stop(); });
