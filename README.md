@@ -25,7 +25,7 @@ commercially, under the Pixabay Content License; no attribution is
 required (the footer credits the source as a courtesy). Two more chosen
 stills are held in reserve: `sailboat-9597523` and `anchored-1850849`.
 
-**Live preview:** https://dariusdtatum-tech.github.io/dariustatum/
+**Live preview:** https://dariustatum.com/ (domain bought Nov 9, 2026 on Cloudflare; still noindex)
 (GitHub Pages; pushing to `main` redeploys. Pre-launch, so it is not indexed.)
 
 ## Run it
@@ -45,7 +45,7 @@ service worker just won't register from `file://`.
 |---|---|
 | `index.html` | The whole site: markup, styles and script |
 | `style.css` | Shared styles for the small static pages (privacy); palette and fonts match `index.html` |
-| `sw.js` | Service worker. Bump `dariustatum-vNN` on every deploy (currently v68) |
+| `sw.js` | Service worker. Bump `dariustatum-vNN` on every deploy (currently v69) |
 | `manifest.webmanifest`, `icons/`, `apple-touch-icon.png`, `favicon.svg` | PWA and icons |
 | `privacy.html` | Privacy page, kept at the root so its URL stays stable |
 | `404.html` | Standalone not-found page |
@@ -144,14 +144,13 @@ Current status lines:
 - `<meta name="robots" content="noindex, nofollow">` is on the pages.
 - `robots.txt` says `Disallow: /`.
 - The contact address is the placeholder `hello@example.com`.
-- There is no `CNAME`; the site is served from the github.io URL.
-- `404.html` links use the `/dariustatum/` project path.
-- The canonical, `og:url`, `og:image` and `twitter:image` tags use the
-  github.io address until launch, then `https://dariustatum.com/`.
+- `CNAME` is `dariustatum.com` (connected Nov 9, 2026, before launch; noindex still on).
+- `404.html` links use root paths (`/`, `/privacy.html`).
+- The canonical, `og:url`, `og:image` and `twitter:image` tags use `https://dariustatum.com/`.
 
 ## November launch checklist
 
-- [ ] Restore the `CNAME` file (`dariustatum.com`) and set the custom domain in Pages.
+- [x] Restore the `CNAME` file (`dariustatum.com`) and set the custom domain in Pages.
 - [ ] Remove the `noindex, nofollow` meta tags.
 - [ ] Change `robots.txt` to allow crawling and list the sitemap.
 - [ ] Replace `hello@example.com` with the real studio address everywhere.
