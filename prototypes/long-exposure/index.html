@@ -64,7 +64,7 @@ body{font:16px/1.6 var(--sans);font-weight:300}
   <img class="ghost g1" src="posts.jpg" alt="" aria-hidden="true">
   <img class="ghost g2" src="posts.jpg" alt="" aria-hidden="true">
   <img class="base" src="posts.jpg" alt="Wooden groyne posts leading out into a still, misty sea">
-  <video class="sea" id="sea" muted loop playsinline preload="auto" poster="sea-poster.jpg" aria-hidden="true"><source src="sea.mp4" type="video/mp4"></video>
+  <video class="sea" id="sea" muted loop playsinline preload="none" aria-hidden="true"></video>
   <div class="veil"></div>
   <div class="prompt" id="hint"><p>Press and hold</p><small>Be still. It settles.</small></div>
   <div class="horizon" aria-hidden="true"></div>
@@ -91,7 +91,7 @@ body{font:16px/1.6 var(--sans);font-weight:300}
   </section>
   <footer class="foot">
     <span>hello@example.com</span>
-    <span>Photographs and film from Pixabay: DBU_DirektesSehen, the1willy, ambivalent-</span>
+    <span>Photographs and film from Pixabay: DBU_DirektesSehen, the1willy, ambivalent- (4K original)</span>
   </footer>
 </main>
 
@@ -111,7 +111,14 @@ body{font:16px/1.6 var(--sans);font-weight:300}
   function start(){ if (clear) return; holding = true; if (!raf){ last = 0; raf = requestAnimationFrame(tick); } }
   function stop(){ holding = false; if (!raf && !clear && p > 0){ last = 0; raf = requestAnimationFrame(tick); } }
   const sea = document.getElementById("sea"), motionBtn = document.getElementById("motion");
-  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // Footage cut from the 4K original: a tall loop for phones, a wide one for everything else.
+  // Reduce Motion, Save-Data or a 2G connection get the still frame and a Play button instead.
+  const conn = navigator.connection || {};
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches || !!conn.saveData || /(^|-)2g$/.test(conn.effectiveType || "");
+  const tall = innerHeight > innerWidth;
+  sea.poster = tall ? "sea-tall.jpg" : "sea-wide.jpg";
+  sea.src = tall ? "sea-tall.mp4" : "sea-wide.mp4";
+  if (!still) sea.preload = "auto";
   function playSea(){ sea.playbackRate = .8; const r = sea.play(); if (r && r.catch) r.catch(() => {}); motionBtn.textContent = "Pause the sea"; }
   function settle(){
     clear = true; holding = false; set(1); stage.classList.add("clear");
