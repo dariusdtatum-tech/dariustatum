@@ -88,6 +88,14 @@ a.row:hover .t{color:var(--terra)}
 footer{padding:62px 40px 52px;text-align:center}
 footer svg{width:26px;height:26px;animation:spin 40s linear infinite}
 footer .f{margin-top:14px;font-size:10px;font-weight:600;letter-spacing:.34em;text-transform:uppercase;color:var(--ink-soft)}
+.alm{max-width:520px;margin:34px auto 0;padding-top:26px;border-top:1px solid rgba(31,42,61,.16)}
+.alm-r{display:flex;align-items:center;justify-content:center;gap:14px}
+.moon{width:30px;height:30px;flex:none}.moon .md{fill:var(--night)}.moon .ml{fill:#ecd096}
+.rng{display:flex;align-items:center;height:30px;width:10px;flex:none}.rng i{display:block;width:10px;border-top:1.5px solid var(--terra-deep);border-bottom:1.5px solid var(--terra-deep);transition:height .3s}
+.alm-t{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:19px;text-align:left}
+.alm-s{display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:16px;font-size:10px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--ink-soft)}
+.alm-s input{width:min(260px,80%);accent-color:var(--terra-deep);height:28px}
+.alm-n{margin-top:12px;font-size:12px;line-height:1.65;color:var(--ink-soft)}
 footer .links{margin-top:20px;display:flex;justify-content:center;gap:30px}
 footer .links a{color:var(--ink-soft);text-decoration:none;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;padding:10px 2px}
 footer .links a:hover{color:var(--ink)}
@@ -186,6 +194,11 @@ nav a::after,footer .links a::after,header .brand::after{content:"";position:abs
 <circle cx="120" cy="120" r="10" fill="none" stroke="url(#gold-f)" stroke-width="3"/>
 </svg>
   <div class="f">Darius Tatum &middot; MMXXVI</div>
+  <div class="alm" hidden>
+    <div class="alm-r"><svg class="moon" viewBox="-12 -12 24 24" aria-hidden="true"><circle r="11" class="md"/><path class="ml"/></svg><span class="rng" aria-hidden="true"><i></i></span><p class="alm-t" aria-live="polite"></p></div>
+    <label class="alm-s"><span>Drag through the moon&rsquo;s month</span><input type="range" min="0" max="29.5" step="0.25" value="0"></label>
+    <p class="alm-n">Tides run highest near new and full moon, when sun and moon pull in line (springs), and least at the quarters, when they pull at right angles (neaps). The bar shows the range, simplified.</p>
+  </div>
   <div class="links"><a href="./privacy.html">Privacy</a><a href="mailto:hello@example.com">Contact</a></div>
   <div class="credit">Photographs via Pixabay, free to use. Verse: Psalm 107:29, King James Version.</div>
 </footer>
@@ -195,6 +208,23 @@ document.querySelectorAll('.key li').forEach(function (li) {
   function on() { document.querySelectorAll('.course .mk,.key li').forEach(function (e) { e.classList.remove('on'); }); mk.classList.add('on'); li.classList.add('on'); }
   li.addEventListener('mouseenter', on); li.addEventListener('focusin', on); li.addEventListener('click', on);
 });
+(function () {
+  var alm = document.querySelector('.alm'); if (!alm) return; alm.hidden = false;
+  var P = 29.530588853, now = Date.now(), base = ((now / 864e5 - 10962.76) % P + P) % P;
+  var inp = alm.querySelector('input'), ml = alm.querySelector('.ml'), t = alm.querySelector('.alm-t'), bar = alm.querySelector('.rng i');
+  var names = ['New moon', 'Waxing crescent', 'First quarter', 'Waxing gibbous', 'Full moon', 'Waning gibbous', 'Last quarter', 'Waning crescent'];
+  function draw() {
+    var d = +inp.value, a = (base + d) % P, th = 2 * Math.PI * a / P, k = Math.cos(th), wax = a < P / 2;
+    var lit = Math.round((1 - k) * 50), rx = (11 * Math.abs(k)).toFixed(2), r = (1 + Math.cos(2 * th)) / 2;
+    ml.setAttribute('d', 'M0-11A11 11 0 0 ' + (wax ? 1 : 0) + ' 0 11A' + rx + ' 11 0 0 ' + (wax ? (k > 0 ? 0 : 1) : (k > 0 ? 1 : 0)) + ' 0-11Z');
+    var tide = r > .75 ? 'spring tides' : r < .25 ? 'neap tides' : Math.sin(2 * th) < 0 ? 'tides building toward springs' : 'tides easing toward neaps';
+    var when = d === 0 ? 'Tonight' : 'In ' + Math.round(d) + (Math.round(d) === 1 ? ' day' : ' days');
+    t.textContent = when + ' · ' + names[Math.round(a / P * 8) % 8] + ', ' + lit + '% lit · ' + tide;
+    bar.style.height = (4 + 24 * r).toFixed(1) + 'px';
+    inp.setAttribute('aria-valuetext', t.textContent);
+  }
+  inp.addEventListener('input', draw); draw();
+})();
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
     navigator.serviceWorker.register('./sw.js').catch(function () {});
