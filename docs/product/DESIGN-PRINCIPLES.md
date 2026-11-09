@@ -47,6 +47,30 @@ first, then rounds against it:
 3. Two or three directions designed as frames (Figma), compared, one chosen.
 4. Build and rounds in code against the chosen design.
 
+## Chosen path (2026-11-09)
+
+Two prototypes were built in `prototypes/`: Long Exposure (press and hold until a restless
+photograph settles) and The Rebuild (24 numbered parts fit into place as you scroll).
+Darius: "Both speak to me but Long Exposure is the better path." Long Exposure is the
+direction; The Rebuild stays as a reference.
+
+## Pixabay licence, as read on 2026-11-09 (not legal advice)
+
+Source: pixabay.com/service/terms (section 5) and pixabay.com/api/docs.
+- Free for commercial and non-commercial use, worldwide, perpetual; credit not required.
+- Modifying and combining into a new work is allowed.
+- Not allowed: selling or giving away the content "on a Standalone basis" (as-is, or only
+  filtered, cropped or resized), including wallpapers, prints and merchandise; using content
+  showing trademarks, logos or brands commercially; implying endorsement; using it in a
+  trademark or business name; claiming you made it.
+- Pixabay does not warrant model or property releases ("We do not warrant that any consents
+  or licenses have been obtained"); that risk stays with us. Hence: no people, no
+  recognisable private buildings, no visible brands.
+- Music and sound effects fall under the same licence.
+- API: download images to our own server (no permanent hotlinking), cache requests 24 h,
+  no systematic mass downloads, show the source when displaying search results.
+- German law, Berlin jurisdiction.
+
 ## Tools
 
 - Pixabay API key lives in `.env` (`PIXABAY_API_KEY`), which is git-ignored. Never commit it.
