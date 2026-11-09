@@ -46,3 +46,20 @@ each round.
 7. Vellum gains a paper surface: fine fibre grain and faint large-scale foxing, two inline SVG noise tiles, no image files · the paper was a flat screen colour · the page feels like aged chart vellum, as the Vision names it · v65
 8. Header becomes a centred masthead (compass and name between two long hairlines); the Work/About/Contact nav is removed (Contact stays in the footer) · logo-left/links-right was the last stock portfolio pattern · the first screen opens like the head of a chart, with less chrome above the verse · v66
 9. Course chart follows chart colour convention: land tinted buff, shallows a pale blue band, deep water left as paper · the coast was a crude grey block · the chart reads as a true chart to anyone who has held one · v67
+10. Reduced motion now stills the new mark halo and tide bar, and the keyboard-focusable work key and month slider get a terracotta focus ring · rounds 2 and 5 added interaction without honouring the README's motion and accessibility bar · keyboard and reduced-motion visitors get the same calm, legible instruments · v68
+
+## Verification
+
+Each round was loaded from a local static server (service worker
+unregistered and caches cleared before each reload) at desktop width
+(1024px) and phone width (375px): changed part rendered, no horizontal
+overflow, no console errors from the page. Tide almanac checked against
+the published new moon of 9 Nov 2026, 07:02 UTC. Not run: axe-core and
+the full Playwright QA bar from the README (those scripts live outside
+this repo).
+
+## Out of date in README after this run
+
+The "Header and Appearance menu" section already described controls the
+v54 page no longer had; the header now has no nav at all. Left for Darius
+to rewrite with the next README pass.
