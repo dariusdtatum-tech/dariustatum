@@ -2,7 +2,7 @@
    DARIUS TATUM — ZERO-DEPENDENCY OFFLINE SERVICE WORKER
    100% On-Device Cache-First Architecture · Zero Analytics or Tracking Beacons
    ============================================================================ */
-const CACHE_NAME = 'dariustatum-v68';
+const CACHE_NAME = 'dariustatum-v69';
 const CORE_ASSETS = [
   './',
   './index.html',
