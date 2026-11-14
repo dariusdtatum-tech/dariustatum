@@ -1,0 +1,17 @@
+# Keep GitHub Pages from publishing local tooling.
+# Default Jekyll excludes are listed too, because a custom exclude list replaces them.
+exclude:
+  - AGENTS.md
+  - tools/
+  - node_modules/
+  - package.json
+  - package-lock.json
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
