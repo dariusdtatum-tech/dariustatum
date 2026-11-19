@@ -9,8 +9,9 @@ This is a plain static GitHub Pages site. There is no build step. Do not change 
 These steps sit alongside the design principles; they do not replace them.
 
 1. Look up current HTML, CSS and JavaScript patterns in Chrome's Modern Web Guidance before writing new front-end code:
-   - Search: `npx modern-web-guidance@latest search <topic>`
-   - Read a guide: `npx modern-web-guidance@latest retrieve <guide-id>`
+   - Search: `npx modern-web-guidance@1.0.0 search <topic>`
+   - Read a guide: `npx modern-web-guidance@1.0.0 retrieve <guide-id>`
+   - The version is pinned (1.0.0, the one the first check ran on). Bump it on purpose, in its own commit, after reading what changed.
    - Repo: https://github.com/googlechrome/modern-web-guidance
 2. Before using any newer platform feature, confirm it works in iPhone Safari (caniuse.com or MDN), or add a fallback. iPhone Safari comes first.
 3. Run the quality check from the repo root and paste its summary into the PR:
