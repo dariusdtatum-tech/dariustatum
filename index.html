@@ -70,8 +70,9 @@ a{color:inherit}
 .skip{left:max(16px,env(safe-area-inset-left,0px))}
 .motion{left:max(16px,env(safe-area-inset-left,0px))}
 .down{right:max(16px,env(safe-area-inset-right,0px));text-decoration:none;opacity:0;transition:opacity 1.2s var(--ease) 2.4s;pointer-events:none}
-.ctl:focus-visible,.stage:focus-visible,a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-.stage:focus-visible{outline-offset:-6px}
+.ctl:focus-visible,a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.hold{position:absolute;left:50%;top:calc(28% + 76px);bottom:auto;transform:translateX(-50%);white-space:nowrap;clip-path:inset(50%);width:1px;height:1px;overflow:hidden;padding:0}
+.hold:focus-visible{clip-path:none;width:auto;height:auto;overflow:visible;padding:10px 0}
 .stage.clear .prompt{opacity:0}
 .stage.clear .name{opacity:calc(1 - var(--s) * 1.6);transform:translateY(calc(var(--s) * -30px))}
 .stage.clear .skip{visibility:hidden}
@@ -106,7 +107,7 @@ a{color:inherit}
 </style>
 </head>
 <body>
-<section class="stage" id="stage" tabindex="0" role="button" aria-label="Press and hold to steady the photograph. Space or Enter also works." aria-describedby="hint">
+<header class="stage" id="stage">
   <div class="scene">
     <img class="ghost g1" src="./assets/long-exposure/posts.jpg" alt="" aria-hidden="true">
     <img class="ghost g2" src="./assets/long-exposure/posts.jpg" alt="" aria-hidden="true">
@@ -118,10 +119,11 @@ a{color:inherit}
   <div class="horizon" aria-hidden="true"></div>
   <div class="count" id="count" aria-hidden="true">0.0 s</div>
   <div class="name"><h1>Darius Tatum</h1><p>Calm, steady software for everyday life.</p></div>
+  <button class="ctl hold" id="hold" type="button" aria-describedby="hint">Hold Space or Enter to steady it</button>
   <button class="ctl skip" id="skip" type="button">Show it still</button>
   <button class="ctl motion" id="motion" type="button" hidden>Pause the sea</button>
   <a class="ctl down" href="#far">Below the surface</a>
-</section>
+</header>
 
 <main class="far" id="far">
   <section class="rise">
@@ -148,7 +150,7 @@ a{color:inherit}
 <script>
 (() => {
   const stage = document.getElementById("stage"), count = document.getElementById("count"), root = document.documentElement;
-  const sea = document.getElementById("sea"), motionBtn = document.getElementById("motion");
+  const sea = document.getElementById("sea"), motionBtn = document.getElementById("motion"), holdBtn = document.getElementById("hold");
   const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const tall = innerHeight > innerWidth;
   sea.poster = tall ? "./assets/long-exposure/sea-tall.jpg" : "./assets/long-exposure/sea-wide.jpg";
@@ -172,15 +174,16 @@ a{color:inherit}
   function playSea(){ sea.playbackRate = .8; const r = sea.play(); if (r && r.catch) r.catch(() => {}); motionBtn.textContent = "Pause the sea"; }
   function settle(beat){
     clear = true; holding = false; set(1); stage.classList.add("clear"); remember();
-    stage.removeAttribute("role"); stage.removeAttribute("tabindex"); stage.setAttribute("aria-label", "A misty sea, now still");
+    const hadFocus = document.activeElement === holdBtn; holdBtn.hidden = true;
+    if (hadFocus) stage.querySelector(".down").focus({ preventScroll: true });
     setTimeout(() => {
       stage.classList.add("open"); motionBtn.hidden = false;
       if (still) motionBtn.textContent = "Play the sea"; else playSea();
     }, beat);
   }
-  stage.addEventListener("pointerdown", e => { if (e.target.closest("button,a")) return; stage.setPointerCapture?.(e.pointerId); start(); });
+  stage.addEventListener("pointerdown", e => { if (e.target.closest("button:not(#hold),a")) return; stage.setPointerCapture?.(e.pointerId); start(); });
   ["pointerup", "pointercancel", "lostpointercapture"].forEach(n => stage.addEventListener(n, stop));
-  stage.addEventListener("keydown", e => { if ((e.key === " " || e.key === "Enter") && !e.repeat && e.target === stage){ e.preventDefault(); start(); } });
+  stage.addEventListener("keydown", e => { if ((e.key === " " || e.key === "Enter") && !e.repeat && e.target === holdBtn){ e.preventDefault(); start(); } });
   stage.addEventListener("keyup", e => { if (e.key === " " || e.key === "Enter") stop(); });
   stage.addEventListener("contextmenu", e => { if (!clear) e.preventDefault(); });
   document.getElementById("skip").addEventListener("click", () => settle(200));
